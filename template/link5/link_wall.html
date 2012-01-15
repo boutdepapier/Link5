@@ -1,0 +1,40 @@
+<div id="links_section">
+    <div id="jquerywall_height"><div id="jquerywall">
+    {% for link in links %}
+        <article class='link'>
+            <h2 class="title">{% ifequal link.link_type "link" %}<img src="/static/link5/img/link.png" border="0" class="link_icone" width="20" /><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a>{% else %}{{ link.post_ttl }}{% endifequal %}</h2>
+            
+            <div class="media">
+            {% ifequal link.link_type "photo" %}
+                <p><a href="/link/load/{{ link.pk }}" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
+            {% else %}{% ifequal link.link_type "video" %}
+                <a href="/link/load/{{ link.pk }}" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
+                    <img src="/static/link5/img/play.png" border="0" width="20" height="18" class="link_play" />
+                {% endifequal %}</a>
+            {% else %}{% ifequal link.link_type "html" %}
+                {{ link.post_html|safe }}
+            {% endifequal %}{% endifequal %}{% endifequal %}
+            </div>
+            <p class="description">{{ link.post_txt }}</p>
+            <p class="author_date">Post by <a>{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
+            
+            <p class="likeornot">
+                <span class="like novote"><span class="number">{{ link.positive }}</span><a href="/link/vote/{{ link.pk }}/1"><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a></span>
+                <span class="not novote"><span class="number">{{ link.negative }}</span><a href="/link/vote/{{ link.pk }}/0"><img src="/static/link5/img/no.png" width="13" class="vicone" /></a></span>
+                <span class="vote_message"></span>
+            </p>
+        </article>
+    {% endfor %}
+    </div></div>
+
+    <div id="link_overlay"></div>
+    <div id="full_view"><div id="full_view_content"></div></div>
+{% if links.home_page or links.last_page %}
+<p id="link_nav">
+	{% if links.home_page %}<span><a href="/page/{{ links.page|add:"-1" }}"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
+	{% if links.last_page %}<span><a href="/page/{{ links.page|add:"1" }}">>></a></span>{% endif %}
+</p>
+{% endif %}
+
+    <div class="clearboth"></div>
+</div>

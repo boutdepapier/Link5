@@ -1,0 +1,43 @@
+{% load i18n%}
+<form action="/link/" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >{% csrf_token %}
+    <div id="link_generator">
+        {{ form.post_url.errors }}
+        <label for="id_post_url" id="label_url">{% trans 'Url I to share: ' %}</label>
+        {{ form.post_url }}
+        <div class="clearboth"></div>
+    </div>
+
+    <div id="post_preview_form" {% if not form.errors %}class="hidde"{% endif %}>
+        <div id="post_edit">
+            <div class="post_element">
+                {{ form.post_ttl.errors }}
+                <label for="id_post_ttl">{% trans 'Link title: ' %}</label>
+                {{ form.post_ttl }}
+            </div>
+            
+            <div class="post_element">
+                {{ form.post_txt.errors }}
+                <label for="id_post_txt" id="label_post_txt">{% trans 'Link description' %} [<span id="desc_limit" class="strong">255</span>] :</label>
+                {{ form.post_txt }}
+            </div>
+            
+            <div class="post_element">
+                {{ form.category.errors }}
+                <label for="id_category">{% trans 'Category: ' %}</label>
+                {{ form.category }}
+            </div>
+                
+            <div class="link_submit post_it"><input type="submit" value="{% trans 'Post-it!' %}"/></div>
+            
+        </div>
+        <div id="post_preview">
+            <div id="post_preview_loading"></div>
+            <div id="preview_ttl"></div>
+            <div id="preview_txt"></div>
+            <div id="preview_med"></div>
+        </div>
+        {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
+        
+    </div>
+    <div class="clearboth"></div>
+</form>

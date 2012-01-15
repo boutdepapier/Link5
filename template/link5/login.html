@@ -1,0 +1,73 @@
+{% load i18n%}
+{% include "link5/head.html" %}
+{% include "link5/nav.html" %}
+{% include "link5/messages.html" %}
+<div id="login_page">
+
+    <form action="/login/" method="post" id="login_form">{% csrf_token %}
+        <h2>{% trans 'Back home beach!' %}</h2>
+            
+        <input type="hidden" name="login_form" value="1" />
+    {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" />
+    {% endif %}
+        
+        <div class="login_element">
+            {{ login_form.username.errors }}
+            <label for="id_username">{% trans 'Email: ' %}</label>
+            {{ login_form.username }}
+        </div>
+        
+        <div class="login_element">
+            {{ login_form.password.errors }}
+            <label for="id_password">{% trans 'Password:' %}</label>
+            {{ login_form.password }}
+        </div>
+        <p class="link_submit submit_login"><input type="submit" value="Log me baby!" /></p>
+    </form>
+    
+    <form action="/login/" method="post" id="register_form">{% csrf_token %}
+        <h2>{% trans 'I want my account now!' %}</h2>
+        
+        <input type="hidden" name="register_form" value="1" />
+    {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" />
+    {% endif %}
+        <div class="register_element">
+            {{ register_form.username.errors }}
+            <label for="id_username">{% trans 'Pseudo: ' %}</label>
+            {{ register_form.username }}
+        </div>
+    
+        <div class="register_element">
+            {{ register_form.email.errors }}
+            <label for="id_username">{% trans 'Email: ' %}</label>
+            {{ register_form.email }}
+        </div>
+        
+        <div class="register_element">
+            {{ register_form.password1.errors }}
+            <label for="id_password1">{% trans 'Password:' %}</label>
+            {{ register_form.password1 }}
+        </div>
+        
+        <div class="register_element">
+            {{ register_form.password2.errors }}
+            <label for="id_password2">{% trans 'Password:<span class="again"><br/>(again? Seriously ?)</span>' %}</label>
+            {{ register_form.password2 }}
+        </div>
+        
+         <div class="newsletter_check">
+            {{ register_form.newsletter.errors }}
+            {{ register_form.newsletter }}
+            <label for="id_newsletter">{% trans "I accept email contact if one day there is. Link5 pinky promise to never sell or give or I really don't know... Man, just accept: anyway I am too lazy to make newsletter..." %}</label>
+        </div>
+        
+        <p class="link_submit submit_login"><input type="submit" value="Register!" /></p>
+    </form>
+
+    <div class="clearboth"></div>
+
+</div>
+
+{% include "link5/footer.html" %}

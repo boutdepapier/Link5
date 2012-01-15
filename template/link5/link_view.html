@@ -1,0 +1,35 @@
+{% load i18n link5_extras %}<p id="close_icone"><a href="javascript:;" onclick="close_link();"><img src="/static/link5/img/close.gif" width="32" height="32" border="0" /></a></p>
+{% ifequal link.link_type "photo" %}
+    <p id="link_image"><img src="{{ link.post_url }}" alt="" /></p>
+{% else %}{% ifequal link.link_type "video" %}
+<div id="link_html">
+    {{ link.post_html|safe }}
+</div>
+{% else %}{% ifequal link.link_type "html" %}
+<div id="link_html">
+    {{ link.post_html|safe }}
+</div>
+{% endifequal %}{% endifequal %}{% endifequal %}
+
+<div id="comment">
+{% for comment in comments %}
+    <div class="comment">
+        <p class="comment_avatar"><img src="{{ comment.author.avatar|scale:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" /></p>
+        <p class="comment_headline">By {{ comment.author.user.username }} at {{ comment.created_at }}</p>
+        <div class="comment_text">{{ comment.text }}</div>
+        <div class="clearboth"></div>
+    </div>
+{% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+<form action="/comment/save/{{ link.id }}" name="comment_form" id="comment_form" method="post">{% csrf_token %}
+    {{ form.text.errors }}
+    <label for="id_text">{% trans 'Your comment: ' %}</label><br />
+    {{ form.text }}
+    
+    <div class="link_submit comment_it"><input type="submit" value="{% trans 'Submit' %}"/></div>
+</form>
+{% endif %}
+
+<div class="clearboth"></div>
