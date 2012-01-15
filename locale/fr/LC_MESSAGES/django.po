@@ -2,26 +2,126 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-26 11:41+0100\n"
+"POT-Creation-Date: 2012-01-15 10:31-0600\n"
 "PO-Revision-Date: 2011-12-26 04:43\n"
 "Last-Translator:   <btacquet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
 
-#: link5app/models.py:18
-msgid "Content du post"
-msgstr "Contenu du post"
+#: link5app/forms.py:64
+msgid "Email"
+msgstr ""
+
+#: link5app/forms.py:70
+msgid "Please enter username and password."
+msgstr ""
+
+#: link5app/models.py:11
+msgid "Accept newsletter if it exist one day?"
+msgstr ""
+
+#: link5app/models.py:34
+msgid "Post Descripiton"
+msgstr ""
+
+#: link5app/models.py:35
+msgid "Foreign URL"
+msgstr ""
+
+#: link5app/models.py:36
+msgid "Illustration"
+msgstr ""
+
+#: link5app/models.py:37
+msgid "Media"
+msgstr ""
+
+#: link5app/models.py:44 link5app/models.py:72
+msgid "Published"
+msgstr ""
+
+#: link5app/models.py:45 link5app/models.py:73
+msgid "Draft"
+msgstr ""
+
+#: link5app/models.py:46 link5app/models.py:74
+msgid "Deleted"
+msgstr ""
+
+#: link5app/models.py:52
+msgid "Photo"
+msgstr ""
+
+#: link5app/models.py:53
+msgid "Video"
+msgstr ""
+
+#: link5app/models.py:54
+msgid "Rich"
+msgstr ""
+
+#: link5app/models.py:55
+msgid "Link"
+msgstr ""
+
+#: link5app/models.py:56
+msgid "Error"
+msgstr ""
+
+#: link5app/models.py:60
+msgid "Link number of positive votes"
+msgstr ""
+
+#: link5app/models.py:61
+msgid "Link number of negative votes"
+msgstr ""
+
+#: link5app/views.py:37
+msgid "Thank you for posting!"
+msgstr ""
+
+#: link5app/views.py:56
+msgid "You need to register first!"
+msgstr ""
+
+#: link5app/views.py:66
+msgid "Thank you!"
+msgstr ""
+
+#: link5app/views.py:75
+msgid "One vote per Link"
+msgstr ""
+
+#: link5app/views.py:86
+msgid "You have already logged in sneacky avocado :)"
+msgstr ""
+
+#: link5app/views.py:95
+msgid "Welcome friend!"
+msgstr ""
+
+#: link5app/views.py:109
+msgid "You're in friend."
+msgstr ""
+
+#: link5app/views.py:112
+msgid "Haha! wrong password and/or login :p"
+msgstr ""
+
+#: link5app/views.py:134
+msgid "Thank you for your comment!"
+msgstr ""
 
 #: template/admin/index.html:16
 msgid "Home"
@@ -54,3 +154,91 @@ msgstr ""
 #: template/admin/index.html:54
 msgid "None available"
 msgstr ""
+
+#: template/link5/form_link.html:5
+msgid "Url I to share: "
+msgstr ""
+
+#: template/link5/form_link.html:14
+msgid "Link title: "
+msgstr ""
+
+#: template/link5/form_link.html:20
+msgid "Link description"
+msgstr ""
+
+#: template/link5/form_link.html:26
+msgid "Category: "
+msgstr ""
+
+#: template/link5/form_link.html:30
+msgid "Post-it!"
+msgstr ""
+
+#: template/link5/head.html:25
+msgid "home page"
+msgstr ""
+
+#: template/link5/head.html:29
+msgid "Login"
+msgstr ""
+
+#: template/link5/head.html:29
+msgid "Join this marvelous website"
+msgstr ""
+
+#: template/link5/head.html:31
+msgid "Welcome"
+msgstr ""
+
+#: template/link5/head.html:31
+msgid "Screw you guys, I'm going home"
+msgstr ""
+
+#: template/link5/link_view.html:28
+msgid "Your comment: "
+msgstr ""
+
+#: template/link5/link_view.html:31
+msgid "Submit"
+msgstr ""
+
+#: template/link5/login.html:8
+msgid "Back home beach!"
+msgstr ""
+
+#: template/link5/login.html:17 template/link5/login.html.py:44
+#: template/link5/profil_edit.html:22
+msgid "Email: "
+msgstr ""
+
+#: template/link5/login.html:23 template/link5/login.html.py:50
+#: template/link5/profil_edit.html:28
+msgid "Password:"
+msgstr ""
+
+#: template/link5/login.html:30 template/link5/profil_edit.html:8
+msgid "I want my account now!"
+msgstr ""
+
+#: template/link5/login.html:38 template/link5/profil_edit.html:16
+msgid "Pseudo: "
+msgstr ""
+
+#: template/link5/login.html:56 template/link5/profil_edit.html:34
+msgid "Password:<span class=\"again\"><br/>(again? Seriously ?)</span>"
+msgstr ""
+
+#: template/link5/login.html:63 template/link5/profil_edit.html:41
+msgid ""
+"I accept email contact if one day there is. Link5 pinky promise to never "
+"sell or give or I really don't know... Man, just accept: anyway I am too "
+"lazy to make newsletter..."
+msgstr ""
+
+#: template/link5/profil_edit.html:44
+msgid "Update"
+msgstr ""
+
+#~ msgid "Content du post"
+#~ msgstr "Contenu du post"

@@ -111,8 +111,8 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 #link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(/static/link5/img/trans.png); z-index:101; position: fixed; display: none;}
 #full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102; display: none;}
 #full_view_content{width: 600px; margin: 40px auto 20px auto; min-height: 500px; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
-#link_html {padding: 10px 10px 10px 10px;}
-#link_image {padding: 10px 10px 10px 10px;}
+#link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
+#link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
 #link_image img {max-width: 580px;}
 #close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
 
