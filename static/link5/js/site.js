@@ -106,6 +106,7 @@ $(document).ready(function() {
        
         $("#link_overlay").fadeIn("slow");
         $("#full_view").fadeIn("slow");
+        $("#full_view_content").focus();
         $("body").css({"overflow": "hidden"});
         $("#full_view").css({"overflow": "auto"});
         
