@@ -19,11 +19,11 @@ urlpatterns = patterns('',
     url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
     url(r'^login/$', 'link5app.views.login', name="login"),
     url(r'^logout/$', 'link5app.views.logout', name="logout"),
-    
-    url(r'^admin_tools/', include('admin_tools.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next line to enable the admin:
+    (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/', include(admin.site.urls)),
     
 )
