@@ -66,8 +66,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-#ADMIN_MEDIA_PREFIX = '/static/admin/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -121,9 +120,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
+    
+    # required by django-admin-tools
+    'django.core.context_processors.request',
 )
 
 INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -132,17 +139,17 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     
     # Uncomment the next line to enable the admin:
-    'grappelli',
-    'django.contrib.admin',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'debug_toolbar',
-    'rosetta-grappelli',
     'rosetta',
     
     'link5app',
 )
+
+# For admin tools to use ./menu.py
+ADMIN_TOOLS_MENU = 'link5app.menu.CustomMenu'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -183,7 +190,6 @@ DEBUG_TOOLBAR_PANELS = (
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
 }
-
 
 OEMBED = {
     'api_url': 'http://api.embed.ly/1/oembed?',

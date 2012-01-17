@@ -100,6 +100,7 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 .likeornot {clear: both; float: right; margin: 0px -10px -10px 0px; font-size: 12px;}
 .number{float: left; padding-right: 2px;}
 .vicone{float: left;}
+.vode_message {float: right; display: none; clear: both; background: #ceefef; padding: 5px 0px 15px 0px; margin: 10px -10px 0px 0px; font-size: 10px;}
 .like{padding: 3px 5px 3px 5px; float: left; cursor: pointer;}
 .like:hover{background: #ceefef;}
 .not{padding: 3px 5px 3px 5px; float: left; cursor: pointer;}

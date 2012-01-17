@@ -19,10 +19,10 @@
             <p class="author_date">Post by <a>{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
             
             <p class="likeornot">
-                <span class="like novote"><span class="number">{{ link.positive }}</span><a href="/link/vote/{{ link.pk }}/1"><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a></span>
-                <span class="not novote"><span class="number">{{ link.negative }}</span><a href="/link/vote/{{ link.pk }}/0"><img src="/static/link5/img/no.png" width="13" class="vicone" /></a></span>
-                <span class="vote_message"></span>
+                <span class="like novote"><span class="number">{{ link.positive }}</span><a href="/link/vote/{{ link.pk }}/1" id="like_{{ link.pk }}"><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a></span>
+                <span class="not novote"><span class="number">{{ link.negative }}</span><a href="/link/vote/{{ link.pk }}/0" id="not_{{ link.pk }}"><img src="/static/link5/img/no.png" width="13" class="vicone" /></a></span>
             </p>
+            <p id="vote_message_{{ link.pk }}" class="vode_message" ></p>
         </article>
     {% endfor %}
     </div></div>
