@@ -121,19 +121,19 @@ $(document).ready(function() {
         return false;
     });
     
-    $(".likeornot .like a,.likeornot .not a").click(function(){
+    $(".likeornot a").click(function(){
         var url = $(this).attr('href');
         var link_id = $(this).attr('id');
         link_id = link_id.split('_');
+        $("#likeornot_"+link_id[1]).html("<span class='vote_loading'>Loading...</span>");
         
-        $.ajax({
+        setTimeout(function() {$.ajax({
           url: url,
           success: function(data) {
-            $("#vote_message_"+link_id[1]).fadeIn("slow");
-            $("#vote_message_"+link_id[1]).html(data);
-            setTimeout(function() { $("#vote_message_"+link_id[1]).slideUp('slow'); }, 3000);
+            $("#likeornot_"+link_id[1]).fadeIn("slow");
+            $("#likeornot_"+link_id[1]).html(data);
           }
-        });
+        });}, 300);
         return false;
     });
     

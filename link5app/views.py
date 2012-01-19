@@ -74,7 +74,7 @@ def vote(request, link_id=0, vote=False):
         else:
             message = _("One vote per Link")
             
-    return render_to_response('link5/link_vote.html', {"message": message}, context_instance=RequestContext(request))
+    return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
     
 def login(request):
     print request.LANGUAGE_CODE
