@@ -2,22 +2,78 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 10:31-0600\n"
-"PO-Revision-Date: 2011-12-26 04:43\n"
+"POT-Creation-Date: 2012-01-19 19:10+0100\n"
+"PO-Revision-Date: 2012-01-19 19:11\n"
 "Last-Translator:   <btacquet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Translated-Using: django-rosetta 0.6.2\n"
+"X-Translated-Using: django-rosetta 0.6.3\n"
+
+#: settings.py:39
+msgid "English"
+msgstr "Anglais"
+
+#: settings.py:40
+msgid "French"
+msgstr "Français"
+
+#: link5app/dashboard.py:25
+msgid "Group: Applications data"
+msgstr ""
+
+#: link5app/dashboard.py:30
+msgid "Applications"
+msgstr ""
+
+#: link5app/dashboard.py:39
+msgid "ModelList: Administration"
+msgstr ""
+
+#: link5app/dashboard.py:47
+msgid "Content Management"
+msgstr ""
+
+#: link5app/dashboard.py:51
+msgid "FileBrowser"
+msgstr ""
+
+#: link5app/dashboard.py:55
+msgid "Rosetta translation"
+msgstr ""
+
+#: link5app/dashboard.py:64
+msgid "Support"
+msgstr ""
+
+#: link5app/dashboard.py:68
+msgid "Django Documentation"
+msgstr ""
+
+#: link5app/dashboard.py:73
+msgid "Grappelli Documentation"
+msgstr ""
+
+#: link5app/dashboard.py:78
+msgid "Grappelli Google-Code"
+msgstr ""
+
+#: link5app/dashboard.py:87
+msgid "Latest Django News"
+msgstr ""
+
+#: link5app/dashboard.py:95 template/admin/index_rosetta.html:49
+msgid "Recent Actions"
+msgstr ""
 
 #: link5app/forms.py:64
 msgid "Email"
@@ -30,6 +86,8 @@ msgstr ""
 #: link5app/models.py:11
 msgid "Accept newsletter if it exist one day?"
 msgstr ""
+"Je souhaite recevoir la newsletter (si jamais il en existe une un "
+"jour)"
 
 #: link5app/models.py:34
 msgid "Post Descripiton"
@@ -103,55 +161,51 @@ msgstr ""
 msgid "One vote per Link"
 msgstr ""
 
-#: link5app/views.py:86
+#: link5app/views.py:87
 msgid "You have already logged in sneacky avocado :)"
 msgstr ""
 
-#: link5app/views.py:95
+#: link5app/views.py:96
 msgid "Welcome friend!"
 msgstr ""
 
-#: link5app/views.py:109
+#: link5app/views.py:110
 msgid "You're in friend."
 msgstr ""
 
-#: link5app/views.py:112
+#: link5app/views.py:113
 msgid "Haha! wrong password and/or login :p"
 msgstr ""
 
-#: link5app/views.py:134
+#: link5app/views.py:135
 msgid "Thank you for your comment!"
 msgstr ""
 
-#: template/admin/index.html:16
+#: template/admin/index_rosetta.html:16
 msgid "Home"
 msgstr ""
 
-#: template/admin/index.html:31
+#: template/admin/index_rosetta.html:31
 msgid "Add"
 msgstr ""
 
-#: template/admin/index.html:32
+#: template/admin/index_rosetta.html:32
 msgid "Change"
 msgstr ""
 
-#: template/admin/index.html:40
+#: template/admin/index_rosetta.html:40
 msgid "Translation - Rosetta"
 msgstr "Traduction - Rosetta"
 
-#: template/admin/index.html:44
+#: template/admin/index_rosetta.html:44
 msgid "You don´t have permission to edit anything."
 msgstr ""
 
-#: template/admin/index.html:49
-msgid "Recent Actions"
-msgstr ""
-
-#: template/admin/index.html:51
+#: template/admin/index_rosetta.html:51
 msgid "My Actions"
 msgstr ""
 
-#: template/admin/index.html:54
+#: template/admin/index_rosetta.html:54
 msgid "None available"
 msgstr ""
 
@@ -175,25 +229,61 @@ msgstr ""
 msgid "Post-it!"
 msgstr ""
 
+#: template/link5/form_login.html:8
+msgid "Back home beach!"
+msgstr ""
+
+#: template/link5/form_login.html:17 template/link5/form_login.html.py:44
+#: template/link5/profil_edit.html:22
+msgid "Email: "
+msgstr ""
+
+#: template/link5/form_login.html:23 template/link5/form_login.html.py:50
+#: template/link5/profil_edit.html:28
+msgid "Password:"
+msgstr ""
+
+#: template/link5/form_login.html:30 template/link5/profil_edit.html:8
+msgid "I want my account now!"
+msgstr ""
+
+#: template/link5/form_login.html:38 template/link5/profil_edit.html:16
+msgid "Pseudo: "
+msgstr ""
+
+#: template/link5/form_login.html:56 template/link5/profil_edit.html:34
+msgid "Password:<span class=\"again\"><br/>(again? Seriously ?)</span>"
+msgstr ""
+
+#: template/link5/form_login.html:63 template/link5/profil_edit.html:41
+msgid ""
+"I accept email contact if one day there is. Link5 pinky promise to "
+"never sell or give or I really don't know... Man, just accept: anyway I"
+" am too lazy to make newsletter..."
+msgstr ""
+"J'accepte la newsletter (si jamais il y en a une un jour...). Link5 "
+"promet de ne jamais vendre ou donner ou... Mec, accepte, de toutes les"
+" façon je suis trop feignant pour les newsletter..."
+
 #: template/link5/head.html:25
 msgid "home page"
-msgstr ""
+msgstr "Accueil"
 
 #: template/link5/head.html:29
 msgid "Login"
-msgstr ""
+msgstr "Connexion"
 
 #: template/link5/head.html:29
 msgid "Join this marvelous website"
-msgstr ""
+msgstr "Rejoindre :)"
 
 #: template/link5/head.html:31
 msgid "Welcome"
-msgstr ""
+msgstr "Salut, "
 
 #: template/link5/head.html:31
 msgid "Screw you guys, I'm going home"
-msgstr ""
+msgstr "Je me casse !"
 
 #: template/link5/link_view.html:28
 msgid "Your comment: "
@@ -201,39 +291,6 @@ msgstr ""
 
 #: template/link5/link_view.html:31
 msgid "Submit"
-msgstr ""
-
-#: template/link5/login.html:8
-msgid "Back home beach!"
-msgstr ""
-
-#: template/link5/login.html:17 template/link5/login.html.py:44
-#: template/link5/profil_edit.html:22
-msgid "Email: "
-msgstr ""
-
-#: template/link5/login.html:23 template/link5/login.html.py:50
-#: template/link5/profil_edit.html:28
-msgid "Password:"
-msgstr ""
-
-#: template/link5/login.html:30 template/link5/profil_edit.html:8
-msgid "I want my account now!"
-msgstr ""
-
-#: template/link5/login.html:38 template/link5/profil_edit.html:16
-msgid "Pseudo: "
-msgstr ""
-
-#: template/link5/login.html:56 template/link5/profil_edit.html:34
-msgid "Password:<span class=\"again\"><br/>(again? Seriously ?)</span>"
-msgstr ""
-
-#: template/link5/login.html:63 template/link5/profil_edit.html:41
-msgid ""
-"I accept email contact if one day there is. Link5 pinky promise to never "
-"sell or give or I really don't know... Man, just accept: anyway I am too "
-"lazy to make newsletter..."
 msgstr ""
 
 #: template/link5/profil_edit.html:44

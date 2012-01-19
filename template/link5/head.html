@@ -31,4 +31,18 @@
             <p>{% trans 'Welcome' %} <a href="/profil/edit/">{{ user.username }}</a>.<br /> <a href="/logout/">{% trans "Screw you guys, I'm going home" %}</a></p>
         {% endif %}
         </div>
+        
+        <form action="/i18n/setlang/" method="post" name="langage_selection" id="langage_selection">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="" id="language" />
+            {% for lang in LANGUAGES %}
+            <a href="#" onclick="submit_langage('{{ lang.0 }}'); ">{{ lang.1 }}</a> | 
+            {% endfor %}
+            <script type="text/javascript">
+                function submit_langage(lang) {
+                    document.getElementById('language').value=lang; 
+                    document.langage_selection.submit();
+                }
+            </script>
+        </form>
     </header> 

@@ -28,11 +28,17 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Paris'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
+
+ugettext = lambda s: s
+LANGUAGES = (
+      ('en', ugettext('English')),
+      ('fr', ugettext('French')),
+)
 
 SITE_ID = 1
 
@@ -96,8 +102,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -131,9 +138,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # Uncomment the next line to enable the admin:
+    'grappelli.dashboard',
     'grappelli',
-    'django.contrib.admin',
+    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -143,6 +150,8 @@ INSTALLED_APPS = (
     
     'link5app',
 )
+GRAPPELLI_ADMIN_TITLE = "Link5 admin"
+GRAPPELLI_INDEX_DASHBOARD = 'link5app.dashboard.CustomIndexDashboard'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

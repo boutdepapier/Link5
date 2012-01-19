@@ -19,6 +19,9 @@ urlpatterns = patterns('',
     url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
     url(r'^login/$', 'link5app.views.login', name="login"),
     url(r'^logout/$', 'link5app.views.logout', name="logout"),
+    
+    # Langage selection
+    (r'^i18n/', include('django.conf.urls.i18n')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -27,6 +30,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
 )
+
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns = patterns('',
         url(r'^admin/rosetta/', include('rosetta.urls')),

@@ -77,6 +77,7 @@ def vote(request, link_id=0, vote=False):
     return render_to_response('link5/link_vote.html', {"message": message}, context_instance=RequestContext(request))
     
 def login(request):
+    print request.LANGUAGE_CODE
     next_url = request.REQUEST.get('next','/') #next value sometimes is passed by GET param
     
     if request.user.is_authenticated():
@@ -117,7 +118,7 @@ def login(request):
         login_form = AuthForm()
         register_form = RegisterForm()
     
-    return render_to_response('link5/login.html', {'login_form': login_form, 'register_form': register_form, 'next': next_url,}, context_instance=RequestContext(request))
+    return render_to_response('link5/form_login.html', {'login_form': login_form, 'register_form': register_form, 'next': next_url,}, context_instance=RequestContext(request))
 
 def logout(request):
     auth.logout(request)

@@ -24,6 +24,7 @@ header a {color: #ff9009;}
 #logo{float: left;padding: 0px 0px 0px 20px}
 #login {float: left; font-size: 12px; padding: 50px 20px 0px 40px;}
 #login a {text-decoration: underline; font-weight: bold;}
+#langage_selection{float: right; padding: 10px 20px 0px 0px;}
 nav {clear: both; font-size: 16px; padding: 10px 20px 5px 20px; border-bottom: 1px solid white; background: #d6ecc4; color: #ff9009; font-weight: bold;
 border-radius: 10px 10px 0px 0px;
 }
