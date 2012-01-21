@@ -23,7 +23,7 @@
 </div>
 
 {% if request.user.is_authenticated %}
-<form action="/comment/save/{{ link.id }}" name="comment_form" id="comment_form" method="post">{% csrf_token %}
+<form action="/comment/save/{{ link.id }}/" name="comment_form" id="comment_form" method="post">{% csrf_token %}
     {{ form.text.errors }}
     <label for="id_text">{% trans 'Your comment: ' %}</label><br />
     {{ form.text }}

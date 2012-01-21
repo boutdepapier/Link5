@@ -1,3 +1,15 @@
+{% load i18n link5_extras %}{% if author %}
+<div id="user_page">
+    <p class="user_details">
+    <img src="{{ author.avatar|scale:"80x80" }}" alt="{{ author.user.username }}" width="80" />
+    {{ author.user.username }}
+    {% trans '| Post history: ' %}
+    </p>
+    <p><a class="follow_status follow_off" href="/follow/{{ author.pk }}/1/"></a></p>
+    <p class="follow">{% trans 'Follow:' %}</p>
+    
+</div>
+{% endif %}
 <div id="links_section">
     <div id="jquerywall_height"><div id="jquerywall">
     {% for link in links %}
@@ -6,9 +18,9 @@
             
             <div class="media">
             {% ifequal link.link_type "photo" %}
-                <p><a href="/link/load/{{ link.pk }}" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
+                <p><a href="/link/load/{{ link.pk }}/" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
             {% else %}{% ifequal link.link_type "video" %}
-                <a href="/link/load/{{ link.pk }}" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
+                <a href="/link/load/{{ link.pk }}/" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
                     <img src="/static/link5/img/play.png" border="0" width="20" height="18" class="link_play" />
                 {% endifequal %}</a>
             {% else %}{% ifequal link.link_type "html" %}
@@ -16,11 +28,11 @@
             {% endifequal %}{% endifequal %}{% endifequal %}
             </div>
             <p class="description">{{ link.post_txt }}</p>
-            <p class="author_date">Post by <a>{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
+            <p class="author_date">Post by <a href="/user/{{ link.author.pk }}/">{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
             
             <div class="likeornot" id="likeornot_{{ link.pk }}">
-                <p><a class="like" href="/link/vote/{{ link.pk }}/1" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a>
-                <a class="not" href="/link/vote/{{ link.pk }}/0" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="/static/link5/img/no.png" width="13" class="vicone" /></a>
+                <p><a class="like" href="/link/vote/{{ link.pk }}/1/" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a>
+                <a class="not" href="/link/vote/{{ link.pk }}/0/" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="/static/link5/img/no.png" width="13" class="vicone" /></a>
                 </p>
             </div>
             <div class="clearboth"></div>
@@ -32,8 +44,8 @@
     <div id="full_view"><div id="full_view_content" tabindex="13"></div></div>
 {% if links.home_page or links.last_page %}
 <p id="link_nav">
-	{% if links.home_page %}<span><a href="/page/{{ links.page|add:"-1" }}"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
-	{% if links.last_page %}<span><a href="/page/{{ links.page|add:"1" }}">>></a></span>{% endif %}
+	{% if links.home_page %}<span><a href="/{% if user_id %}user/{{ user_id }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
+	{% if links.last_page %}<span><a href="/{% if user_id %}user/{{ user_id }}/{% endif %}{{ links.page|add:"1" }}/">>></a></span>{% endif %}
 </p>
 {% endif %}
 

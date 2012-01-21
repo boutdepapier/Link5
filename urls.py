@@ -5,16 +5,24 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
+import oembed
+oembed.autodiscover()
+
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
-    url(r'^page/(?P<page>\d+)$', 'link5app.views.home', name='home'),
+    url(r'^(?P<page>\d+)/$', 'link5app.views.home', name='home'),
     url(r'^link/$', 'link5app.views.link', name='home'),
-    url(r'^link/load/(?P<link_id>\d+)$', 'link5app.views.linkpreview', name='linkpreview'),
-    url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})$', 'link5app.views.vote', name='vote'),
+    url(r'^link/load/(?P<link_id>\d+)/$', 'link5app.views.linkpreview', name='linkpreview'),
+    url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})/$', 'link5app.views.vote', name='vote'),
     
-    url(r'^profil/edit/$', 'link5app.views.profiledit', name='profiledit'),
+    url(r'^user/edit/$', 'link5app.views.profiledit', name='profiledit'),
     
-    url(r'^comment/save/(?P<link_id>\d+)$', 'link5app.views.commentsave', name='commentsave'),
+    url(r'^user/(?P<user_id>\d+)/$', 'link5app.views.home', name='home'),
+    url(r'^user/(?P<user_id>\d+)/(?P<page>\d+)/$', 'link5app.views.home', name='home'),
+    
+    url(r'^follow/(?P<user_id>\d+)/(?P<status>[0,1]{1})/$', 'link5app.views.follow', name='follow'),
+    
+    url(r'^comment/save/(?P<link_id>\d+)/$', 'link5app.views.commentsave', name='commentsave'),
     
     url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
     url(r'^login/$', 'link5app.views.login', name="login"),

@@ -1,3 +1,6 @@
 <nav>
     <a href="/links/top/">Top link</a> - 
+    {% for cat in form.categorys %}
+        <a href="">{{ cat.name }}</a> - 
+    {% endfor %}
 </nav>

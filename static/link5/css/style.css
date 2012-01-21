@@ -21,11 +21,11 @@ body{text-align:center;font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-s
 
 header {background: #f5fff5; color: #ff9009;}
 header a {color: #ff9009;}
-#logo{float: left;padding: 0px 0px 0px 20px}
+#logo{float: left;padding: 0px 0px 0px 40px}
 #login {float: left; font-size: 12px; padding: 50px 20px 0px 40px;}
 #login a {text-decoration: underline; font-weight: bold;}
 #langage_selection{float: right; padding: 10px 20px 0px 0px;}
-nav {clear: both; font-size: 16px; padding: 10px 20px 5px 20px; border-bottom: 1px solid white; background: #d6ecc4; color: #ff9009; font-weight: bold;
+nav {clear: both; font-size: 16px; padding: 10px 20px 5px 40px; border-bottom: 1px solid white; background: #d6ecc4; color: #ff9009; font-weight: bold;
 border-radius: 10px 10px 0px 0px;
 }
 nav a {text-decoration: underline; color: #ff9009;}
@@ -67,7 +67,7 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
 #post_preview{border:solid 2px #dedede; padding:15px; float: left; width: 185px; font-size: 10px; margin: 16px 0px 15px 15px;}
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
-.post_it input {width: 750px;}
+.post_it input {width: 510px; clear: both;}
 
 /*********** Login-Signup forms  ************/
 #login_page{background: #0e4967; color: #fff;}
@@ -89,14 +89,14 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 #jquerywall{position: absolute;}
 .link{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); }
 .title{font-size:12px;}
-.link_icone{float: left; padding: 0px 5px 5px 0px;}
+.link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
-.media{padding: 10px 0px 0px 0px; float: left;}
-.link_image_preview{position: relative; float: left;}
-.link_play{position: relative; z-index: 2; margin: -24px 0px 0px 159px; float: left;}
+.media{padding: 10px 0px 0px 0px;}
+.link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
 #link_nav{padding: 20px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
 #link_nav a{color: #664444; text-decoration: none;}
 .author_date{font-size: 10px;}
+.author_date a {color: #442222;}
 
 .likeornot {clear: both; float: right; margin: 0px -10px -10px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
 .likeornot a {text-decoration: none;}
@@ -111,8 +111,15 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 .voted{background: #ceefef;}
 .novote{background: #ffffff;}
 
+/*********** User page  ************/
+#user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
+.user_details {font-size: 40px; line-height: 80px; vertical-align: bottom; height: 80px; float: left;}
+.follow {float: right; font-size: 40px; line-height: 80px; vertical-align: middle; height: 80px; }
+.follow_status{display: block ;float: right; width: 40px; height: 40px; background: url(../img/on-off.png); margin: 20px 40px 0px 10px;}
+.follow_status:hover{background-position: bottom;}
+
 /*********** Link preview  ************/
-#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(/static/link5/img/trans.png); z-index:101; position: fixed; display: none;}
+#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed; display: none;}
 #full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102; display: none;}
 #full_view_content{width: 600px; margin: 40px auto 20px auto; min-height: 500px; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
 #link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}

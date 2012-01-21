@@ -90,3 +90,8 @@ class Like(models.Model):
     author = models.OneToOneField('Author')
     created_at = models.DateTimeField(auto_now_add=True)
     point = models.BooleanField(default = True)
+    
+class Follow(models.Model):
+    author = models.ForeignKey('Author')
+    #author_to = models.ForeignKey('Author')
+    created_at = models.DateTimeField(auto_now_add=True)

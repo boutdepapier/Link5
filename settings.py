@@ -38,6 +38,7 @@ ugettext = lambda s: s
 LANGUAGES = (
       ('en', ugettext('English')),
       ('fr', ugettext('French')),
+      ('de', ugettext('German')),
 )
 
 SITE_ID = 1
@@ -148,6 +149,8 @@ INSTALLED_APPS = (
     'rosetta-grappelli',
     'rosetta',
     
+    'oembed',
+    
     'link5app',
 )
 GRAPPELLI_ADMIN_TITLE = "Link5 admin"
@@ -200,4 +203,4 @@ OEMBED = {
     'format': 'json', 
     'maxwidth': '580',
 }
-LINK_PER_PAGE = 30
+LINK_PER_PAGE = 10

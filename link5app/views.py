@@ -1,4 +1,4 @@
-import urllib, urllib2
+import urllib, urllib2, oembed
 
 from django.conf import settings
 
@@ -12,21 +12,28 @@ from django.contrib import messages
 
 from django.utils.translation import ugettext as _
 
-from link5app.models import Link, Like, Author, Comment
+from link5app.models import Link, Like, Author, Comment, Follow
 from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm
 
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
-def home(request, page = 0):
+def home(request, page = 0, user_id = False, author = False):
     form = LinkForm() # An unbound form
-    links = Link.objects.all().order_by('-created_at').select_related()[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+    
+    links = Link.objects.all().order_by('-created_at').select_related()
+    if user_id:
+        links = links.filter(author__exact = user_id)
+        author = Author.objects.get(user=request.user.pk)
+        
+    links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+    
     links.page = page
     
     links.home_page = False if int(page) <= 0 else True
     links.last_page = False if len(links) < settings.LINK_PER_PAGE else True
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author}, context_instance=RequestContext(request))
    
 def link(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -53,7 +60,7 @@ def linkpreview(request, link_id):
 
 def vote(request, link_id=0, vote=False):
     if not request.user.is_authenticated():
-        message = _("You need to register first!")
+        message = _("You need to login or to register first...")
     else:
         current_link = Link.objects.get(pk=link_id)
         current_author = Author.objects.get(user=request.user.pk)
@@ -76,8 +83,18 @@ def vote(request, link_id=0, vote=False):
             
     return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
     
+def follow(request, user_id = False, status = 0):
+    if not request.user.is_authenticated():
+        message = _("You need to login or to register first...")
+    else:    
+        author = Author.objects.get(user=user_id)
+        if author:
+            follow = Follow.objects.all()
+            messages.info(request, _("You now have %s in your follow list" % ("boutdepapier")))
+    
+    return home(request)
+    
 def login(request):
-    print request.LANGUAGE_CODE
     next_url = request.REQUEST.get('next','/') #next value sometimes is passed by GET param
     
     if request.user.is_authenticated():
@@ -146,4 +163,7 @@ def getcontent(request):
     params = {'url': request.GET.get("url", None) , 'key': settings.OEMBED['key'], 'format': settings.OEMBED['format'], 'maxwidth': settings.OEMBED['maxwidth'] }
     oembed_call = "%s%s" % (settings.OEMBED['api_url'], urllib.urlencode(params))
     
-    return HttpResponse(urllib2.urlopen(oembed_call).read(), mimetype='text')
+    #return HttpResponse(urllib2.urlopen(oembed_call).read(), mimetype='text')
+    
+    ressoure = oembed.site.embed(request.GET.get("url", None))
+    return HttpResponse(ressoure.get_data(), mimetype='text')

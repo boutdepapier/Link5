@@ -20,7 +20,8 @@ class LinkForm(forms.Form):
     post_txt = forms.CharField(widget=forms.Textarea, max_length=255, required=False)
     post_url = forms.URLField(max_length=2000)
     
-    category = forms.ModelChoiceField(widget=forms.Select(), queryset=Category.objects.all(), initial=4)
+    categorys = Category.objects.all()
+    category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
     def save(self, user):
         userprofile = User.objects.get(username=user)
