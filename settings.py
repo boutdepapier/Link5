@@ -203,4 +203,4 @@ OEMBED = {
     'format': 'json', 
     'maxwidth': '580',
 }
-LINK_PER_PAGE = 10
+LINK_PER_PAGE = 30

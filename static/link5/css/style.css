@@ -114,9 +114,12 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 /*********** User page  ************/
 #user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
 .user_details {font-size: 40px; line-height: 80px; vertical-align: bottom; height: 80px; float: left;}
-.follow {float: right; font-size: 40px; line-height: 80px; vertical-align: middle; height: 80px; }
+.follow {float: right; font-size: 40px; vertical-align: bottom; height: 80px; line-height: 80px;}
 .follow_status{display: block ;float: right; width: 40px; height: 40px; background: url(../img/on-off.png); margin: 20px 40px 0px 10px;}
-.follow_status:hover{background-position: bottom;}
+.follow_on{background-position: bottom;}
+.follow_on:hover{background-position: top;}
+.follow_off{background-position: top;}
+.follow_off:hover{background-position: bottom;}
 
 /*********** Link preview  ************/
 #link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed; display: none;}

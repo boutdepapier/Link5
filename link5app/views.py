@@ -18,13 +18,14 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
-def home(request, page = 0, user_id = False, author = False):
+def home(request, page = 0, user_id = False, author = False, follow = False):
     form = LinkForm() # An unbound form
     
     links = Link.objects.all().order_by('-created_at').select_related()
     if user_id:
         links = links.filter(author__exact = user_id)
         author = Author.objects.get(user=request.user.pk)
+        follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=user_id)
         
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     
@@ -33,7 +34,7 @@ def home(request, page = 0, user_id = False, author = False):
     links.home_page = False if int(page) <= 0 else True
     links.last_page = False if len(links) < settings.LINK_PER_PAGE else True
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author, 'follow': follow}, context_instance=RequestContext(request))
    
 def link(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -83,14 +84,21 @@ def vote(request, link_id=0, vote=False):
             
     return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
     
-def follow(request, user_id = False, status = 0):
+def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
         message = _("You need to login or to register first...")
     else:    
-        author = Author.objects.get(user=user_id)
-        if author:
-            follow = Follow.objects.all()
-            messages.info(request, _("You now have %s in your follow list" % ("boutdepapier")))
+        au_to = Author.objects.get(user=user_id)
+        au_from = Author.objects.get(user=request.user.pk)
+        if au_from and au_to:
+            follow = Follow.objects.filter(author_from=au_from.pk).filter(author_to=au_to.pk)
+            if not follow and int(status) == 1:
+                follow = Follow.objects.create(author_from=au_from, author_to=au_to)
+                follow.save()
+                messages.info(request, _("You now have %s in your follow list" % (au_to.user.username)))
+            elif int(status) == 0 and follow:
+                follow.delete()
+                messages.info(request, _("You have stop following %s" % (au_to.user.username)))
     
     return home(request)
     

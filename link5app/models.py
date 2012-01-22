@@ -92,6 +92,6 @@ class Like(models.Model):
     point = models.BooleanField(default = True)
     
 class Follow(models.Model):
-    author = models.ForeignKey('Author')
-    #author_to = models.ForeignKey('Author')
+    author_from = models.ForeignKey('Author', related_name="author_from")
+    author_to = models.ForeignKey('Author', related_name="author_to")
     created_at = models.DateTimeField(auto_now_add=True)
