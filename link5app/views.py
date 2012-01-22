@@ -1,4 +1,4 @@
-import urllib, urllib2, oembed
+import urllib, urllib2, oembed, lxml.html, BeautifulSoup
 
 from django.conf import settings
 
@@ -11,12 +11,14 @@ from django.contrib import auth
 from django.contrib import messages
 
 from django.utils.translation import ugettext as _
+from django.utils import simplejson
 
 from link5app.models import Link, Like, Author, Comment, Follow
 from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm
 
-
 from django.shortcuts import render_to_response, redirect, get_object_or_404
+
+
 
 def home(request, page = 0, user_id = False, author = False, follow = False):
     form = LinkForm() # An unbound form
@@ -167,11 +169,15 @@ def commentsave(request, link_id=0):
 # [col=3399cc]Link[/col][col=115599]5[/col][col=fc0082].me[/col]
 # http://creatr.cc/creatr/
 
+    
+#With Oembed module
 def getcontent(request):
-    params = {'url': request.GET.get("url", None) , 'key': settings.OEMBED['key'], 'format': settings.OEMBED['format'], 'maxwidth': settings.OEMBED['maxwidth'] }
-    oembed_call = "%s%s" % (settings.OEMBED['api_url'], urllib.urlencode(params))
+    try:
+        oembed_obj = oembed.site.embed(request.GET.get("url", None), format=settings.OEMBED['format'], maxwidth=settings.OEMBED['maxwidth'])
+        oembed_obj = simplejson.dumps(oembed_obj.get_data())
+    except:
+        t = lxml.html.parse(urllib.urlopen(request.GET.get("url", None)))
+        t.find('.//meta').text
+        oembed_obj = "{\"type\": \"link\", \"title\": \"%s\", \"descripiton\": \"%s\"}" % (t.find(".//title").text, t.find('//meta').text)
     
-    #return HttpResponse(urllib2.urlopen(oembed_call).read(), mimetype='text')
-    
-    ressoure = oembed.site.embed(request.GET.get("url", None))
-    return HttpResponse(ressoure.get_data(), mimetype='text')
+    return HttpResponse(oembed_obj, mimetype='text')

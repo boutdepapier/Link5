@@ -53,7 +53,6 @@ class Link(models.Model):
             ("video", _("Video")),
             ("rich", _("Rich")),
             ("link", _("Link")),
-            ("error", _("Error")),
             ),
         default="link", max_length=20)
         

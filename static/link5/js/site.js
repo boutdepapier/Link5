@@ -45,8 +45,8 @@ function link_validator() {
             $("#id_post_txt").val(data.description);
             
             $("#preview_ttl").html(data.title);
-            $("#preview_txt").html(data.description);
             
+            // types: video, photo, rich, link
             if (data.type == "photo") {
                 $("#preview_med").html("<img src='"+data.url+"' style='max-width:185px;' />");
             } else if (data.type == "video") {
@@ -54,6 +54,8 @@ function link_validator() {
             } else if (data.type == "error") {
                 $("#preview_med").html("<span style='color: red; font-weight: bold; font-size: 13px;'>Error to get the link content</span>");
             }
+            
+            $("#preview_txt").html(data.description);
             
             desc_length();
         });

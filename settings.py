@@ -198,8 +198,6 @@ DEBUG_TOOLBAR_CONFIG = {
 
 
 OEMBED = {
-    'api_url': 'http://api.embed.ly/1/oembed?',
-    'key': 'd98e6e48355011e1b6634040d3dc5c07', 
     'format': 'json', 
     'maxwidth': '580',
 }
