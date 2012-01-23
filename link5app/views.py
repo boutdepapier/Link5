@@ -1,5 +1,7 @@
-import urllib, urllib2, oembed, re
+import urllib, urllib2, oembed, re, mimetypes
 from BeautifulSoup import BeautifulSoup
+import simplejson as json
+from urlparse import urlparse
 
 from django.conf import settings
 
@@ -172,34 +174,56 @@ def commentsave(request, link_id=0):
     
 #With Oembed module
 def getcontent(request):
+    original_url = request.GET.get("url", None)
+    
+    #First shot to analyse link content is for oembed module, more info here: http://oembed.com/
     try:
-        oembed_obj = oembed.site.embed(request.GET.get("url", None), format=settings.OEMBED['format'], maxwidth=settings.OEMBED['maxwidth'])
+        oembed_obj = oembed.site.embed(original_url, format=settings.OEMBED['format'], maxwidth=settings.OEMBED['maxwidth'])
         oembed_obj = simplejson.dumps(oembed_obj.get_data())
+    #Other URL will have to get manual processing
     except:
-        #t = lxml.html.parse(urllib.urlopen(request.GET.get("url", None)))
-        #print t.find('.//meta[@name="description"]').text
-        #print t.xpath('.//meta[@name="description"]')
-        request = urllib2.Request(request.GET.get("url", None))
-        response = urllib2.urlopen(request)
-        html = response.read()
-        soup = BeautifulSoup(html)
+        image_types = ('image/bmp', 'image/jpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-icon')
+        # If the link is directly on the image media
+        if mimetypes.guess_type(original_url)[0] in image_types:
+            oembed_obj = {'type': 'photo'}
+            oembed_obj = json.dumps(oembed_obj)
+        else:
+            request = urllib2.Request(original_url)
+            
+            response = urllib2.urlopen(request)
+            html = response.read()
+            soup = BeautifulSoup(html)
+            
+            title=''; description=''
+            try:
+                description = soup.findAll('meta', attrs={'name':re.compile("^description$", re.I)})[0].get('content')
+            except:
+                pass
         
-        title=''; description=''
-        description = soup.findAll('meta',
-            attrs={'name':re.compile("^description$",
-                                     re.I)})[0].get('content')
-    
-        # Try to get the page title from the meta tag named title
-        try:
-            title = soup.findAll('meta',
-                attrs={'name':re.compile("^title$", re.I)})[0].get('content')
-        except:
-            pass
-    
-        # If the meta tag does not exist, grab the title from the title tag.
-        if not title:
-            title = soup.title.string
+            # Try to get the page title from the meta tag named title
+            try:
+                title = soup.findAll('meta', attrs={'name':re.compile("^title$", re.I)})[0].get('content')
+            except:
+                pass
         
-        oembed_obj = "{\"type\": \"link\", \"title\": \"%s\", \"descripiton\": \"%s\"}" % (title, description)
+            # If the meta tag does not exist, grab the title from the title tag.
+            if not title:
+                title = soup.title.string
+            
+            max_images = 20
+            image_tags = soup.findAll('img', limit=max_images)
+            image_urls_list = []
+            for image_tag in image_tags:
+                original_url_shem = urlparse(original_url)
+                image_urls_list.append("%s://%s%s" % (original_url_shem. scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+            
+            image_list = []
+            for url in image_urls_list:
+               image_list.append({'url': url})
+            
+            return_dict = {'title':title, 'description':description, 'type': link}
+            return_dict.update({'images': image_list})
+            
+            oembed_obj = json.dumps(return_dict)
     
     return HttpResponse(oembed_obj, mimetype='text')
