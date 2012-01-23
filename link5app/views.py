@@ -1,4 +1,5 @@
-import urllib, urllib2, oembed, lxml.html, BeautifulSoup
+import urllib, urllib2, oembed, re
+from BeautifulSoup import BeautifulSoup
 
 from django.conf import settings
 
@@ -17,7 +18,6 @@ from link5app.models import Link, Like, Author, Comment, Follow
 from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
-
 
 
 def home(request, page = 0, user_id = False, author = False, follow = False):
@@ -176,8 +176,30 @@ def getcontent(request):
         oembed_obj = oembed.site.embed(request.GET.get("url", None), format=settings.OEMBED['format'], maxwidth=settings.OEMBED['maxwidth'])
         oembed_obj = simplejson.dumps(oembed_obj.get_data())
     except:
-        t = lxml.html.parse(urllib.urlopen(request.GET.get("url", None)))
-        t.find('.//meta').text
-        oembed_obj = "{\"type\": \"link\", \"title\": \"%s\", \"descripiton\": \"%s\"}" % (t.find(".//title").text, t.find('//meta').text)
+        #t = lxml.html.parse(urllib.urlopen(request.GET.get("url", None)))
+        #print t.find('.//meta[@name="description"]').text
+        #print t.xpath('.//meta[@name="description"]')
+        request = urllib2.Request(request.GET.get("url", None))
+        response = urllib2.urlopen(request)
+        html = response.read()
+        soup = BeautifulSoup(html)
+        
+        title=''; description=''
+        description = soup.findAll('meta',
+            attrs={'name':re.compile("^description$",
+                                     re.I)})[0].get('content')
+    
+        # Try to get the page title from the meta tag named title
+        try:
+            title = soup.findAll('meta',
+                attrs={'name':re.compile("^title$", re.I)})[0].get('content')
+        except:
+            pass
+    
+        # If the meta tag does not exist, grab the title from the title tag.
+        if not title:
+            title = soup.title.string
+        
+        oembed_obj = "{\"type\": \"link\", \"title\": \"%s\", \"descripiton\": \"%s\"}" % (title, description)
     
     return HttpResponse(oembed_obj, mimetype='text')
