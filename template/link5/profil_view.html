@@ -1,0 +1,13 @@
+{% load i18n link5_extras %}{% if author %}
+<div id="user_page">
+    <p class="user_details">
+    <img src="{{ author.avatar|scale:"80x80" }}" alt="{{ author.user.username }}" width="80" />
+    {{ author.user.username }}
+    {% trans '| Post history: ' %}
+    </p>
+    
+    <p><a class="follow_status {% if follow %}follow_on{% else %}follow_off{% endif %}" href="/follow/{{ author.pk }}/{% if follow %}0{% else %}1{% endif %}/"></a></p>
+    <p class="follow">{% trans 'Follow:' %}</p>
+    
+</div>
+{% endif %}

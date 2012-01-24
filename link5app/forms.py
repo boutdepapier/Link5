@@ -13,6 +13,7 @@ from django.utils import simplejson
 from django.core import serializers
 
 from link5app.models import Link, Category, Author, Comment
+import link5app.views
 
 class LinkForm(forms.Form):
     
@@ -23,7 +24,7 @@ class LinkForm(forms.Form):
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
-    def save(self, user):
+    def save(self, user, url):
         userprofile = User.objects.get(username=user)
         link = Link()
         
@@ -34,9 +35,8 @@ class LinkForm(forms.Form):
         link.status = "publish"
         link.author_id = userprofile.pk
         
-        params = {'url': self.cleaned_data['post_url'], 'key': settings.OEMBED['key'], 'format': settings.OEMBED['format'], 'maxwidth': settings.OEMBED['maxwidth'] }
-        oembed_call = "%s%s" % (settings.OEMBED['api_url'], urllib.urlencode(params))
-        data = simplejson.loads(urllib2.urlopen(oembed_call).read())
+        print str(link5app.views.getcontent(None, "http://%s/extracting/?url=%s" % (url, self.cleaned_data['post_url'])))
+        data = simplejson.loads(link5app.views.getcontent(None, "http://%s/extracting/?url=%s" % (url, self.cleaned_data['post_url'])))
         
         link.link_type = data['type']
         if data['type'] == "video" or data['type'] == "rich":

@@ -30,11 +30,11 @@
             <div class="link_submit post_it"><input type="submit" value="{% trans 'Post-it!' %}"/></div>
             
         </div>
-        <div id="post_preview">
+        <div class="post_preview">
             <div id="post_preview_loading"></div>
             <div id="preview_ttl"></div>
-            <div id="preview_txt"></div>
             <div id="preview_med"></div>
+            <div id="preview_txt"></div>
         </div>
         {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
         

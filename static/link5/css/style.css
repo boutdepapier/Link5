@@ -65,7 +65,8 @@ background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,
 .post_element label {font-size: 18px; float: left; width: 130px; padding-right: 10px;}
 .post_element input {font-size: 18px; float: left; width: 360px; }
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
-#post_preview{border:solid 2px #dedede; padding:15px; float: left; width: 185px; font-size: 10px; margin: 16px 0px 15px 15px;}
+.post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444;}
+.post_preview a {color: #664444;}
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
 .post_it input {width: 510px; clear: both;}
 

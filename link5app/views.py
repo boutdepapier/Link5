@@ -28,8 +28,9 @@ def home(request, page = 0, user_id = False, author = False, follow = False):
     links = Link.objects.all().order_by('-created_at').select_related()
     if user_id:
         links = links.filter(author__exact = user_id)
-        author = Author.objects.get(user=request.user.pk)
-        follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=user_id)
+        author = Author.objects.get(pk=user_id)
+        if request.user.is_authenticated():
+            follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=user_id)
         
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     
@@ -45,7 +46,7 @@ def link(request):
         form = LinkForm(request.POST) # A form bound to the POST data
         
         if form.is_valid():
-            form.save(request.user)
+            form.save(request.user, request.META['HTTP_HOST'])
             messages.info(request,_("Thank you for posting!"))
             return HttpResponseRedirect('/')
     
@@ -90,7 +91,7 @@ def vote(request, link_id=0, vote=False):
     
 def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
-        message = _("You need to login or to register first...")
+        messages.info(request, _("You need to login or to register first..."))
     else:    
         au_to = Author.objects.get(user=user_id)
         au_from = Author.objects.get(user=request.user.pk)
@@ -173,8 +174,11 @@ def commentsave(request, link_id=0):
 
     
 #With Oembed module
-def getcontent(request):
-    original_url = request.GET.get("url", None)
+def getcontent(request, url = False):
+    if url:
+        original_url = url
+    else:
+        original_url = request.GET.get("url", None)
     
     #First shot to analyse link content is for oembed module, more info here: http://oembed.com/
     try:
@@ -185,7 +189,7 @@ def getcontent(request):
         image_types = ('image/bmp', 'image/jpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-icon')
         # If the link is directly on the image media
         if mimetypes.guess_type(original_url)[0] in image_types:
-            oembed_obj = {'type': 'photo'}
+            oembed_obj = {'type': 'photo', 'url': original_url}
             oembed_obj = json.dumps(oembed_obj)
         else:
             request = urllib2.Request(original_url)
@@ -221,9 +225,11 @@ def getcontent(request):
             for url in image_urls_list:
                image_list.append({'url': url})
             
-            return_dict = {'title':title, 'description':description, 'type': link}
+            return_dict = {'title':title, 'description':description, 'type': link, 'url': original_url}
             return_dict.update({'images': image_list})
             
             oembed_obj = json.dumps(return_dict)
     
+    if url:
+        return oembed_obj
     return HttpResponse(oembed_obj, mimetype='text')
