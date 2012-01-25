@@ -11,7 +11,7 @@ oembed.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
     url(r'^(?P<page>\d+)/$', 'link5app.views.home', name='home'),
-    url(r'^link/$', 'link5app.views.link', name='home'),
+    url(r'^link/$', 'link5app.views.home', name='home'),
     url(r'^link/load/(?P<link_id>\d+)/$', 'link5app.views.linkpreview', name='linkpreview'),
     url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})/$', 'link5app.views.vote', name='vote'),
     

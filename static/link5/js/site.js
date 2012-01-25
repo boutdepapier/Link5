@@ -21,23 +21,26 @@ function desc_length(string) {
 }
     
 function link_validator() {
+    
     $("#id_post_url").val($.trim($("#id_post_url").val()));
     var content = $("#id_post_url").val();
-    
     var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     // Filtering URL from the content using regular expressions
     var url = content.match(urlRegex);
-
+    
     if((url && url.length > 0) && (content != post_url)) {
         post_url = url;
+        
         $("#post_preview_form").slideDown('slow');
-        $("#post_preview_loading").html("<img src='/static/link5/img/load-blue.gif' width='48' height='48'>");
+        $("#post_preview_loading").fadeIn("slow");
+        $("#post_preview_loading").html("<img src='/static/link5/img/load.gif' >");
         
         embed_url = "/extracting/?url="+url;
         
         $.getJSON(embed_url, {format: "json"},function(data) {
             
-            $("#post_preview").fadeIn('slow'); $("#post_preview_loading").html("");
+            $("#post_preview").fadeIn('slow'); 
+            $("#post_preview_loading").fadeOut("slow");
             
             content_ready = true;
         

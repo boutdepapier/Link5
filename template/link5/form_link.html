@@ -1,5 +1,6 @@
 {% load i18n%}
-<form action="/link/" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >{% csrf_token %}
+<form action="/link/" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >
+    {% csrf_token %}
     <div id="link_generator">
         {{ form.post_url.errors }}
         <label for="id_post_url" id="label_url">{% trans 'Url I to share: ' %}</label>
@@ -32,9 +33,9 @@
         </div>
         <div class="post_preview">
             <div id="post_preview_loading"></div>
-            <div id="preview_ttl"></div>
-            <div id="preview_med"></div>
-            <div id="preview_txt"></div>
+            <h2 id="preview_ttl" class="title"></h2>
+            <div id="preview_med" class="media"></div>
+            <div id="preview_txt" class="description"></div>
         </div>
         {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
         

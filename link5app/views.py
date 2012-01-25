@@ -23,7 +23,17 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
 def home(request, page = 0, user_id = False, author = False, follow = False):
-    form = LinkForm() # An unbound form
+
+    if request.method == 'POST': # If the form has been submitted...
+        form = LinkForm(request.POST) # A form bound to the POST data
+        
+        if form.is_valid():
+            form.save(request.user, request.META['HTTP_HOST'])
+            messages.info(request,_("Thank you for posting!"))
+            return HttpResponseRedirect('/')
+    
+    else:
+        form = LinkForm() # An unbound form
     
     links = Link.objects.all().order_by('-created_at').select_related()
     if user_id:
@@ -40,20 +50,6 @@ def home(request, page = 0, user_id = False, author = False, follow = False):
     links.last_page = False if len(links) < settings.LINK_PER_PAGE else True
     
     return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author, 'follow': follow}, context_instance=RequestContext(request))
-   
-def link(request):
-    if request.method == 'POST': # If the form has been submitted...
-        form = LinkForm(request.POST) # A form bound to the POST data
-        
-        if form.is_valid():
-            form.save(request.user, request.META['HTTP_HOST'])
-            messages.info(request,_("Thank you for posting!"))
-            return HttpResponseRedirect('/')
-    
-    else:
-        form = LinkForm() # An unbound form
-    
-    return home(request)
 
 def linkpreview(request, link_id):
     link = Link.objects.get(pk=link_id)
