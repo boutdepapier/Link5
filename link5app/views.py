@@ -17,14 +17,14 @@ from django.utils.translation import ugettext as _
 from django.utils import simplejson
 
 from link5app.models import Link, Like, Author, Comment, Follow
-from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm
+from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, ContactForm
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_id = False, author = False, follow = False):
+def home(request, page = 0, user_id = False, author = False, follow = False, referral = False):
 
-    if request.method == 'POST': # If the form has been submitted...
+    if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
         
         if form.is_valid():
@@ -229,3 +229,26 @@ def getcontent(request, url = False):
     if url:
         return oembed_obj
     return HttpResponse(oembed_obj, mimetype='text')
+    
+def contact(request):
+    
+    if request.method == 'POST': # If the form has been submitted...
+        form = ContactForm(request.POST) # A form bound to the POST data
+        
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = "Lnk5: %s" % form.cleaned_data['subject']
+            message = "Yo Mr. Ours !\n\nVous avez un message qui viens de : %s\nSon contact : %s \n\nSon petit mot dou :\n%s \n\n------------------------------------------\n\nWho's awsome ? Your awsome !\nBiz !\n\n\n" % (name, email, form.cleaned_data['message'])
+
+            from django.core.mail import send_mail
+            send_mail(subject, message, settings.CONTACT_FROM, settings.CONTACT_RECIPIENT)
+            messages.info(request,_("Thank you for your message!"))
+            
+            return home(request, referral = True) # Redirect after POST
+    
+    else:
+        form = ContactForm() # An unbound form
+
+    return render_to_response('link5/form_contact.html', { 'form': form,}, context_instance=RequestContext(request))
+    

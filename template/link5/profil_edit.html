@@ -4,7 +4,7 @@
 {% include "link5/messages.html" %}
 <div id="login_page">
     
-    <form action="/login/" method="post" id="register_form">{% csrf_token %}
+    <form action="{% url login %}" method="post" id="register_form">{% csrf_token %}
         <h2>{% trans 'I want my account now!' %}</h2>
         
         <input type="hidden" name="register_form" value="1" />

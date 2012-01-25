@@ -202,3 +202,8 @@ OEMBED = {
     'maxwidth': '580',
 }
 LINK_PER_PAGE = 30
+
+CONTACT_FROM = "contact@link5.me"
+CONTACT_RECIPIENT = (
+        'benjamin@tacquet.com',
+)

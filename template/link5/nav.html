@@ -1,6 +1,11 @@
+{% load i18n %}
 <nav>
-    <a href="/links/top/">Top link</a> - 
-    {% for cat in form.categorys %}
-        <a href="">{{ cat.name }}</a> - 
-    {% endfor %}
+    <a href="/links/top/">{% trans 'My Links post' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
+    {% trans 'Top links:' %}
+    <a href="/links/top/">{% trans 'Today' %}</a> - 
+    <a href="/links/top/">{% trans 'This week' %}</a> - 
+    <a href="/links/top/">{% trans 'This month' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
+    {% trans 'Me and Myself:' %}
+    <a href="{% url user_home request.user.pk %}">{% trans 'My links' %}</a> - 
+    <a href="{% url profiledit %}">{% trans 'My profile' %}</a>
 </nav>

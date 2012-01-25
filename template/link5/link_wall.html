@@ -3,25 +3,25 @@
     <div id="jquerywall_height"><div id="jquerywall">
     {% for link in links %}
         <article class='link'>
-            <h2 class="title">{% ifequal link.link_type "link" %}<img src="/static/link5/img/link.png" border="0" class="link_icone" width="20" /><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a>{% else %}{{ link.post_ttl }}{% endifequal %}</h2>
+            <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" /><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a>{% else %}{{ link.post_ttl }}{% endifequal %}</h2>
             
             <div class="media">
             {% ifequal link.link_type "photo" %}
-                <p><a href="/link/load/{{ link.pk }}/" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
+                <p><a href="{% url linkload link.pk %}" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
             {% else %}{% ifequal link.link_type "video" %}
-                <a href="/link/load/{{ link.pk }}/" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
-                    <img src="/static/link5/img/play.png" border="0" width="20" height="18" class="link_play" />
+                <a href="{% url linkload link.pk %}" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
+                    <img src="{{ STATIC_URL }}link5/img/play.png" border="0" width="20" height="18" class="link_play" />
                 {% endifequal %}</a>
             {% else %}{% ifequal link.link_type "html" %}
                 {{ link.post_html|safe }}
             {% endifequal %}{% endifequal %}{% endifequal %}
             </div>
             <p class="description">{{ link.post_txt }}</p>
-            <p class="author_date">Post by <a href="/user/{{ link.author.pk }}/">{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
+            <p class="author_date">Post by <a href="{% url user_home link.author.pk %}">{{ link.author.user.username }}</a> in <a>{{ link.category.name }}</a>, {{ link.created_at }}</p>
             
             <div class="likeornot" id="likeornot_{{ link.pk }}">
-                <p><a class="like" href="/link/vote/{{ link.pk }}/1/" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="/static/link5/img/yes.png" width="13" class="vicone" /></a>
-                <a class="not" href="/link/vote/{{ link.pk }}/0/" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="/static/link5/img/no.png" width="13" class="vicone" /></a>
+                <p><a class="like" href="{% url vote link.pk '1' %}" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" width="13" class="vicone" /></a>
+                <a class="not" href="{% url vote link.pk '0' %}" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" width="13" class="vicone" /></a>
                 </p>
             </div>
             <div class="clearboth"></div>

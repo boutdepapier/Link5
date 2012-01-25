@@ -1,5 +1,5 @@
 {% load i18n%}
-<form action="/link/" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >
+<form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >
     {% csrf_token %}
     <div id="link_generator">
         {{ form.post_url.errors }}

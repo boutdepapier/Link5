@@ -36,13 +36,13 @@
 
 <div id="main"> 
     <header> 
-        <p id="logo"><a href="/" title="Home"><img src="{{ STATIC_URL }}link5/img/Link5me.png" alt="{% trans 'home page' %}" border="0" width="300" height="105" /></a></p>
+        <p id="logo"><a href="{% url home %}" title="Home"><img src="{{ STATIC_URL }}link5/img/Link5me.png" alt="{% trans 'home page' %}" border="0" width="300" height="105" /></a></p>
           
         <div id="login">
         {% if not user.is_authenticated %}
             <p><br /><a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Join this marvelous website" %}</a></p>
         {% else %}  
-            <p>{% trans 'Welcome' %} <a href="/profil/edit/">{{ user.username }}</a>.<br /> <a href="/logout/">{% trans "Screw you guys, I'm going home" %}</a></p>
+            <p>{% trans 'Welcome' %} <a href="{% url profiledit %}">{{ user.username }}</a>.<br /> <a href="{% url logout %}">{% trans "Screw you guys, I'm going home" %}</a></p>
         {% endif %}
         </div>
         

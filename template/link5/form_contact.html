@@ -1,0 +1,32 @@
+{% load i18n %}{% include "link5/head.html" %}
+{% include "link5/nav.html" %}
+{% include "link5/messages.html" %}
+
+    <form action="{% url contact %}" method="post" id="contact" name="contact">{% csrf_token %}
+        <h1>{% trans 'A bug, a question, a message? Contact me!' %}</h1>
+        
+        <div class="contact_element">
+            {{ form.name.errors }}
+            <label for="id_name">{% trans 'Name: ' %}</label>
+            {{ form.name }}
+        </div>
+        <div class="contact_element">
+            {{ form.email.errors }}
+            <label for="id_email">{% trans 'Email: ' %}</label>
+            {{ form.email }}
+        </div>
+        <div class="contact_element">
+            {{ form.subject.errors }}
+            <label for="id_subject">{% trans 'Object: ' %}</label>
+            {{ form.subject }}
+        </div>
+        <div class="contact_element">
+            {{ form.message.errors }}
+            <label for="id_message">{% trans 'Message: ' %}</label>
+            {{ form.message }}
+        </div>        
+        
+        <p class="link_submit submit_contact"><input type="submit" value="Send it!" /></p>
+    </form>
+ 
+{% include "link5/footer.html" %}

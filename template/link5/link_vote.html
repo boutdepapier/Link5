@@ -1,7 +1,7 @@
 <p id="vote_message_{{ link.pk }}" class="vote_message">{{ message }}</p>
 <p id="vote_content_{{ link.pk }}" class="hidde">
-    <span class="like"><span class="number">{{ link.positive }}</span><img src="/static/link5/img/yes.png" width="13" class="vicone" /></span>
-    <span class="not"><span class="number">{{ link.negative }}</span><img src="/static/link5/img/no.png" width="13" class="vicone" /></span>
+    <span class="like"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" width="13" class="vicone" /></span>
+    <span class="not"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" width="13" class="vicone" /></span>
 </p>
 <script type="text/javascript">
     setTimeout(function() { 
