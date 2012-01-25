@@ -1,7 +1,4 @@
-import urllib, urllib2, oembed, re, mimetypes
-from BeautifulSoup import BeautifulSoup
-import simplejson as json
-from urlparse import urlparse
+from datetime import datetime, timedelta
 
 from django.conf import settings
 
@@ -22,7 +19,7 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_id = False, author = False, follow = False, referral = False):
+def home(request, page = 0, user_id = False, author = False, follow = False, referral = False, period = False, url = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -36,9 +33,12 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
         form = LinkForm() # An unbound form
     
     links = Link.objects.all().order_by('-created_at').select_related()
+    if period:
+        links = links.filter(created_at__gte=period).order_by('-positive')
     if user_id:
         links = links.filter(author__exact = user_id)
         author = Author.objects.get(pk=user_id)
+        url = "user"
         if request.user.is_authenticated():
             follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=user_id)
         
@@ -47,9 +47,21 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
     links.page = page
     
     links.home_page = False if int(page) <= 0 else True
-    links.last_page = False if len(links) < settings.LINK_PER_PAGE else True
+    links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author, 'follow': follow}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author, 'follow': follow, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    
+def linkday(request, page = 0):
+    yesterday = datetime.now() - timedelta(days=1)
+    return home (request, period = yesterday, page = page, url = "day") 
+    
+def linkweek(request, page = 0):
+    yesterday = datetime.now() - timedelta(days=7)
+    return home (request, period = yesterday, page = page, url = "week") 
+    
+def linkmonth(request, page = 0):
+    yesterday = datetime.now() - timedelta(days=31)
+    return home (request, period = yesterday, page = page, url = "month")
 
 def linkpreview(request, link_id):
     link = Link.objects.get(pk=link_id)
@@ -171,6 +183,11 @@ def commentsave(request, link_id=0):
     
 #With Oembed module
 def getcontent(request, url = False):
+    import urllib, urllib2, oembed, re, mimetypes
+    from BeautifulSoup import BeautifulSoup
+    import simplejson as json
+    from urlparse import urlparse
+
     if url:
         original_url = url
     else:

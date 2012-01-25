@@ -1,10 +1,10 @@
 {% load i18n %}
 <nav>
-    <a href="/links/top/">{% trans 'My Links post' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
+    <a href="{% url user_links %}">{% trans 'My Links post' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
     {% trans 'Top links:' %}
-    <a href="/links/top/">{% trans 'Today' %}</a> - 
-    <a href="/links/top/">{% trans 'This week' %}</a> - 
-    <a href="/links/top/">{% trans 'This month' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
+    <a href="{% url link_day %}">{% trans 'Today' %}</a> - 
+    <a href="{% url link_week %}">{% trans 'This week' %}</a> - 
+    <a href="{% url link_month %}">{% trans 'This month' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
     {% trans 'Me and Myself:' %}
     <a href="{% url user_home request.user.pk %}">{% trans 'My links' %}</a> - 
     <a href="{% url profiledit %}">{% trans 'My profile' %}</a>

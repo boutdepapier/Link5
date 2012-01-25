@@ -1,7 +1,8 @@
 {% load i18n link5_extras %}
 <div id="links_section">
+    {% if not links %}<h1>{% trans "No link for this page, yet!" %}</h1>{% endif %}
     <div id="jquerywall_height"><div id="jquerywall">
-    {% for link in links %}
+    {% for link in links|slice:LINK_PER_PAGE %}
         <article class='link'>
             <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" /><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a>{% else %}{{ link.post_ttl }}{% endifequal %}</h2>
             
@@ -33,8 +34,8 @@
     <div id="full_view"><div id="full_view_content" tabindex="13"></div></div>
 {% if links.home_page or links.last_page %}
 <p id="link_nav">
-	{% if links.home_page %}<span><a href="/{% if user_id %}user/{{ user_id }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
-	{% if links.last_page %}<span><a href="/{% if user_id %}user/{{ user_id }}/{% endif %}{{ links.page|add:"1" }}/">>></a></span>{% endif %}
+	{% if links.home_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_id %}{{ user_id }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
+	{% if links.last_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_id %}{{ user_id }}/{% endif %}{{ links.page|add:"1" }}/">>></a></span>{% endif %}
 </p>
 {% endif %}
 
