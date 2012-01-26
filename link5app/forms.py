@@ -24,8 +24,7 @@ class LinkForm(forms.Form):
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
-    def save(self, user, url):
-        userprofile = User.objects.get(username=user)
+    def save(self, author):
         link = Link()
         
         link.post_ttl = self.cleaned_data['post_ttl']
@@ -33,10 +32,9 @@ class LinkForm(forms.Form):
         link.post_url = self.cleaned_data['post_url']
         link.category = self.cleaned_data['category']
         link.status = "publish"
-        link.author_id = userprofile.pk
+        link.author_id = author.pk
         
-        print str(link5app.views.getcontent(None, "http://%s/extracting/?url=%s" % (url, self.cleaned_data['post_url'])))
-        data = simplejson.loads(link5app.views.getcontent(None, "http://%s/extracting/?url=%s" % (url, self.cleaned_data['post_url'])))
+        data = simplejson.loads( link5app.views.getcontent(None, url = self.cleaned_data['post_url']))
         
         link.link_type = data['type']
         if data['type'] == "video" or data['type'] == "rich":

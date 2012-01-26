@@ -59,7 +59,7 @@ class Link(models.Model):
     positive = models.PositiveIntegerField(_("Link number of positive votes"), default = 0)
     negative = models.PositiveIntegerField(_("Link number of negative votes"), default = 0)
     
-    author = models.OneToOneField('Author')
+    author = models.ForeignKey('Author')
     category = AutoOneToOneField('Category')
     
     def __unicode__(self):
@@ -79,14 +79,14 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     author = models.ForeignKey(Author)
-    link = models.OneToOneField(Link)
+    link = models.ForeignKey(Link)
     
     def __unicode__(self):
         return "%s - %s - %s" % (self.author, self.link, self.created_at)
     
 class Like(models.Model):
-    link = models.OneToOneField(Link)
-    author = models.OneToOneField('Author')
+    link = models.ForeignKey(Link)
+    author = models.ForeignKey('Author')
     created_at = models.DateTimeField(auto_now_add=True)
     point = models.BooleanField(default = True)
     

@@ -25,7 +25,8 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
         form = LinkForm(request.POST) # A form bound to the POST data
         
         if form.is_valid():
-            form.save(request.user, request.META['HTTP_HOST'])
+            author = Author.objects.get(user=request.user.pk)
+            form.save(author)
             messages.info(request,_("Thank you for posting!"))
             return HttpResponseRedirect('/')
     
@@ -178,7 +179,10 @@ def logout(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
     
 def profiledit(request):
-    return render_to_response('link5/profil_edit.html', {}, context_instance=RequestContext(request))
+    followers = Follow.objects.all().filter(author_from__exact = request.user.pk)
+    followings = Follow.objects.all().filter(author_from__exact = request.user.pk)
+    
+    return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings,}, context_instance=RequestContext(request))
     
 def commentsave(request, link_id=0):
     if request.method == 'POST':
@@ -250,10 +254,10 @@ def getcontent(request, url = False):
                 image_urls_list.append("%s://%s%s" % (original_url_shem. scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
             
             image_list = []
-            for url in image_urls_list:
-               image_list.append({'url': url})
+            for img_url in image_urls_list:
+               image_list.append({'url': img_url})
             
-            return_dict = {'title':title, 'description':description, 'type': link, 'url': original_url}
+            return_dict = {'title':title, 'description':description, 'type': "link", 'url': original_url}
             return_dict.update({'images': image_list})
             
             oembed_obj = json.dumps(return_dict)

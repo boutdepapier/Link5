@@ -71,6 +71,7 @@ nav a:hover{text-decoration: none;}
 
 /*********** Login-Signup forms  ************/
 #login_page{background: #0e4967; color: #fff;}
+#login_page h1 {font-size: 34px; padding: 20px 0px 20px 30px;}
 #login_page h2 {margin: -10px 0px 20px 0px; font-weight: normal; }
 #login_page .errorlist {font-size: 12px; list-style: none; margin: 0px 0px -5px 0px; padding-top: 10px;}
 #login_form {font-size: 18px; width: 420px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 0px 30px 50px; margin: 20px 0px 20px 0px;}
@@ -149,6 +150,9 @@ nav a:hover{text-decoration: none;}
 .contact_element textarea {font-size: 18px; float: left; width: 350px; position: relative; margin-top: 4px; font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif;}
 .submit_contact {clear: both; padding-top: 20px;}
 .submit_contact input{width: 490px;}
+
+/*********** Profil page ************/
+#profil_link{float: left; padding: 20px 0px 20px 50px; border-left: 1px solid #aaaaaa; margin-left: 50px;}
 
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }

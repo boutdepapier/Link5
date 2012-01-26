@@ -3,6 +3,8 @@
 {% include "link5/nav.html" %}
 {% include "link5/messages.html" %}
 <div id="login_page">
+
+    <h1>My link profile page</h1>
     
     <form action="{% url login %}" method="post" id="register_form">{% csrf_token %}
         <h2>{% trans 'I want my account now!' %}</h2>
@@ -43,6 +45,12 @@
         
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Update' %}" /></p>
     </form>
+    
+    <div id="profil_link">  
+        <h2>People who I link:</h2>
+        
+        <h2>People who link me:</h2>
+    </div>
 
     <div class="clearboth"></div>
 
