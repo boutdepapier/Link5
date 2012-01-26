@@ -19,7 +19,7 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_id = False, author = False, follow = False, referral = False, period = False, url = False):
+def home(request, page = 0, user_id = False, author = False, follow = False, referral = False, period = False, url = False, filters = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -35,6 +35,7 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
     links = Link.objects.all().order_by('-created_at').select_related()
     if period:
         links = links.filter(created_at__gte=period).order_by('-positive')
+        
     if user_id:
         links = links.filter(author__exact = user_id)
         author = Author.objects.get(pk=user_id)
@@ -63,6 +64,20 @@ def linkmonth(request, page = 0):
     yesterday = datetime.now() - timedelta(days=31)
     return home (request, period = yesterday, page = page, url = "month")
 
+def userlinks(request, page = 0):
+    author = Author.objects.get(user=request.user.pk)
+    followings = Follow.objects.all().filter(author_from__exact = author.pk)
+    links = Link.objects.all().order_by('-created_at').select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+    form = LinkForm()
+    url = "user/links"
+    
+    links.page = page
+    
+    links.home_page = False if int(page) <= 0 else True
+    links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
+     
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+
 def linkpreview(request, link_id):
     link = Link.objects.get(pk=link_id)
     like = Like.objects.filter(link__exact=link_id).count()
@@ -70,7 +85,7 @@ def linkpreview(request, link_id):
     
     form = CommentForm()
     
-    return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form}, context_instance=RequestContext(request))
+    return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
 
 def vote(request, link_id=0, vote=False):
     if not request.user.is_authenticated():

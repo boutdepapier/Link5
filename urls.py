@@ -29,8 +29,8 @@ urlpatterns = patterns('',
     url(r'^user/(?P<user_id>\d+)/$', 'link5app.views.home', name='user_home'),
     url(r'^user/(?P<user_id>\d+)/(?P<page>\d+)/$', 'link5app.views.home', name='user_nav'),
     
-    url(r'^user/links/$', 'link5app.views.home', name='user_links'),
-    url(r'^user/links/(?P<page>\d+)/$', 'link5app.views.home', name='user_links_nav'),
+    url(r'^user/links/$', 'link5app.views.userlinks', name='user_links'),
+    url(r'^user/links/(?P<page>\d+)/$', 'link5app.views.userlinks', name='user_links_nav'),
     
     url(r'^follow/(?P<user_id>\d+)/(?P<status>[0,1]{1})/$', 'link5app.views.follow', name='follow'),
     
