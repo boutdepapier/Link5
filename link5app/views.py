@@ -231,10 +231,15 @@ def getcontent(request, url = False):
             soup = BeautifulSoup(html)
             
             title=''; description=''
-            try:
-                description = soup.findAll('meta', attrs={'name':re.compile("^description$", re.I)})[0].get('content')
-            except:
-                pass
+            description = soup.findAll('meta', attrs={'name':re.compile("^description$")})
+            if description:
+               description = description[0].get('content')
+            else: 
+                try:  
+                    description = soup.findAll('meta', attrs={'property':re.compile("description$", re.I)})[0].get('content')
+                except:
+                    pass
+
         
             # Try to get the page title from the meta tag named title
             try:
