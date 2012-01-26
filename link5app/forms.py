@@ -24,7 +24,7 @@ class LinkForm(forms.Form):
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
-    def save(self, author):
+    def save(self, author, user_url = ""):
         link = Link()
         
         link.post_ttl = self.cleaned_data['post_ttl']
@@ -40,6 +40,9 @@ class LinkForm(forms.Form):
         if data['type'] == "video" or data['type'] == "rich":
             link.post_html = data['html']
             link.post_img = data['thumbnail_url']
+        
+        if data['type'] == "link":
+            link.post_img = user_url
         
         elif data['type'] == "photo": link.post_img = data['url']
         

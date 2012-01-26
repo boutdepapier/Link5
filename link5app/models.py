@@ -60,7 +60,7 @@ class Link(models.Model):
     negative = models.PositiveIntegerField(_("Link number of negative votes"), default = 0)
     
     author = models.ForeignKey('Author')
-    category = AutoOneToOneField('Category')
+    category = models.ForeignKey('Category')
     
     def __unicode__(self):
         return self.post_ttl

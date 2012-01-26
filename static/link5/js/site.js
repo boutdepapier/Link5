@@ -75,7 +75,8 @@ function link_validator() {
                 
                 $("#preview_med").html(preview_med);
                 $("#user_url").val($("#list_img_0").attr('src'));
-                $("#list_image").click(function(){
+                $("#list_image").click(function(e){
+                    if (e.target.id == "right_a" || e.target.id == "list_img_"+list_current) {
                         $("#list_img_"+list_current).css({"position": "absolute"});
                         $("#list_img_"+list_current).hide();
                         if (list_current == list_lenght)
@@ -85,7 +86,8 @@ function link_validator() {
                         
                         $("#list_img_"+list_current).fadeIn();
                         $("#list_img_"+list_current).css({"position": "inherit"});
-                        $("#user_url").val($("#list_img_"+list_current).attr('src'));                        
+                        $("#user_url").val($("#list_img_"+list_current).attr('src'));
+                    }                        
                 });
                 $("#left_a").click(function(){
                         $("#list_img_"+list_current).css({"position": "absolute"});

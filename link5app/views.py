@@ -26,7 +26,7 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
         
         if form.is_valid():
             author = Author.objects.get(user=request.user.pk)
-            form.save(author)
+            form.save(author, request.POST.get("user_url", None))
             messages.info(request,_("Thank you for posting!"))
             return HttpResponseRedirect('/')
     
