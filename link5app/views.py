@@ -251,16 +251,25 @@ def getcontent(request, url = False):
             if not title:
                 title = soup.title.string
             
-            max_images = 20
+            max_images = 3
             image_tags = soup.findAll('img', limit=max_images)
             image_urls_list = []
             for image_tag in image_tags:
                 original_url_shem = urlparse(original_url)
-                image_urls_list.append("%s://%s%s" % (original_url_shem. scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+                #If the url is absolute
+                if (urlparse(image_tag.get('src')).scheme):
+                    image_urls_list.append(image_tag.get('src'))
+                #else we have to build it
+                else:
+                    image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
             
             image_list = []
             for img_url in image_urls_list:
-               image_list.append({'url': img_url})
+                file = urllib2.urlopen(img_url)
+                size = file.headers.get("content-length")
+                file.close()
+                if int(size) > 8000:
+                    image_list.append({'url': img_url})
             
             return_dict = {'title':title, 'description':description, 'type': "link", 'url': original_url}
             return_dict.update({'images': image_list})

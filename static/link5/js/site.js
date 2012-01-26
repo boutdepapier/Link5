@@ -37,7 +37,7 @@ function link_validator() {
         
         embed_url = "/extracting/?url="+url;
         
-        $.getJSON(embed_url, {format: "json"},function(data) {
+        $.getJSON(embed_url, {},function(data) {
             
             $("#post_preview").fadeIn('slow'); 
             $("#post_preview_loading").fadeOut("slow");
@@ -56,6 +56,51 @@ function link_validator() {
                 $("#preview_med").html("<img src='"+data.thumbnail_url+"' width='185' /><img src='/static/link5/img/play.png' border='0' width='20' height='18' class='link_play' />");
             } else if (data.type == "error") {
                 $("#preview_med").html("<span style='color: red; font-weight: bold; font-size: 13px;'>Error to get the link content</span>");
+            } else if (data.type == "link" && data.images != "") {
+                preview_med  = "";
+                var x = 0;
+                for (x in data.images){
+                    preview_med = preview_med + "<img src='"+data.images[x].url+"' id='list_img_"+x+"' style='max-width:185px;";
+                    if (x !=0) {
+                        preview_med = preview_med + "display:none;"
+                    }
+                    preview_med = preview_med + "' />";
+                }
+                var list_current = 0;
+                var list_lenght = x;
+                preview_med = "<div id='list_image'>" + preview_med;
+                if (list_lenght > 0)
+                    preview_med = preview_med + "<p id='selection'><a id='left_a'></a><a id='right_a'></a></p>";
+                preview_med = preview_med + "</div>";
+                
+                $("#preview_med").html(preview_med);
+                $("#user_url").val($("#list_img_0").attr('src'));
+                $("#list_image").click(function(){
+                        $("#list_img_"+list_current).css({"position": "absolute"});
+                        $("#list_img_"+list_current).hide();
+                        if (list_current == list_lenght)
+                            list_current = 0;
+                        else
+                            list_current++;
+                        
+                        $("#list_img_"+list_current).fadeIn();
+                        $("#list_img_"+list_current).css({"position": "inherit"});
+                        $("#user_url").val($("#list_img_"+list_current).attr('src'));                        
+                });
+                $("#left_a").click(function(){
+                        $("#list_img_"+list_current).css({"position": "absolute"});
+                        $("#list_img_"+list_current).hide();
+                        if (list_current == 0)
+                            list_current = list_lenght;
+                        else
+                            list_current--;
+                        
+                        $("#list_img_"+list_current).css({"position": "inherit"});
+                        $("#list_img_"+list_current).fadeIn();
+                        //$("#list_img_1").css({"position": "inherit"});
+                        //$("#list_img_1").fadeIn();
+                        $("#user_url").val($("#list_img_"+list_current).attr('src'));
+                });                
             }
             
             $("#preview_txt").html(data.description);
