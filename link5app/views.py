@@ -196,6 +196,21 @@ def commentsave(request, link_id=0):
         form = CommentForm()
         
     return home(request, referral=referral)
+    
+def commentdelete(request, comment_id=0):
+    referral = "commentdelete"
+    
+    try:
+        author = Author.objects.get(user=request.user.pk)
+        comment = Comment.objects.get(id=comment_id)
+        
+        if author.pk == comment.author.pk:
+            comment.delete()
+            messages.info(request,_("Comment deleted Sir!"))
+    except:
+        pass
+    
+    return home(request, referral=referral)
 
 # Logo info:
 # [col=3399cc]Link[/col][col=115599]5[/col][col=fc0082].me[/col]

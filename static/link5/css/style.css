@@ -141,6 +141,8 @@ nav a:hover{text-decoration: none;}
 .comment {clear: both; margin: 0px 0px 15px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_avatar{float: left; margin: 0px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_headline {font-size: 11px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #ececec; text-align: left;}
+.delete {float: right; color: #ff9009; text-decoration: none;}
+.delete:hover {text-decoration: underline;}
 .comment_text {padding: 10px;}
 #comment_form {padding: 0px 20px 10px 20px;}
 #id_text {width: 560px; height: 100px; box-shadow: 0 1px 1px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 1px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 1px rgba(25,15,15,0.3);}

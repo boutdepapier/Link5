@@ -35,6 +35,7 @@ urlpatterns = patterns('',
     url(r'^follow/(?P<user_id>\d+)/(?P<status>[0,1]{1})/$', 'link5app.views.follow', name='follow'),
     
     url(r'^comment/save/(?P<link_id>\d+)/$', 'link5app.views.commentsave', name='commentsave'),
+    url(r'^comment/delete/(?P<comment_id>\d+)/$', 'link5app.views.commentdelete', name='commentdelete'),
     
     url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
     url(r'^login/$', 'link5app.views.login', name="login"),
