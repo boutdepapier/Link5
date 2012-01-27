@@ -68,7 +68,7 @@ def linkmonth(request, page = 0):
 def userlinks(request, page = 0):
     author = Author.objects.get(user=request.user.pk)
     followings = Follow.objects.all().filter(author_from__exact = author.pk)
-    links = Link.objects.all().order_by('-created_at').select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+    links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     form = LinkForm()
     url = "user/links"
     
