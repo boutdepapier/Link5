@@ -185,6 +185,8 @@ def profiledit(request):
     return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings,}, context_instance=RequestContext(request))
     
 def commentsave(request, link_id=0):
+    referral = "commentsave"
+    
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -193,7 +195,7 @@ def commentsave(request, link_id=0):
     else:
         form = CommentForm()
         
-    return home(request)
+    return home(request, referral=referral)
 
 # Logo info:
 # [col=3399cc]Link[/col][col=115599]5[/col][col=fc0082].me[/col]

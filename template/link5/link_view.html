@@ -14,7 +14,10 @@
 <div id="comment">
 {% for comment in comments %}
     <div class="comment">
-        <p class="comment_avatar"><img src="{{ comment.author.avatar|scale:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" /></p>
+        <p class="comment_avatar">
+            {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" />
+            {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />{% endif %}
+        </p>
         <p class="comment_headline">By {{ comment.author.user.username }} at {{ comment.created_at }}</p>
         <div class="comment_text">{{ comment.text }}</div>
         <div class="clearboth"></div>
