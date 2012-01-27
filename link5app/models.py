@@ -9,7 +9,7 @@ from annoying.fields import AutoOneToOneField
 class Author(models.Model):
     user = AutoOneToOneField(User, primary_key=True, related_name="link5_profile")
     newsletter = models.BooleanField(_("Accept newsletter if it exist one day?"), default = False)
-    avatar = models.FileField(upload_to='avatars')
+    avatar = models.ImageField(upload_to='avatars')
     
     @property
     def author_email(self):

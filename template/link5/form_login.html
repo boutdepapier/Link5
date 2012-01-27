@@ -26,7 +26,7 @@
         <p class="link_submit submit_login"><input type="submit" value="Log me baby!" /></p>
     </form>
     
-    <form action="{% url login %}" method="post" id="register_form">{% csrf_token %}
+    <form action="{% url login %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
         <h2>{% trans 'I want my account now!' %}</h2>
         
         <input type="hidden" name="register_form" value="1" />
@@ -55,6 +55,12 @@
             {{ register_form.password2.errors }}
             <label for="id_password2">{% trans 'Password:<span class="again"><br/>(again? Seriously ?)</span>' %}</label>
             {{ register_form.password2 }}
+        </div>
+        
+        <div class="register_avatar">
+            {{ register_form.avatar.errors }}
+            <label for="id_avatar">{% trans 'Avatar: ' %}</label>
+            {{ register_form.avatar }}
         </div>
         
          <div class="newsletter_check">

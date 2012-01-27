@@ -8,8 +8,7 @@
     <a href="{% url link_week %}">{% trans 'This week' %}</a> - 
     <a href="{% url link_month %}">{% trans 'This month' %}</a>
     {% if request.user.is_authenticated %}
-    {% trans 'Me and Myself:' %}
-        &nbsp;&nbsp;&nbsp;----&nbsp;
+    &nbsp;&nbsp;&nbsp;----&nbsp; {% trans 'Me and Myself:' %}
         <a href="{% url user_home request.user.pk %}">{% trans 'My links' %}</a> - 
        	<a href="{% url profiledit %}">{% trans 'My profile' %}</a>
     {% endif %}

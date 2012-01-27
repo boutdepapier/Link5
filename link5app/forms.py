@@ -77,7 +77,9 @@ class RegisterForm(auth_forms.UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(auth_forms.UserCreationForm, self).__init__(*args, **kwargs)
         self.fields['newsletter'] = forms.BooleanField(required=False, initial=True)
+        self.fields['avatar'] = forms.ImageField(required=False)
         self.fields['email'] = forms.EmailField(required=True, max_length=150)
+        
         
     def save(self, commit=True):
         user = super(auth_forms.UserCreationForm, self).save(commit=False)
@@ -88,6 +90,7 @@ class RegisterForm(auth_forms.UserCreationForm):
             user.save()
         author = Author()
         author.newsletter = self.cleaned_data["newsletter"]
+        author.avatar = self.cleaned_data["avatar"]
         author.user = user
         author.save();
         

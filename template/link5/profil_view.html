@@ -1,7 +1,11 @@
 {% load i18n link5_extras %}{% if author %}
 <div id="user_page">
     <p class="user_details">
-    <img src="{{ author.avatar|scale:"80x80" }}" alt="{{ author.user.username }}" width="80" />
+    {% if author.avatar %}
+        <img src="{{ author.avatar|crop:"80x80" }}" alt="{{ author.user.username }}" width="80" />
+    {% else %}
+        <img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />
+    {% endif %}
     {{ author.user.username }}
     {% trans '| Post history: ' %}
     </p>

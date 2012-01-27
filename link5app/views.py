@@ -33,7 +33,7 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
     else:
         form = LinkForm() # An unbound form
     
-    links = Link.objects.all().order_by('-created_at').select_related()
+    links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
     if period:
         links = links.filter(created_at__gte=period).order_by('-positive')
         
@@ -144,7 +144,7 @@ def login(request):
     if request.method == 'POST':
         
         if request.POST.get('register_form') == '1':
-            register_form = RegisterForm(request.POST)
+            register_form = RegisterForm(request.POST, request.FILES)
 
             if register_form.is_valid():
                 messages.info(request,_('Welcome friend!'))
@@ -251,7 +251,7 @@ def getcontent(request, url = False):
             if not title:
                 title = soup.title.string
             
-            max_images = 3
+            max_images = 6
             image_tags = soup.findAll('img', limit=max_images)
             image_urls_list = []
             for image_tag in image_tags:

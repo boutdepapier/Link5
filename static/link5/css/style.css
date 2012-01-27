@@ -85,6 +85,8 @@ nav a:hover{text-decoration: none;}
 #register_form {font-size: 18px; width: 420px; float: left; padding: 10px 0px 30px 30px; margin: 20px 0px 20px 0px;}
 .register_element label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
 .register_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.register_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.register_avatar input {font-size: 14px; float: left; width: 250px; position: relative; margin-top: 4px; }
 .newsletter_check{clear: both; font-size: 14px;}
 .again {font-size: 12px;}
 
