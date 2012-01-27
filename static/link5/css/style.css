@@ -158,7 +158,20 @@ nav a:hover{text-decoration: none;}
 .submit_contact input{width: 490px;}
 
 /*********** Profil page ************/
-#profil_link{float: left; padding: 20px 0px 20px 50px; border-left: 1px solid #aaaaaa; margin-left: 50px;}
+#profil_page{background: #ececec; color: #000;}
+#profil_page h1 {float: left; padding: 20px 0px 0px 40px;}
+#profil_link{float: left; padding: 20px 0px 20px 50px; margin-left: 50px; background: #ececec; clear: left;}
+#profil_link h2 {padding-bottom: 0px; clear: both; margin-bottom: 10px; }
+.user_links{list-style: none; padding-bottom: 40px;}
+.user_links li {line-height: 40px; height: 40px; vertical-align: middle; padding: 0px 0px 10px 20px;}
+.user_links li img {padding-right: 10px; float: left;}
+.follow_user {display: block; line-height: 40px; height: 40px; vertical-align: middle;}
+.user_links li a {text-decoration: none; color: #ff9009; text-decoration: none;}
+#edit_form {font-size: 18px; width: 420px; float: right; padding: 10px 0px 30px 30px; margin: 0px 0px 20px 0px; background: #0e4967; border-left: 1px solid #aaaaaa; color: #fff;}
+.edit_element label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.edit_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.edit_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.edit_avatar input {font-size: 14px; float: left; width: 250px; position: relative; margin-top: 4px; }
 
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }

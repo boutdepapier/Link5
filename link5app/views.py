@@ -181,10 +181,21 @@ def logout(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
     
 def profiledit(request):
-    followers = Follow.objects.all().filter(author_from__exact = request.user.pk)
+    followers = Follow.objects.all().filter(author_to__exact = request.user.pk)
     followings = Follow.objects.all().filter(author_from__exact = request.user.pk)
+        
+    if request.method == 'POST':
+        register_form = RegisterForm(request.POST, request.FILES)
+
+        if register_form.is_valid():
+            messages.info(request,_('Welcome friend!'))
+            register_form.save()
+            user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
+            auth.login(request, user)
+    else:
+        edit_form = RegisterForm()
     
-    return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings,}, context_instance=RequestContext(request))
+    return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
     
 def commentsave(request, link_id=0):
     referral = "commentsave"

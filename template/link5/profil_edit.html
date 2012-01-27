@@ -1,59 +1,83 @@
-{% load i18n%}
+{% load i18n link5_extras %}
 {% include "link5/head.html" %}
 {% include "link5/nav.html" %}
 {% include "link5/messages.html" %}
-<div id="login_page">
+<div id="profil_page">
 
-    <h1>My link profile page</h1>
-    
-    <form action="{% url login %}" method="post" id="register_form">{% csrf_token %}
-        <h2>{% trans 'I want my account now!' %}</h2>
+    <form action="{% url login %}" method="post" id="edit_form">{% csrf_token %}
+        <h2>{% trans 'Edit my account info' %}</h2>
         
-        <input type="hidden" name="register_form" value="1" />
+        <input type="hidden" name="edit_form" value="1" />
     {% if next %}
         <input type="hidden" name="next" value="{{ next }}" />
     {% endif %}
-        <div class="register_element">
-            {{ register_form.username.errors }}
+        <div class="edit_element">
+            {{ edit_form.username.errors }}
             <label for="id_username">{% trans 'Pseudo: ' %}</label>
-            {{ register_form.username }}
+            {{ edit_form.username }}
         </div>
     
-        <div class="register_element">
-            {{ register_form.email.errors }}
+        <div class="edit_element">
+            {{ edit_form.email.errors }}
             <label for="id_username">{% trans 'Email: ' %}</label>
-            {{ register_form.email }}
+            {{ edit_form.email }}
         </div>
         
-        <div class="register_element">
-            {{ register_form.password1.errors }}
+        <div class="edit_element">
+            {{ edit_form.password1.errors }}
             <label for="id_password1">{% trans 'Password:' %}</label>
-            {{ register_form.password1 }}
+            {{ edit_form.password1 }}
         </div>
         
-        <div class="register_element">
-            {{ register_form.password2.errors }}
+        <div class="edit_element">
+            {{ edit_form.password2.errors }}
             <label for="id_password2">{% trans 'Password:<span class="again"><br/>(again? Seriously ?)</span>' %}</label>
-            {{ register_form.password2 }}
+            {{ edit_form.password2 }}
         </div>
         
          <div class="newsletter_check">
-            {{ register_form.newsletter.errors }}
-            {{ register_form.newsletter }}
-            <label for="id_newsletter">{% trans "I accept email contact if one day there is. Link5 pinky promise to never sell or give or I really don't know... Man, just accept: anyway I am too lazy to make newsletter..." %}</label>
+            {{ edit_form.newsletter.errors }}
+            {{ edit_form.newsletter }}
+            <label for="id_newsletter">{% trans "Newsletter" %}</label>
         </div>
         
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Update' %}" /></p>
     </form>
+
+    <h1>{% trans 'My link5 contact:' %}</h1>
     
     <div id="profil_link">  
         <h2>People who I link:</h2>
-        
+        <ul class="user_links">
+        {% for following in followings %}
+            <li><a href="{% url user_home following.author_from.pk %}">
+                {% if following.author_from.avatar %}
+                    <img src="{{ following.author_from.avatar|crop:"40x40" }}" alt="{{ following.author_from.user.username }}" width="40" />
+                {% else %}
+                    <img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="40" />
+                {% endif %}
+                <span class="follow_user">{{ following.author_from.user.username }}</span>
+            </a></li>
+        {% endfor %}
+        </ul>
+
         <h2>People who link me:</h2>
+        <ul class="user_links">
+        {% for follower in followers %}
+            <li><a href="{% url user_home follower.author_from.pk %}">
+                {% if follower.author_from.avatar %}
+                    <img src="{{ follower.author_from.avatar|crop:"40x40" }}" alt="{{ follower.author_from.user.username }}" width="40" />
+                {% else %}
+                    <img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="40" />
+                {% endif %}
+                <span class="follow_user">{{ follower.author_from.user.username }}</span>
+            </a></li>
+        {% endfor %}
+        </ul>
     </div>
 
     <div class="clearboth"></div>
-
 </div>
+
 
 {% include "link5/footer.html" %}
