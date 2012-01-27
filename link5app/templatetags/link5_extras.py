@@ -15,7 +15,7 @@ def resized_path(path, size, method):
 
     dir, name = os.path.split(path)
     image_name, ext = name.rsplit('.', 1)
-    return os.path.join(dir, '%s_%s_%s.%s' % (image_name, method, size, EXT))
+    return os.path.join(dir+"/"+method, '%s_%s_%s.%s' % (image_name, method, size, EXT))
 
 
 def scale(imagefield, size, method='scale'):
