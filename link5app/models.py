@@ -44,6 +44,7 @@ class Link(models.Model):
             ("publish", _("Published")),
             ("draft", _("Draft")),
             ("deleted", _("Deleted")),
+            ("denied", _("Denied")),
             ),
         default="draft", max_length=20)
         

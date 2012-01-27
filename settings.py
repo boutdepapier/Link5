@@ -202,6 +202,7 @@ OEMBED = {
     'maxwidth': '580',
 }
 LINK_PER_PAGE = 30
+MODERATION_LEVEL = 3
 
 CONTACT_FROM = "contact@link5.me"
 CONTACT_RECIPIENT = (

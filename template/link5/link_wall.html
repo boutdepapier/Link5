@@ -10,7 +10,7 @@
             {% ifequal link.link_type "photo" %}
                 <p><a href="{% url linkload link.pk %}" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
             {% else %}{% ifequal link.link_type "link" %}
-                <p><a href="{% url linkload link.pk %}" target="_blank"><img src="{{ link.post_img }}" width="185" class="link_image_preview" /></a></p>
+                <p><a href="{% url linkload link.pk %}"  class="link_load"><img src="{{ link.post_img }}" width="185" class="link_image_preview" /></a></p>
             {% else %}{% ifequal link.link_type "video" %}
                 <a href="{% url linkload link.pk %}" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
                     <img src="{{ STATIC_URL }}link5/img/play.png" border="0" width="20" height="18" class="link_play" />

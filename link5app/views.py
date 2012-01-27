@@ -104,10 +104,12 @@ def vote(request, link_id=0, vote=False):
             #To avoid load we also save the vote total in Link model
             if int(vote)==True:
                 current_link.positive += 1
-                current_link.save()
             else:
                 current_link.negative += 1
-                current_link.save()
+            if current_link.positive - current_link.negative <= settings.MODERATION_LEVEL:
+                current_link.status = "denied"
+            print current_link.positive + current_link.negative
+            current_link.save()
         else:
             message = _("One vote per Link")
             
