@@ -1,10 +1,10 @@
 {% include "link5/head.html" %}
 {% include "link5/nav.html" %}
-{% if not user_id %}
+{% if not user_name %}
     {% if user.is_authenticated %}
         {% include "link5/form_link.html" %}
     {% endif %}
-{% else %}{% if user_id %}
+{% else %}{% if user_name %}
     {% include "link5/profil_view.html" %}
 {% endif %}{% endif %}
 {% include "link5/messages.html" %}

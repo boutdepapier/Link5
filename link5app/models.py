@@ -9,11 +9,13 @@ from annoying.fields import AutoOneToOneField
 class Author(models.Model):
     user = AutoOneToOneField(User, primary_key=True, related_name="link5_profile")
     newsletter = models.BooleanField(_("Accept newsletter if it exist one day?"), default = False)
-    avatar = models.ImageField(upload_to='avatars')
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
+    #slug = models.SlugField(unique=True)
+    conditions = models.BooleanField(_("Term and conditions?"), default = False)
     
     @property
     def author_email(self):
-        return self.user.email
+        return self.user.email   
     
     def __unicode__(self):
         return "%s - %s" % (self.user.username, self.author_email)

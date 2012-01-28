@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
     url(r'^link/$', 'link5app.views.home', name='postlink'),
     url(r'^link/load/(?P<link_id>\d+)/$', 'link5app.views.linkpreview', name='linkload'),
+    url(r'^link/delete/(?P<link_id>\d+)/$', 'link5app.views.linkdelete', name='linkdelete'),
     url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})/$', 'link5app.views.vote', name='vote'),
 
     url(r'^day/$', 'link5app.views.linkday', name='link_day'),
@@ -24,13 +25,16 @@ urlpatterns = patterns('',
     url(r'^month/$', 'link5app.views.linkmonth', name='link_month'),
     url(r'^month/(?P<page>\d+)/$', 'link5app.views.linkmonth', name='link_month_nav'),
     
-    url(r'^user/edit/$', 'link5app.views.profiledit', name='profiledit'),
+    url(r'^category/(?P<slug>\w+)/$', 'link5app.views.home', name='category'),
+    url(r'^category/(?P<slug>\w+)/(?P<page>\d+)/$', 'link5app.views.home', name='category_nav'),
     
-    url(r'^user/(?P<user_id>\d+)/$', 'link5app.views.home', name='user_home'),
-    url(r'^user/(?P<user_id>\d+)/(?P<page>\d+)/$', 'link5app.views.home', name='user_nav'),
+    url(r'^user/edit/$', 'link5app.views.profiledit', name='profiledit'),
     
     url(r'^user/links/$', 'link5app.views.userlinks', name='user_links'),
     url(r'^user/links/(?P<page>\d+)/$', 'link5app.views.userlinks', name='user_links_nav'),
+    
+    url(r'^user/(?P<user_name>[^/]+)/$', 'link5app.views.home', name='user_home'),
+    url(r'^user/(?P<user_name>[^/]+)/(?P<page>\d+)/$', 'link5app.views.home', name='user_nav'),
     
     url(r'^follow/(?P<user_id>\d+)/(?P<status>[0,1]{1})/$', 'link5app.views.follow', name='follow'),
     

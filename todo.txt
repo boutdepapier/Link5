@@ -1,0 +1,7 @@
+-> term and condition
+-> Finish the user page
+-> Improve user page (show linkers and link to)
+-> Email for new link from ?
+-> Display comment number
+-> save foreign mignature image
+-> Fix bug when posting Link and caracters issue

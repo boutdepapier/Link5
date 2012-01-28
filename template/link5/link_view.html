@@ -18,7 +18,7 @@
             {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" />
             {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />{% endif %}
         </p>
-        <p class="comment_headline">By {{ comment.author.user.username }} at {{ comment.created_at }}
+        <p class="comment_headline">By <a href="{% url user_home link.author.pk %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
             {% ifequal comment.author.user.id request.user.pk %}<a href="{% url commentdelete comment.pk %}" class="delete">{% trans 'Delete [x]' %}</a>{% endifequal %}
         </p>
         <div class="comment_text">{{ comment.text }}</div>

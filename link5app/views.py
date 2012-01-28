@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.models import User, AnonymousUser
 
 from django.utils.translation import ugettext as _
 from django.utils import simplejson
@@ -19,7 +20,7 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_id = False, author = False, follow = False, referral = False, period = False, url = False, filters = False):
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -37,21 +38,24 @@ def home(request, page = 0, user_id = False, author = False, follow = False, ref
     if period:
         links = links.filter(created_at__gte=period).order_by('-positive')
         
-    if user_id:
-        links = links.filter(author__exact = user_id)
-        author = Author.objects.get(pk=user_id)
+    if user_name:
+        author = Author.objects.get(user__username__exact=user_name)
+        links = links.filter(author__exact = author.pk)
         url = "user"
         if request.user.is_authenticated():
-            follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=user_id)
+            follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
         
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+    
+    for link in links:
+        link.comment = Comment.objects.filter(link=link.pk).count()
     
     links.page = page
     
     links.home_page = False if int(page) <= 0 else True
     links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_id': user_id, 'author': author, 'follow': follow, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
@@ -78,6 +82,15 @@ def userlinks(request, page = 0):
     links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
      
     return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    
+def linkdelete(request, link_id):
+    link = Link.objects.get(pk=link_id)
+    author = Author.objects.get(user=request.user.pk)
+    if link.author.pk == author.pk:
+        link.delete()
+        messages.info(request,_('Link deleted master!'))
+    
+    return home(request)
 
 def linkpreview(request, link_id):
     link = Link.objects.get(pk=link_id)

@@ -65,7 +65,7 @@ nav a:hover{text-decoration: none;}
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
 .post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
 .post_preview a {color: #664444;}
-#post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: absolute; background: #FFFFFF;}
+#post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: absolute; background: #FFFFFF; }
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
 .post_it input {width: 510px; clear: both;}
 #right_a{display: block; width: 30px; height: 30px; background: url(../img/right.png) no-repeat; position: relative; float: right; margin: -36px 3px 10px 0px; cursor: pointer;}
@@ -103,8 +103,9 @@ nav a:hover{text-decoration: none;}
 #link_nav a{color: #664444; text-decoration: none;}
 .author_date{font-size: 10px;}
 .author_date a {color: #442222;}
-
-.likeornot {clear: both; float: right; margin: 0px -10px -10px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
+.link_delete {float: left; font-size: 11px; margin: 8px -10px -10px 0px;}
+.link_delete a {color: #ff9009;}
+.likeornot {float: right; margin: 5px -10px -10px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
 .likeornot a {text-decoration: none;}
 .number{float: left; padding-right: 2px; color: #664444;}
 .vicone{float: left;}
@@ -141,6 +142,7 @@ nav a:hover{text-decoration: none;}
 .comment {clear: both; margin: 0px 0px 15px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_avatar{float: left; margin: 0px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_headline {font-size: 11px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #ececec; text-align: left;}
+.comment_headline a {color: #ff9009;}
 .delete {float: right; color: #ff9009; text-decoration: none;}
 .delete:hover {text-decoration: underline;}
 .comment_text {padding: 10px;}
