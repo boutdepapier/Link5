@@ -137,8 +137,11 @@ nav a:hover{text-decoration: none;}
 #link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
 #link_image img {max-width: 580px; position: relative; z-index: 4;}
 #close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
-#full_view_content h1{padding: 20px 20px 20px 20px;}
-.link_view_txt{padding: 20px 20px 20px 20px;}
+#link_link_image{padding: 10px 10px 10px 10px; float: left; }
+#full_view_content h1{padding: 20px 20px 0px 20px;}
+.link_view_txt{padding: 20px 20px 10px 20px;}
+#link_source {padding: 0px 20px 20px 20px; clear: both; font-size: 11px;}
+#link_source a{color: #ff9009;}
 
 /*********** Comments zone  ************/
 #comment {clear: both; padding: 20px 20px 10px 20px;}

@@ -106,6 +106,9 @@ def linkpreview(request, link_id):
         
         form = CommentForm()
         
+        from urlparse import urlparse
+        link.source = urlparse(link.post_url)
+        
         return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
     except:
         raise Http404(_("Cannot find link..."))
