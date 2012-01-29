@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'rosetta-grappelli',
     'rosetta',
+    'sorl.thumbnail',
     
     'oembed',
     
@@ -204,6 +205,7 @@ OEMBED = {
 }
 LINK_PER_PAGE = 30
 MODERATION_LEVEL = -3
+MAX_IMAGE = 8
 
 CONTACT_FROM = "contact@link5.me"
 CONTACT_RECIPIENT = (

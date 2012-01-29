@@ -11,6 +11,12 @@
 </div>
 {% endifequal %}{% endifequal %}{% endifequal %}
 
+<h1>{{ link.post_ttl }}</h1>
+
+{% if link.post_txt %}
+    <p class="link_view_txt">{{ link.post_txt }}</p>
+{% endif %}
+
 <div id="comment">
 {% for comment in comments %}
     <div class="comment">

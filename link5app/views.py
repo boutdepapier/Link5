@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from django.conf import settings
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -20,7 +20,7 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False):
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -37,6 +37,9 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
     if period:
         links = links.filter(created_at__gte=period).order_by('-positive')
+        
+    if category:
+        links = links.filter(category__slug=category)
         
     if user_name:
         author = Author.objects.get(user__username__exact=user_name)
@@ -70,7 +73,7 @@ def linkmonth(request, page = 0):
     return home (request, period = yesterday, page = page, url = "month")
 
 def userlinks(request, page = 0):
-    author = Author.objects.get(user=request.user.pk)
+    author = get_object_or_404(Author, user=request.user.pk)
     followings = Follow.objects.all().filter(author_from__exact = author.pk)
     links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     form = LinkForm()
@@ -84,22 +87,28 @@ def userlinks(request, page = 0):
     return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     
 def linkdelete(request, link_id):
-    link = Link.objects.get(pk=link_id)
-    author = Author.objects.get(user=request.user.pk)
-    if link.author.pk == author.pk:
-        link.delete()
-        messages.info(request,_('Link deleted master!'))
+    try:
+        link = Link.objects.get(pk=link_id)
+        author = Author.objects.get(user=request.user.pk)
+        if link.author.pk == author.pk:
+            link.delete()
+            messages.info(request,_('Link deleted master!'))
+    except:
+        messages.info(request,_('Error, delete failed'))
     
     return home(request)
 
 def linkpreview(request, link_id):
-    link = Link.objects.get(pk=link_id)
-    like = Like.objects.filter(link__exact=link_id).count()
-    comments = Comment.objects.filter(link__exact=link_id).order_by("created_at").select_related()
-    
-    form = CommentForm()
-    
-    return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
+    try:
+        link = Link.objects.get(pk=link_id)
+        like = Like.objects.filter(link__exact=link_id).count()
+        comments = Comment.objects.filter(link__exact=link_id).order_by("created_at").select_related()
+        
+        form = CommentForm()
+        
+        return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
+    except:
+        raise Http404(_("Cannot find link..."))
 
 def vote(request, link_id=0, vote=False):
     if not request.user.is_authenticated():
@@ -194,21 +203,24 @@ def logout(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
     
 def profiledit(request):
-    followers = Follow.objects.all().filter(author_to__exact = request.user.pk)
-    followings = Follow.objects.all().filter(author_from__exact = request.user.pk)
-        
-    if request.method == 'POST':
-        register_form = RegisterForm(request.POST, request.FILES)
-
-        if register_form.is_valid():
-            messages.info(request,_('Welcome friend!'))
-            register_form.save()
-            user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
-            auth.login(request, user)
-    else:
-        edit_form = RegisterForm()
+    if request.user.is_authenticated():
+        followers = Follow.objects.all().filter(author_to__exact = request.user.pk)
+        followings = Follow.objects.all().filter(author_from__exact = request.user.pk)
+            
+        if request.method == 'POST':
+            register_form = RegisterForm(request.POST, request.FILES)
     
-    return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
+            if register_form.is_valid():
+                messages.info(request,_('Welcome friend!'))
+                register_form.save()
+                user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
+                auth.login(request, user)
+        else:
+            edit_form = RegisterForm()
+        
+        return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
+    else:
+        raise Http404(_("Cannot find profil"))
     
 def commentsave(request, link_id=0):
     referral = "commentsave"
@@ -294,25 +306,28 @@ def getcontent(request, url = False):
             if not title:
                 title = soup.title.string
             
-            max_images = 6
-            image_tags = soup.findAll('img', limit=max_images)
-            image_urls_list = []
-            for image_tag in image_tags:
-                original_url_shem = urlparse(original_url)
-                #If the url is absolute
-                if (urlparse(image_tag.get('src')).scheme):
-                    image_urls_list.append(image_tag.get('src'))
-                #else we have to build it
-                else:
-                    image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
-            
-            image_list = []
-            for img_url in image_urls_list:
-                file = urllib2.urlopen(img_url)
-                size = file.headers.get("content-length")
-                file.close()
-                if int(size) > 8000:
-                    image_list.append({'url': img_url})
+            try:
+                max_images = settings.MAX_IMAGE
+                image_tags = soup.findAll('img', limit=max_images)
+                image_urls_list = []
+                for image_tag in image_tags:
+                    original_url_shem = urlparse(original_url)
+                    #If the url is absolute
+                    if (urlparse(image_tag.get('src')).scheme):
+                        image_urls_list.append(image_tag.get('src'))
+                    #else we have to build it
+                    else:
+                        image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+                
+                image_list = []
+                for img_url in image_urls_list:
+                    file = urllib2.urlopen(img_url)
+                    size = file.headers.get("content-length")
+                    file.close()
+                    if int(size) > 8000:
+                        image_list.append({'url': img_url})
+            except:
+                pass
             
             return_dict = {'title':title, 'description':description, 'type': "link", 'url': original_url}
             return_dict.update({'images': image_list})

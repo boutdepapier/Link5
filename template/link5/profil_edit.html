@@ -50,7 +50,7 @@
         <h2>People who I link:</h2>
         <ul class="user_links">
         {% for following in followings %}
-            <li><a href="{% url user_home following.author_from.pk %}">
+            <li><a href="{% url user_home following.author_from.user.username|urlencode %}">
                 {% if following.author_from.avatar %}
                     <img src="{{ following.author_from.avatar|crop:"40x40" }}" alt="{{ following.author_from.user.username }}" width="40" />
                 {% else %}
@@ -64,7 +64,7 @@
         <h2>People who link me:</h2>
         <ul class="user_links">
         {% for follower in followers %}
-            <li><a href="{% url user_home follower.author_from.pk %}">
+            <li><a href="{% url user_home follower.author_from.user.username|urlencode %}">
                 {% if follower.author_from.avatar %}
                     <img src="{{ follower.author_from.avatar|crop:"40x40" }}" alt="{{ follower.author_from.user.username }}" width="40" />
                 {% else %}

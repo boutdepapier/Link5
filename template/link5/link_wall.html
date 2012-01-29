@@ -1,4 +1,4 @@
-{% load i18n link5_extras %}
+{% load i18n link5_extras thumbnail %}
 <div id="links_section">
     {% if not links %}<h1>{% trans "No link for this page, yet!" %}</h1>{% endif %}
     <div id="jquerywall_height"><div id="jquerywall">
@@ -8,13 +8,26 @@
             
             <div class="media">
             {% ifequal link.link_type "photo" %}
-                <p><a href="{% url linkload link.pk %}" class="link_load" target="_blank"><img src="{{ link.post_url }}" width="185" class="link_image_preview" /></a></p>
+                <p><a href="{% url linkload link.pk %}" class="link_load" target="_blank">
+                    {% thumbnail link.post_img "185" crop="80% top" as im %}
+                        <img src="{{ im.url }}" class="link_image_preview">
+                    {% endthumbnail %}
+                </a></p>
             {% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
-                <p><a href="{% url linkload link.pk %}"  class="link_load"><img src="{{ link.post_img }}" width="185" class="link_image_preview" /></a></p>
+                <p><a href="{% url linkload link.pk %}"  class="link_load">
+                    {% thumbnail link.post_img "185" crop="80% top" as im %}
+                        <img src="{{ im.url }}" class="link_image_preview">
+                    {% endthumbnail %}
+                </a></p>
             {% endif %}{% else %}{% ifequal link.link_type "video" %}
-                <a href="{% url linkload link.pk %}" class="link_load"><img src="{{ link.post_img}}" border="0" width="185" class="link_image_preview" />{% ifequal link.link_type "video" %}
-                    <img src="{{ STATIC_URL }}link5/img/play.png" border="0" width="20" height="18" class="link_play" />
-                {% endifequal %}</a>
+                <p><a href="{% url linkload link.pk %}"  class="link_load">
+                    {% thumbnail link.post_img "185" crop="80% top" as im %}
+                        <img src="{{ im.url }}" class="link_image_preview">
+                    {% endthumbnail %}
+                    {% ifequal link.link_type "video" %}
+                        <img src="{{ STATIC_URL }}link5/img/play.png" border="0" width="20" height="18" class="link_play" />
+                    {% endifequal %}
+                </a></p>
             {% else %}{% ifequal link.link_type "html" %}
                 {{ link.post_html|safe }}
             {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}

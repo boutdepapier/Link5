@@ -34,6 +34,9 @@ function link_validator() {
         $("#post_preview_form").slideDown('slow');
         $("#post_preview_loading").fadeIn("slow");
         $("#post_preview_loading").html("<img src='/static/link5/img/load.gif' >");
+        $("#preview_ttl").html("");
+        $("#preview_med").html("");
+        $("#preview_txt").html("");
         
         embed_url = "/extracting/?url="+url;
         

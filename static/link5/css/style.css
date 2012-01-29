@@ -65,7 +65,8 @@ nav a:hover{text-decoration: none;}
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
 .post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
 .post_preview a {color: #664444;}
-#post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: absolute; background: #FFFFFF; }
+#post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
+#preview_med{}
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
 .post_it input {width: 510px; clear: both;}
 #right_a{display: block; width: 30px; height: 30px; background: url(../img/right.png) no-repeat; position: relative; float: right; margin: -36px 3px 10px 0px; cursor: pointer;}
@@ -136,6 +137,8 @@ nav a:hover{text-decoration: none;}
 #link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
 #link_image img {max-width: 580px; position: relative; z-index: 4;}
 #close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
+#full_view_content h1{padding: 20px 20px 20px 20px;}
+.link_view_txt{padding: 20px 20px 20px 20px;}
 
 /*********** Comments zone  ************/
 #comment {clear: both; padding: 20px 20px 10px 20px;}
@@ -160,16 +163,16 @@ nav a:hover{text-decoration: none;}
 .submit_contact input{width: 490px;}
 
 /*********** Profil page ************/
-#profil_page{background: #ececec; color: #000;}
+#profil_page{background: #0e4967; color: #fff;}
 #profil_page h1 {float: left; padding: 20px 0px 0px 40px;}
-#profil_link{float: left; padding: 20px 0px 20px 50px; margin-left: 50px; background: #ececec; clear: left;}
+#profil_link{float: left; padding: 20px 0px 20px 50px; margin-left: 50px; clear: left;}
 #profil_link h2 {padding-bottom: 0px; clear: both; margin-bottom: 10px; }
 .user_links{list-style: none; padding-bottom: 40px;}
 .user_links li {line-height: 40px; height: 40px; vertical-align: middle; padding: 0px 0px 10px 20px;}
 .user_links li img {padding-right: 10px; float: left;}
 .follow_user {display: block; line-height: 40px; height: 40px; vertical-align: middle;}
 .user_links li a {text-decoration: none; color: #ff9009; text-decoration: none;}
-#edit_form {font-size: 18px; width: 420px; float: right; padding: 10px 0px 30px 30px; margin: 0px 0px 20px 0px; background: #0e4967; border-left: 1px solid #aaaaaa; color: #fff;}
+#edit_form {font-size: 18px; width: 420px; float: right; padding: 10px 0px 30px 30px; margin: 0px 0px 20px 0px; background: #ececec; border-left: 1px solid #aaaaaa; color: #000;}
 .edit_element label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
 .edit_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
 .edit_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}

@@ -25,8 +25,8 @@ urlpatterns = patterns('',
     url(r'^month/$', 'link5app.views.linkmonth', name='link_month'),
     url(r'^month/(?P<page>\d+)/$', 'link5app.views.linkmonth', name='link_month_nav'),
     
-    url(r'^category/(?P<slug>\w+)/$', 'link5app.views.home', name='category'),
-    url(r'^category/(?P<slug>\w+)/(?P<page>\d+)/$', 'link5app.views.home', name='category_nav'),
+    url(r'^category/(?P<category>\w+)/$', 'link5app.views.home', name='category'),
+    url(r'^category/(?P<category>\w+)/(?P<page>\d+)/$', 'link5app.views.home', name='category_nav'),
     
     url(r'^user/edit/$', 'link5app.views.profiledit', name='profiledit'),
     

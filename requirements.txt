@@ -1,2 +1,3 @@
 django-rosetta
 djangoembed
+sorl-thumbnail
