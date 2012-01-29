@@ -178,6 +178,14 @@ nav a:hover{text-decoration: none;}
 .edit_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
 .edit_avatar input {font-size: 14px; float: left; width: 250px; position: relative; margin-top: 4px; }
 
+/*********** static pages ************/
+#static_page{background: #0e4967; color: #fff;}
+#static_content{width: 800px;border-right: 1px solid #aaaaaa;}
+#static_page h1 {padding: 40px 40px 20px 40px;}
+#static_page h2 {padding: 0px 0px 10px 0px; font-size: 22px; font-weight: normal;}
+#static_content p {padding-bottom: 10px;}
+#static_html {padding: 0px 40px 60px 40px;}
+
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }
 footer a{color: #797979; text-decoration: underline;}
