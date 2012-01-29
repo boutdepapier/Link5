@@ -10,6 +10,6 @@
     {% if request.user.is_authenticated %}
     &nbsp;&nbsp;&nbsp;----&nbsp; {% trans 'Me and Myself:' %}
         <a href="{% url user_home request.user.username|urlencode %}">{% trans 'My links' %}</a> - 
-       	<a href="{% url profiledit %}">{% trans 'My profile' %}</a>
+       	<a href="{% url user_view request.user.username|urlencode %}">{% trans 'My profile' %}</a>
     {% endif %}
 </nav>

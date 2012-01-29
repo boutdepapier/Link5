@@ -50,7 +50,7 @@
     <h1>{% blocktrans with author.user.username as username %}{{ username }} link5s contact:{% endblocktrans %}</h1>
     
     <div id="profil_link">  
-        <h2>{% blocktrans with author.user.username as username %}People who {{ username }} is linking {% endblocktrans %} ({{ author.number_to }})</h2>
+        <h2>{% blocktrans with author.user.username as username %}Link from {{ username }}{% endblocktrans %} ({{ author.number_to }})</h2>
         <ul class="user_links">
         {% for following in followings %}
             <li><a href="{% url user_home following.author_to.user.username|urlencode %}">
