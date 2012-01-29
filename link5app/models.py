@@ -59,8 +59,8 @@ class Link(models.Model):
             ),
         default="link", max_length=20)
         
-    positive = models.PositiveIntegerField(_("Link number of positive votes"), default = 0)
-    negative = models.PositiveIntegerField(_("Link number of negative votes"), default = 0)
+    positive = models.IntegerField(_("Link number of positive votes"), default = 0)
+    negative = models.IntegerField(_("Link number of negative votes"), default = 0)
     
     author = models.ForeignKey('Author')
     category = models.ForeignKey('Category')

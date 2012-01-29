@@ -36,7 +36,8 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     
     links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
     if period:
-        links = links.filter(created_at__gte=period).order_by('-positive')
+        #links = links.filter(created_at__gte=period).order_by('-positive')
+        links = links.extra(select={"score": "positive - negative"}).extra(order_by = ['-score'])
         
     if category:
         links = links.filter(category__slug=category)
