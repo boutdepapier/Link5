@@ -1,9 +1,11 @@
 {% load i18n link5_extras %}
 {% include "link5/head.html" %}
 {% include "link5/nav.html" %}
+{% include "link5/profil_view.html" %}
 {% include "link5/messages.html" %}
 <div id="profil_page">
-
+    
+    {% if edit_form %}
     <form action="{% url login %}" method="post" id="edit_form">{% csrf_token %}
         <h2>{% trans 'Edit my account info' %}</h2>
         
@@ -43,25 +45,26 @@
         
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Update' %}" /></p>
     </form>
+    {% endif %}
 
-    <h1>{% trans 'My link5 contact:' %}</h1>
+    <h1>{% blocktrans with author.user.username as username %}{{ username }} link5s contact:{% endblocktrans %}</h1>
     
     <div id="profil_link">  
-        <h2>People who I link:</h2>
+        <h2>{% blocktrans with author.user.username as username %}People who {{ username }} is linking {% endblocktrans %} ({{ author.number_to }})</h2>
         <ul class="user_links">
         {% for following in followings %}
-            <li><a href="{% url user_home following.author_from.user.username|urlencode %}">
-                {% if following.author_from.avatar %}
-                    <img src="{{ following.author_from.avatar|crop:"40x40" }}" alt="{{ following.author_from.user.username }}" width="40" />
+            <li><a href="{% url user_home following.author_to.user.username|urlencode %}">
+                {% if following.author_to.avatar %}
+                    <img src="{{ following.author_to.avatar|crop:"40x40" }}" alt="{{ following.author_to.user.username }}" width="40" />
                 {% else %}
                     <img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="40" />
                 {% endif %}
-                <span class="follow_user">{{ following.author_from.user.username }}</span>
+                <span class="follow_user">{{ following.author_to.user.username }}</span>
             </a></li>
         {% endfor %}
         </ul>
 
-        <h2>People who link me:</h2>
+        <h2>{% blocktrans with author.user.username as username %}People who links {{ username }}{% endblocktrans %} ({{ author.number_from }})</h2>
         <ul class="user_links">
         {% for follower in followers %}
             <li><a href="{% url user_home follower.author_from.user.username|urlencode %}">

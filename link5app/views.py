@@ -43,8 +43,11 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         
     if user_name:
         author = Author.objects.get(user__username__exact=user_name)
+        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count()
+        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count()
         links = links.filter(author__exact = author.pk)
         url = "user"
+        
         if request.user.is_authenticated():
             follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
         
@@ -143,7 +146,7 @@ def vote(request, link_id=0, vote=False):
 def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
         messages.info(request, _("You need to login or to register first..."))
-    else:    
+    else:
         au_to = Author.objects.get(user=user_id)
         au_from = Author.objects.get(user=request.user.pk)
         if au_from and au_to:
@@ -205,25 +208,36 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
     
-def profiledit(request):
-    if request.user.is_authenticated():
-        followers = Follow.objects.all().filter(author_to__exact = request.user.pk)
-        followings = Follow.objects.all().filter(author_from__exact = request.user.pk)
-            
-        if request.method == 'POST':
-            register_form = RegisterForm(request.POST, request.FILES)
-    
-            if register_form.is_valid():
-                messages.info(request,_('Welcome friend!'))
-                register_form.save()
-                user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
-                auth.login(request, user)
-        else:
-            edit_form = RegisterForm()
+def profiledit(request, page_to = 0, page_from = 0, user_name = False):
+    try:
+        author             = Author.objects.get(user__username__exact=user_name)
+        followers          = Follow.objects.all().filter(author_to__exact = author.pk)
+        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count()
+        followings         = Follow.objects.all().filter(author_from__exact = author.pk)
+        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count()
+        edit_form = False
         
-        return render_to_response('link5/profil_edit.html', {'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
-    else:
-        raise Http404(_("Cannot find profil"))
+        if request.user.is_authenticated() and request.user.pk == author.pk:
+            follow    = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
+            edit_form = RegisterForm()
+            
+            if request.method == 'POST':
+                register_form = RegisterForm(request.POST, request.FILES)
+        
+                if register_form.is_valid():
+                    messages.info(request,_('Welcome friend!'))
+                    register_form.save()
+                    user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
+                    auth.login(request, user)
+            else:
+                edit_form = RegisterForm()
+        else:
+            follow = False
+        
+        return render_to_response('link5/profil_edit.html', {'author': author, 'follow': follow, 'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
+    except:
+        #raise Http404(_("Cannot find profil"))
+        return HttpResponseRedirect('/')
     
 def commentsave(request, link_id=0):
     referral = "commentsave"

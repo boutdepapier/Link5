@@ -29,6 +29,10 @@ urlpatterns = patterns('',
     url(r'^category/(?P<category>\w+)/(?P<page>\d+)/$', 'link5app.views.home', name='category_nav'),
     
     url(r'^user/edit/$', 'link5app.views.profiledit', name='profiledit'),
+    url(r'^user/edit/to/(?P<page>\d+)/$', 'link5app.views.profiledit', name='profiledit_to_nav'),
+    url(r'^user/edit/from/(?P<page>\d+)/$', 'link5app.views.profiledit', name='profiledit_from_nav'),
+    url(r'^user/info/(?P<user_name>[^/]+)/$', 'link5app.views.profiledit', name='user_view'),
+    url(r'^user/info/(?P<user_name>[^/]+)/(?P<page>\d+)/$', 'link5app.views.profiledit', name='user_view_nav'),
     
     url(r'^user/links/$', 'link5app.views.userlinks', name='user_links'),
     url(r'^user/links/(?P<page>\d+)/$', 'link5app.views.userlinks', name='user_links_nav'),

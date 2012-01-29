@@ -125,8 +125,10 @@ nav a:hover{text-decoration: none;}
 /*********** User page  ************/
 #user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
 .user_details {font-size: 40px; line-height: 80px; vertical-align: bottom; height: 80px; float: left;}
-.follow {float: right; font-size: 40px; vertical-align: bottom; height: 80px; line-height: 80px;}
-.follow_status{display: block ;float: right; width: 40px; height: 40px; background: url(../img/on-off.png); margin: 20px 40px 0px 10px;}
+.follow {float: right; font-size: 40px; vertical-align: bottom; height: 60px; line-height: 60px; }
+.follow_number{clear:right; float: right; margin-top: 10px; position: relative; font-size: 11px; padding-right: 40px;}
+.follow_number a{color: #FFF;}
+.follow_status{display: block ;float: right; width: 40px; height: 40px; background: url(../img/on-off.png); margin: 5px 40px 0px 10px; clear: right;}
 .follow_on{background-position: bottom;}
 .follow_on:hover{background-position: top;}
 .follow_off{background-position: top;}

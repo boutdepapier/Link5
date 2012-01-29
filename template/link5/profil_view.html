@@ -7,11 +7,17 @@
         <img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />
     {% endif %}
     {{ author.user.username }}
-    {% trans '| Post history: ' %}
+    {% if not followers %}
+    | {% trans 'Post history: ' %}
+    {% else %}
+    | {% trans 'Followers page: ' %}
+    {% endif %}
     </p>
     
-    <p><a class="follow_status {% if follow %}follow_on{% else %}follow_off{% endif %}" href="/follow/{{ author.pk }}/{% if follow %}0{% else %}1{% endif %}/"></a></p>
-    <p class="follow">{% trans 'Link him:' %}</p>
+    <p class="follow_number"><a href="{% url user_view author.user.username %}">{% trans "Following: " %}({{ author.number_to }}), {% trans "Followers: " %}({{ author.number_from }})</a></p>
+    {% if request.user.is_authenticated %}<p><a class="follow_status {% if follow %}follow_on{% else %}follow_off{% endif %}" href="/follow/{{ author.pk }}/{% if follow %}0{% else %}1{% endif %}/"></a></p>
+    <p class="follow">{% trans 'Link him:' %}</p>{% endif %}
     
 </div>
+<div class="clearboth"></div>
 {% endif %}
