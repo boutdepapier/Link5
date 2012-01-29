@@ -1,4 +1,3 @@
 -> Finish the user page
 -> Improve user page (show linkers and link to)
 -> Email alert for new link follower ?
--> save foreign mignature image

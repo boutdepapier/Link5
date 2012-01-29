@@ -160,7 +160,7 @@ $(document).ready(function() {
     $(".link_load").click(function(){
        
         $("#link_overlay").fadeIn("slow");
-        $("#full_view_content").html("");
+        $("#full_view_content").html("<p class='link_loading'><img src='/static/link5/img/load.gif' ></p>");
         $("#full_view").fadeIn("slow");
         $("#full_view_content").focus();
         $("body").css({"overflow": "hidden"});
