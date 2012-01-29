@@ -69,6 +69,12 @@
             <label for="id_newsletter">{% trans "I accept email contact if one day there is. Link5 pinky promise to never sell or give or I really don't know... Man, just accept: anyway I am too lazy to make newsletter..." %}</label>
         </div>
         
+         <div class="conditions_check">
+            {{ register_form.conditions.errors }}
+            {{ register_form.conditions }}
+            <label for="id_conditions">{% trans "I understand and accept the <a href='/en/terms-and-conditons/' target='_blank'>terms and conditions</a>" %}</label>
+        </div>
+        
         <p class="link_submit submit_login"><input type="submit" value="Register!" /></p>
     </form>
 

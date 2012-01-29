@@ -4,7 +4,7 @@
     <div id="jquerywall_height"><div id="jquerywall">
     {% for link in links|slice:LINK_PER_PAGE %}
         <article class='link'>
-            <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" /><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a>{% else %}{{ link.post_ttl }}{% endifequal %}</h2>
+            <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" />{% else %}{% endifequal %}<a href="{% url linkload link.pk %}" class="link_load" target="_blank">{{ link.post_ttl }}</a></h2>
             
             <div class="media">
             {% ifequal link.link_type "photo" %}

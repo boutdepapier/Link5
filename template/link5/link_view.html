@@ -27,7 +27,7 @@
     <p class="link_view_txt">{{ link.post_txt }}</p>
 {% endif %}
 
-<p id="link_source">Link source: <a href="{{ link.post_url }}">{{link.source.netloc }}</a></p>
+<p id="link_source">Link source: <a href="{{ link.post_url }}" target="_blank">{{link.source.netloc }}</a></p>
 
 <div id="comment">
 {% for comment in comments %}

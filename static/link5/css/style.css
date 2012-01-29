@@ -33,7 +33,7 @@ nav a:hover{text-decoration: none;}
 
 #main{text-align: left; margin: auto; color: #000000; margin-top: 10px;}
 
-#flash_messages {color: #ffffff; background: #2A2A2A; font-size: 18px; font-weight: bold; padding: 5px 0px 0px 0px; border-bottom: 1px dashed #fff;}
+#flash_messages {color: #ffffff; background: #2A2A2A; font-size: 18px; font-weight: bold; padding: 10px 0px 0px 0px; border-bottom: 1px dashed #fff;}
 .flash_messages {padding: 0px 20px 10px 20px; text-align: center;}
 
 /*********** Product forms  ************/
@@ -76,7 +76,7 @@ nav a:hover{text-decoration: none;}
 #login_page{background: #0e4967; color: #fff;}
 #login_page h1 {font-size: 34px; padding: 20px 0px 20px 30px;}
 #login_page h2 {margin: -10px 0px 20px 0px; font-weight: normal; }
-#login_page .errorlist {font-size: 12px; list-style: none; margin: 0px 0px -5px 0px; padding-top: 10px;}
+#login_page .errorlist {font-size: 12px; list-style: none; margin: 0px 0px 0px 0px; padding-top: 10px;}
 #login_form {font-size: 18px; width: 420px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 0px 30px 50px; margin: 20px 0px 20px 0px;}
 .login_element label {float: left; width: 130px; padding: 10px 0px 10px 0px; clear: both;}
 .login_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
@@ -89,6 +89,8 @@ nav a:hover{text-decoration: none;}
 .register_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
 .register_avatar input {font-size: 14px; float: left; width: 250px; position: relative; margin-top: 4px; }
 .newsletter_check{clear: both; font-size: 14px;}
+.conditions_check{clear: both; font-size: 14px; padding-top: 10px;}
+.conditions_check a {color: #fff;}
 .again {font-size: 12px;}
 
 /*********** Links block zone  ************/
@@ -96,6 +98,7 @@ nav a:hover{text-decoration: none;}
 #jquerywall{position: absolute;}
 .link{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); }
 .title{font-size:12px;}
+.title a {color: #664444; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
 .media{padding: 10px 0px 0px 0px;}
