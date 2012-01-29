@@ -33,8 +33,8 @@ urlpatterns = patterns('',
     url(r'^user/info/(?P<user_name>[^/]+)/$', 'link5app.views.profiledit', name='user_view'),
     url(r'^user/info/(?P<user_name>[^/]+)/(?P<page>\d+)/$', 'link5app.views.profiledit', name='user_view_nav'),
     
-    url(r'^user/links/$', 'link5app.views.userlinks', name='user_links'),
-    url(r'^user/links/(?P<page>\d+)/$', 'link5app.views.userlinks', name='user_links_nav'),
+    url(r'^following/links/$', 'link5app.views.userlinks', name='user_links'),
+    url(r'^following/links/(?P<page>\d+)/$', 'link5app.views.userlinks', name='user_links_nav'),
     
     url(r'^user/(?P<user_name>[^/]+)/$', 'link5app.views.home', name='user_home'),
     url(r'^user/(?P<user_name>[^/]+)/(?P<page>\d+)/$', 'link5app.views.home', name='user_nav'),

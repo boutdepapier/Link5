@@ -1,7 +1,8 @@
 {% load i18n %}
 <nav>
     {% if request.user.is_authenticated %}
-        <a href="{% url user_links %}">{% trans 'My Links people' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
+        <a href="{% url user_links %}">{% trans 'My Links people' %}</a> - 
+        <a href="{% url home %}">{% trans 'All links' %}</a>&nbsp;&nbsp;&nbsp;----&nbsp;
     {% endif %}
     {% trans 'Top links:' %}
     <a href="{% url link_day %}">{% trans 'Today' %}</a> - 
