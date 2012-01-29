@@ -1,6 +1,6 @@
 {% load i18n link5_extras %}{% if author %}
 <div id="user_page">
-    <p class="user_details">
+    <h1 class="user_details">
     {% if author.avatar %}
         <img src="{{ author.avatar|crop:"80x80" }}" alt="{{ author.user.username }}" width="80" />
     {% else %}
@@ -12,7 +12,7 @@
     {% else %}
     | {% trans 'Link activity page: ' %}
     {% endif %}
-    </p>
+    </h1>
     
     <p class="follow_number"><a href="{% url user_view author.user.username|urlencode %}">{% trans "Following: " %}({{ author.number_to }}), {% trans "Followers: " %}({{ author.number_from }})</a></p>
     {% if request.user.is_authenticated %}<p><a class="follow_status {% if follow %}follow_on{% else %}follow_off{% endif %}" href="/follow/{{ author.pk }}/{% if follow %}0{% else %}1{% endif %}/"></a></p>

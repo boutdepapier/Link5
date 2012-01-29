@@ -101,13 +101,16 @@ def linkdelete(request, link_id):
     
     return home(request)
 
-def linkpreview(request, link_id):
+def linkpreview(request, link_id, refresh = False):
     try:
         link = Link.objects.get(pk=link_id)
         like = Like.objects.filter(link__exact=link_id).count()
         comments = Comment.objects.filter(link__exact=link_id).order_by("created_at").select_related()
         
         form = CommentForm()
+        
+        if refresh:
+            return render_to_response('link5/comments.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
         
         from urlparse import urlparse
         link.source = urlparse(link.post_url)
@@ -147,14 +150,19 @@ def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
         messages.info(request, _("You need to login or to register first..."))
     else:
+        author = Author.objects.get(user=request.user.pk)
         au_to = Author.objects.get(user=user_id)
-        au_from = Author.objects.get(user=request.user.pk)
+        au_from = Author.objects.get(user=author.pk)
         if au_from and au_to:
             follow = Follow.objects.filter(author_from=au_from.pk).filter(author_to=au_to.pk)
             if not follow and int(status) == 1:
-                follow = Follow.objects.create(author_from=au_from, author_to=au_to)
-                follow.save()
-                messages.info(request, _("You now have %s in your follow list" % (au_to.user.username)))
+                number_from = Follow.objects.all().filter(author_from__exact = author.pk).count()
+                if number_from + 1 > settings.MAX_FOLLOW:
+                    messages.info(request, _("Sorry you can't follow more than %s persons" % (settings.MAX_FOLLOW)))
+                else:
+                    follow = Follow.objects.create(author_from=au_from, author_to=au_to)
+                    follow.save()
+                    messages.info(request, _("You now have %s in your follow list" % (au_to.user.username)))
             elif int(status) == 0 and follow:
                 follow.delete()
                 messages.info(request, _("You have stop following %s" % (au_to.user.username)))

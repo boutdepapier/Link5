@@ -1,0 +1,26 @@
+{% load i18n link5_extras %}
+<div id="comment">
+{% for comment in comments %}
+    <div class="comment">
+        <p class="comment_avatar">
+            {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" />
+            {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />{% endif %}
+        </p>
+        <p class="comment_headline">By <a href="{% url user_home link.author.pk %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
+            {% ifequal comment.author.user.id request.user.pk %}<a href="{% url commentdelete comment.pk %}" class="delete">{% trans 'Delete [x]' %}</a>{% endifequal %}
+        </p>
+        <div class="comment_text">{{ comment.text }}</div>
+        <div class="clearboth"></div>
+    </div>
+{% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+<form action="/comment/save/{{ link.id }}/" name="comment_form" id="comment_form" method="post">{% csrf_token %}
+    {{ form.text.errors }}
+    <label for="id_text">{% trans 'Your comment: ' %}</label><br />
+    {{ form.text }}
+    
+    <div class="link_submit comment_it"><input type="submit" value="{% trans 'Submit' %}"/></div>
+</form>
+{% endif %}
