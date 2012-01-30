@@ -23,6 +23,7 @@
             <label for="id_password">{% trans 'Password:' %}</label>
             {{ login_form.password }}
         </div>
+        <p class="forgotpassword"><a href="{% url django.contrib.auth.views.password_reset %}">{% trans 'Forgot your password?' %}</a></p>
         <p class="link_submit submit_login"><input type="submit" value="Log me baby!" /></p>
     </form>
     

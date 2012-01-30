@@ -15,7 +15,7 @@ from django.utils.translation import ugettext as _
 from django.utils import simplejson
 
 from link5app.models import Link, Like, Author, Comment, Follow
-from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, ContactForm
+from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, ContactForm, UserProfileFrom
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
@@ -227,25 +227,23 @@ def profiledit(request, page_to = 0, page_from = 0, user_name = False):
         
         if request.user.is_authenticated() and request.user.pk == author.pk:
             follow    = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
-            edit_form = RegisterForm()
             
             if request.method == 'POST':
-                register_form = RegisterForm(request.POST, request.FILES)
+                edit_form = UserProfileFrom(request.POST, request.FILES, instance = author)
         
-                if register_form.is_valid():
-                    messages.info(request,_('Welcome friend!'))
-                    register_form.save()
-                    user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
-                    auth.login(request, user)
+                if edit_form.is_valid():
+                    messages.info(request,_('Profil updated'))
+                    edit_form.save()
             else:
-                edit_form = RegisterForm()
+                edit_form = UserProfileFrom(instance = author)
         else:
             follow = False
         
         return render_to_response('link5/profil_edit.html', {'author': author, 'follow': follow, 'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
     except:
         #raise Http404(_("Cannot find profil"))
-        return HttpResponseRedirect('/')
+        #return HttpResponseRedirect('/')
+        raise
     
 def commentsave(request, link_id=0):
     referral = "commentsave"

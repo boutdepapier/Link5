@@ -6,6 +6,8 @@ from django import forms
 
 from django.contrib.auth.models import User
 from django.contrib.auth import forms as auth_forms
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.models import get_current_site
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils import simplejson
@@ -97,8 +99,72 @@ class RegisterForm(auth_forms.UserCreationForm):
         
         return user
         
+class UserProfileFrom(forms.ModelForm):
+    password1  = forms.CharField(label=_("Password"), widget=forms.PasswordInput, required = False)
+    password2  = forms.CharField(label=_("Password"), widget=forms.PasswordInput, required = False)
+    
+    class Meta:
+        model = Author
+        exclude = ('user',)
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileFrom, self).__init__(*args, **kwargs)
+        self.fields['email']  = forms.EmailField(required=True, max_length=150, initial=self.instance.user.email)
+        self.fields['avatar'] = forms.ImageField(required=False, initial = False)
+        
+    def save(self):
+        author = super(UserProfileFrom, self).save(self)
+        if self.cleaned_data.get('password1'):
+            author.user.set_password(self.cleaned_data["password1"])
+        author.user.save()
+        author.save()
+        
+    def clean(self, *args, **kwargs):
+        super(UserProfileFrom, self).clean(*args,**kwargs)
+
+        if self.cleaned_data.get('password1') and (self.cleaned_data.get('password1') != self.cleaned_data.get('password2')):
+            raise forms.ValidationError(_("Passwords don't match."))
+            
+        return self.cleaned_data
+    
+class PasswordResetForm(auth_forms.PasswordResetForm):
+
+    def save(
+        self, domain_override=None,
+        email_template_name='', use_https=False,
+        token_generator=default_token_generator, from_email=None, request=None
+    ):
+        """
+        Generates a one-use only link for resetting password and sends to the user
+        """
+        from django.core.mail import EmailMultiAlternatives
+        for user in self.users_cache:
+            if not domain_override:
+                current_site = get_current_site(request)
+                site_name = current_site.name
+                domain = current_site.domain
+            else:
+                site_name = domain = domain_override
+            text_t = loader.get_template('registration/password_reset_email.txt')
+            html_t = loader.get_template('registration/password_reset_email.html')
+            c = {
+                'email': user.email,
+                'domain': domain,
+                'site_name': site_name,
+                'uid': int_to_base36(user.id),
+                'user': user,
+                'token': token_generator.make_token(user),
+                'protocol': use_https and 'https' or 'http',
+            }
+            msg = EmailMultiAlternatives(
+                _("Change of password on %s") % site_name,
+                text_t.render(Context(c)), from_email, [user.email]
+            )
+            msg.attach_alternative(html_t.render(Context(c)), "text/html")
+            msg.send()
+        
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
+    name    = forms.CharField(max_length=100)
+    email   = forms.EmailField()
     subject = forms.CharField(max_length=255)
     message = forms.CharField(widget=forms.Textarea)

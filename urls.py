@@ -50,6 +50,9 @@ urlpatterns = patterns('',
     
     url(r'^contact/$', 'link5app.views.contact', name="contact"),
     
+    #url(r'^password_reset/$', 'django.contrib.auth.views.password_reset',{'password_reset_form': PasswordResetForm}),
+    url(r'^login/', include('django.contrib.auth.urls')),
+    
     # Langage selection
     (r'^i18n/', include('django.conf.urls.i18n')),
 

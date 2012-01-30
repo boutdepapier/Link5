@@ -6,7 +6,7 @@
 <div id="profil_page">
     
     {% if edit_form %}
-    <form action="{% url login %}" method="post" id="edit_form">{% csrf_token %}
+    <form action="{% url user_view request.user.username|urlencode %}" method="post" id="edit_form">{% csrf_token %}
         <h2>{% trans 'Edit my account info' %}</h2>
         
         <input type="hidden" name="edit_form" value="1" />
@@ -14,17 +14,18 @@
         <input type="hidden" name="next" value="{{ next }}" />
     {% endif %}
         <div class="edit_element">
-            {{ edit_form.username.errors }}
-            <label for="id_username">{% trans 'Pseudo: ' %}</label>
-            {{ edit_form.username }}
-        </div>
-    
-        <div class="edit_element">
             {{ edit_form.email.errors }}
             <label for="id_username">{% trans 'Email: ' %}</label>
             {{ edit_form.email }}
         </div>
         
+        <div class="edit_avatar">
+            {{ edit_form.avatar.errors }}
+            {{ edit_form.avatar }}
+        </div>
+        
+        <p class="password_change">Password change</p>
+        {{ edit_form.non_field_errors }}
         <div class="edit_element">
             {{ edit_form.password1.errors }}
             <label for="id_password1">{% trans 'Password:' %}</label>
@@ -40,7 +41,7 @@
          <div class="newsletter_check">
             {{ edit_form.newsletter.errors }}
             {{ edit_form.newsletter }}
-            <label for="id_newsletter">{% trans "Newsletter" %}</label>
+            <label for="id_newsletter">{% trans "Newsletter, still cool with me?" %}</label>
         </div>
         
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Update' %}" /></p>
