@@ -258,7 +258,7 @@ def commentsave(request, link_id=0):
         
     return home(request, referral=referral)
     
-def commentdelete(request, comment_id=0):
+def commentdelete(request, link_id=0, comment_id=0):
     referral = "commentdelete"
     
     try:
