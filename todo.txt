@@ -1,4 +1,4 @@
 -> Email alert for new link follower ?
 -> comment should not close the pop up
 -> Add pagination in follower and following
--> Edit user info + password lost
+-> password lost

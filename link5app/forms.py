@@ -11,6 +11,9 @@ from django.contrib.sites.models import get_current_site
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils import simplejson
+from django.utils.http import int_to_base36
+
+from django.template import Context, loader
 
 from django.core import serializers
 
@@ -145,8 +148,8 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
                 domain = current_site.domain
             else:
                 site_name = domain = domain_override
-            text_t = loader.get_template('registration/password_reset_email.txt')
-            html_t = loader.get_template('registration/password_reset_email.html')
+            text_t = loader.get_template('emails/password_reset_email.txt')
+            html_t = loader.get_template('emails/password_reset_email.html')
             c = {
                 'email': user.email,
                 'domain': domain,
@@ -158,10 +161,12 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
             }
             msg = EmailMultiAlternatives(
                 _("Change of password on %s") % site_name,
-                text_t.render(Context(c)), from_email, [user.email]
+                text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [user.email]
             )
+            #print str(text_t.render(Context(c)))
             msg.attach_alternative(html_t.render(Context(c)), "text/html")
             msg.send()
+
         
 class ContactForm(forms.Form):
     name    = forms.CharField(max_length=100)

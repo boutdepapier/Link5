@@ -203,9 +203,14 @@ nav a:hover{text-decoration: none;}
 /*********** static pages ************/
 #password_lost_form{}
 #password_lost {background: #0e4967; color: #fff; padding: 40px 40px 40px 40px; font-size: 18px;}
+#password_lost a {color: #fff;}
 #password_lost label {float: left; font-size: 18px; width: 130px; padding: 10px 0px 10px 0px; clear: both; margin-top: -3px;}
 #password_lost #id_email {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
 .submit_pass{float: left; margin: 1px 0px 0px 10px; position: relative;}
+#new_pass {padding: 20px 0px 0px 0px; float: left;}
+#new_pass label{font-size: 18px; float: left; width: 250px; display: block;}
+#new_pass input{font-size: 18px; float: left; width: 250px; margin: 4px 0px 0px 10px;}
+.submit_newpass {clear: both; padding: 20px 0px 10px 0px;}
 
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }

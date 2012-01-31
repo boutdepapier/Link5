@@ -8,6 +8,9 @@ admin.autodiscover()
 import oembed
 oembed.autodiscover()
 
+import link5app
+from link5app import forms
+
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
     url(r'^(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
@@ -50,7 +53,8 @@ urlpatterns = patterns('',
     
     url(r'^contact/$', 'link5app.views.contact', name="contact"),
     
-    #url(r'^password_reset/$', 'django.contrib.auth.views.password_reset',{'password_reset_form': PasswordResetForm}),
+    url(r'^login/password_reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', name="pass_form_reset"),
+    url(r'^login/password_reset/$', 'django.contrib.auth.views.password_reset',{'password_reset_form': link5app.forms.PasswordResetForm}),
     url(r'^login/', include('django.contrib.auth.urls')),
     
     # Langage selection

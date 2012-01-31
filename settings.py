@@ -212,6 +212,7 @@ MODERATION_LEVEL = -3
 MAX_FOLLOW = 400
 MAX_IMAGE = 8
 
+USER_MESSAGE_FROM = "Link5 <no-reply@link5.me>"
 CONTACT_FROM = "contact@link5.me"
 CONTACT_RECIPIENT = (
         'benjamin@tacquet.com',
