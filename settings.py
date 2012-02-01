@@ -1,7 +1,7 @@
 import os
 
 # Django settings for link5 project.
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -81,8 +81,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    #os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/'),
-    #os.path.join(os.path.dirname(__file__), 'media').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'media').replace('\\', '/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -110,7 +110,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
@@ -126,7 +126,7 @@ TEMPLATE_DIRS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
+    #"django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
