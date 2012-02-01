@@ -45,8 +45,8 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         
     if user_name:
         author = Author.objects.get(user__username__exact=user_name)
-        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count()
-        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count()
+        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
+        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() - 1
         links = links.filter(author__exact = author.pk)
         url = "user"
         
@@ -217,7 +217,7 @@ def login(request):
                 user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
                 auth.login(request, user)
                 author = Author.objects.get(user=user.pk)
-                follow = Follow.objects.create(author_from=author.pk, author_to=author.pk)
+                follow = Follow.objects.create(author_from=author, author_to=author)
                 follow.save()
                 return HttpResponseRedirect(next_url)
         else:
@@ -250,9 +250,9 @@ def profiledit(request, page_to = 0, page_from = 0, user_name = False):
     try:
         author             = Author.objects.get(user__username__exact=user_name)
         followers          = Follow.objects.all().filter(author_to__exact = author.pk)
-        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count()
+        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
         followings         = Follow.objects.all().filter(author_from__exact = author.pk)
-        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count()
+        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() -1
         edit_form = False
         
         if request.user.is_authenticated() and request.user.pk == author.pk:
