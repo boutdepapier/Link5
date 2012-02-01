@@ -351,7 +351,7 @@ def getcontent(request, url = False):
                 except:
                     pass
 
-        
+            
             # Try to get the page title from the meta tag named title
             try:
                 title = soup.findAll('meta', attrs={'name':re.compile("^title$", re.I)})[0].get('content')
@@ -360,7 +360,10 @@ def getcontent(request, url = False):
         
             # If the meta tag does not exist, grab the title from the title tag.
             if not title:
-                title = soup.title.string
+                try:
+                    title = soup.title.string
+                except:
+                    pass
             
             try:
                 max_images = settings.MAX_IMAGE
