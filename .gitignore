@@ -1,3 +1,6 @@
 settings.py
 *.pyc
+media/cache
+media/uploads
+media/avatars
 
