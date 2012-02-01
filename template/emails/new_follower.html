@@ -35,7 +35,7 @@
                 {% if author_from.avatar %}
                 <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ author_from.avatar|crop:"80x80" }}" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% else %}
-                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ STATIC_URL }}link5/img/anonymous.png" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}static/link5/img/anonymous.png" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% endif %}
             </td>
             <td width=20></td>
