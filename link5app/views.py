@@ -78,18 +78,21 @@ def linkmonth(request, page = 0):
     return home (request, period = yesterday, page = page, url = "month")
 
 def userlinks(request, page = 0):
-    author = get_object_or_404(Author, user=request.user.pk)
-    followings = Follow.objects.all().filter(author_from__exact = author.pk)
-    links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
-    form = LinkForm()
-    url = "user/links"
-    
-    links.page = page
-    
-    links.home_page = False if int(page) <= 0 else True
-    links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
-     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    if request.user.is_authenticated():
+        author = get_object_or_404(Author, user=request.user.pk)
+        followings = Follow.objects.all().filter(author_from__exact = author.pk)
+        links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+        form = LinkForm()
+        url = "user/links"
+        
+        links.page = page
+        
+        links.home_page = False if int(page) <= 0 else True
+        links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
+         
+        return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/')
     
 def linkdelete(request, link_id):
     try:
