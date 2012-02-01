@@ -4,3 +4,4 @@ sorl-thumbnail
 django-filebrowser
 django-grappelli
 django-rosetta-grappelli
+feedparser
