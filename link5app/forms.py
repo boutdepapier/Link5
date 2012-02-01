@@ -113,7 +113,7 @@ class UserProfileFrom(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserProfileFrom, self).__init__(*args, **kwargs)
         self.fields['email']  = forms.EmailField(required=True, max_length=150, initial=self.instance.user.email)
-        self.fields['avatar'] = forms.ImageField(required=False, initial = False)
+        self.fields['avatar'] = forms.ImageField()
         
     def save(self):
         author = super(UserProfileFrom, self).save(self)

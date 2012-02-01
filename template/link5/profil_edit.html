@@ -6,7 +6,7 @@
 <div id="profil_page">
     
     {% if edit_form %}
-    <form action="{% url user_view request.user.username|urlencode %}" method="post" id="edit_form">{% csrf_token %}
+    <form action="{% url user_view request.user.username|urlencode %}" method="post" id="edit_form" enctype="multipart/form-data">{% csrf_token %}
         <h2>{% trans 'Edit my account info' %}</h2>
         
         <input type="hidden" name="edit_form" value="1" />
