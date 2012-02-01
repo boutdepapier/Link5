@@ -37,10 +37,10 @@ function start(){
 
     for (( I=${PORT}; I < ${PORT}+${WORKERS}; I++)); do
         echo "Port ${I}..."
-        ./manage.py runfcgi port=${I} outlog="${APP_DIR}/../../${ENV}-output-${I}.log" errlog="${APP_DIR}/../../${ENV}-error-${I}.log" pidfile="${APP_DIR}/../../${ENV}-${I}.pid" host=127.0.0.1 method=threaded minspare="${MIN_CHILDREN}" maxchildren="${MAX_CHILDREN}" maxrequests="${MAX_REQUESTS}" daemonize=true
+        ./manage.py runfcgi port=${I} outlog="${APP_DIR}/../${ENV}-output-${I}.log" errlog="${APP_DIR}/../${ENV}-error-${I}.log" pidfile="${APP_DIR}/../${ENV}-${I}.pid" host=127.0.0.1 method=threaded minspare="${MIN_CHILDREN}" maxchildren="${MAX_CHILDREN}" maxrequests="${MAX_REQUESTS}" daemonize=true
 
         if [ "$?" -ne "0" ]; then
-            rm -f "${APP_DIR}/../../${ENV}-${I}.pid"   # erase invalid PID
+            rm -f "${APP_DIR}/../${ENV}-${I}.pid"   # erase invalid PID
             exit 1                                  # exit on exception
         fi
     done
@@ -49,7 +49,7 @@ function start(){
 
 function stop(){
     echo "Stopping link5: ${ENV} FCGI instances...";
-    for x in `ls ${APP_DIR}/../../${ENV}-*.pid`; do
+    for x in `ls ${APP_DIR}/../${ENV}-*.pid`; do
         p=`cat "${x}"`
         echo "PID ${p}..."
         kill "$p"
@@ -62,14 +62,14 @@ function restart(){
     echo "Restarting link5: ${ENV} FCGI instances...";
     for (( I=${PORT}; I < ${PORT}+${WORKERS}; I++)); do
         echo "Port ${I}..."
-        if [ -f "${APP_DIR}/../../${ENV}-${I}.pid" ] ; then    # PID file exists
-            kill `cat "${APP_DIR}/../../${ENV}-${I}.pid"`
-            rm "${APP_DIR}/../../${ENV}-${I}.pid"
+        if [ -f "${APP_DIR}/../${ENV}-${I}.pid" ] ; then    # PID file exists
+            kill `cat "${APP_DIR}/../${ENV}-${I}.pid"`
+            rm "${APP_DIR}/../${ENV}-${I}.pid"
         else
             echo "PID file is not found!"
         fi
         sleep 1
-        ./manage.py runfcgi  port=${I} outlog="${APP_DIR}/../../${ENV}-output-${I}.log" errlog="${APP_DIR}/../../${ENV}-error-${I}.log" pidfile="${APP_DIR}/../../${ENV}-${I}.pid" host=127.0.0.1 method=threaded minspare="${MIN_CHILDREN}" maxchildren="${MAX_CHILDREN}" maxrequests="${MAX_REQUESTS}" daemonize=true
+        ./manage.py runfcgi  port=${I} outlog="${APP_DIR}/../${ENV}-output-${I}.log" errlog="${APP_DIR}/../${ENV}-error-${I}.log" pidfile="${APP_DIR}/../${ENV}-${I}.pid" host=127.0.0.1 method=threaded minspare="${MIN_CHILDREN}" maxchildren="${MAX_CHILDREN}" maxrequests="${MAX_REQUESTS}" daemonize=true
         if [ "$?" -ne "0" ]; then
             rm -f "${APP_DIR}/../${ENV}-${I}.pid"   # erase invalid PID
             exit 1                                  # exit on exception
@@ -82,8 +82,8 @@ function status(){
     echo "Gathering Link5: ${ENV} FCGI instances status..."
     for (( I=${PORT}; I < ${PORT}+${WORKERS}; I++)); do
 
-        if [ -f "${APP_DIR}/../../${ENV}-${I}.pid" ]; then
-            pid=`cat "${APP_DIR}/../../${ENV}-${I}.pid"`
+        if [ -f "${APP_DIR}/../${ENV}-${I}.pid" ]; then
+            pid=`cat "${APP_DIR}/../${ENV}-${I}.pid"`
             processes=`ps --no-headers --pid $pid`
             if [ "$?" -ne "0" ]; then
                 echo "Port ${I}: process is not found, possible crash"
