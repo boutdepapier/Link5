@@ -37,8 +37,8 @@ LANGUAGE_CODE = 'en-us'
 ugettext = lambda s: s
 LANGUAGES = (
       ('en', ugettext('English')),
-      ('fr', ugettext('French')),
-      ('de', ugettext('German')),
+      #('fr', ugettext('French')),
+      #('de', ugettext('German')),
 )
 
 SITE_ID = 1
@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     
     'grappelli.dashboard',
     'grappelli',
+    'filebrowser',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

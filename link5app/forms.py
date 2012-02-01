@@ -163,7 +163,6 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
                 _("Change of password on %s") % site_name,
                 text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [user.email]
             )
-            #print str(text_t.render(Context(c)))
             msg.attach_alternative(html_t.render(Context(c)), "text/html")
             msg.send()
 

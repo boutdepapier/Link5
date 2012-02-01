@@ -1,0 +1,56 @@
+{% load i18n link5_extras %}<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Link5 email lost</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+</head>
+<body align="left" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgColor="#f5fff5" style="background: #f5fff5;" width="100%">
+
+    <table border="0" cellpadding="0" cellspacing="0" valign="top" align="left" width="100%" bgColor="#f5fff5" style="background: #f5fff5;">
+        <tr height="10"><td colspan="3"></td></tr>
+        
+        <tr align="left"><td colspan="3"><table cellpadding="0" cellspacing="0" border="0"><tr>
+            <td width="20" align="left"></td>
+            <td align="left" valign="left" width="150">
+                <p><a href="{% url home %}" ><font face="Arial" size="3" color="#0e4967" style="font-size: 16px;"><img src="{{ protocol }}://{{ domain }}/static/link5/img/Link5me.png" alt="Link5.me" border="0" width="150" height="53" /></font></a></p>
+            </td>
+            </tr></table>
+        </td></tr>
+        
+        <tr height="3" bgcolor="#0e4967"><td colspan="3"></td></tr>
+        <tr bgcolor="#0e4967">
+            <td width="20"></td>
+            <td colspan="1">
+                <font face="Arial" size="4" color="#ffffff" style="font-size: 18px;">{% trans "Congratulation! You have a new link follower!" %}</font>
+            </td>
+            <td></td>
+        </tr>
+        <tr height="3" bgcolor="#0e4967"><td colspan="3"></td></tr>
+        <tr height="10" bgcolor="#d6ecc4"><td colspan="3"></td></tr>
+        
+        <tr bgcolor="#d6ecc4">
+            <td width="20"></td>
+            <td colspan="2"><table cellpadding="0" cellspacing="0"><tr>
+            <td width="80">
+                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ author_from.avatar|crop:"80x80" }}" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+            </td>
+            <td width=20></td>
+            <td><p>{% trans "Hello" %} {{ author_to.user.username }},</p>
+            <p>
+                <br />
+                {{ author_from.user.username }} {% trans "is now linked to you on link5.me" %}
+                <br /><br />
+                {% trans "To see your new follower info just go on:" %}<br />
+                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}">{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}</a>
+            </p>
+            <p>
+              {% blocktrans %}
+                Kiss, <br />
+                Link5
+              {% endblocktrans %}
+            </p>
+            </td></tr></table>
+        </td></tr>
+        <tr height="10" bgcolor="#d6ecc4"><td colspan="3"></td></tr>
+    </table>
+</body>

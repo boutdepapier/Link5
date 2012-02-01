@@ -4,12 +4,14 @@ from django.conf import settings
 
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
+from django.template import Context, loader
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.sites.models import get_current_site
 
 from django.utils.translation import ugettext as _
 from django.utils import simplejson
@@ -160,6 +162,29 @@ def follow(request, user_id = False, status = False):
                 if number_from + 1 > settings.MAX_FOLLOW:
                     messages.info(request, _("Sorry you can't follow more than %s persons" % (settings.MAX_FOLLOW)))
                 else:
+                    
+                    from django.core.mail import EmailMultiAlternatives
+                    current_site = get_current_site(request)
+                    site_name = current_site.name
+                    domain = current_site.domain
+                        
+                    text_t = loader.get_template('emails/new_follower.txt')
+                    html_t = loader.get_template('emails/new_follower.html')
+                    c = {
+                        'email': au_to.user.email,
+                        'domain': domain,
+                        'site_name': site_name,
+                        'author_to': au_to,
+                        'author_from': au_from,
+                        'protocol': 'http',
+                    }
+                    msg = EmailMultiAlternatives(
+                        _("Congratulation! You have a new link follower on %s!") % site_name,
+                        text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [au_to.user.email]
+                    )
+                    msg.attach_alternative(html_t.render(Context(c)), "text/html")
+                    msg.send()
+                    
                     follow = Follow.objects.create(author_from=au_from, author_to=au_to)
                     follow.save()
                     messages.info(request, _("You now have %s in your follow list" % (au_to.user.username)))

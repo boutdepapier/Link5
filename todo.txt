@@ -1,2 +1,1 @@
--> Email alert for new link follower ?
 -> Add pagination in follower and following
