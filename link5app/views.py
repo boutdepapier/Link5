@@ -188,9 +188,11 @@ def follow(request, user_id = False, status = False):
                     follow = Follow.objects.create(author_from=au_from, author_to=au_to)
                     follow.save()
                     messages.info(request, _("You now have %s in your follow list" % (au_to.user.username)))
-            elif int(status) == 0 and follow:
+            elif int(status) == 0 and follow and au_to != au_from:
                 follow.delete()
                 messages.info(request, _("You have stop following %s" % (au_to.user.username)))
+            elif au_to == au_from:
+                messages.info(request, _("Can't stop your own music man!"))
     
     return home(request)
     
@@ -214,6 +216,9 @@ def login(request):
                 register_form.save()
                 user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
                 auth.login(request, user)
+                author = Author.objects.get(user=user.pk)
+                follow = Follow.objects.create(author_from=author.pk, author_to=author.pk)
+                follow.save()
                 return HttpResponseRedirect(next_url)
         else:
             register_form = RegisterForm()
