@@ -44,14 +44,17 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         links = links.filter(category__slug=category)
         
     if user_name:
-        author = Author.objects.get(user__username__exact=user_name)
-        author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
-        author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() - 1
-        links = links.filter(author__exact = author.pk)
-        url = "user"
-        
-        if request.user.is_authenticated():
-            follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
+        try:
+            author = Author.objects.get(user__username__exact=user_name)
+            author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
+            author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() - 1
+            links = links.filter(author__exact = author.pk)
+            url = "user"
+            
+            if request.user.is_authenticated():
+                follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
+        except:
+            return HttpResponseRedirect('/')
         
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     
