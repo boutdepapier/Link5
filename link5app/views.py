@@ -127,6 +127,7 @@ def linkpreview(request, link_id, refresh = False):
 def vote(request, link_id=0, vote=False):
     if not request.user.is_authenticated():
         message = _("You need to login or to register first...")
+        return HttpResponseRedirect('/')
     else:
         current_link = Link.objects.get(pk=link_id)
         current_author = Author.objects.get(user=request.user.pk)
@@ -149,7 +150,7 @@ def vote(request, link_id=0, vote=False):
         else:
             message = _("One vote per Link")
             
-    return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
+        return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
     
 def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
@@ -335,13 +336,12 @@ def getcontent(request, url = False):
             oembed_obj = {'type': 'photo', 'url': original_url}
             oembed_obj = json.dumps(oembed_obj)
         else:
+            title=''; description=''; image_list = []
             request = urllib2.Request(original_url)
             
             response = urllib2.urlopen(request)
             html = response.read()
             soup = BeautifulSoup(html)
-            
-            title=''; description=''
             description = soup.findAll('meta', attrs={'name':re.compile("^description$")})
             if description:
                description = description[0].get('content')
@@ -378,7 +378,6 @@ def getcontent(request, url = False):
                     else:
                         image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
                 
-                image_list = []
                 for img_url in image_urls_list:
                     file = urllib2.urlopen(img_url)
                     size = file.headers.get("content-length")
