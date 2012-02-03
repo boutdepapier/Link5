@@ -40,6 +40,7 @@ function close_link_form() {
         $("#preview_ttl").html("");
         $("#preview_med").html("");
         $("#preview_txt").html("");  
+        $("#id_post_url").val("");
 }
     
 function link_validator() {
