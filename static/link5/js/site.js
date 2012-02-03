@@ -143,6 +143,7 @@ function close_link(){
     $("#link_overlay").fadeOut("slow");
     $("#full_view").fadeOut("slow");
     $("#full_view_content").html("");
+    $("body").css({"overflow": "auto"});
 }
 
 function manual_submit(url) {
