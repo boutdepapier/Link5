@@ -132,6 +132,7 @@ function close_link(){
     $("#link_overlay").fadeOut("slow");
     $("#full_view").fadeOut("slow");
     $("#full_view").css({"overflow": "hidden"});
+    $("#full_view_content").html("<p class='link_loading'><img src='/static/link5/img/load.gif' ></p>");
     $("body").css({"overflow": "auto"});
 }
 
