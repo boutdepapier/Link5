@@ -32,6 +32,15 @@ function desc_length(string) {
         $("#label_post_txt").css({ 'color' : "#ffffff" });
     }
 }
+
+function close_link_form() {
+        $("#post_preview_form").slideUp('slow');
+        $("#post_preview_loading").html("");
+        $("#cancel_link").fadeOut("slow");
+        $("#preview_ttl").html("");
+        $("#preview_med").html("");
+        $("#preview_txt").html("");  
+}
     
 function link_validator() {
     
@@ -46,6 +55,7 @@ function link_validator() {
         
         $("#post_preview_form").slideDown('slow');
         $("#post_preview_loading").fadeIn("slow");
+        $("#cancel_link").fadeIn("slow");
         $("#post_preview_loading").html("<img src='/static/link5/img/load.gif' >");
         $("#preview_ttl").html("");
         $("#preview_med").html("");
@@ -131,9 +141,7 @@ function link_validator() {
 function close_link(){
     $("#link_overlay").fadeOut("slow");
     $("#full_view").fadeOut("slow");
-    $("#full_view").css({"overflow": "hidden"});
-    $("#full_view_content").html("<p class='link_loading'><img src='/static/link5/img/load.gif' ></p>");
-    $("body").css({"overflow": "auto"});
+    $("#full_view_content").html("");
 }
 
 function manual_submit(url) {
@@ -190,6 +198,10 @@ $(document).ready(function() {
         open_link($(this).attr('href'));
         return false;
     });
+    
+    $("#cancel_link").click(function(){
+        close_link_form(); 
+    });    
     
     $("#id_post_url").keyup(function() {
         delay_get(function(){ link_validator() }, 500 );

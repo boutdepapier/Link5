@@ -67,7 +67,8 @@ nav a:hover{text-decoration: none;}
 .post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
 .post_preview a {color: #664444;}
 #post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
-#preview_med{}
+#preview_med{text-align: center;}
+.cancel {float: left; margin-top: -3px; display: none;}
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
 .post_it input {width: 510px; clear: both;}
 #right_a{display: block; width: 30px; height: 30px; background: url(../img/right.png) no-repeat; position: relative; float: right; margin: -36px 3px 10px 0px; cursor: pointer;}
