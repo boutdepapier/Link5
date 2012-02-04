@@ -128,9 +128,9 @@ def linkpreview(request, link_id, refresh = False):
         raise Http404(_("Cannot find link..."))
 
 def vote(request, link_id=0, vote=False):
+    current_link = False
     if not request.user.is_authenticated():
-        message = _("You need to login or to register first...")
-        return HttpResponseRedirect('/')
+        message = _("Please login first")
     else:
         current_link = Link.objects.get(pk=link_id)
         current_author = Author.objects.get(user=request.user.pk)
@@ -153,7 +153,7 @@ def vote(request, link_id=0, vote=False):
         else:
             message = _("One vote per Link")
             
-        return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
+    return render_to_response('link5/link_vote.html', {"message": message, "link": current_link}, context_instance=RequestContext(request))
     
 def follow(request, user_id = False, status = False):
     if not request.user.is_authenticated():
