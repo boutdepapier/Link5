@@ -28,6 +28,11 @@
 {% endif %}
 
 <p id="link_source">Link source: <a href="{{ link.post_url }}" target="_blank">{{link.source.netloc }}</a></p>
+<div class="likeornot_post" id="likeornotpost_{{ link.pk }}">
+    <p><a class="like" href="{% url vote link.pk '1' %}" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
+    <a class="not" href="{% url vote link.pk '0' %}" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
+    </p>
+</div>
 
 <div id="full_comment">
     {% include "link5/comments.html" %}

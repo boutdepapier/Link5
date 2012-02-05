@@ -153,6 +153,19 @@ function manual_submit(url) {
     } 
 }
 
+function link_vote(url, link_id, tag_id) {
+    link_id = link_id.split('_');
+    $("#"+tag_id+link_id[1]).html("<span class='vote_loading'>Loading...</span>");
+    
+    setTimeout(function() {$.ajax({
+      url: url,
+      success: function(data) {
+        $("#"+tag_id+link_id[1]).fadeIn("slow");
+        $("#"+tag_id+link_id[1]).html(data);
+      }
+    });}, 300);
+}
+
 function open_link(url_link_open) {
     $("#link_overlay").fadeIn("slow");
     $("#full_view_content").html("<p class='link_loading'><img src='/static/link5/img/load.gif' ></p>");
@@ -166,6 +179,12 @@ function open_link(url_link_open) {
       url: url,
       success: function(data) {
         $('#full_view_content').html(data);
+        $('.likeornot_post a').live('click', function() {
+            var url = $(this).attr('href');
+            var link_id = $(this).attr('id');
+            link_vote(url, link_id, 'likeornotpost_');
+            return false;
+        });
       }
     });
 }
@@ -216,16 +235,7 @@ $(document).ready(function() {
     $(".likeornot a").click(function(){
         var url = $(this).attr('href');
         var link_id = $(this).attr('id');
-        link_id = link_id.split('_');
-        $("#likeornot_"+link_id[1]).html("<span class='vote_loading'>Loading...</span>");
-        
-        setTimeout(function() {$.ajax({
-          url: url,
-          success: function(data) {
-            $("#likeornot_"+link_id[1]).fadeIn("slow");
-            $("#likeornot_"+link_id[1]).html(data);
-          }
-        });}, 300);
+        link_vote(url, link_id, 'likeornot_');
         return false;
     });
     

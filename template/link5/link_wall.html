@@ -39,8 +39,8 @@
             {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.pk %}">{% trans "Delete [x]" %}</a></p>{% endif %}
             
             <div class="likeornot" id="likeornot_{{ link.pk }}">
-                <p><a class="like" href="{% url vote link.pk '1' %}" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" width="13" class="vicone" /></a>
-                <a class="not" href="{% url vote link.pk '0' %}" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" width="13" class="vicone" /></a>
+                <p><a class="like" href="{% url vote link.pk '1' %}" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
+                <a class="not" href="{% url vote link.pk '0' %}" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
                 </p>
             </div>
             <div class="clearboth"></div>
