@@ -328,6 +328,7 @@ def commentsave(request, link_id=0):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
+            """
             from django.core.mail import EmailMultiAlternatives
             current_site = get_current_site(request)
             site_name = current_site.name
@@ -344,11 +345,12 @@ def commentsave(request, link_id=0):
                 'protocol': 'http',
             }
             msg = EmailMultiAlternatives(
-                _("Congratulation! You have a new link follower on %s!") % site_name,
+                _("New comment waiting for you on %s!") % site_name,
                 text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [au_to.user.email]
             )
             msg.attach_alternative(html_t.render(Context(c)), "text/html")
             msg.send()
+            """
         
             form.save(request.user, link_id)
             messages.info(request,_("Thank you for your comment!"))

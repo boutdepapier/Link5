@@ -1,0 +1,12 @@
+{% load i18n %}{% trans "Hello" %} {{ author_to.user.username }},
+
+{{ author_from.user.username }} {% trans "is now linked to you on link5.me" %}
+
+{% trans "To see your new follower info just go on:" %}
+{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}
+
+
+{% blocktrans %}
+    Kiss,
+    Link5
+{% endblocktrans %}
