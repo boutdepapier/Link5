@@ -8,7 +8,7 @@
 {% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
     <p id="link_link_image">
         {% thumbnail link.post_img "250" upscale=False as im %}
-            <img src="{{ im.url }}" class="link_image_preview">
+             <a href="{{ link.post_url }}" target="_blank"><img src="{{ im.url }}" class="link_image_preview" border="0"></a>
         {% endthumbnail %}
     </p>
 {% endif %}{% else %}{% ifequal link.link_type "video" %}
@@ -21,7 +21,7 @@
 </div>
 {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
 
-<h1>{{ link.post_ttl }}</h1>
+<h1><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a></h1>
 
 {% if link.post_txt %}
     <p class="link_view_txt">{{ link.post_txt }}</p>

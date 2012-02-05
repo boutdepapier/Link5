@@ -47,6 +47,7 @@ urlpatterns = patterns('',
     
     url(r'^comment/save/(?P<link_id>\d+)/$', 'link5app.views.commentsave', name='commentsave'),
     url(r'^comment/delete/(?P<link_id>\d+)/(?P<comment_id>\d+)/$', 'link5app.views.commentdelete', name='commentdelete'),
+    url(r'^comment/open/(?P<link_id>\d+)/$', 'link5app.views.home', name='commentopen'),
     
     url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
     url(r'^login/$', 'link5app.views.login', name="login"),

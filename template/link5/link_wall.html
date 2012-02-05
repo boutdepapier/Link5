@@ -8,19 +8,19 @@
             
             <div class="media">
             {% ifequal link.link_type "photo" %}
-                <p><a href="{% url linkload link.pk %}" class="link_load" target="_blank">
+                <p class="link_visu"><a href="{% url linkload link.pk %}" class="link_load" target="_blank">
                     {% thumbnail link.post_img "185" as im %}
                         <img src="{{ im.url }}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
-                <p><a href="{% url linkload link.pk %}"  class="link_load">
-                    {% thumbnail link.post_img "185" as im %}
+                <p class="link_visu"><a href="{% url linkload link.pk %}"  class="link_load">
+                    {% thumbnail link.post_img "185" upscale=False as im %}
                         <img src="{{ im.url }}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% endif %}{% else %}{% ifequal link.link_type "video" %}
-                <p><a href="{% url linkload link.pk %}"  class="link_load">
+                <p class="link_visu"><a href="{% url linkload link.pk %}"  class="link_load">
                     {% thumbnail link.post_img "185" as im %}
                         <img src="{{ im.url }}" class="link_image_preview">
                     {% endthumbnail %}

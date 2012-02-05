@@ -193,7 +193,7 @@ $(document).ready(function() {
 
     url_value = window.location.pathname.split('/');
     
-    if ((url_value[1] == "comment" && url_value[2] == "save") || (url_value[1] == "comment" && url_value[2] == "delete")) {
+    if ((url_value[1] == "comment" && url_value[2] == "open") || (url_value[1] == "comment" && url_value[2] == "save") || (url_value[1] == "comment" && url_value[2] == "delete")) {
         open_link("/link/load/"+url_value[3]+"/");
     }
     $(".link_load").click(function(){

@@ -22,13 +22,13 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False):
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
         
         if form.is_valid():
-            link = form.save()
+            link = form.save(request.POST.get("user_url", None))
             if request.user.is_authenticated():
                 author = Author.objects.get(user=request.user.pk)
                 link.author = author
@@ -53,25 +53,28 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     else:
         form = LinkForm() # An unbound form
     
-    links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
-    if period:
-        links = links.filter(created_at__gte=period).extra(select={"score": "positive - negative"}).extra(order_by = ['-score'])
-        
-    if category:
-        links = links.filter(category__slug=category)
-        
-    if user_name:
-        try:
-            author = Author.objects.get(user__username__exact=user_name)
-            author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
-            author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() - 1
-            links = links.filter(author__exact = author.pk)
-            url = "user"
+    if link_id:
+        links = Link.objects.all().filter(pk = link_id)
+    else:
+        links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
+        if period:
+            links = links.filter(created_at__gte=period).extra(select={"score": "positive - negative"}).extra(order_by = ['-score'])
             
-            if request.user.is_authenticated():
-                follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
-        except:
-            return HttpResponseRedirect('/')
+        if category:
+            links = links.filter(category__slug=category)
+            
+        if user_name:
+            try:
+                author = Author.objects.get(user__username__exact=user_name)
+                author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
+                author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() - 1
+                links = links.filter(author__exact = author.pk)
+                url = "user"
+                
+                if request.user.is_authenticated():
+                    follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
+            except:
+                return HttpResponseRedirect('/')
         
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     
@@ -328,7 +331,10 @@ def commentsave(request, link_id=0):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            """
+            comment_author = Author.objects.get(user=request.user.pk)
+            link = Link.objects.get(pk=link_id)
+            link_author = Author.objects.get(user=link.author)
+            
             from django.core.mail import EmailMultiAlternatives
             current_site = get_current_site(request)
             site_name = current_site.name
@@ -337,22 +343,23 @@ def commentsave(request, link_id=0):
             text_t = loader.get_template('emails/comment.txt')
             html_t = loader.get_template('emails/comment.html')
             c = {
-                'email': au_to.user.email,
+                'email': link_author.user.email,
                 'domain': domain,
                 'site_name': site_name,
-                'author_to': au_to,
-                'author_from': au_from,
+                'comment_author': comment_author,
+                'link': link,
+                'link_author': link_author,
+                'text': form.cleaned_data['text'],
                 'protocol': 'http',
             }
             msg = EmailMultiAlternatives(
                 _("New comment waiting for you on %s!") % site_name,
-                text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [au_to.user.email]
+                text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [link_author.user.email]
             )
             msg.attach_alternative(html_t.render(Context(c)), "text/html")
             msg.send()
-            """
         
-            form.save(request.user, link_id)
+            form.save(comment_author, link)
             messages.info(request,_("Thank you for your comment!"))
     else:
         form = CommentForm()
@@ -454,7 +461,7 @@ def getcontent(request, url = False):
                             file = urllib2.urlopen(img_url)
                             size = file.headers.get("content-length")
                             file.close()
-                            if int(size) > 8000:
+                            if int(size) > settings.MIM_IMAGE_SIZE:
                                 image_list.append({'url': img_url})
                     except:
                         pass

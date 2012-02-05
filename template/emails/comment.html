@@ -21,7 +21,7 @@
         <tr bgcolor="#0e4967">
             <td width="20"></td>
             <td colspan="1">
-                <font face="Arial" size="4" color="#ffffff" style="font-size: 18px;">{% trans "Congratulation! You have a new link follower!" %}</font>
+                <font face="Arial" size="4" color="#ffffff" style="font-size: 18px;">{% trans "You have a new comment on your link!" %}</font>
             </td>
             <td></td>
         </tr>
@@ -30,22 +30,22 @@
         
         <tr bgcolor="#d6ecc4">
             <td width="20"></td>
-            <td colspan="2"><table cellpadding="0" cellspacing="0"><tr>
+            <td colspan="2"><table cellpadding="0" cellspacing="0"><tr valign="top">
             <td width="80">
-                {% if author_from.avatar %}
-                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ author_from.avatar|crop:"80x80" }}" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+                {% if comment_author.avatar %}
+                <a href="{{ protocol }}://{{ domain }}{% url user_view comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ comment_author.avatar|crop:"80x80" }}" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% else %}
-                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}/static/link5/img/anonymous.png" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+                <a href="{{ protocol }}://{{ domain }}{% url user_view comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}/static/link5/img/anonymous.png" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% endif %}
             </td>
             <td width=20></td>
-            <td><p>{% trans "Hello" %} {{ author_to.user.username }},</p>
+            <td><p>{% trans "Hello" %} {{ link_author.user.username }},</p>
             <p>
                 <br />
-                {{ author_from.user.username }} {% trans "is now linked to you on link5.me" %}
+                {{ comment_author.user.username }} {% trans "has posted on your link: " %} <a href="{{ protocol }}://{{ domain }}{% url commentopen link.id %}">{{ link.post_ttl }}</a>
                 <br /><br />
-                {% trans "To see your new follower info just go on:" %}<br />
-                <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}">{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}</a>
+                {% trans "His comment:" %}<br />
+                <cite>{{ text }}</cite>
             </p>
             <p>
               {% blocktrans %}

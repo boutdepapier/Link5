@@ -1,9 +1,10 @@
-{% load i18n %}{% trans "Hello" %} {{ author_to.user.username }},
+{% load i18n %}{% trans "Hello" %} {{ link_author.user.username }},
 
-{{ author_from.user.username }} {% trans "is now linked to you on link5.me" %}
+{{ comment_author.user.username }} {% trans "has posted on your link: " %}
+{{ link.post_ttl }}, {{ protocol }}://{{ domain }}{% url commentopen link.id %}
 
-{% trans "To see your new follower info just go on:" %}
-{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}
+{% trans "His message:" %}
+{{ text }}
 
 
 {% blocktrans %}

@@ -29,7 +29,7 @@ class LinkForm(forms.Form):
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
-    def save(self):
+    def save(self, user_url = ""):
         link = Link()
         
         link.post_ttl = self.cleaned_data['post_ttl']
@@ -46,7 +46,7 @@ class LinkForm(forms.Form):
             link.post_img = data['thumbnail_url']
         
         if data['type'] == "link":
-            link.post_img = self.cleaned_data['post_url']
+            link.post_img = user_url
         
         elif data['type'] == "photo": link.post_img = data['url']
             
@@ -55,13 +55,12 @@ class LinkForm(forms.Form):
 class CommentForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, max_length=1000, required=True)
     
-    def save(self, user, link_id):
-        userprofile = User.objects.get(username=user)
+    def save(self, author, link):
         comment = Comment()
         comment.text = self.cleaned_data['text']
         comment.status = "publish"
-        comment.author_id = userprofile.pk
-        comment.link_id = link_id
+        comment.author_id = author.pk
+        comment.link_id = link.pk
         comment.save()
         
 class AuthForm(auth_forms.AuthenticationForm):

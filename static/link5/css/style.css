@@ -106,6 +106,7 @@ nav a:hover{text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
 .media{padding: 10px 0px 0px 0px;}
+.link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
 #link_nav{padding: 20px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
 #link_nav a{color: #664444; text-decoration: none;}
@@ -147,9 +148,10 @@ nav a:hover{text-decoration: none;}
 #link_image img {max-width: 580px; position: relative; z-index: 4;}
 #close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
 .link_loading{padding: 30px 0px 50px 0px; text-align: center;}
-#link_link_image{padding: 10px 10px 10px 10px; float: left; }
-#full_view_content h1{padding: 20px 20px 0px 20px;}
-.link_view_txt{padding: 20px 20px 10px 20px;}
+#link_link_image{padding: 15px 10px 10px 10px; float: left; }
+#full_view_content h1{padding: 10px 20px 0px 20px;}
+#full_view_content h1 a {color: #664444;}
+.link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
 #link_source {padding: 0px 20px 20px 20px; clear: both; font-size: 11px;}
 #link_source a{color: #ff9009;}
 
