@@ -30,7 +30,7 @@
         
         <tr bgcolor="#d6ecc4">
             <td width="20"></td>
-            <td colspan="2"><table cellpadding="0" cellspacing="0"><tr>
+            <td colspan="2"><table cellpadding="0" cellspacing="0"><tr valign="top">
             <td width="80">
                 {% if author_from.avatar %}
                 <a href="{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ author_from.avatar|crop:"80x80" }}" alt="{{ author_from.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
