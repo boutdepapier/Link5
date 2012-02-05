@@ -72,7 +72,8 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
                 url = "user"
                 
                 if request.user.is_authenticated():
-                    follow = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
+                    visitor = Author.objects.get(user=request.user.pk)
+                    follow = Follow.objects.filter(author_from=visitor.pk).filter(author_to=author.pk)
             except:
                 return HttpResponseRedirect('/')
         
@@ -298,16 +299,21 @@ def logout(request):
     
 def profiledit(request, page_to = 0, page_from = 0, user_name = False):
     try:
+        follow = False
+        
         author             = Author.objects.get(user__username__exact=user_name)
-        followers          = Follow.objects.all().filter(author_to__exact = author.pk)
+        followers          = Follow.objects.all().filter(author_to__exact = author.pk).exclude(author_from__exact = author.pk)
         author.number_from = Follow.objects.all().filter(author_to__exact = author.pk).count() - 1
-        followings         = Follow.objects.all().filter(author_from__exact = author.pk)
+        followings         = Follow.objects.all().filter(author_from__exact = author.pk).exclude(author_to__exact = author.pk)
         author.number_to   = Follow.objects.all().filter(author_from__exact = author.pk).count() -1
         edit_form = False
         
+        if request.user.is_authenticated():
+            visitor = Author.objects.get(user=request.user.pk)
+            follow    = Follow.objects.filter(author_from=visitor.pk).filter(author_to=author.pk)
+        
         if request.user.is_authenticated() and request.user.pk == author.pk:
-            follow    = Follow.objects.filter(author_from=request.user.pk).filter(author_to=author.pk)
-            
+                        
             if request.method == 'POST':
                 edit_form = UserProfileFrom(request.POST, request.FILES, instance = author)
         
@@ -316,14 +322,11 @@ def profiledit(request, page_to = 0, page_from = 0, user_name = False):
                     edit_form.save()
             else:
                 edit_form = UserProfileFrom(instance = author)
-        else:
-            follow = False
+            
         
         return render_to_response('link5/profil_edit.html', {'author': author, 'follow': follow, 'followers': followers, 'followings': followings, 'edit_form': edit_form}, context_instance=RequestContext(request))
     except:
-        #raise Http404(_("Cannot find profil"))
-        #return HttpResponseRedirect('/')
-        raise
+        raise Http404(_("Cannot find profil"))
     
 def commentsave(request, link_id=0):
     referral = "commentsave"
