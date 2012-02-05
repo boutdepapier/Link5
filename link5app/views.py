@@ -335,29 +335,30 @@ def commentsave(request, link_id=0):
             link = Link.objects.get(pk=link_id)
             link_author = Author.objects.get(user=link.author)
             
-            from django.core.mail import EmailMultiAlternatives
-            current_site = get_current_site(request)
-            site_name = current_site.name
-            domain = current_site.domain
-                
-            text_t = loader.get_template('emails/comment.txt')
-            html_t = loader.get_template('emails/comment.html')
-            c = {
-                'email': link_author.user.email,
-                'domain': domain,
-                'site_name': site_name,
-                'comment_author': comment_author,
-                'link': link,
-                'link_author': link_author,
-                'text': form.cleaned_data['text'],
-                'protocol': 'http',
-            }
-            msg = EmailMultiAlternatives(
-                _("New comment waiting for you on %s!") % site_name,
-                text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [link_author.user.email]
-            )
-            msg.attach_alternative(html_t.render(Context(c)), "text/html")
-            msg.send()
+            if (comment_author.pk != link_author.pk):
+                from django.core.mail import EmailMultiAlternatives
+                current_site = get_current_site(request)
+                site_name = current_site.name
+                domain = current_site.domain
+                    
+                text_t = loader.get_template('emails/comment.txt')
+                html_t = loader.get_template('emails/comment.html')
+                c = {
+                    'email': link_author.user.email,
+                    'domain': domain,
+                    'site_name': site_name,
+                    'comment_author': comment_author,
+                    'link': link,
+                    'link_author': link_author,
+                    'text': form.cleaned_data['text'],
+                    'protocol': 'http',
+                }
+                msg = EmailMultiAlternatives(
+                    _("New comment waiting for you on %s!") % site_name,
+                    text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [link_author.user.email]
+                )
+                msg.attach_alternative(html_t.render(Context(c)), "text/html")
+                msg.send()
         
             form.save(comment_author, link)
             messages.info(request,_("Thank you for your comment!"))
