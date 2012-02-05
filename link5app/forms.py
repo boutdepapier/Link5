@@ -29,7 +29,7 @@ class LinkForm(forms.Form):
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
     
-    def save(self, author, user_url = ""):
+    def save(self):
         link = Link()
         
         link.post_ttl = self.cleaned_data['post_ttl']
@@ -37,7 +37,6 @@ class LinkForm(forms.Form):
         link.post_url = self.cleaned_data['post_url']
         link.category = self.cleaned_data['category']
         link.status = "publish"
-        link.author_id = author.pk
         
         data = simplejson.loads( link5app.views.getcontent(None, url = self.cleaned_data['post_url']))
         
@@ -47,11 +46,11 @@ class LinkForm(forms.Form):
             link.post_img = data['thumbnail_url']
         
         if data['type'] == "link":
-            link.post_img = user_url
+            link.post_img = self.cleaned_data['post_url']
         
         elif data['type'] == "photo": link.post_img = data['url']
-        
-        link.save()
+            
+        return link
         
 class CommentForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, max_length=1000, required=True)

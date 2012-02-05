@@ -28,10 +28,27 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         form = LinkForm(request.POST) # A form bound to the POST data
         
         if form.is_valid():
-            author = Author.objects.get(user=request.user.pk)
-            form.save(author, request.POST.get("user_url", None))
-            messages.info(request,_("Thank you for posting!"))
-            return HttpResponseRedirect('/')
+            link = form.save()
+            if request.user.is_authenticated():
+                author = Author.objects.get(user=request.user.pk)
+                link.author = author
+                link.save()
+                messages.info(request,_("Thank you for posting!"))
+                return HttpResponseRedirect('/')
+            else:
+                request.session['link'] = True
+                request.session['url'] = link.post_url
+                
+                request.session['post_ttl']  = link.post_ttl
+                request.session['post_txt']  = link.post_txt
+                request.session['post_url']  = link.post_url
+                request.session['category']  = link.category
+                request.session['link_type'] = link.link_type
+                request.session['post_html'] = link.post_html
+                request.session['post_img']  = link.post_img
+                
+                messages.info(request,_("Please login or register to publish your link"))
+                return HttpResponseRedirect('/login/')
     
     else:
         form = LinkForm() # An unbound form
@@ -226,7 +243,6 @@ def login(request):
                 author = Author.objects.get(user=user.pk)
                 follow = Follow.objects.create(author_from=author, author_to=author)
                 follow.save()
-                return HttpResponseRedirect(next_url)
         else:
             register_form = RegisterForm()
         
@@ -236,12 +252,36 @@ def login(request):
                 user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
                 if user:
                     auth.login(request, user)
+                    author = Author.objects.get(user=user.pk)
                     messages.success(request,_("You're in friend."))
-                    return HttpResponseRedirect(next_url)
                 else:
                     messages.info(request,_('Haha! wrong password and/or login :p'))
         else:
             login_form = AuthForm()
+            
+        # If the new user has a link in Session, time to post it!
+        if 'link' in request.session and (login_form.is_valid() or register_form.is_valid()):
+            link = Link()
+            link.post_url = request.session['url'] 
+            link.status   = "publish"
+            
+            link.post_ttl = request.session['post_ttl']
+            link.post_txt = request.session['post_txt']
+            link.post_url = request.session['post_url']
+            link.category = request.session['category']
+            link.link_type = request.session['link_type']
+            link.post_html = request.session['post_html']
+            link.post_img = request.session['post_img']
+            
+            link.author = author
+            
+            link.save()
+            
+            request.session['link'] = False
+            messages.info(request,_("Thank you for posting!"))
+            
+        if login_form.is_valid() or register_form.is_valid():
+            return HttpResponseRedirect(next_url)
     
     else:
         login_form = AuthForm()
@@ -288,6 +328,28 @@ def commentsave(request, link_id=0):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
+            from django.core.mail import EmailMultiAlternatives
+            current_site = get_current_site(request)
+            site_name = current_site.name
+            domain = current_site.domain
+                
+            text_t = loader.get_template('emails/comment.txt')
+            html_t = loader.get_template('emails/comment.html')
+            c = {
+                'email': au_to.user.email,
+                'domain': domain,
+                'site_name': site_name,
+                'author_to': au_to,
+                'author_from': au_from,
+                'protocol': 'http',
+            }
+            msg = EmailMultiAlternatives(
+                _("Congratulation! You have a new link follower on %s!") % site_name,
+                text_t.render(Context(c)), settings.USER_MESSAGE_FROM, [au_to.user.email]
+            )
+            msg.attach_alternative(html_t.render(Context(c)), "text/html")
+            msg.send()
+        
             form.save(request.user, link_id)
             messages.info(request,_("Thank you for your comment!"))
     else:

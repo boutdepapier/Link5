@@ -2,11 +2,7 @@
 {% include "link5/head.html" %}
 {% include "link5/nav.html" %}
 {% if not user_name %}
-    {% if user.is_authenticated %}
-        {% include "link5/form_link.html" %}
-    {% else %}
-        <div id="join_us"><a href="{% url login %}">{% trans 'Join us</a> to links friends and post your own links!' %}</div>
-    {% endif %}
+    {% include "link5/form_link.html" %}
 {% else %}{% if user_name %}
     {% include "link5/profil_view.html" %}
 {% endif %}{% endif %}
