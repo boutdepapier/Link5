@@ -52,8 +52,8 @@
     <div id="full_view"><div id="full_view_content" tabindex="13"></div></div>
 {% if links.home_page or links.last_page %}
 <p id="link_nav">
-	{% if links.home_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_id %}{{ user_id }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
-	{% if links.last_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_id %}{{ user_id }}/{% endif %}{{ links.page|add:"1" }}/">>></a></span>{% endif %}
+	{% if links.home_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}
+	{% if links.last_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"1" }}/">>></a></span>{% endif %}
 </p>
 {% endif %}
 
