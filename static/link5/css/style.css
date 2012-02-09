@@ -106,7 +106,7 @@ nav a:hover{text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
 .media{padding: 10px 0px 0px 0px;}
-.link_visu {text-align: center;}
+.link_visu {text-align: center; }
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
 #link_nav{padding: 20px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
 #link_nav a{color: #664444; text-decoration: none;}
