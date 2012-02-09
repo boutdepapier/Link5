@@ -47,9 +47,10 @@
         </article>
     {% endfor %}
     </div></div>
-
-    <div id="link_overlay"></div>
-    <div id="full_view"><div id="full_view_content" tabindex="13"></div></div>
+    <div id="link_overlay" {% if not link_comment %}class="hidde"{% endif %}></div>
+    <div id="full_view" {% if not link_comment %}class="hidde"{% endif %}><div id="full_view_content" tabindex="13">{% if link_comment %}{% include "link5/link_view.html" %}{% endif %}</div></div>
+    
+    
 {% if links.home_page or links.last_page %}
 <p id="link_nav">
 	{% if links.home_page %}<span><a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"-1" }}/"><<</a></span>&nbsp;&nbsp;&nbsp;{% endif %}

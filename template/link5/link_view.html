@@ -1,36 +1,36 @@
 {% load i18n thumbnail %}<p id="close_icone"><a href="javascript:;" onclick="close_link();"><img src="{{ STATIC_URL }}link5/img/close.gif" width="32" height="32" border="0" /></a></p>
-{% ifequal link.link_type "photo" %}
+{% ifequal link_comment.link_type "photo" %}
     <p id="link_image">
-        {% thumbnail link.post_img "580" upscale=False as im %}
+        {% thumbnail link_comment.post_img "580" upscale=False as im %}
             <img src="{{ im.url }}" class="link_image_preview">
         {% endthumbnail %}
     </p>
-{% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
+{% else %}{% ifequal link_comment.link_type "link" %}{% if link_comment.post_img %}
     <p id="link_link_image">
-        {% thumbnail link.post_img "580" upscale=False as im %}
-             <a href="{{ link.post_url }}" target="_blank"><img src="{{ im.url }}" class="link_image_preview" border="0"></a>
+        {% thumbnail link_comment.post_img "580" upscale=False as im %}
+             <a href="{{ link_comment.post_url }}" target="_blank"><img src="{{ im.url }}" class="link_image_preview" border="0"></a>
         {% endthumbnail %}
     </p>
-{% endif %}{% else %}{% ifequal link.link_type "video" %}
+{% endif %}{% else %}{% ifequal link_comment.link_type "video" %}
 <div id="link_html">
-    {{ link.post_html|safe }}
+    {{ link_comment.post_html|safe }}
 </div>
-{% else %}{% ifequal link.link_type "html" %}
+{% else %}{% ifequal link_comment.link_type "html" %}
 <div id="link_html">
-    {{ link.post_html|safe }}
+    {{ link_comment.post_html|safe }}
 </div>
 {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
 
-<h1><a href="{{ link.post_url }}" target="_blank">{{ link.post_ttl }}</a></h1>
+<h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl }}</a></h1>
 
-{% if link.post_txt %}
-    <p class="link_view_txt">{{ link.post_txt }}</p>
+{% if link_comment.post_txt %}
+    <p class="link_view_txt">{{ link_comment.post_txt }}</p>
 {% endif %}
 
-<p id="link_source">Link source: <a href="{{ link.post_url }}" target="_blank">{{link.source.netloc }}</a></p>
-<div class="likeornot_post" id="likeornotpost_{{ link.pk }}">
-    <p><a class="like" href="{% url vote link.pk '1' %}" id="like_{{ link.pk }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
-    <a class="not" href="{% url vote link.pk '0' %}" id="not_{{ link.pk }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
+<p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
+<div class="likeornot_post" id="likeornotpost_{{ link_comment.pk }}">
+    <p><a class="like" href="{% url vote link_comment.pk '1' %}" id="like_{{ link_comment.pk }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
+    <a class="not" href="{% url vote link_comment.pk '0' %}" id="not_{{ link_comment.pk }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
     </p>
 </div>
 

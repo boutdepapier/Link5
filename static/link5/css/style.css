@@ -141,8 +141,8 @@ nav a:hover{text-decoration: none;}
 .follow_off:hover{background-position: bottom;}
 
 /*********** Link preview  ************/
-#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed; display: none;}
-#full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102; display: none;}
+#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed;}
+#full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102;}
 #full_view_content{width: 600px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
 #link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
 #link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
@@ -368,8 +368,8 @@ nav a:hover{text-decoration: none;}
 .follow_off:hover{background-position: bottom;}
 
 /*********** Link preview  ************/
-#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed; display: none;}
-#full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102; display: none;}
+#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed;}
+#full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102;}
 #full_view_content{width: 600px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
 #link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
 #link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}

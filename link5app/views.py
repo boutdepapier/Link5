@@ -22,7 +22,7 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False):
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False):
 
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -87,7 +87,11 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     links.home_page = False if int(page) <= 0 else True
     links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    comments = False
+    if link_comment:
+        comments = Comment.objects.filter(link__exact=link_comment.pk).order_by("created_at").select_related()
+    
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
@@ -130,7 +134,7 @@ def linkdelete(request, link_id):
     
     return home(request)
 
-def linkpreview(request, link_id, refresh = False):
+def linkpreview(request, link_id):
     try:
         link = Link.objects.get(pk=link_id)
         like = Like.objects.filter(link__exact=link_id).count()
@@ -138,15 +142,13 @@ def linkpreview(request, link_id, refresh = False):
         
         form = CommentForm()
         
-        if refresh:
-            return render_to_response('link5/comments.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
-        
         from urlparse import urlparse
         link.source = urlparse(link.post_url)
         
-        return render_to_response('link5/link_view.html', {'link': link, 'comments': comments, 'form': form, }, context_instance=RequestContext(request))
+        return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, }, context_instance=RequestContext(request))
     except:
-        raise Http404(_("Cannot find link..."))
+        #raise Http404(_("Cannot find link..."))
+        raise
 
 def vote(request, link_id=0, vote=False):
     current_link = False
@@ -331,11 +333,16 @@ def profiledit(request, page_to = 0, page_from = 0, user_name = False):
 def commentsave(request, link_id=0):
     referral = "commentsave"
     
+    link = get_object_or_404(Link, pk=link_id)
+    
+    from urlparse import urlparse
+    link.source = urlparse(link.post_url)
+    
     if request.method == 'POST':
         form = CommentForm(request.POST)
+        
         if form.is_valid():
             comment_author = Author.objects.get(user=request.user.pk)
-            link = Link.objects.get(pk=link_id)
             link_author = Author.objects.get(user=link.author)
             
             if (comment_author.pk != link_author.pk):
@@ -364,18 +371,24 @@ def commentsave(request, link_id=0):
                 msg.send()
         
             form.save(comment_author, link)
+            return HttpResponseRedirect('')
             messages.info(request,_("Thank you for your comment!"))
     else:
         form = CommentForm()
         
-    return home(request, referral=referral)
+    return home(request, referral=referral, link_comment=link, comment_form = form)
     
 def commentdelete(request, link_id=0, comment_id=0):
     referral = "commentdelete"
+    author = False; comment = False; link = False
     
     try:
         author = Author.objects.get(user=request.user.pk)
         comment = Comment.objects.get(id=comment_id)
+        link = Link.objects.get(pk=link_id)
+        
+        from urlparse import urlparse
+        link.source = urlparse(link.post_url)
         
         if author.pk == comment.author.pk:
             comment.delete()
@@ -383,7 +396,7 @@ def commentdelete(request, link_id=0, comment_id=0):
     except:
         pass
     
-    return home(request, referral=referral)
+    return home(request, referral=referral, link_comment=link, comment_form = CommentForm())
 
 # Logo info:
 # [col=3399cc]Link[/col][col=115599]5[/col][col=fc0082].me[/col]

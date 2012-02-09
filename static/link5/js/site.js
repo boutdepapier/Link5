@@ -21,6 +21,7 @@ function getUrlVars()
 
 var content_ready = false;
 var post_url = "";
+var history_url = false;
 
 function desc_length(string) {
     desc_limit = $("#id_post_txt").val().length;
@@ -140,7 +141,9 @@ function link_validator() {
 }
 
 function close_link(){
-    window.history.back();
+    if (history_url) {
+        window.history.back();
+    }
     $("#link_overlay").fadeOut("slow");
     $("#full_view").fadeOut("slow");
     $("#full_view_content").html("");
@@ -213,11 +216,9 @@ $(document).ready(function() {
 
     url_value = window.location.pathname.split('/');
     
-    if ((url_value[1] == "comment" && url_value[2] == "open") || (url_value[1] == "comment" && url_value[2] == "save") || (url_value[1] == "comment" && url_value[2] == "delete")) {
-        open_link("/link/load/"+url_value[3]+"/");
-    }
     $(".link_load").click(function(){
         history.pushState({path: window.location.pathname}, '', this.href);
+        history_url = true;
         open_link($(this).attr('href'));
         return false;
     });

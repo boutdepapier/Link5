@@ -1,4 +1,3 @@
 -> Add pagination in follower and following
--> Add error on comment posting
 -> Share the link
 -> Review the code in Ukrainians style
