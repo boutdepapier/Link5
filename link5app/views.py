@@ -142,9 +142,6 @@ def linkpreview(request, link_id):
         
         form = CommentForm()
         
-        from urlparse import urlparse
-        link.source = urlparse(link.post_url)
-        
         return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, }, context_instance=RequestContext(request))
     except:
         #raise Http404(_("Cannot find link..."))
@@ -335,9 +332,6 @@ def commentsave(request, link_id=0):
     
     link = get_object_or_404(Link, pk=link_id)
     
-    from urlparse import urlparse
-    link.source = urlparse(link.post_url)
-    
     if request.method == 'POST':
         form = CommentForm(request.POST)
         
@@ -386,9 +380,6 @@ def commentdelete(request, link_id=0, comment_id=0):
         author = Author.objects.get(user=request.user.pk)
         comment = Comment.objects.get(id=comment_id)
         link = Link.objects.get(pk=link_id)
-        
-        from urlparse import urlparse
-        link.source = urlparse(link.post_url)
         
         if author.pk == comment.author.pk:
             comment.delete()

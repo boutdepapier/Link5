@@ -64,6 +64,11 @@ class Link(models.Model):
     author = models.ForeignKey('Author')
     category = models.ForeignKey('Category')
     
+    @property
+    def source(self):
+        from urlparse import urlparse
+        return urlparse(self.post_url)
+    
     def __unicode__(self):
         return self.post_ttl
 
