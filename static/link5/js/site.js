@@ -140,6 +140,7 @@ function link_validator() {
 }
 
 function close_link(){
+    window.history.back();
     $("#link_overlay").fadeOut("slow");
     $("#full_view").fadeOut("slow");
     $("#full_view_content").html("");
@@ -216,6 +217,7 @@ $(document).ready(function() {
         open_link("/link/load/"+url_value[3]+"/");
     }
     $(".link_load").click(function(){
+        history.pushState({path: window.location.pathname}, '', this.href);
         open_link($(this).attr('href'));
         return false;
     });
