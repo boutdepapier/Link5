@@ -10,19 +10,19 @@
             {% ifequal link.link_type "photo" %}
                 <p class="link_visu"><a href="{% url linkload link.pk %}" class="link_load" target="_blank">
                     {% thumbnail link.post_img "185" as im %}
-                        <img src="{{ im.url }}" class="link_image_preview">
+                        <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
                 <p class="link_visu"><a href="{% url linkload link.pk %}"  class="link_load">
                     {% thumbnail link.post_img "185" upscale=False as im %}
-                        <img src="{{ im.url }}" class="link_image_preview">
+                        <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% endif %}{% else %}{% ifequal link.link_type "video" %}
                 <p class="link_visu"><a href="{% url linkload link.pk %}"  class="link_load">
                     {% thumbnail link.post_img "185" as im %}
-                        <img src="{{ im.url }}" class="link_image_preview">
+                        <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
                     {% ifequal link.link_type "video" %}
                         <img src="{{ STATIC_URL }}link5/img/play.png" border="0" width="20" height="18" class="link_play" />

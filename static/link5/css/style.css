@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{margin:0;padding:0;}
 .clearboth{clear:both;}
 .hidde{display:none;}
@@ -224,4 +225,232 @@ nav a:hover{text-decoration: none;}
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }
 footer a{color: #797979; text-decoration: underline;}
+=======
+*{margin:0;padding:0;}
+.clearboth{clear:both;}
+.hidde{display:none;}
+.center{text-align:center;}
+.left{float:left;}
+.right{float:right;}
+.strong{font-weight:bold;}
+.normal{font-weight:normal;}
+.italic{font-style:italic;}
+.justify{text-align:justify;}
+.upp {text-transform: uppercase;}
+.nodeco{text-decoration:none;}
+.barret{text-decoration:line-through;}
+.underline{text-decoration:underline;}
+
+a img { border:0; }
+
+
+
+body{text-align:center;font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; background: #f5fff5;}
+
+header {background: #f5fff5; color: #ff9009;}
+header a {color: #ff9009;}
+#logo{float: left;padding: 0px 0px 0px 40px}
+#login {float: left; font-size: 12px; padding: 50px 20px 0px 40px;}
+#login a {text-decoration: underline; font-weight: bold;}
+#langage_selection{float: right; padding: 10px 20px 0px 0px;}
+nav {clear: both; font-size: 16px; padding: 10px 20px 5px 40px; border-bottom: 1px solid white; background: #d6ecc4; color: #ff9009;
+border-radius: 10px 10px 0px 0px;
+}
+nav a {text-decoration: underline; color: #ff9009;}
+nav a:hover{text-decoration: none;}
+
+#main{text-align: left; margin: auto; color: #000000; margin-top: 10px;}
+
+#flash_messages {color: #ffffff; background: #2A2A2A; font-size: 18px; font-weight: bold; padding: 10px 0px 0px 0px; border-bottom: 1px dashed #fff;}
+.flash_messages {padding: 0px 20px 10px 20px; text-align: center;}
+
+/*********** Link form  ************/
+#join_us {font-size: 18px; color: #FFF; padding: 10px 40px 10px 40px; background: #0e4967; border-bottom: 1px solid white;}
+#join_us a {color: #fff;}
+#link_form {font-size: 12px; padding: 10px 30px 10px 40px; background: #0e4967; color: #FFF; border-bottom: 1px solid white;}
+#label_url{font-size: 18px; padding-right: 10px; float: left; padding-top: 4px; width: 130px;}
+#id_post_url{font-size: 18px; margin-right: 15px; width: 587px; float: left; }
+
+@-webkit-keyframes greenPulse {
+    from { background-color: #007d9a; -webkit-box-shadow:: 0 0 9px #333; }
+    50% { background-color: #2daebf; -webkit-box-shadow:: 0 0 18px #2daebf; }
+    to { background-color: #007d9a; -webkit-box-shadow:: 0 0 9px #333; }
+}
+.link_submit input {background: #007d9a; background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.25)), to(transparent)); color: #FFF; font-weight: bold; display: block;text-align: center; letter-spacing: -0.1px; text-shadow: 0 -1px 5px rgba(0,0,0,.25);border: 2px solid rgba(0,0,0,.25); font-size: 18px; padding: 3px 10px 3px 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-webkit-animation-duration: 3s;
+-webkit-animation-name: greenPulse;
+-webkit-animation-iteration-count: infinite; 
+}
+.link_submit input:hover {cursor: pointer;}
+.errorlist{color: red; clear: both;}
+
+#post_preview_form{width: 900px;}
+#post_edit{float: left; width: 512px; padding: 15px 0px 0px 0px;}
+.post_element {clear: both; margin-bottom: 10px; float: left;}
+.post_element label {font-size: 18px; float: left; width: 130px; padding-right: 10px;}
+.post_element input {font-size: 18px; float: left; width: 360px; }
+.post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
+.post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
+.post_preview a {color: #664444;}
+#post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
+#preview_med{text-align: center;}
+.cancel {float: left; margin-top: -3px; display: none;}
+.post_it{clear: both; margin: 10px 0px 10px 0px;}
+.post_it input {width: 510px; clear: both;}
+#right_a{display: block; width: 30px; height: 30px; background: url(../img/right.png) no-repeat; position: relative; float: right; margin: -36px 3px 10px 0px; cursor: pointer;}
+#left_a{display: block; width: 30px; height: 30px; background: url(../img/left.png) no-repeat; position: relative; float: left; margin: -36px 0px 10px 3px; cursor: pointer;}
+
+/*********** Login-Signup forms  ************/
+#login_page{background: #0e4967; color: #fff;}
+#login_page h1 {font-size: 34px; padding: 20px 0px 20px 30px;}
+#login_page h2 {margin: -10px 0px 20px 0px; font-weight: normal; }
+#login_page .errorlist {font-size: 12px; list-style: none; margin: 0px 0px 0px 0px; padding-top: 10px;}
+#login_form {font-size: 18px; width: 420px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 0px 30px 50px; margin: 20px 0px 20px 0px;}
+.login_element label {float: left; width: 130px; padding: 10px 0px 10px 0px; clear: both;}
+.login_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.login_element textarea {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px; font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif;}
+.forgotpassword{clear: both; text-align: right; margin-right: 30px;}
+.forgotpassword a{color: #fff; }
+.submit_login {clear: both; padding-top: 10px;}
+.submit_login input{width: 390px;}
+#register_form {font-size: 18px; width: 420px; float: left; padding: 10px 0px 30px 30px; margin: 20px 0px 20px 0px;}
+.register_element label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.register_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.register_avatar label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.register_avatar input {font-size: 14px; float: left; width: 250px; position: relative; margin-top: 4px; }
+.newsletter_check{clear: both; font-size: 14px;}
+.conditions_check{clear: both; font-size: 14px; padding-top: 10px;}
+.conditions_check a {color: #fff;}
+.again {font-size: 12px;}
+
+/*********** Links block zone  ************/
+#links_section{background: #ececec; color: #664444; padding: 20px 40px 10px 40px; clear: both;}
+#jquerywall{position: absolute;}
+.link{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); }
+.title{font-size:12px;}
+.title a {color: #664444; text-decoration: none;}
+.link_icone{padding: 0px 5px 5px 0px; float: left;}
+.description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
+.media{padding: 10px 0px 0px 0px;}
+.link_visu {text-align: center; }
+.link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
+#link_nav{padding: 20px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
+#link_nav a{color: #664444; text-decoration: none;}
+.author_date{font-size: 10px;}
+.author_date a {color: #442222;}
+.link_delete {float: left; font-size: 11px; margin: 8px -10px -10px 0px;}
+.link_delete a {color: #ff9009;}
+.likeornot {float: right; margin: 5px -10px -10px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
+.likeornot a {text-decoration: none;}
+.likeornot img{width: 13px;}
+.number{float: left; padding-right: 2px; color: #664444;}
+.vicone{float: left;}
+.vote_loading {background: #ceefef; padding: 3px 10px 3px 10px; margin: 0px; font-size: 12px; height: 20px; float: left;}
+.vote_message {background: #FEECBF; padding: 3px 10px 3px 10px; margin: 0px; font-size: 12px; height: 20px; float: left;}
+.like{padding: 3px 5px 3px 5px; float: left;}
+.like:hover{background: #ceefef;}
+.not{padding: 3px 5px 3px 5px; float: left;}
+.not:hover{background: #ceefef;}
+.voted{background: #ceefef;}
+.novote{background: #ffffff;}
+
+/*********** User page  ************/
+#user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
+.user_details {font-size: 40px; line-height: 80px; vertical-align: bottom; height: 80px; float: left; font-weight: normal;}
+.follow {float: right; font-size: 40px; vertical-align: bottom; height: 60px; line-height: 60px; }
+.follow_number{clear:right; float: right; margin-top: 10px; position: relative; font-size: 11px; padding-right: 40px;}
+.follow_number a{color: #FFF;}
+.follow_status{display: block ;float: right; width: 40px; height: 40px; background: url(../img/on-off.png); margin: 5px 40px 0px 10px; clear: right;}
+.follow_on{background-position: bottom;}
+.follow_on:hover{background-position: top;}
+.follow_off{background-position: top;}
+.follow_off:hover{background-position: bottom;}
+
+/*********** Link preview  ************/
+#link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed; display: none;}
+#full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102; display: none;}
+#full_view_content{width: 600px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
+#link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
+#link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
+#link_image img {max-width: 580px; position: relative; z-index: 4;}
+#close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
+.link_loading{padding: 30px 0px 50px 0px; text-align: center;}
+#link_link_image{padding: 15px 10px 10px 10px; float: left; }
+#full_view_content h1{padding: 10px 20px 0px 20px;}
+#full_view_content h1 a {color: #664444;}
+.link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
+#link_source {padding: 0px 20px 0px 20px; clear: both; font-size: 11px;}
+#link_source a{color: #ff9009;}
+.likeornot_post {clear: both;margin: 5px 0px 20px 15px; height: 20px; font-size: 20px;}
+.likeornot_post a{text-decoration: none;}
+.likeornot_post img{width: 20px;}
+.likeornot_post .vote_loading{font-size: 20px;}
+.likeornot_post .vote_message{font-size: 20px;}
+
+/*********** Comments zone  ************/
+#comment {clear: both; padding: 20px 20px 10px 20px;}
+.comment {clear: both; margin: 0px 0px 15px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
+.comment_avatar{float: left; margin: 0px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
+.comment_headline {font-size: 11px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #ececec; text-align: left;}
+.comment_headline a {color: #ff9009;}
+.delete {float: right; color: #ff9009; text-decoration: none;}
+.delete:hover {text-decoration: underline;}
+.comment_text {padding: 10px;}
+#comment_form {padding: 0px 20px 10px 20px;}
+#id_text {width: 560px; height: 100px; box-shadow: 0 1px 1px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 1px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 1px rgba(25,15,15,0.3);}
+.comment_it input {width: 560px; margin-top: 15px;}
+
+/*********** Contact form  ************/
+#contact {font-size: 18px; width: 560px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 20px 30px 50px; margin: 20px 0px 20px 0px; color: #664444;}
+#contact h1 {font-size: 34px; padding-bottom: 20px;}
+.contact_element label {float: left; width: 130px; padding: 10px 0px 10px 0px; clear: both;}
+.contact_element input {font-size: 18px; float: left; width: 350px; position: relative; margin-top: 4px;}
+.contact_element textarea {font-size: 18px; float: left; width: 350px; position: relative; margin-top: 4px; font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif;}
+.submit_contact {clear: both; padding-top: 20px;}
+.submit_contact input{width: 490px;}
+
+/*********** Profil page ************/
+#profil_page{background: #0e4967; color: #fff;}
+#profil_page h1 {float: left; padding: 20px 0px 0px 40px;}
+#profil_link{float: left; padding: 40px 0px 20px 50px; margin-left: 50px; clear: left;}
+#profil_link h2 {padding-bottom: 0px; clear: both; margin-bottom: 10px; font-size: 18px;}
+.user_links{list-style: none; padding-bottom: 40px;}
+#author_from {float: left; width: 250px; padding: 20px 10px 30px 40px}
+#author_to {float: left; width: 250px; border-right: 1px solid #aaaaaa; padding: 20px 10px 30px 0px;}
+.user_links li {line-height: 40px; height: 40px; vertical-align: middle; padding: 0px 0px 10px 20px;}
+.user_links li img {padding-right: 10px; float: left;}
+.follow_user {display: block; line-height: 40px; height: 40px; vertical-align: middle;}
+.user_links li a {text-decoration: none; color: #ff9009; text-decoration: none;}
+#edit_form {font-size: 18px; width: 420px; float: right; padding: 10px 0px 30px 30px; margin: 0px 0px 20px 0px; background: #ececec; border-left: 1px solid #aaaaaa; color: #000;}
+.edit_element label {float: left; width: 150px; padding: 10px 0px 10px 0px; clear: both;}
+.edit_element input {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.password_change{clear: both; font-weight: bold; text-align: center; padding: 10px 0px 5px 0px;}
+.edit_avatar {clear:both; font-size: 14px; line-height: 25px; padding: 10px 0px 10px 0px; }
+
+/*********** static pages ************/
+#static_page{background: #0e4967; color: #fff;}
+#static_content{width: 800px;border-right: 1px solid #aaaaaa;}
+#static_page h1 {padding: 40px 40px 20px 40px;}
+#static_page h2 {padding: 0px 0px 10px 0px; font-size: 22px; font-weight: normal;}
+#static_content p {padding-bottom: 10px;}
+#static_html {padding: 0px 40px 60px 40px;}
+
+/*********** static pages ************/
+#password_lost_form{}
+#password_lost {background: #0e4967; color: #fff; padding: 40px 40px 40px 40px; font-size: 18px;}
+#password_lost a {color: #fff;}
+#password_lost label {float: left; font-size: 18px; width: 130px; padding: 10px 0px 10px 0px; clear: both; margin-top: -3px;}
+#password_lost #id_email {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
+.submit_pass{float: left; margin: 1px 0px 0px 10px; position: relative;}
+#new_pass {padding: 20px 0px 0px 0px; float: left;}
+#new_pass label{font-size: 18px; float: left; width: 250px; display: block;}
+#new_pass input{font-size: 18px; float: left; width: 250px; margin: 4px 0px 0px 10px;}
+.submit_newpass {clear: both; padding: 20px 0px 10px 0px;}
+
+/*********** Footer  ************/
+footer{font-size: 10px; text-align: right; padding: 5px 20px 50px 20px; clear: both; background: #d6ecc4; border-top: 2px solid #0e4967; }
+footer a{color: #797979; text-decoration: underline;}
+>>>>>>> c09c73b774d48492b174755f47b094f47bc64741
 footer p{display: inline;}
