@@ -1,0 +1,50 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADMINS	settings.py	/^ADMINS = ($/;"	v
+ADMIN_MEDIA_PREFIX	settings.py	/^ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli\/"$/;"	v
+CONTACT_FROM	settings.py	/^CONTACT_FROM = "contact@link5.me"$/;"	v
+CONTACT_RECIPIENT	settings.py	/^CONTACT_RECIPIENT = ($/;"	v
+DATABASES	settings.py	/^DATABASES = {$/;"	v
+DEBUG	settings.py	/^DEBUG = True$/;"	v
+DEBUG_TOOLBAR_CONFIG	settings.py	/^DEBUG_TOOLBAR_CONFIG = {$/;"	v
+DEBUG_TOOLBAR_PANELS	settings.py	/^DEBUG_TOOLBAR_PANELS = ($/;"	v
+FOLLOWER_PER_PAGE	settings.py	/^FOLLOWER_PER_PAGE = 1$/;"	v
+FOLLOWING_PER_PAGE	settings.py	/^FOLLOWING_PER_PAGE = 1$/;"	v
+GRAPPELLI_ADMIN_TITLE	settings.py	/^GRAPPELLI_ADMIN_TITLE = "Link5 admin"$/;"	v
+GRAPPELLI_INDEX_DASHBOARD	settings.py	/^GRAPPELLI_INDEX_DASHBOARD = 'link5app.dashboard.CustomIndexDashboard'$/;"	v
+INSTALLED_APPS	settings.py	/^INSTALLED_APPS = ($/;"	v
+INTERNAL_IPS	settings.py	/^INTERNAL_IPS = ('127.0.0.1')$/;"	v
+LANGUAGES	settings.py	/^LANGUAGES = ($/;"	v
+LANGUAGE_CODE	settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LINK_PER_PAGE	settings.py	/^LINK_PER_PAGE = 30$/;"	v
+LOGGING	settings.py	/^LOGGING = {$/;"	v
+MANAGERS	settings.py	/^MANAGERS = ADMINS$/;"	v
+MAX_FOLLOW	settings.py	/^MAX_FOLLOW = 400$/;"	v
+MAX_IMAGE	settings.py	/^MAX_IMAGE = 10$/;"	v
+MEDIA_ROOT	settings.py	/^MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'media')$/;"	v
+MEDIA_URL	settings.py	/^MEDIA_URL = '\/media\/'$/;"	v
+MIDDLEWARE_CLASSES	settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+MIM_IMAGE_SIZE	settings.py	/^MIM_IMAGE_SIZE = 500$/;"	v
+MODERATION_LEVEL	settings.py	/^MODERATION_LEVEL = -3$/;"	v
+OEMBED	settings.py	/^OEMBED = {$/;"	v
+ROOT_URLCONF	settings.py	/^ROOT_URLCONF = 'link5.urls'$/;"	v
+SITE_ID	settings.py	/^SITE_ID = 1$/;"	v
+STATICFILES_DIRS	settings.py	/^STATICFILES_DIRS = ($/;"	v
+STATICFILES_FINDERS	settings.py	/^STATICFILES_FINDERS = ($/;"	v
+STATIC_ROOT	settings.py	/^STATIC_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')$/;"	v
+STATIC_URL	settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+TEMPLATE_CONTEXT_PROCESSORS	settings.py	/^TEMPLATE_CONTEXT_PROCESSORS = ($/;"	v
+TEMPLATE_DEBUG	settings.py	/^TEMPLATE_DEBUG = DEBUG$/;"	v
+TEMPLATE_DIRS	settings.py	/^TEMPLATE_DIRS = ($/;"	v
+TEMPLATE_LOADERS	settings.py	/^TEMPLATE_LOADERS = ($/;"	v
+TIME_ZONE	settings.py	/^TIME_ZONE = 'Europe\/Paris'$/;"	v
+USER_MESSAGE_FROM	settings.py	/^USER_MESSAGE_FROM = "Link5 <no-reply@link5.me>"$/;"	v
+USE_I18N	settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	settings.py	/^USE_L10N = True$/;"	v
+ugettext	settings.py	/^ugettext = lambda s: s$/;"	v
+urlpatterns	urls.py	/^    urlpatterns = patterns('',$/;"	v
+urlpatterns	urls.py	/^urlpatterns = patterns('',$/;"	v
