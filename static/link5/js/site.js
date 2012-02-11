@@ -219,7 +219,7 @@ $(document).ready(function() {
     $(".link_load").click(function(){
         history.pushState({path: window.location.pathname}, '', this.href);
         history_url = true;
-        open_link($(this).attr('href'));
+        open_link($(this).attr('href')+"?ajax=true");
         return false;
     });
     

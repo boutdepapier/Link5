@@ -142,6 +142,9 @@ def linkpreview(request, link_id):
         
         form = CommentForm()
         
+        if not request.GET.get("ajax", False):
+            return home(request, link_comment=link, comment_form = form)
+        
         return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, }, context_instance=RequestContext(request))
     except:
         #raise Http404(_("Cannot find link..."))

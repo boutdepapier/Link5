@@ -1,13 +1,77 @@
-{% load i18n %}
-{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
+{% load i18n %}<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr"> 
+ 
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	{% block meta %}
+	<title>Link5</title>
+	<meta name="description" content="{% trans 'Link5 the social network based on Link share: share, follow, link, linked... And keep cool' %}" />
+	{% endblock meta %}
+	
+	<link rel="stylesheet" href="{{ STATIC_URL }}link5/css/style.css" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="{{ STATIC_URL }}link5/img/favicon.ico" type="image/x-icon" />
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/jquery.wookmark.js"></script>
+	<script src="{{ STATIC_URL }}link5/js/site.js"></script>
+	
+     <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+     
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-7391782-3']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+</head> 
 
-{% block under_nav %}
-{% endblock under_nav %}
+<body>
 
-{% include "link5/messages.html" %}
+<div id="main"> 
+    <header> 
+        <p id="logo"><a href="{% if request.user.is_authenticated %}{% url home %}{% else %}{% url home %}{% endif %}" title="Home"><img src="{{ STATIC_URL }}link5/img/Link5me.png" alt="{% trans 'home page' %}" border="0" width="300" height="105" /></a></p>
+          
+        <div id="login">
+        {% if not user.is_authenticated %}
+            <p><br /><a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Join this marvelous website" %}</a></p>
+        {% else %}  
+            <p>{% trans 'Welcome' %} <a href="{% url user_home request.user.username|slugify %}">{{ user.username }}</a>.<br /> <a href="{% url logout %}">{% trans "Screw you guys, I'm going home" %}</a></p>
+        {% endif %}
+        </div>
+        
+        <form action="/i18n/setlang/" method="post" name="langage_selection" id="langage_selection">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="" id="language" />
+            {% for lang in LANGUAGES %}
+            <a href="#" onclick="submit_langage('{{ lang.0 }}'); ">{{ lang.1 }}</a> | 
+            {% endfor %}
+            <script type="text/javascript">
+                function submit_langage(lang) {
+                    document.getElementById('language').value=lang; 
+                    document.langage_selection.submit();
+                }
+            </script>
+        </form>
+    </header> 
 
-{% block content %}
-{% endblock content %}
-
-{% include "link5/footer.html" %}
+    {% include "link5/nav.html" %}
+    
+    {% block under_nav %}
+    {% endblock under_nav %}
+    
+    {% include "link5/messages.html" %}
+    
+    {% block content %}
+    {% endblock content %}
+    
+    {% include "link5/footer.html" %}
