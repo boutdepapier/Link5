@@ -1,5 +1,10 @@
 {% extends "link5/site.html" %}{% load i18n link5_extras %}
 
+{% block meta %}
+<title>{{ author.user.username }} {% trans 'page' %} - Link5</title>
+<meta name="description" content="View user info, follower and following" />
+{% endblock meta %}
+
 {% block content %}
 {% include "link5/profil_view.html" %}
 <div id="profil_page">
