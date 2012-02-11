@@ -1,7 +1,5 @@
-{% load i18n%}
-{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
-{% include "link5/messages.html" %}
+{% extends "link5/site.html" %}{% load i18n%}
+{% block content %}
 <div id="login_page">
 
     <form action="{% url login %}" method="post" id="login_form">{% csrf_token %}
@@ -83,4 +81,4 @@
 
 </div>
 
-{% include "link5/footer.html" %}
+{% endblock content %}

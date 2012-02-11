@@ -1,7 +1,6 @@
-{% load i18n %}{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
-{% include "link5/messages.html" %}
+{% extends "link5/site.html" %}{% load i18n %}
 
+{% block content %}
     <form action="{% url contact %}" method="post" id="contact" name="contact">{% csrf_token %}
         <h1>{% trans 'A bug, a question, a message? Contact me!' %}</h1>
         
@@ -29,4 +28,4 @@
         <p class="link_submit submit_contact"><input type="submit" value="Send it!" /></p>
     </form>
  
-{% include "link5/footer.html" %}
+{% endblock content %}

@@ -4,7 +4,10 @@
 <head> 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
-	<title>link5</title>
+	{% block meta %}
+	<title>{% trans 'Link5 - Share your links' %}</title>
+	<meta name="description" content="{% trans 'Link5 the social network based on Link share: share, follow, link, linked... And keep cool' %}" />
+	{% endblock meta %}
 	
 	<link rel="stylesheet" href="{{ STATIC_URL }}link5/css/style.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="{{ STATIC_URL }}link5/img/favicon.ico" type="image/x-icon" />

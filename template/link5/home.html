@@ -1,11 +1,13 @@
-{% load i18n %}
-{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
+{% extends "link5/site.html" %}
+
+{% block under_nav %}
 {% if not user_name %}
     {% include "link5/form_link.html" %}
 {% else %}{% if user_name %}
     {% include "link5/profil_view.html" %}
 {% endif %}{% endif %}
-{% include "link5/messages.html" %}
-{% include "link5/link_wall.html" %}
-{% include "link5/footer.html" %}
+{% endblock under_nav %}
+
+{% block content %}
+    {% include "link5/link_wall.html" %}
+{% endblock content %}

@@ -1,8 +1,7 @@
-{% load i18n link5_extras %}
-{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
+{% extends "link5/site.html" %}{% load i18n link5_extras %}
+
+{% block content %}
 {% include "link5/profil_view.html" %}
-{% include "link5/messages.html" %}
 <div id="profil_page">
     
     {% if edit_form %}
@@ -84,6 +83,4 @@
 
     <div class="clearboth"></div>
 </div>
-
-
-{% include "link5/footer.html" %}
+{% endblock content %}
