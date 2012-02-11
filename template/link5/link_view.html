@@ -21,10 +21,10 @@
 </div>
 {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
 
-<h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl }}</a></h1>
+<h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl|safe }}</a></h1>
 
 {% if link_comment.post_txt %}
-    <p class="link_view_txt">{{ link_comment.post_txt }}</p>
+    <p class="link_view_txt">{{ link_comment.post_txt|safe }}</p>
 {% endif %}
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
