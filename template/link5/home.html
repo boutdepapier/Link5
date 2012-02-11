@@ -20,4 +20,9 @@
 
 {% block content %}
     {% include "link5/link_wall.html" %}
+    <script type="text/javascript">
+        $("#full_view_content").focus();
+        $("body").css({"overflow": "hidden"});
+        $("#full_view").css({"overflow": "auto"});
+    </script>
 {% endblock content %}
