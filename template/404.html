@@ -1,7 +1,11 @@
-{% include "link5/head.html" %}
-{% include "link5/nav.html" %}
-{% include "link5/messages.html" %}
+{% extends "link5/site.html" %}
 
+{% block meta %}
+<title>404 - Link5</title>
+<meta name="description" content="Link dead..." />
+{% endblock meta %}
+
+{% block content %}
 <div id="static_page">
     <h1>404 - Link is broken</h1>
     <div id="static_html">
@@ -9,4 +13,4 @@
     </div>
 </div>
 
-{% include "link5/footer.html" %}
+{% endblock content %}
