@@ -4,10 +4,13 @@
 {% if link_comment %}
 <title>{{ link_comment.post_ttl }} - Link5</title>
 <meta name="description" content="{{ link_comment.post_txt }}" />
+{% else %}{% if author %}
+<title>{{ author.user.username }} Links page - Link5</title>
+<meta name="description" content="{% trans 'Link5 the social network based on Link share: share, follow, link, linked... And keep cool' %}" />
 {% else %}
 <title>{% trans 'Link5 - Share your links' %}</title>
 <meta name="description" content="{% trans 'Link5 the social network based on Link share: share, follow, link, linked... And keep cool' %}" />
-{% endif %}
+{% endif %}{% endif %}
 {% endblock meta %}
 
 {% block under_nav %}

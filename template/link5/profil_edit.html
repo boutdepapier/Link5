@@ -1,8 +1,8 @@
 {% extends "link5/site.html" %}{% load i18n link5_extras %}
 
 {% block meta %}
-<title>{{ author.user.username }} {% trans 'page' %} - Link5</title>
-<meta name="description" content="View user info, follower and following" />
+<title>{{ author.user.username }} {% trans 'info' %} - Link5</title>
+<meta name="description" content="{% trans 'View user info, follower and following' %}" />
 {% endblock meta %}
 
 {% block content %}
