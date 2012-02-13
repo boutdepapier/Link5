@@ -33,6 +33,13 @@
       })();
     
     </script>
+    
+    {% if link_comment %}
+    <meta property="og:title" content="{{ link_comment.post_ttl|safe }}"/>
+    <meta property="og:image" content="{% thumbnail link_comment.post_img "580" upscale=False as im %}http://link5.me{{ im.url }}{% endthumbnail %}"/>
+    <meta property="og:site_name" content="Link5.me"/>
+    <meta property="og:description" content="{{ link_comment.post_txt|safe }}"/>
+    {% endif %}
 </head> 
 
 <body>
