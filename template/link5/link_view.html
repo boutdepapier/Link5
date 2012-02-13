@@ -27,6 +27,18 @@
     <p class="link_view_txt">{{ link_comment.post_txt|safe }}</p>
 {% endif %}
 
+<div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true"></div>
+<div id="fb-root"></div>
+<script>
+$(".fb-like").attr("data-href", window.location.pathname);
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=195524800546217";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
 <div class="likeornot_post" id="likeornotpost_{{ link_comment.pk }}">
     <p><a class="like" href="{% url vote link_comment.pk '1' %}" id="like_{{ link_comment.pk }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>

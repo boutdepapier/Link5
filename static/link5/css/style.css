@@ -153,6 +153,7 @@ nav a:hover{text-decoration: none;}
 #full_view_content h1{padding: 10px 20px 0px 20px; font-size: 25px; min-width: 200px; float: left;}
 #full_view_content h1 a {color: #664444;}
 .link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
+.fb-like{padding: 0px 20px 0px 20px;}
 #link_source {padding: 0px 20px 0px 20px; clear: both; font-size: 11px;}
 #link_source a{color: #ff9009;}
 .likeornot_post {clear: both;margin: 5px 0px 20px 15px; height: 20px; font-size: 20px;}
