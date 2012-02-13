@@ -27,7 +27,7 @@
     <p class="link_view_txt">{{ link_comment.post_txt|safe }}</p>
 {% endif %}
 
-<div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true"></div>
+<div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true" {% thumbnail link_comment.post_img "580" upscale=False as im %}og:image="http://link5{{ im.url }}"{% endthumbnail %}></div>
 <div id="fb-root"></div>
 <script>
 function load_fb(){
