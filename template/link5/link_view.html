@@ -30,14 +30,34 @@
 <div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true"></div>
 <div id="fb-root"></div>
 <script>
-$(".fb-like").attr("data-href", window.location.pathname);
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=195524800546217";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+function load_fb(){
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '195524800546217', // App ID
+      channelUrl : 'link5.me', // Channel File
+      status     : false, // check login status
+      cookie     : false, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; 
+     //if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+}
+</script>
+<script>
+$(".fb-like").attr("data-href", window.location);
+load_fb()
+alert(window.location);
+</script>
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
 <div class="likeornot_post" id="likeornotpost_{{ link_comment.pk }}">
