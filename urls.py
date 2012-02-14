@@ -14,7 +14,6 @@ from link5app import forms
 
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
-    url(r'^(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
     url(r'^link/page/(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
     url(r'^link/$', 'link5app.views.home', name='postlink'),
     url(r'^link/load/(?P<link_id>[^/]+)/$', 'link5app.views.linkpreviewredirect', name='linkredirect'),
@@ -51,8 +50,8 @@ urlpatterns = patterns('',
     url(r'^comment/open/(?P<link_id>\d+)/$', 'link5app.views.home', name='commentopen'),
     
     url(r'^url/extracting/$', 'link5app.views.getcontent', name="getcontent"),
-    url(r'^user/login/$', 'link5app.views.login', name="login"),
-    url(r'^user/logout/$', 'link5app.views.logout', name="logout"),
+    url(r'^auth/login/$', 'link5app.views.login', name="login"),
+    url(r'^auth/logout/$', 'link5app.views.logout', name="logout"),
     
     url(r'^me/contact/$', 'link5app.views.contact', name="contact"),
     
@@ -70,8 +69,8 @@ urlpatterns = patterns('',
     url(r'^admin/filebrowser/', include(site.urls)),
     (r'^admin/', include(admin.site.urls)),
     
-    url(r'^(?P<link_id>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
-    
+    url(r'^(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
+    url(r'^(?P<link_id>\w+)/$', 'link5app.views.linkpreview', name='linkload'),
 )
 
 if 'rosetta' in settings.INSTALLED_APPS:
