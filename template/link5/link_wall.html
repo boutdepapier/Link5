@@ -2,25 +2,25 @@
 <div id="links_section">
     {% if not links %}<h1>{% trans "No link for this page, yet!" %}</h1>{% endif %}
     <div id="jquerywall_height"><div id="jquerywall">
-    {% for link in links|slice:LINK_PER_PAGE %}{{ link.short_url }}
+    {% for link in links|slice:LINK_PER_PAGE %}
         <article class='link'>
-            <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" />{% else %}{% endifequal %}<a href="{% url linkload link.id_b62 link.post_ttl|slugify %}" class="link_load" target="_blank">{{ link.post_ttl|safe }}</a></h2>
+            <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" />{% else %}{% endifequal %}<a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load" target="_blank">{{ link.post_ttl|safe }}</a></h2>
             
             <div class="media">
             {% ifequal link.link_type "photo" %}
-                <p class="link_visu"><a href="{% url linkload link.id_b62 link.post_ttl|slugify %}" class="link_load" target="_blank">
+                <p class="link_visu"><a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load" target="_blank">
                     {% thumbnail link.post_img "185" as im %}
                         <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% else %}{% ifequal link.link_type "link" %}{% if link.post_img %}
-                <p class="link_visu"><a href="{% url linkload link.id_b62 link.post_ttl|slugify %}"  class="link_load">
+                <p class="link_visu"><a href="{% url linkload link.id_b62 link.title_for_url %}"  class="link_load">
                     {% thumbnail link.post_img "185" upscale=False as im %}
                         <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
                 </a></p>
             {% endif %}{% else %}{% ifequal link.link_type "video" %}
-                <p class="link_visu"><a href="{% url linkload link.id_b62 link.post_ttl|slugify %}"  class="link_load">
+                <p class="link_visu"><a href="{% url linkload link.id_b62 link.title_for_url %}"  class="link_load">
                     {% thumbnail link.post_img "185" as im %}
                         <img src="{{ im.url }}" height="{{im.height}}" width="{{im.width}}" class="link_image_preview">
                     {% endthumbnail %}
@@ -33,7 +33,7 @@
             {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
             </div>
             <p class="description">{{ link.post_txt|safe }}</p>
-            <p class="author_date">Post by <a href="{% url user_home link.author.user.username|urlencode %}">{{ link.author.user.username }}</a> in <a href="{% url category link.category.slug %}">{{ link.category.name }}</a>, {{ link.created_at }} -- <a href="{% url linkload link.id_b62 link.post_ttl|slugify %}" class="link_load">{{ link.comment }} {% trans 'Comment' %}{{ link.comment|pluralize }}</a></p>
+            <p class="author_date">Post by <a href="{% url user_home link.author.user.username|urlencode %}">{{ link.author.user.username }}</a> in <a href="{% url category link.category.slug %}">{{ link.category.name }}</a>, {{ link.created_at }} -- <a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load">{{ link.comment }} {% trans 'Comment' %}{{ link.comment|pluralize }}</a></p>
             
             
             {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.id %}">{% trans "Delete [x]" %}</a></p>{% endif %}

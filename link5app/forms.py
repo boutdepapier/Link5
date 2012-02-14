@@ -32,7 +32,7 @@ class LinkForm(forms.Form):
     def save(self, user_url = ""):
         link = Link()
         
-        link.post_ttl = self.cleaned_data['post_ttl']
+        link.post_ttl = self.cleaned_data['post_ttl'].encode("utf-8")
         link.post_txt = self.cleaned_data['post_txt']
         link.post_url = self.cleaned_data['post_url']
         link.category = self.cleaned_data['category']

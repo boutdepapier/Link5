@@ -5,7 +5,6 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.template import Context, loader
-from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
@@ -140,11 +139,11 @@ def linkdelete(request, link_id):
 
 def linkpreview(request, link_id, title_url = False):
     link = Link()
-    link_id = link.b62_id(link_id)
     try:
+        link_id = link.b62_id(link_id)
         link = Link.objects.get(pk=link_id)
-        if not title_url:
-            return HttpResponseRedirect('/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
+        if not title_url or link.title_for_url != title_url:
+            return HttpResponseRedirect('/%s/%s/' % (link.id_b62, link.title_for_url))
         like = Like.objects.filter(link__exact=link_id).count()
         comments = Comment.objects.filter(link__exact=link_id).order_by("created_at").select_related()
         
@@ -159,12 +158,12 @@ def linkpreview(request, link_id, title_url = False):
         
 def linkpreviewredirect(request, link_id):
     link = Link()
-    link_id = link.b62_id(link_id)
     try:
+        link_id = link.b62_id(link_id)
         link = Link.objects.get(pk=link_id) 
         return HttpResponseRedirect('/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
     except:
-        return HttpResponseRedirect('/')
+        raise Http404(_("Cannot find link..."))
 
 def vote(request, link_id=0, vote=False):
     current_link = False
@@ -513,7 +512,7 @@ def getcontent(request, url = False):
     
     if url:
         return oembed_obj
-    return HttpResponse(oembed_obj, mimetype='text')
+    return HttpResponse(oembed_obj, mimetype='text; charset=UTF-8')
     
 def contact(request):
     

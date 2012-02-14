@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User, AnonymousUser
 from django.utils.translation import ugettext_lazy as _
 
+from django.template.defaultfilters import slugify, urlencode
+
 from annoying.fields import AutoOneToOneField
 
 
@@ -68,6 +70,10 @@ class Link(models.Model):
     def source(self):
         from urlparse import urlparse
         return urlparse(self.post_url)
+    
+    @property
+    def title_for_url(self):
+        return slugify(self.post_ttl.encode("ascii", "xmlcharrefreplace"))
         
     ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
