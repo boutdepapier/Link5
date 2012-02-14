@@ -68,6 +68,44 @@ class Link(models.Model):
     def source(self):
         from urlparse import urlparse
         return urlparse(self.post_url)
+        
+    ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    @property
+    def id_b62(self):
+        """Encode a number in Base X
+    
+        `num`: The number to encode
+        `alphabet`: The alphabet to use for encoding
+        """
+        arr = []
+        base = len(self.ALPHABET)
+        url_id = self.id
+        while url_id:
+            rem = url_id % base
+            url_id = url_id // base
+            arr.append(self.ALPHABET[rem])
+        arr.reverse()
+        return ''.join(arr)
+    
+    def b62_id(self, url_id):
+        """Decode a Base X encoded string into the number
+    
+        Arguments:
+        - `string`: The encoded string
+        - `alphabet`: The alphabet to use for encoding
+        """
+        base = len(self.ALPHABET)
+        strlen = len(url_id)
+        num = 0
+    
+        idx = 0
+        for char in url_id:
+            power = (strlen - (idx + 1))
+            num += self.ALPHABET.index(char) * (base ** power)
+            idx += 1
+    
+        return num
     
     def __unicode__(self):
         return self.post_ttl

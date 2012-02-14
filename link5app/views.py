@@ -5,6 +5,7 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.template import Context, loader
+from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
@@ -134,7 +135,9 @@ def linkdelete(request, link_id):
     
     return home(request)
 
-def linkpreview(request, link_id):
+def linkpreview(request, link_id, title_url):
+    link = Link()
+    link_id = link.b62_id(link_id)
     try:
         link = Link.objects.get(pk=link_id)
         like = Like.objects.filter(link__exact=link_id).count()
@@ -148,6 +151,16 @@ def linkpreview(request, link_id):
         return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, }, context_instance=RequestContext(request))
     except:
         raise Http404(_("Cannot find link..."))
+        
+def linkpreviewredirect(request, link_id):
+    link = Link()
+    link_id = link.b62_id(link_id)
+    try:
+        link = Link.objects.get(pk=link_id) 
+        return HttpResponseRedirect('/link/view/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
+    except:
+        raise
+        #return HttpResponseRedirect('/')
 
 def vote(request, link_id=0, vote=False):
     current_link = False
