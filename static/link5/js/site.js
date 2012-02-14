@@ -63,7 +63,7 @@ function link_validator() {
         $("#preview_med").html("");
         $("#preview_txt").html("");
         
-        embed_url = "/extracting/?url="+url;
+        embed_url = "/url/extracting/?url="+url;
         
         $.getJSON(embed_url, {},function(data) {
             
