@@ -52,12 +52,21 @@
 </script>
 <script>
 $(".fb-like").attr("data-href", window.location);
+
+// Rebinds the vote buttons to jquery
+$('.likeornot_post a').die();
+$('.likeornot_post a').live('click', function() {
+    var url = $(this).attr('href');
+    var link_id = $(this).attr('id');
+    link_vote(url, link_id, 'likeornotpost_');
+    return false;
+});
 </script>
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
-<div class="likeornot_post" id="likeornotpost_{{ link_comment.pk }}">
-    <p><a class="like" href="{% url vote link_comment.pk '1' %}" id="like_{{ link_comment.pk }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
-    <a class="not" href="{% url vote link_comment.pk '0' %}" id="not_{{ link_comment.pk }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
+<div class="likeornot_post" id="likeornotpost_{{ link_comment.id_b62 }}">
+    <p><a class="like" href="{% url vote link_comment.id_b62 '1' %}" id="like_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
+    <a class="not" href="{% url vote link_comment.id_b62 '0' %}" id="not_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
     </p>
 </div>
 

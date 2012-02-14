@@ -160,10 +160,12 @@ function manual_submit(url) {
 function link_vote(url, link_id, tag_id) {
     link_id = link_id.split('_');
     $("#"+tag_id+link_id[1]).html("<span class='vote_loading'>Loading...</span>");
+    $(".vote_message").html("");
     
     setTimeout(function() {$.ajax({
       url: url,
       success: function(data) {
+        $("#"+tag_id+link_id[1]).html("");
         $("#"+tag_id+link_id[1]).fadeIn("slow");
         $("#"+tag_id+link_id[1]).html(data);
       }
@@ -183,12 +185,6 @@ function open_link(url_link_open) {
       url: url,
       success: function(data) {
         $('#full_view_content').html(data);
-        $('.likeornot_post a').live('click', function() {
-            var url = $(this).attr('href');
-            var link_id = $(this).attr('id');
-            link_vote(url, link_id, 'likeornotpost_');
-            return false;
-        });
       }
     });
 }

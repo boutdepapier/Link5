@@ -36,11 +36,11 @@
             <p class="author_date">Post by <a href="{% url user_home link.author.user.username|urlencode %}">{{ link.author.user.username }}</a> in <a href="{% url category link.category.slug %}">{{ link.category.name }}</a>, {{ link.created_at }} -- <a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load">{{ link.comment }} {% trans 'Comment' %}{{ link.comment|pluralize }}</a></p>
             
             
-            {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.id %}">{% trans "Delete [x]" %}</a></p>{% endif %}
+            {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.id_b62 %}">{% trans "Delete [x]" %}</a></p>{% endif %}
             
-            <div class="likeornot" id="likeornot_{{ link.id }}">
-                <p><a class="like" href="{% url vote link.id '1' %}" id="like_{{ link.id }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
-                <a class="not" href="{% url vote link.id '0' %}" id="not_{{ link.id }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
+            <div class="likeornot" id="likeornot_{{ link.id_b62 }}">
+                <p><a class="like" href="{% url vote link.id_b62 '1' %}" id="like_{{ link.id_b62 }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
+                <a class="not" href="{% url vote link.id_b62 '0' %}" id="not_{{ link.id_b62 }}"><span class="number">{{ link.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" /></a>
                 </p>
             </div>
             <div class="clearboth"></div>

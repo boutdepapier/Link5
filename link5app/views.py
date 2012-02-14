@@ -127,6 +127,8 @@ def userlinks(request, page = 0):
     
 def linkdelete(request, link_id):
     try:
+        link = Link()
+        link_id = link.b62_id(link_id)
         link = Link.objects.get(pk=link_id)
         author = Author.objects.get(user=request.user.pk)
         if link.author.pk == author.pk:
@@ -167,9 +169,11 @@ def linkpreviewredirect(request, link_id):
 
 def vote(request, link_id=0, vote=False):
     current_link = False
+    link = Link()
     if not request.user.is_authenticated():
         message = _("Please login first")
     else:
+        link_id = link.b62_id(link_id)
         current_link = Link.objects.get(pk=link_id)
         current_author = Author.objects.get(user=request.user.pk)
         like = Like.objects.filter(link__exact=link_id, author__exact=request.user.pk)
