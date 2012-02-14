@@ -91,6 +91,9 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     comments = False
     if link_comment:
         comments = Comment.objects.filter(link__exact=link_comment.pk).order_by("created_at").select_related()
+        
+    if not url:
+        url = "link/page"
     
     return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     

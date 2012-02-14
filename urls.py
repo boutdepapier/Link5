@@ -14,9 +14,9 @@ from link5app import forms
 
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
-    url(r'^(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
+    url(r'^(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
+    url(r'^link/page/(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
     url(r'^link/$', 'link5app.views.home', name='postlink'),
-    url(r'^link/view/(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
     url(r'^link/load/(?P<link_id>[^/]+)/$', 'link5app.views.linkpreviewredirect', name='linkredirect'),
     url(r'^link/delete/(?P<link_id>\d+)/$', 'link5app.views.linkdelete', name='linkdelete'),
     url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})/$', 'link5app.views.vote', name='vote'),
