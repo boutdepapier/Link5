@@ -70,7 +70,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     url(r'^(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
-    url(r'^(?P<link_id>\w+)/$', 'link5app.views.linkpreview', name='linkload'),
+    url(r'^(?P<link_id>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
 )
 
 if 'rosetta' in settings.INSTALLED_APPS:
