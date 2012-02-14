@@ -99,15 +99,15 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
-    return home (request, period = yesterday, page = page, url = "day") 
+    return home (request, period = yesterday, page = page, url = "top/day") 
     
 def linkweek(request, page = 0):
     yesterday = datetime.now() - timedelta(days=7)
-    return home (request, period = yesterday, page = page, url = "week") 
+    return home (request, period = yesterday, page = page, url = "top/week") 
     
 def linkmonth(request, page = 0):
     yesterday = datetime.now() - timedelta(days=31)
-    return home (request, period = yesterday, page = page, url = "month")
+    return home (request, period = yesterday, page = page, url = "top/month")
 
 def userlinks(request, page = 0):
     if request.user.is_authenticated():
@@ -138,11 +138,13 @@ def linkdelete(request, link_id):
     
     return home(request)
 
-def linkpreview(request, link_id, title_url):
+def linkpreview(request, link_id, title_url = False):
     link = Link()
     link_id = link.b62_id(link_id)
     try:
         link = Link.objects.get(pk=link_id)
+        if not title_url:
+            return HttpResponseRedirect('/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
         like = Like.objects.filter(link__exact=link_id).count()
         comments = Comment.objects.filter(link__exact=link_id).order_by("created_at").select_related()
         
@@ -160,10 +162,9 @@ def linkpreviewredirect(request, link_id):
     link_id = link.b62_id(link_id)
     try:
         link = Link.objects.get(pk=link_id) 
-        return HttpResponseRedirect('/link/view/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
+        return HttpResponseRedirect('/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
     except:
-        raise
-        #return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/')
 
 def vote(request, link_id=0, vote=False):
     current_link = False

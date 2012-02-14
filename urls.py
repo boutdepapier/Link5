@@ -21,14 +21,14 @@ urlpatterns = patterns('',
     url(r'^link/delete/(?P<link_id>\d+)/$', 'link5app.views.linkdelete', name='linkdelete'),
     url(r'^link/vote/(?P<link_id>\d+)/(?P<vote>[0,1]{1})/$', 'link5app.views.vote', name='vote'),
 
-    url(r'^day/$', 'link5app.views.linkday', name='link_day'),
-    url(r'^day/(?P<page>\d+)/$', 'link5app.views.linkday', name='Link_day_nav'),
+    url(r'^top/day/$', 'link5app.views.linkday', name='link_day'),
+    url(r'^top/day/(?P<page>\d+)/$', 'link5app.views.linkday', name='Link_day_nav'),
     
-    url(r'^week/$', 'link5app.views.linkweek', name='link_week'),
-    url(r'^week/(?P<page>\d+)/$', 'link5app.views.linkweek', name='link_week_nav'),
+    url(r'^top/week/$', 'link5app.views.linkweek', name='link_week'),
+    url(r'^top/week/(?P<page>\d+)/$', 'link5app.views.linkweek', name='link_week_nav'),
     
-    url(r'^month/$', 'link5app.views.linkmonth', name='link_month'),
-    url(r'^month/(?P<page>\d+)/$', 'link5app.views.linkmonth', name='link_month_nav'),
+    url(r'^top/month/$', 'link5app.views.linkmonth', name='link_month'),
+    url(r'^top/month/(?P<page>\d+)/$', 'link5app.views.linkmonth', name='link_month_nav'),
     
     url(r'^category/(?P<category>\w+)/$', 'link5app.views.home', name='category'),
     url(r'^category/(?P<category>\w+)/(?P<page>\d+)/$', 'link5app.views.home', name='category_nav'),
@@ -50,11 +50,11 @@ urlpatterns = patterns('',
     url(r'^comment/delete/(?P<link_id>\d+)/(?P<comment_id>\d+)/$', 'link5app.views.commentdelete', name='commentdelete'),
     url(r'^comment/open/(?P<link_id>\d+)/$', 'link5app.views.home', name='commentopen'),
     
-    url(r'^extracting/$', 'link5app.views.getcontent', name="getcontent"),
-    url(r'^login/$', 'link5app.views.login', name="login"),
-    url(r'^logout/$', 'link5app.views.logout', name="logout"),
+    url(r'^url/extracting/$', 'link5app.views.getcontent', name="getcontent"),
+    url(r'^user/login/$', 'link5app.views.login', name="login"),
+    url(r'^user/logout/$', 'link5app.views.logout', name="logout"),
     
-    url(r'^contact/$', 'link5app.views.contact', name="contact"),
+    url(r'^me/contact/$', 'link5app.views.contact', name="contact"),
     
     url(r'^login/password_reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', name="pass_form_reset"),
     url(r'^login/password_reset/$', 'django.contrib.auth.views.password_reset',{'password_reset_form': link5app.forms.PasswordResetForm}),
@@ -69,6 +69,8 @@ urlpatterns = patterns('',
     (r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
     (r'^admin/', include(admin.site.urls)),
+    
+    url(r'^(?P<link_id>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
     
 )
 
