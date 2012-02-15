@@ -94,7 +94,7 @@ def version(path_string):
             mtime = os.path.getmtime('%s%s' % (settings.STATIC_ROOT, path_string,))
             version_cache[path_string] = mtime
         
-        return "/static%s?v=%s" % (path_string, mtime)
+        return "/static%s?%s" % (path_string, mtime)
     except:
         return path_string 
 
