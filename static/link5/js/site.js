@@ -212,7 +212,7 @@ $(document).ready(function() {
 
     url_value = window.location.pathname.split('/');
     
-    $(".link_load").click(function(){
+    $(".link_load").live("click",function(){
         history.pushState({path: window.location.pathname}, '', this.href);
         history_url = true;
         open_link($(this).attr('href')+"?ajax=true");
@@ -231,7 +231,7 @@ $(document).ready(function() {
     
     $("#id_post_ttl").keyup(function() { desc_length(); $("#preview_ttl").html($("#id_post_ttl").val()); });   
     
-    $(".likeornot a").click(function(){
+    $(".likeornot a").live("click",function(){
         var url = $(this).attr('href');
         var link_id = $(this).attr('id');
         link_vote(url, link_id, 'likeornot_');
@@ -240,6 +240,24 @@ $(document).ready(function() {
     
     $("#full_view").click(function(e){
         if (e.target.id == "full_view") {close_link();}
+    });
+    
+    $("#link_nav a").click(function(){
+        var url = $(this).attr('href') + "?ajax=true";
+        $("#link_nav").html('<img src="/static/link5/img/load-inf.gif" width="66" heigth="66" alt="loading..." border="0" />');
+        
+        $.ajax({
+          url: url,
+          success: function(data) {
+            $("#jquerywall").append(data);
+            $('.link').wookmark({
+              offset: 10,
+              itemWidth: 210,
+              container: $('#jquerywall_height')
+            });
+          }
+        });
+        return false;
     });
     
     setTimeout(function() { $('#flash_messages').slideUp('slow'); }, 3000);

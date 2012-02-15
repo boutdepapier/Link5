@@ -93,8 +93,14 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         
     if not url:
         url = "link/page"
+      
+    #If links are call by "more links" bottom link, we should only push links wall content:
+    ajax = False  
+    if request.GET.get("ajax", False):
+        ajax = True
+        return render_to_response('link5/link_wall_content.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
