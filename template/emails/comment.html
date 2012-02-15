@@ -42,7 +42,7 @@
             <td><p>{% trans "Hello" %} {{ link_author.user.username }},</p>
             <p>
                 <br />
-                {{ comment_author.user.username }} {% trans "has posted on your link: " %} <a href="{{ protocol }}://{{ domain }}{% url commentopen link.id %}">{{ link.post_ttl }}</a>
+                {{ comment_author.user.username }} {% trans "has posted on your link: " %} <a href="{{ protocol }}://{{ domain }}{% url linkload link.id_b62 link.title_for_url %}">{{ link.post_ttl }}</a>
                 <br /><br />
                 {% trans "His comment:" %}<br />
                 <cite>{{ text }}</cite>
