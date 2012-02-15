@@ -242,7 +242,7 @@ $(document).ready(function() {
         if (e.target.id == "full_view") {close_link();}
     });
     
-    $("#link_nav a").click(function(){
+    $("#link_nav a").live("click",function(){
         var url = $(this).attr('href') + "?ajax=true";
         $("#link_nav").html('<img src="/static/link5/img/load-inf.gif" width="66" heigth="66" alt="loading..." border="0" />');
         
