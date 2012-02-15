@@ -1,7 +1,8 @@
 # my_apps/image/templatetags/image_tags.py
-import os.path
+import os, re
 
 from django import template
+from django.conf import settings
 
 FMT = 'JPEG'
 EXT = 'jpg'
@@ -81,7 +82,23 @@ def crop(imagefield, size):
 
     """
     return scale(imagefield, size, 'crop')
+    
+
+version_cache = {}
+
+def version(path_string):
+    try:
+        if path_string in version_cache:
+            mtime = version_cache[path_string]
+        else:
+            mtime = os.path.getmtime('%s%s' % (settings.STATIC_ROOT, path_string,))
+            version_cache[path_string] = mtime
+        
+        return "/static%s?v=%s" % (path_string, mtime)
+    except:
+        return path_string 
 
 
+register.simple_tag(version) 
 register.filter('scale', scale)
 register.filter('crop', crop)
