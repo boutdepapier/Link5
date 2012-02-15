@@ -51,4 +51,8 @@
 <script type="text/javascript">
     $("#link_nav").html('<a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"1" }}/">More links!</a>');
 </script>
+{% else %}
+<script type="text/javascript">
+    $("#link_nav").html('');
+</script>
 {% endif %}{% endif %}
