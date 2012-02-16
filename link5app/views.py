@@ -57,6 +57,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         links = Link.objects.all().filter(pk = link_id)
     else:
         links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
+        """ If we are in a top page, we have to order by score (postiive vote - negative): """
         if period:
             links = links.filter(created_at__gte=period).extra(select={"score": "positive - negative"}).extra(order_by = ['-score'])
             
@@ -167,10 +168,15 @@ def linkpreview(request, link_id, title_url = False):
 def linkpreviewredirect(request, link_id):
     link = Link()
     try:
-        link_id = link.b62_id(link_id)
         link = Link.objects.get(pk=link_id) 
-        return HttpResponseRedirect('/%s/%s/' % (link.id_b62, slugify(link.post_ttl)))
+        return HttpResponseRedirect('/%s/%s/' % (link.id_b62, link.title_for_url))
     except:
+        try:
+            link_id = link.b62_id(link_id)
+            link = Link.objects.get(pk=link_id) 
+            return HttpResponseRedirect('/%s/%s/' % (link.id_b62, link.title_for_url))
+        except:
+            pass
         raise Http404(_("Cannot find link..."))
 
 def vote(request, link_id=0, vote=False):
