@@ -152,7 +152,7 @@ nav a:hover{text-decoration: none;}
 #full_view_content h1{padding: 10px 20px 0px 20px; font-size: 25px; min-width: 200px; float: left;}
 #full_view_content h1 a {color: #664444;}
 .link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
-.fb-like{padding: 0px 20px 0px 20px; height: 30px; float: left; width: 400px;}
+.fb-like{padding: 0px 20px 0px 20px; float: left; width: 400px;}
 .tweeter {float: right; padding: 0px 20px 0px 0px; height: 30px;}
 #link_source {padding: 0px 20px 0px 20px; clear: both; font-size: 11px;}
 #link_source a{color: #ff9009;}
