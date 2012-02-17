@@ -5,6 +5,7 @@
     {% block jquerywall %}
     {% include "link5/link_wall_content.html" %}
     {% endblock jquerywall %}
+    <div class="clearboth"></div>
     </div></div>
     <div id="link_overlay" {% if not link_comment %}class="hidde"{% endif %}></div>
     <div id="full_view" {% if not link_comment %}class="hidde"{% endif %}><div id="full_view_content" tabindex="13">{% if link_comment %}{% include "link5/link_view.html" %}{% endif %}</div></div>
