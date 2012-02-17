@@ -133,7 +133,7 @@ class Comment(models.Model):
     link = models.ForeignKey(Link)
     
     def __unicode__(self):
-        return "%s - %s - %s" % (self.author, self.link, self.created_at)
+        return "%s - %s - %s" % (self.author, self.link.post_ttl, self.created_at)
     
 class Like(models.Model):
     link = models.ForeignKey(Link)
