@@ -317,7 +317,7 @@ def login(request):
             request.session['link'] = False
             messages.info(request,_("Thank you for posting!"))
             
-        if login_form.is_valid() or register_form.is_valid():
+        if (login_form.is_valid() and user) or register_form.is_valid():
             return HttpResponseRedirect(next_url)
     
     else:
