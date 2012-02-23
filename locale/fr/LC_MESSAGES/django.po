@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-21 21:28+0100\n"
-"PO-Revision-Date: 2012-01-19 19:11\n"
-"Last-Translator:   <btacquet@gmail.com>\n"
+"PO-Revision-Date: 2012-02-23 15:14\n"
+"Last-Translator:   <aurorasev@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Translated-Using: django-rosetta 0.6.3\n"
+"X-Translated-Using: django-rosetta 0.6.5\n"
 
 #: settings.py:39
 msgid "English"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: link5app/dashboard.py:95 template/admin/index_rosetta.html:49
 msgid "Recent Actions"
-msgstr ""
+msgstr "Actions récentes"
 
 #: link5app/forms.py:69
 msgid "Email"
@@ -77,20 +77,20 @@ msgstr ""
 
 #: link5app/forms.py:75
 msgid "Please enter username and password."
-msgstr ""
+msgstr "Entrez votre identifiant et votre email"
 
 #: link5app/forms.py:104 link5app/forms.py:105
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: link5app/forms.py:127
 msgid "Passwords don't match."
-msgstr ""
+msgstr "Les mots de passe ne sont pas les mêmes."
 
 #: link5app/forms.py:161
 #, python-format
 msgid "Change of password on %s"
-msgstr ""
+msgstr "Changer de mot de passe %s"
 
 #: link5app/models.py:13
 msgid "Accept newsletter if it exist one day?"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: link5app/models.py:15
 msgid "Term and conditions?"
-msgstr ""
+msgstr "Voir les termes et conditions?"
 
 #: link5app/models.py:37
 msgid "Post Descripiton"
@@ -159,132 +159,132 @@ msgstr ""
 
 #: link5app/views.py:36 link5app/views.py:318
 msgid "Thank you for posting!"
-msgstr ""
+msgstr "Merci de poster !"
 
 #: link5app/views.py:50
 msgid "Please login or register to publish your link"
-msgstr ""
+msgstr "Merci de vous connecter ou enregistrez-vous pour publier votre lien"
 
 #: link5app/views.py:143
 msgid "Link deleted master!"
-msgstr ""
+msgstr "Link effacé maître"
 
 #: link5app/views.py:145
 msgid "Error, delete failed"
-msgstr ""
+msgstr "Erreur à l'effacement"
 
 #: link5app/views.py:166 link5app/views.py:180 link5app/views.py:527
 msgid "Cannot find link..."
-msgstr ""
+msgstr "Link introuvable..."
 
 #: link5app/views.py:186
 msgid "Please login first"
-msgstr ""
+msgstr "Vous devez être connecté"
 
 #: link5app/views.py:197
 msgid "Thank you!"
-msgstr ""
+msgstr "Merci !"
 
 #: link5app/views.py:208
 msgid "One vote per Link"
-msgstr ""
+msgstr "Un vote par Link"
 
 #: link5app/views.py:214
 msgid "You need to login or to register first..."
-msgstr ""
+msgstr "Vous vez être connecté"
 
 #: link5app/views.py:224
 #, python-format
 msgid "Sorry you can't follow more than %s persons"
-msgstr ""
+msgstr "Vous ne pouvez vous abonner à plus de %s personnes"
 
 #: link5app/views.py:243
 #, python-format
 msgid "Congratulation! You have a new link follower on %s!"
-msgstr ""
+msgstr "Félicitations ! Vous avez un nouvel abonné sur %s !"
 
 #: link5app/views.py:251
 #, python-format
 msgid "You now have %s in your follow list"
-msgstr ""
+msgstr "%s est maintenant abonné à vos link"
 
 #: link5app/views.py:254
 #, python-format
 msgid "You have stop following %s"
-msgstr ""
+msgstr "Vous n'êtes plus abonné aux lien de %s"
 
 #: link5app/views.py:256
 msgid "Can't stop your own music man!"
-msgstr ""
+msgstr "On n'arrête pas la musique mec !"
 
 #: link5app/views.py:267
 msgid "You have already logged in sneacky avocado :)"
-msgstr ""
+msgstr "Tu es déjà connecté petit malin :)"
 
 #: link5app/views.py:276
 msgid "Welcome friend!"
-msgstr ""
+msgstr "Bienvenue mon ami !"
 
 #: link5app/views.py:293
 msgid "You're in friend."
-msgstr ""
+msgstr "Connection réussie l'ami !"
 
 #: link5app/views.py:295
 msgid "Haha! wrong password and/or login :p"
-msgstr ""
+msgstr "Héhé, mauvais mot de passe et/ou login"
 
 #: link5app/views.py:354
 msgid "Profil updated"
-msgstr ""
+msgstr "Profil mis à jour"
 
 #: link5app/views.py:362
 msgid "Cannot find profil"
-msgstr ""
+msgstr "Profil introuvable"
 
 #: link5app/views.py:395
 #, python-format
 msgid "New comment waiting for you on %s!"
-msgstr ""
+msgstr "Nouveau commentaire en attend sur %s"
 
 #: link5app/views.py:403
 msgid "Thank you for your comment!"
-msgstr ""
+msgstr "Merci du commentaire !"
 
 #: link5app/views.py:420
 msgid "Comment deleted Sir!"
-msgstr ""
+msgstr "Commentaire effacé m'sieur !"
 
 #: link5app/views.py:515
 msgid "error parsing"
-msgstr ""
+msgstr "Erreur de parsing"
 
 #: link5app/views.py:516
 msgid "Please send me the url so I can check"
-msgstr ""
+msgstr "Merci de m'envoyer le lien pour vérification"
 
 #: link5app/views.py:518
 msgid "Error URL doesn't answer..."
-msgstr ""
+msgstr "Erreur l'URL ne répond pas conformément"
 
 #: link5app/views.py:519
 msgid "Please retry later on..."
-msgstr ""
+msgstr "Merci de réessayer ultérieurement..."
 
 #: link5app/views.py:546
 msgid "Thank you for your message!"
-msgstr ""
+msgstr "Merci de votre message !"
 
 #: template/admin/index_rosetta.html:16
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: template/admin/index_rosetta.html:31
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: template/admin/index_rosetta.html:32
 msgid "Change"
-msgstr ""
+msgstr "Changer"
 
 #: template/admin/index_rosetta.html:40
 msgid "Translation - Rosetta"
@@ -304,19 +304,19 @@ msgstr ""
 
 #: template/emails/comment.html:24
 msgid "You have a new comment on your link!"
-msgstr ""
+msgstr "Il y a un nouveau commentaire sur votre link !"
 
 #: template/emails/comment.html:42 template/emails/new_follower.html:42
 msgid "Hello"
-msgstr ""
+msgstr "Salut"
 
 #: template/emails/comment.html:45
 msgid "has posted on your link: "
-msgstr ""
+msgstr "a posté sur votre Link :"
 
 #: template/emails/comment.html:47
 msgid "His comment:"
-msgstr ""
+msgstr "Son commentaire :"
 
 #: template/emails/comment.html:51 template/emails/new_follower.html:51
 #: template/emails/password_reset_email.html:43
@@ -326,10 +326,13 @@ msgid ""
 "                Link5\n"
 "              "
 msgstr ""
+"\n"
+"Bis, <br />\n"
+"Link5"
 
 #: template/emails/new_follower.html:24
 msgid "Congratulation! You have a new link follower!"
-msgstr ""
+msgstr "Félicitations, vous avez un nouveau follower de liens!"
 
 #: template/emails/new_follower.html:45
 msgid "is now linked to you on link5.me"
@@ -350,9 +353,7 @@ msgstr ""
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. "
-"You’ll be redirected to your account where you will be able to set up a "
-"password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
@@ -466,8 +467,8 @@ msgstr ""
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked... "
-"And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked..."
+" And keep cool"
 msgstr ""
 
 #: template/link5/home.html:11
