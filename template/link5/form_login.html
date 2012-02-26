@@ -22,7 +22,7 @@
             {{ login_form.password }}
         </div>
         <p class="forgotpassword"><a href="{% url django.contrib.auth.views.password_reset %}">{% trans 'Forgot your password?' %}</a></p>
-        <p class="link_submit submit_login"><input type="submit" value="Log me baby!" /></p>
+        <p class="link_submit submit_login"><input type="submit" value="{% trans 'Log me baby!' %}" /></p>
     </form>
     
     <form action="{% url login %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
@@ -74,7 +74,7 @@
             <label for="id_conditions">{% trans "I understand and accept the <a href='/en/terms-and-conditons/' target='_blank'>terms and conditions</a>" %}</label>
         </div>
         
-        <p class="link_submit submit_login"><input type="submit" value="Register!" /></p>
+        <p class="link_submit submit_login"><input type="submit" value="{% trans 'Register!' %}" /></p>
     </form>
 
     <div class="clearboth"></div>
