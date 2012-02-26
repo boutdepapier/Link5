@@ -45,6 +45,7 @@
                 </p>
                 <p class="link5_comment_headline"><a href="{% url user_home link.author.pk %}">{{ comment.author.user.username }}</a> - {{ comment.text|truncatesmart:130 }}</p>
             </div>
+            <div class="clearboth"></div>
         {% endfor %}
         </div>
         <div class="clearboth"></div>
