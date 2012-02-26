@@ -131,6 +131,8 @@ nav a:hover{text-decoration: none;}
 .link_comment_avatar{float: left; margin: 5px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .link5_comment_headline {font-size: 11px; padding: 5px 0px 10px 0px; border-top: 1px solid #ececec; text-align: left;}
 .link5_comment_headline a {color: #ff9009;}
+.view_all_links{font-size: 11px; color: #ff9009; border-top: 1px solid #ececec; padding: 5px 0px 0px 0px; margin-top: 5px;}
+.view_all_links a {color: #ff9009;}
 
 /*********** User page  ************/
 #user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
