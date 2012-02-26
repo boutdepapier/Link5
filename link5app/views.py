@@ -82,6 +82,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     
     for link in links:
         link.comment = Comment.objects.filter(link=link.pk).count()
+        link.comments = Comment.objects.filter(link=link.pk).order_by("-created_at")
     
     links.page = page
     
@@ -99,9 +100,9 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     ajax = False  
     if request.GET.get("ajax", False):
         ajax = True
-        return render_to_response('link5/link_wall_content.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+        return render_to_response('link5/link_wall_content.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+    return render_to_response('link5/home.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
@@ -123,12 +124,16 @@ def userlinks(request, page = 0):
         form = LinkForm()
         url = "following/links"
         
+        for link in links:
+            link.comment = Comment.objects.filter(link=link.pk).count()
+            link.comments = Comment.objects.filter(link=link.pk).order_by("-created_at")
+        
         links.page = page
         
         links.home_page = False if int(page) <= 0 else True
         links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
          
-        return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE}, context_instance=RequestContext(request))
+        return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect('/')
     

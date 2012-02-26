@@ -33,6 +33,20 @@
         <p class="description">{{ link.post_txt|safe }}</p>
         <p class="author_date">Post by <a href="{% url user_home link.author.user.username|urlencode %}">{{ link.author.user.username }}</a> in <a href="{% url category link.category.slug %}">{{ link.category.name }}</a>, {{ link.created_at }} -- <a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load">{{ link.comment }} {% trans 'Comment' %}{{ link.comment|pluralize }}</a></p>
         
+        {% if link.comments %}
+        <div class="link5_comments">
+        {% for comment in link.comments|slice:COMMENTS_PER_LINK %}
+            <div class="link5_comment">
+                <p class="link_comment_avatar">
+                    {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"25x25" }}" alt="{{ comment.author.user.username }}" width="25" />
+                    {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="25" />{% endif %}
+                </p>
+                <p class="link5_comment_headline"><a href="{% url user_home link.author.pk %}">{{ comment.author.user.username }}</a> - {{ comment.text|truncatesmart:130 }}</p>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="clearboth"></div>
+        {% endif %}
         
         {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.id_b62 %}">{% trans "Delete [x]" %}</a></p>{% endif %}
         

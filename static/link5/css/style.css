@@ -107,7 +107,7 @@ nav a:hover{text-decoration: none;}
 .media{padding: 10px 0px 0px 0px;}
 .link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
-#link_nav{padding: 20px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
+#link_nav{padding: 40px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
 #link_nav a{color: #0e4967; text-decoration: none;}
 .author_date{font-size: 10px;}
 .author_date a {color: #442222;}
@@ -126,6 +126,11 @@ nav a:hover{text-decoration: none;}
 .not:hover{background: #ceefef;}
 .voted{background: #ceefef;}
 .novote{background: #ffffff;}
+.link5_comments {clear: both; padding: 5px 0px 0px 0px; font-size: 11px;}
+.link5_comment{padding-top: 3px;}
+.link_comment_avatar{float: left; margin: 5px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
+.link5_comment_headline {font-size: 11px; padding: 5px 0px 10px 0px; border-top: 1px solid #ececec; text-align: left;}
+.link5_comment_headline a {color: #ff9009;}
 
 /*********** User page  ************/
 #user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
