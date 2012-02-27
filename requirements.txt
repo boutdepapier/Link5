@@ -1,3 +1,4 @@
+MySQL-python
 django-rosetta
 djangoembed
 sorl-thumbnail
@@ -5,3 +6,8 @@ django-filebrowser
 django-grappelli
 django-rosetta-grappelli
 feedparser
+simplejson
+httplib2
+PIL
+django-debug-toolbar
+django-annoying
