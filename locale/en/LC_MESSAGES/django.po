@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-21 21:28+0100\n"
+"POT-Creation-Date: 2012-03-04 10:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 
 #: settings.py:39
 msgid "English"
+msgstr ""
+
+#: settings.py:40
+msgid "French"
 msgstr ""
 
 #: link5app/dashboard.py:25
@@ -154,7 +158,7 @@ msgstr ""
 msgid "Link number of negative votes"
 msgstr ""
 
-#: link5app/views.py:36 link5app/views.py:318
+#: link5app/views.py:36 link5app/views.py:321
 msgid "Thank you for posting!"
 msgstr ""
 
@@ -162,112 +166,112 @@ msgstr ""
 msgid "Please login or register to publish your link"
 msgstr ""
 
-#: link5app/views.py:143
+#: link5app/views.py:146
 msgid "Link deleted master!"
 msgstr ""
 
-#: link5app/views.py:145
+#: link5app/views.py:148
 msgid "Error, delete failed"
 msgstr ""
 
-#: link5app/views.py:166 link5app/views.py:180 link5app/views.py:527
+#: link5app/views.py:169 link5app/views.py:183 link5app/views.py:530
 msgid "Cannot find link..."
 msgstr ""
 
-#: link5app/views.py:186
+#: link5app/views.py:189
 msgid "Please login first"
 msgstr ""
 
-#: link5app/views.py:197
+#: link5app/views.py:200
 msgid "Thank you!"
 msgstr ""
 
-#: link5app/views.py:208
+#: link5app/views.py:211
 msgid "One vote per Link"
 msgstr ""
 
-#: link5app/views.py:214
+#: link5app/views.py:217
 msgid "You need to login or to register first..."
 msgstr ""
 
-#: link5app/views.py:224
+#: link5app/views.py:227
 #, python-format
 msgid "Sorry you can't follow more than %s persons"
 msgstr ""
 
-#: link5app/views.py:243
+#: link5app/views.py:246
 #, python-format
 msgid "Congratulation! You have a new link follower on %s!"
 msgstr ""
 
-#: link5app/views.py:251
+#: link5app/views.py:254
 #, python-format
 msgid "You now have %s in your follow list"
 msgstr ""
 
-#: link5app/views.py:254
+#: link5app/views.py:257
 #, python-format
 msgid "You have stop following %s"
 msgstr ""
 
-#: link5app/views.py:256
+#: link5app/views.py:259
 msgid "Can't stop your own music man!"
 msgstr ""
 
-#: link5app/views.py:267
+#: link5app/views.py:270
 msgid "You have already logged in sneacky avocado :)"
 msgstr ""
 
-#: link5app/views.py:276
+#: link5app/views.py:279
 msgid "Welcome friend!"
 msgstr ""
 
-#: link5app/views.py:293
+#: link5app/views.py:296
 msgid "You're in friend."
 msgstr ""
 
-#: link5app/views.py:295
+#: link5app/views.py:298
 msgid "Haha! wrong password and/or login :p"
 msgstr ""
 
-#: link5app/views.py:354
+#: link5app/views.py:357
 msgid "Profil updated"
 msgstr ""
 
-#: link5app/views.py:362
+#: link5app/views.py:365
 msgid "Cannot find profil"
 msgstr ""
 
-#: link5app/views.py:395
+#: link5app/views.py:398
 #, python-format
 msgid "New comment waiting for you on %s!"
 msgstr ""
 
-#: link5app/views.py:403
+#: link5app/views.py:406
 msgid "Thank you for your comment!"
 msgstr ""
 
-#: link5app/views.py:420
+#: link5app/views.py:423
 msgid "Comment deleted Sir!"
 msgstr ""
 
-#: link5app/views.py:515
+#: link5app/views.py:518
 msgid "error parsing"
 msgstr ""
 
-#: link5app/views.py:516
+#: link5app/views.py:519
 msgid "Please send me the url so I can check"
 msgstr ""
 
-#: link5app/views.py:518
+#: link5app/views.py:521
 msgid "Error URL doesn't answer..."
 msgstr ""
 
-#: link5app/views.py:519
+#: link5app/views.py:522
 msgid "Please retry later on..."
 msgstr ""
 
-#: link5app/views.py:546
+#: link5app/views.py:549
 msgid "Thank you for your message!"
 msgstr ""
 
@@ -354,7 +358,7 @@ msgid ""
 "                "
 msgstr ""
 
-#: template/link5/comments.html:10 template/link5/link_wall_content.html:37
+#: template/link5/comments.html:10 template/link5/link_wall_content.html:54
 msgid "Delete [x]"
 msgstr ""
 
@@ -428,6 +432,10 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
+#: template/link5/form_login.html:25
+msgid "Log me baby!"
+msgstr ""
+
 #: template/link5/form_login.html:29
 msgid "I want my account now!"
 msgstr ""
@@ -457,6 +465,10 @@ msgid ""
 "target='_blank'>terms and conditions</a>"
 msgstr ""
 
+#: template/link5/form_login.html:77
+msgid "Register!"
+msgstr ""
+
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
 "Link5 the social network based on Link share: share, follow, link, linked... "
@@ -475,8 +487,16 @@ msgstr ""
 msgid "No link for this page, yet!"
 msgstr ""
 
+#: template/link5/link_wall.html:16
+msgid "More links!"
+msgstr ""
+
 #: template/link5/link_wall_content.html:34
-msgid "Comment"
+msgid "in"
+msgstr ""
+
+#: template/link5/link_wall_content.html:36
+msgid "View all comments"
 msgstr ""
 
 #: template/link5/nav.html:4
@@ -591,52 +611,52 @@ msgstr ""
 msgid "Screw you guys, I'm going home"
 msgstr ""
 
-#: template/registration/password_reset_complete.html:8
+#: template/registration/password_reset_complete.html:4
 msgid "Password reset complete"
 msgstr ""
 
-#: template/registration/password_reset_complete.html:9
+#: template/registration/password_reset_complete.html:5
 msgid "Your password has been set.  You may go ahead and log in now."
 msgstr ""
 
-#: template/registration/password_reset_complete.html:10
+#: template/registration/password_reset_complete.html:6
 msgid "Log in"
 msgstr ""
 
-#: template/registration/password_reset_confirm.html:9
+#: template/registration/password_reset_confirm.html:5
 msgid "Enter new password"
 msgstr ""
 
-#: template/registration/password_reset_confirm.html:10
+#: template/registration/password_reset_confirm.html:6
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
 
-#: template/registration/password_reset_confirm.html:16
+#: template/registration/password_reset_confirm.html:12
 msgid "Change my password"
 msgstr ""
 
-#: template/registration/password_reset_confirm.html:19
+#: template/registration/password_reset_confirm.html:15
 msgid "Password reset unsuccessful"
 msgstr ""
 
-#: template/registration/password_reset_confirm.html:20
+#: template/registration/password_reset_confirm.html:16
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
 
-#: template/registration/password_reset_done.html:8
+#: template/registration/password_reset_done.html:4
 msgid "Password reset successful"
 msgstr ""
 
-#: template/registration/password_reset_done.html:9
+#: template/registration/password_reset_done.html:5
 msgid ""
 "We've e-mailed you instructions for setting your password to the e-mail "
 "address you submitted. You should be receiving it shortly."
 msgstr ""
 
-#: template/registration/password_reset_form.html:11
+#: template/registration/password_reset_form.html:7
 msgid "Reset my password"
 msgstr ""
