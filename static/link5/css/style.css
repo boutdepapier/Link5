@@ -99,7 +99,7 @@ nav a:hover{text-decoration: none;}
 /*********** Links block zone  ************/
 #links_section{background: #ececec; color: #664444; padding: 10px 40px 10px 30px; clear: both;}
 #jquerywall{position: absolute;}
-.link{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
+.link{padding: 10px 10px 0px 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
 .title{font-size:12px;}
 .title a {color: #664444; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
@@ -111,9 +111,9 @@ nav a:hover{text-decoration: none;}
 #link_nav a{color: #0e4967; text-decoration: none;}
 .author_date{font-size: 10px;}
 .author_date a {color: #442222;}
-.link_delete {float: left; font-size: 11px; margin: 8px -10px -10px 0px;}
+.link_delete {float: left; font-size: 11px; margin: 8px -10px 0px 0px;}
 .link_delete a {color: #ff9009;}
-.likeornot {float: right; margin: 5px -10px -10px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
+.likeornot {float: right; margin: 5px -10px 0px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
 .likeornot a {text-decoration: none;}
 .likeornot img{width: 13px;}
 .number{float: left; padding-right: 2px; color: #664444;}

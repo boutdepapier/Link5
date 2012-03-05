@@ -2,7 +2,7 @@
 {% block jquerywall %}
 {% for link in links|slice:LINK_PER_PAGE %}
     <article class='link'>
-        <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" />{% else %}{% endifequal %}<a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load" target="_blank">{{ link.post_ttl|safe }}</a></h2>
+        <h2 class="title">{% ifequal link.link_type "link" %}<img src="{{ STATIC_URL }}link5/img/link.png" border="0" class="link_icone" width="20" height="20" />{% else %}{% endifequal %}<a href="{% url linkload link.id_b62 link.title_for_url %}" class="link_load" target="_blank">{{ link.post_ttl|safe }}</a></h2>
         
         <div class="media">
         {% ifequal link.link_type "photo" %}
@@ -40,8 +40,8 @@
         {% for comment in link.comments|slice:COMMENTS_PER_LINK %}
             <div class="link5_comment">
                 <p class="link_comment_avatar"><a href="{% url user_home link.author.user.username %}">
-                    {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"25x25" }}" alt="{{ comment.author.user.username }}" width="25" />
-                    {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="25" />{% endif %}
+                    {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"25x25" }}" alt="{{ comment.author.user.username }}" width="25" height="25" />
+                    {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="25" height="25" />{% endif %}
                 </a></p>
                 <p class="link5_comment_headline"><a href="{% url user_home link.author.user.username %}">{{ comment.author.user.username }}</a> - {{ comment.text|truncatesmart:130 }}</p>
             </div>
