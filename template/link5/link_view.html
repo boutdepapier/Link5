@@ -73,6 +73,7 @@ $('.likeornot_post a').live('click', function() {
 	});
 </script>
 </p>
+<script>_gaq.push(['_trackPageview', '{% url linkload link_comment.id_b62 link_comment.title_for_url %}']);</script>
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
 <div class="likeornot_post" id="likeornotpost_{{ link_comment.id_b62 }}">
