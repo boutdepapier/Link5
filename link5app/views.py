@@ -48,7 +48,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
                 request.session['post_img']  = link.post_img
                 
                 messages.info(request,_("Please login or register to publish your link"))
-                return HttpResponseRedirect('/login/')
+                return HttpResponseRedirect('/auth/login/')
     
     else:
         form = LinkForm() # An unbound form
