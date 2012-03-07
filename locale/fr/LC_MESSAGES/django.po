@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 10:22+0100\n"
-"PO-Revision-Date: 2012-03-04 10:24\n"
+"POT-Creation-Date: 2012-03-07 11:31+0100\n"
+"PO-Revision-Date: 2012-03-07 11:32\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,10 @@ msgstr "Anglais"
 #: settings.py:40
 msgid "French"
 msgstr "Français"
+
+#: settings.py:41
+msgid "German"
+msgstr ""
 
 #: link5app/dashboard.py:25
 msgid "Group: Applications data"
@@ -422,7 +426,7 @@ msgid "Post-it!"
 msgstr "Post-it"
 
 #: template/link5/form_login.html:6
-msgid "Back home beach!"
+msgid "Back home bitch!"
 msgstr "Bienvenue à la maison"
 
 #: template/link5/form_login.html:15
@@ -492,7 +496,7 @@ msgstr ""
 msgid "Link5 - Share your links"
 msgstr "Link5 - Diffuse tes liens"
 
-#: template/link5/link_view.html:70
+#: template/link5/link_view.html:72
 msgid "Link source:"
 msgstr "Lien source"
 

@@ -2,37 +2,42 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 10:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-07 11:31+0100\n"
+"PO-Revision-Date: 2012-03-07 11:33\n"
+"Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Translated-Using: django-rosetta 0.6.5\n"
 
 #: settings.py:39
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: settings.py:40
 msgid "French"
+msgstr "Französisch"
+
+#: settings.py:41
+msgid "German"
 msgstr ""
 
 #: link5app/dashboard.py:25
 msgid "Group: Applications data"
-msgstr ""
+msgstr "Gruppe: Anwendungsdaten"
 
 #: link5app/dashboard.py:30
 msgid "Applications"
-msgstr ""
+msgstr "Anwendungen"
 
 #: link5app/dashboard.py:39
 msgid "ModelList: Administration"
@@ -76,19 +81,19 @@ msgstr ""
 
 #: link5app/forms.py:69
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
 #: link5app/forms.py:75
 msgid "Please enter username and password."
-msgstr ""
+msgstr "Bitte Benutzernamen und Passwort eingeben."
 
 #: link5app/forms.py:104 link5app/forms.py:105
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: link5app/forms.py:127
 msgid "Passwords don't match."
-msgstr ""
+msgstr "Passwörter sind nicht identisch."
 
 #: link5app/forms.py:161
 #, python-format
@@ -97,47 +102,47 @@ msgstr ""
 
 #: link5app/models.py:13
 msgid "Accept newsletter if it exist one day?"
-msgstr ""
+msgstr "Ich möchte Newsletter erhalten, falls es die überhaupt jemals gibt!"
 
 #: link5app/models.py:15
 msgid "Term and conditions?"
-msgstr ""
+msgstr "AGB"
 
 #: link5app/models.py:37
 msgid "Post Descripiton"
-msgstr ""
+msgstr "Beschreibung bestätigen"
 
 #: link5app/models.py:38
 msgid "Foreign URL"
-msgstr ""
+msgstr "Externe URL"
 
 #: link5app/models.py:39
 msgid "Illustration"
-msgstr ""
+msgstr "Abbildung"
 
 #: link5app/models.py:40
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: link5app/models.py:47 link5app/models.py:122
 msgid "Published"
-msgstr ""
+msgstr "Veröffentlicht"
 
 #: link5app/models.py:48 link5app/models.py:123
 msgid "Draft"
-msgstr ""
+msgstr "Entwurf"
 
 #: link5app/models.py:49 link5app/models.py:124
 msgid "Deleted"
-msgstr ""
+msgstr "Gelöscht"
 
 #: link5app/models.py:50
 msgid "Denied"
-msgstr ""
+msgstr "Abgelehnt"
 
 #: link5app/models.py:56
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: link5app/models.py:57
 msgid "Video"
@@ -145,7 +150,7 @@ msgstr ""
 
 #: link5app/models.py:58
 msgid "Rich"
-msgstr ""
+msgstr "Kursiv"
 
 #: link5app/models.py:59
 msgid "Link"
@@ -161,59 +166,59 @@ msgstr ""
 
 #: link5app/views.py:36 link5app/views.py:321
 msgid "Thank you for posting!"
-msgstr ""
+msgstr "Danke für Deinen Eintrag!"
 
 #: link5app/views.py:50
 msgid "Please login or register to publish your link"
-msgstr ""
+msgstr "Bitte einloggen oder registrieren, um einen Link zu veröffentlichen!"
 
 #: link5app/views.py:146
 msgid "Link deleted master!"
-msgstr ""
+msgstr "Der Link wurde gelöscht, Meister!"
 
 #: link5app/views.py:148
 msgid "Error, delete failed"
-msgstr ""
+msgstr "Fehler: konnte nicht gelöscht werden."
 
 #: link5app/views.py:169 link5app/views.py:183 link5app/views.py:530
 msgid "Cannot find link..."
-msgstr ""
+msgstr "Link wurde nicht gefunden..."
 
 #: link5app/views.py:189
 msgid "Please login first"
-msgstr ""
+msgstr "Bitte zuerst einloggen"
 
 #: link5app/views.py:200
 msgid "Thank you!"
-msgstr ""
+msgstr "Danke!"
 
 #: link5app/views.py:211
 msgid "One vote per Link"
-msgstr ""
+msgstr "Eine Stimme pro Link"
 
 #: link5app/views.py:217
 msgid "You need to login or to register first..."
-msgstr ""
+msgstr "Bitte zuerst einloggen oder registrieren..."
 
 #: link5app/views.py:227
 #, python-format
 msgid "Sorry you can't follow more than %s persons"
-msgstr ""
+msgstr "Sorry, aber Du kannst nicht mehr als %s Personen folgen!"
 
 #: link5app/views.py:246
 #, python-format
 msgid "Congratulation! You have a new link follower on %s!"
-msgstr ""
+msgstr "Gratuliere! Du hast einen neuen link Interessenten in %s!"
 
 #: link5app/views.py:254
 #, python-format
 msgid "You now have %s in your follow list"
-msgstr ""
+msgstr "Du hast jetzt %s in Deiner Interessenten-Liste."
 
 #: link5app/views.py:257
 #, python-format
 msgid "You have stop following %s"
-msgstr ""
+msgstr "Du folgst nun nicht mehr %s."
 
 #: link5app/views.py:259
 msgid "Can't stop your own music man!"
@@ -221,40 +226,40 @@ msgstr ""
 
 #: link5app/views.py:270
 msgid "You have already logged in sneacky avocado :)"
-msgstr ""
+msgstr "Du bist doch schon eingeloggt, Du freche Laus!"
 
 #: link5app/views.py:279
 msgid "Welcome friend!"
-msgstr ""
+msgstr "Willkommen, Freund!"
 
 #: link5app/views.py:296
 msgid "You're in friend."
-msgstr ""
+msgstr "Du bist drin, Kollege!"
 
 #: link5app/views.py:298
 msgid "Haha! wrong password and/or login :p"
-msgstr ""
+msgstr "Haha! Falsches Passwort und/oder Benutzername! :p"
 
 #: link5app/views.py:357
 msgid "Profil updated"
-msgstr ""
+msgstr "Profil wurde aktualisiert."
 
 #: link5app/views.py:365
 msgid "Cannot find profil"
-msgstr ""
+msgstr "Profil wurde nicht gefunden."
 
 #: link5app/views.py:398
 #, python-format
 msgid "New comment waiting for you on %s!"
-msgstr ""
+msgstr "Ein neuer Kommentar wurde bei %s geschrieben!"
 
 #: link5app/views.py:406
 msgid "Thank you for your comment!"
-msgstr ""
+msgstr "Danke für Deinen Kommentar!"
 
 #: link5app/views.py:423
 msgid "Comment deleted Sir!"
-msgstr ""
+msgstr "Kommentar gelöscht, Meister!"
 
 #: link5app/views.py:518
 msgid "error parsing"
@@ -262,31 +267,31 @@ msgstr ""
 
 #: link5app/views.py:519
 msgid "Please send me the url so I can check"
-msgstr ""
+msgstr "Bitte schick mir die URL, so dass ich es überprüfen kann!"
 
 #: link5app/views.py:521
 msgid "Error URL doesn't answer..."
-msgstr ""
+msgstr "Fehlerhafte URL reagier nicht..."
 
 #: link5app/views.py:522
 msgid "Please retry later on..."
-msgstr ""
+msgstr "Bitte später nochmals versuchen..."
 
 #: link5app/views.py:549
 msgid "Thank you for your message!"
-msgstr ""
+msgstr "Danke für Deine Nachricht!"
 
 #: template/admin/index_rosetta.html:16
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
 #: template/admin/index_rosetta.html:31
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: template/admin/index_rosetta.html:32
 msgid "Change"
-msgstr ""
+msgstr "Ändern"
 
 #: template/admin/index_rosetta.html:40
 msgid "Translation - Rosetta"
@@ -306,19 +311,19 @@ msgstr ""
 
 #: template/emails/comment.html:24
 msgid "You have a new comment on your link!"
-msgstr ""
+msgstr "Du hast einen neuen Kommentar auf Deinem link!"
 
 #: template/emails/comment.html:42 template/emails/new_follower.html:42
 msgid "Hello"
-msgstr ""
+msgstr "Hallo"
 
 #: template/emails/comment.html:45
 msgid "has posted on your link: "
-msgstr ""
+msgstr "hat einen link geposted:"
 
 #: template/emails/comment.html:47
 msgid "His comment:"
-msgstr ""
+msgstr "Kommentar:"
 
 #: template/emails/comment.html:51 template/emails/new_follower.html:51
 #: template/emails/password_reset_email.html:43
@@ -328,52 +333,56 @@ msgid ""
 "                Link5\n"
 "              "
 msgstr ""
+"\n"
+"Küsschen, <br />\n"
+"Link5 "
 
 #: template/emails/new_follower.html:24
 msgid "Congratulation! You have a new link follower!"
-msgstr ""
+msgstr "Glückwunsch! Du hast einen neuen link Interessenten!"
 
 #: template/emails/new_follower.html:45
 msgid "is now linked to you on link5.me"
-msgstr ""
+msgstr "ist jetzt zu Dir auf link5.me verlinkt!"
 
 #: template/emails/new_follower.html:47
 msgid "To see your new follower info just go on:"
-msgstr ""
+msgstr "Da lang, um die Informationen Deines Interessenten zu sehen:"
 
 #: template/emails/password_reset_email.html:24
 msgid "You've forget your password? no worries, it happens sometimes."
-msgstr ""
+msgstr "Du hast Dein Passwort vergessen? Keine Sorge, passiert manchmal!"
 
 #: template/emails/password_reset_email.html:34
 msgid "Hello,"
-msgstr ""
+msgstr "Hallo,"
 
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. "
-"You’ll be redirected to your account where you will be able to set up a "
-"password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
+"\n"
+"Bitte klicke auf den untenstehenden Link, wenn Du etwas ändern möchtest. Du wirst zu Deinem Account weitergeleitet, wo Du Dein Passwort einrichten kannst:<br /><br />\n"
+"Link: "
 
 #: template/link5/comments.html:10 template/link5/link_wall_content.html:54
 msgid "Delete [x]"
-msgstr ""
+msgstr "Löschen [x]"
 
 #: template/link5/comments.html:21
 msgid "Your comment: "
-msgstr ""
+msgstr "Dein Kommentar:"
 
 #: template/link5/comments.html:24
 msgid "Submit"
-msgstr ""
+msgstr "Senden"
 
 #: template/link5/form_contact.html:5
 msgid "A bug, a question, a message? Contact me!"
-msgstr ""
+msgstr "Ein bug, eine Frage, eine Anregung! Schreib mir!"
 
 #: template/link5/form_contact.html:9
 msgid "Name: "
@@ -382,72 +391,72 @@ msgstr ""
 #: template/link5/form_contact.html:14 template/link5/form_login.html:43
 #: template/link5/profil_edit.html:22
 msgid "Email: "
-msgstr ""
+msgstr "E-Mail:"
 
 #: template/link5/form_contact.html:19
 msgid "Object: "
-msgstr ""
+msgstr "Betreff:"
 
 #: template/link5/form_contact.html:24
 msgid "Message: "
-msgstr ""
+msgstr "Nachricht:"
 
 #: template/link5/form_link.html:6
 msgid "Url I to share: "
-msgstr ""
+msgstr "URL teilen:"
 
 #: template/link5/form_link.html:8
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: template/link5/form_link.html:16
 msgid "Link title: "
-msgstr ""
+msgstr "Link Titel:"
 
 #: template/link5/form_link.html:22
 msgid "Link description"
-msgstr ""
+msgstr "Link Beschreibung:"
 
 #: template/link5/form_link.html:28
 msgid "Category: "
-msgstr ""
+msgstr "Kategorie:"
 
 #: template/link5/form_link.html:33
 msgid "Post-it!"
-msgstr ""
+msgstr "Bestätigen!"
 
 #: template/link5/form_login.html:6
-msgid "Back home beach!"
-msgstr ""
+msgid "Back home bitch!"
+msgstr "Endlich zurück!"
 
 #: template/link5/form_login.html:15
 msgid "Login: "
-msgstr ""
+msgstr "Benutzername:"
 
 #: template/link5/form_login.html:21 template/link5/form_login.html.py:49
 #: template/link5/profil_edit.html:35
 msgid "Password:"
-msgstr ""
+msgstr "Passwort:"
 
 #: template/link5/form_login.html:24
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Passwort vergessen?"
 
 #: template/link5/form_login.html:25
 msgid "Log me baby!"
-msgstr ""
+msgstr "Log mich ein, baby!"
 
 #: template/link5/form_login.html:29
 msgid "I want my account now!"
-msgstr ""
+msgstr "Ich will jetzt meinen Account!"
 
 #: template/link5/form_login.html:37
 msgid "Pseudo: "
-msgstr ""
+msgstr "Benutzername:"
 
 #: template/link5/form_login.html:55 template/link5/profil_edit.html:41
 msgid "Password:<span class=\"again\"><br/>(again? Seriously ?)</span>"
-msgstr ""
+msgstr "Passwort:<span class=\"again\"><br/>(Schon wieder? Ernsthaft ?)</span>"
 
 #: template/link5/form_login.html:61
 msgid "Avatar: "
@@ -459,54 +468,62 @@ msgid ""
 "sell or give or I really don't know... Man, just accept: anyway I am too "
 "lazy to make newsletter..."
 msgstr ""
+"Ich akzeptiere E-Mail Nachrichten, falls es die jemals geben wird. Link5 "
+"gibt sein Indianerversprechen, dass wir Deine Informationen niemals "
+"weitergeben oder verkaufen werden...Komm jetzt, akzeptiere einfach: Ich bin "
+"sowieso zu faul, um einen Newsletter zu verfassen..."
 
 #: template/link5/form_login.html:74
 msgid ""
 "I understand and accept the <a href='/en/terms-and-conditons/' "
 "target='_blank'>terms and conditions</a>"
 msgstr ""
+"Ich verstehe und akzeptiere die <a href='/en/terms-and-conditons/' "
+"target='_blank'>AGB</a>"
 
 #: template/link5/form_login.html:77
 msgid "Register!"
-msgstr ""
+msgstr "Registrieren!"
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked... "
-"And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked..."
+" And keep cool"
 msgstr ""
+"Link5 ist ein soziales Netzwerk, welches auf der Verbreitung von Links "
+"aufbaut: austauschen, folgen, link, verlinkt...und immer cool bleiben."
 
 #: template/link5/home.html:11
 msgid "Link5 - Share your links"
-msgstr ""
+msgstr "Link5 - Deine Links verbreiten"
 
-#: template/link5/link_view.html:70
+#: template/link5/link_view.html:72
 msgid "Link source:"
-msgstr ""
+msgstr "Link Quelle:"
 
 #: template/link5/link_wall.html:3
 msgid "No link for this page, yet!"
-msgstr ""
+msgstr "Es gibt noch keinen Link für die Seite!"
 
 #: template/link5/link_wall.html:16
 msgid "More links!"
-msgstr ""
+msgstr "Mehr Links!"
 
 #: template/link5/link_wall_content.html:34
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #: template/link5/link_wall_content.html:36
 msgid "View all comments"
-msgstr ""
+msgstr "Alle Kommentare sehen"
 
 #: template/link5/nav.html:4
 msgid "My Links people"
-msgstr ""
+msgstr "Meine Link5 Freunde"
 
 #: template/link5/nav.html:5
 msgid "All links"
-msgstr ""
+msgstr "Alle Links"
 
 #: template/link5/nav.html:7
 msgid "Top links:"
@@ -514,57 +531,57 @@ msgstr ""
 
 #: template/link5/nav.html:8
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: template/link5/nav.html:9
 msgid "This week"
-msgstr ""
+msgstr "Diese Woche"
 
 #: template/link5/nav.html:10
 msgid "This month"
-msgstr ""
+msgstr "Diesen Monat"
 
 #: template/link5/nav.html:12
 msgid "Me and Myself:"
-msgstr ""
+msgstr "Ich selbst:"
 
 #: template/link5/nav.html:13
 msgid "My links"
-msgstr ""
+msgstr "Meine Links"
 
 #: template/link5/nav.html:14
 msgid "My profile"
-msgstr ""
+msgstr "Mein Profil"
 
 #: template/link5/profil_edit.html:4
 msgid "info"
-msgstr ""
+msgstr "Information"
 
 #: template/link5/profil_edit.html:5
 msgid "View user info, follower and following"
-msgstr ""
+msgstr "Benutzerinformation sehen"
 
 #: template/link5/profil_edit.html:14
 msgid "Edit my account info"
-msgstr ""
+msgstr "Account-Informationen"
 
 #: template/link5/profil_edit.html:48
 msgid "Newsletter, still cool with me?"
-msgstr ""
+msgstr "Newsletter, immernoch cool damit?"
 
 #: template/link5/profil_edit.html:51
 msgid "Update"
-msgstr ""
+msgstr "Speichern"
 
 #: template/link5/profil_edit.html:57
 #, python-format
 msgid "Link from %(username)s"
-msgstr ""
+msgstr "Link von %(username)s"
 
 #: template/link5/profil_edit.html:72
 #, python-format
 msgid "People who links %(username)s"
-msgstr ""
+msgstr "Leute, die %(username)s linken"
 
 #: template/link5/profil_view.html:11
 msgid "Post history: "
@@ -572,92 +589,99 @@ msgstr ""
 
 #: template/link5/profil_view.html:13
 msgid "Link activity page: "
-msgstr ""
+msgstr "Link Profilseite:"
 
 #: template/link5/profil_view.html:17
 msgid "Following: "
-msgstr ""
+msgstr "Folgen:"
 
 #: template/link5/profil_view.html:17
 msgid "Followers: "
-msgstr ""
+msgstr "Interessenten:"
 
 #: template/link5/profil_view.html:19
 msgid "Link him:"
-msgstr ""
+msgstr "Linken:"
 
 #: template/link5/site.html:9
 msgid ""
 "Link5 the social network based on link sharing: share, follow, link, "
 "linked... And enjoy!"
 msgstr ""
+"Link5 ist ein soziales Netzwerk, welches auf der Verbreitung von Links "
+"aufbaut: austauschen, folgen, link, verlinkt...und immer cool bleiben."
 
 #: template/link5/site.html:49
 msgid "home page"
-msgstr ""
+msgstr "Startseite"
 
 #: template/link5/site.html:53
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: template/link5/site.html:53
 msgid "Join this marvelous website"
-msgstr ""
+msgstr "Registriere Dich auf dieser herrlichen Webseite!"
 
 #: template/link5/site.html:55
 msgid "Welcome"
-msgstr ""
+msgstr "Willkommen"
 
 #: template/link5/site.html:55
 msgid "Screw you guys, I'm going home"
-msgstr ""
+msgstr "Scheiss drauf, ich verzieh mich!"
 
 #: template/registration/password_reset_complete.html:4
 msgid "Password reset complete"
-msgstr ""
+msgstr "Passwort wurde erfolgreich zurückgesetzt."
 
 #: template/registration/password_reset_complete.html:5
 msgid "Your password has been set.  You may go ahead and log in now."
-msgstr ""
+msgstr "Dein Passwort wurde gespeichert. Du kannst Dich nun einloggen."
 
 #: template/registration/password_reset_complete.html:6
 msgid "Log in"
-msgstr ""
+msgstr "Login"
 
 #: template/registration/password_reset_confirm.html:5
 msgid "Enter new password"
-msgstr ""
+msgstr "Neues Passwort eingeben"
 
 #: template/registration/password_reset_confirm.html:6
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
+"Bitte überprüfe Dein Passwort doppelt, so dass wir uns sicher sein können."
 
 #: template/registration/password_reset_confirm.html:12
 msgid "Change my password"
-msgstr ""
+msgstr "Passwot ändern"
 
 #: template/registration/password_reset_confirm.html:15
 msgid "Password reset unsuccessful"
-msgstr ""
+msgstr "Passwort konnte nicht zurückgesetzt werden."
 
 #: template/registration/password_reset_confirm.html:16
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
+"Dein Passwort Reset Link war nicht gültig, möglicherweise weil er bereits "
+"benutzt wurde. Bitte ein neues Passwort verlangen."
 
 #: template/registration/password_reset_done.html:4
 msgid "Password reset successful"
-msgstr ""
+msgstr "Passwort wurde erfolgreich zurückgesetzt."
 
 #: template/registration/password_reset_done.html:5
 msgid ""
 "We've e-mailed you instructions for setting your password to the e-mail "
 "address you submitted. You should be receiving it shortly."
 msgstr ""
+"Wir haben Dir Anweisungen für die nächsten Schritte für ein neues Passwort "
+"an Deine E-Mail Adresse geschickt. Du solltest sie in Kürze erhalten."
 
 #: template/registration/password_reset_form.html:7
 msgid "Reset my password"
-msgstr ""
+msgstr "Passwort neu setzen"

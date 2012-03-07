@@ -2,20 +2,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 10:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-07 11:31+0100\n"
+"PO-Revision-Date: 2012-03-07 11:32\n"
+"Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
+"X-Translated-Using: django-rosetta 0.6.5\n"
 
 #: settings.py:39
 msgid "English"
@@ -23,6 +24,10 @@ msgstr ""
 
 #: settings.py:40
 msgid "French"
+msgstr ""
+
+#: settings.py:41
+msgid "German"
 msgstr ""
 
 #: link5app/dashboard.py:25
@@ -220,7 +225,7 @@ msgstr ""
 
 #: link5app/views.py:270
 msgid "You have already logged in sneacky avocado :)"
-msgstr ""
+msgstr "You have already logged in sneaky avocado :)"
 
 #: link5app/views.py:279
 msgid "Welcome friend!"
@@ -342,7 +347,7 @@ msgstr ""
 
 #: template/emails/password_reset_email.html:24
 msgid "You've forget your password? no worries, it happens sometimes."
-msgstr ""
+msgstr "You've forgotten your password? No worries, it happens sometimes."
 
 #: template/emails/password_reset_email.html:34
 msgid "Hello,"
@@ -351,9 +356,7 @@ msgstr ""
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. "
-"You’ll be redirected to your account where you will be able to set up a "
-"password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
@@ -393,7 +396,7 @@ msgstr ""
 
 #: template/link5/form_link.html:6
 msgid "Url I to share: "
-msgstr ""
+msgstr "Url to share"
 
 #: template/link5/form_link.html:8
 msgid "Cancel"
@@ -416,8 +419,8 @@ msgid "Post-it!"
 msgstr ""
 
 #: template/link5/form_login.html:6
-msgid "Back home beach!"
-msgstr ""
+msgid "Back home bitch!"
+msgstr "Back home, bitch!"
 
 #: template/link5/form_login.html:15
 msgid "Login: "
@@ -471,15 +474,15 @@ msgstr ""
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked... "
-"And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked..."
+" And keep cool"
 msgstr ""
 
 #: template/link5/home.html:11
 msgid "Link5 - Share your links"
 msgstr ""
 
-#: template/link5/link_view.html:70
+#: template/link5/link_view.html:72
 msgid "Link source:"
 msgstr ""
 
