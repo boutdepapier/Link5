@@ -1,3 +1,4 @@
+django
 MySQL-python
 django-rosetta
 djangoembed
@@ -11,3 +12,4 @@ httplib2
 PIL
 django-debug-toolbar
 django-annoying
+beautifulsoup
