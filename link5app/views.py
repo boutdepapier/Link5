@@ -450,81 +450,92 @@ def getcontent(request, url = False):
         try:
             oembed_obj = oembed.site.embed(original_url, format=settings.OEMBED['format'], maxwidth=settings.OEMBED['maxwidth'])
             oembed_obj = simplejson.dumps(oembed_obj.get_data())
-        #Other URL will have to get manual processing
-        except:
-            image_types = ('image/bmp', 'image/jpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-icon')
-            # If the link is directly on the image media
-            if mimetypes.guess_type(original_url)[0] in image_types:
-                oembed_obj = {'type': 'photo', 'url': original_url}
-                oembed_obj = json.dumps(oembed_obj)
-            else:
-                title=''; description=''; image_list = []
-                
-                try:
-                    request = urllib2.Request(original_url)
-                    response = urllib2.urlopen(request)
-                    html = response.read()     
-                           
-                    try:
-                        soup = BeautifulSoup(html, fromEncoding="UTF-8")
-                        #soup.encode('utf-8')
-                        
-                        description = soup.findAll('meta', attrs={'name':re.compile("^description$")})
-                        if description:
-                           description = description[0].get('content')
-                        else: 
-                            try:  
-                                description = soup.findAll('meta', attrs={'property':re.compile("description$", re.I)})[0].get('content')
-                            except:
-                                pass
+        except Exception, details:
+            if re.search("Invalid mime-type", str(details)):
+                oembed_obj = json.dumps({"title": _("Remote display forbidden..."), "description": _("Current media is forbidden to display on external source")})
             
-                        
-                        # Try to get the page title from the meta tag named title
-                        try:
-                            title = soup.findAll('meta', attrs={'name':re.compile("^title$", re.I)})[0].get('content')
-                        except:
-                            pass
+            #Other URL will have to get manual processing
+            else:
+                raise
+                image_types = ('image/bmp', 'image/jpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-icon')
+                # If the link is directly on the image media
+                if mimetypes.guess_type(original_url)[0] in image_types:
+                    oembed_obj = {'type': 'photo', 'url': original_url}
+                    oembed_obj = json.dumps(oembed_obj)
+                else:
+                    title=''; description=''; image_list = []
                     
-                        # If the meta tag does not exist, grab the title from the title tag.
-                        if not title:
+                    # urllib part
+                    try:
+                        request = urllib2.Request(original_url)
+                        response = urllib2.urlopen(request)
+                        html = response.read()     
+                        
+                        # Beautiful soup part       
+                        try:
+                            soup = BeautifulSoup(html, fromEncoding="UTF-8")
+                            #soup.encode('utf-8')
+                            
+                            description = soup.findAll('meta', attrs={'name':re.compile("^description$")})
+                            if description:
+                               description = description[0].get('content')
+                            else: 
+                                try:  
+                                    description = soup.findAll('meta', attrs={'property':re.compile("description$", re.I)})[0].get('content')
+                                except:
+                                    pass
+                
+                            
+                            # Try to get the page title from the meta tag named title
                             try:
-                                title = soup.title.string
+                                title = soup.findAll('meta', attrs={'name':re.compile("^title$", re.I)})[0].get('content')
                             except:
                                 pass
                         
-                        try:
-                            max_images = settings.MAX_IMAGE
-                            image_tags = soup.findAll('img', limit=max_images)
-                            image_urls_list = []
-                            for image_tag in image_tags:
-                                original_url_shem = urlparse(original_url)
-                                #If the url is absolute
-                                if (urlparse(image_tag.get('src')).scheme):
-                                    image_urls_list.append(image_tag.get('src'))
-                                #else we have to build it
-                                else:
-                                    image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+                            # If the meta tag does not exist, grab the title from the title tag.
+                            if not title:
+                                try:
+                                    title = soup.title.string
+                                except:
+                                    pass
                             
-                            for img_url in image_urls_list:
-                                file = urllib2.urlopen(img_url)
-                                size = file.headers.get("content-length")
-                                file.close()
-                                if int(size) > settings.MIM_IMAGE_SIZE:
-                                    image_list.append({'url': img_url})
+                            # Try to get the images
+                            try:
+                                max_images = settings.MAX_IMAGE
+                                image_tags = soup.findAll('img', limit=max_images)
+                                image_urls_list = []
+                                for image_tag in image_tags:
+                                    original_url_shem = urlparse(original_url)
+                                    #If the url is absolute
+                                    if (urlparse(image_tag.get('src')).scheme):
+                                        image_urls_list.append(image_tag.get('src'))
+                                    #else we have to build it
+                                    else:
+                                        image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+                                
+                                for img_url in image_urls_list:
+                                    file = urllib2.urlopen(img_url)
+                                    size = file.headers.get("content-length")
+                                    file.close()
+                                    if int(size) > settings.MIM_IMAGE_SIZE:
+                                        image_list.append({'url': img_url})
+                            except:
+                                pass
+                            # End attempt tp get the images
+                                
                         except:
-                            pass
-                            
+                            title = _("error parsing")
+                            description = _("Please send me the url so I can check")
+                        # End Beautiful soup part
                     except:
-                        title = _("error parsing")
-                        description = _("Please send me the url so I can check")
-                except:
-                    title = _("Error URL doesn't answer...")
-                    description = _("Please retry later on...")
-                
-                return_dict = {'title':title, 'description':description, 'type': "link", 'url': original_url}
-                return_dict.update({'images': image_list})
-                
-                oembed_obj = json.dumps(return_dict)
+                        title = _("Error URL doesn't answer...")
+                        description = _("Please retry later on...")
+                    # End urllib part
+                    
+                    return_dict = {'title':title, 'description':description, 'type': "link", 'url': original_url}
+                    return_dict.update({'images': image_list})
+                    
+                    oembed_obj = json.dumps(return_dict)
     
     if not oembed_obj:
         raise Http404(_("Cannot find link...")) 
