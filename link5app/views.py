@@ -456,7 +456,6 @@ def getcontent(request, url = False):
             
             #Other URL will have to get manual processing
             else:
-                raise
                 image_types = ('image/bmp', 'image/jpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-icon')
                 # If the link is directly on the image media
                 if mimetypes.guess_type(original_url)[0] in image_types:
@@ -501,8 +500,8 @@ def getcontent(request, url = False):
                             
                             # Try to get the images
                             try:
-                                max_images = settings.MAX_IMAGE
-                                image_tags = soup.findAll('img', limit=max_images)
+                                max_images = 0
+                                image_tags = soup.findAll('img')
                                 image_urls_list = []
                                 for image_tag in image_tags:
                                     original_url_shem = urlparse(original_url)
@@ -512,6 +511,9 @@ def getcontent(request, url = False):
                                     #else we have to build it
                                     else:
                                         image_urls_list.append("%s://%s%s" % (original_url_shem.scheme, original_url_shem.netloc, urlparse(image_tag.get('src')).path))
+                                    max_images = max_images + 1
+                                    if max_images >= settings.MAX_IMAGE:
+                                        break
                                 
                                 for img_url in image_urls_list:
                                     file = urllib2.urlopen(img_url)
