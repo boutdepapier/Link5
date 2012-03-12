@@ -81,7 +81,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     links = links[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
     
     for link in links:
-        link.comments = Comment.objects.filter(link=link.pk).order_by("-created_at").select_related()
+        link.comments = Comment.objects.filter(link=link.pk).order_by("created_at").select_related()
     
     links.page = page
     
@@ -124,7 +124,7 @@ def userlinks(request, page = 0):
         url = "following/links"
         
         for link in links:
-            link.comments = Comment.objects.filter(link=link.pk).order_by("-created_at")
+            link.comments = Comment.objects.filter(link=link.pk).order_by("created_at")
         
         links.page = page
         
