@@ -48,7 +48,7 @@ function link_validator() {
     
     $("#id_post_url").val($.trim($("#id_post_url").val()));
     var content = $("#id_post_url").val();
-    var urlRegex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     // Filtering URL from the content using regular expressions
     var url = content.match(urlRegex);
     
