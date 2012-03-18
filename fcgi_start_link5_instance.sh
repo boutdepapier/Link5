@@ -23,7 +23,7 @@ fi
 
 
 
-APP_DIR="/var/www/tacquet/link5.me/link5"
+APP_DIR="/home/link5.me/link5"
 WORKERS=2           # this affects reliability - one or two workers may die
 MIN_CHILDREN=2      # this affects how server would react on unexpected load
 MAX_CHILDREN=2      # this affects how much memory server would consume + server performance
