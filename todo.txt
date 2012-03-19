@@ -1,3 +1,0 @@
--> Add pagination in follower and following
--> Share the link
--> Review the code in Ukrainians style
