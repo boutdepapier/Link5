@@ -14,3 +14,5 @@ django-debug-toolbar
 django-annoying
 beautifulsoup
 flup
+python-memcached
+
