@@ -25,9 +25,9 @@ fi
 
 APP_DIR="/home/link5.me/link5"
 WORKERS=2           # this affects reliability - one or two workers may die
-MIN_CHILDREN=2      # this affects how server would react on unexpected load
-MAX_CHILDREN=2      # this affects how much memory server would consume + server performance
-MAX_REQUESTS=100    # this affects memory leaks protection
+MIN_CHILDREN=8      # this affects how server would react on unexpected load
+MAX_CHILDREN=8      # this affects how much memory server would consume + server performance
+MAX_REQUESTS=1000    # this affects memory leaks protection
 ENV="$2"
 PORT="$3"
 
