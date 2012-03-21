@@ -1,5 +1,6 @@
 settings.py
 *.pyc
+*.pyo
 media/cache
 media/uploads
 media/avatars
