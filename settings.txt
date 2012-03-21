@@ -161,6 +161,11 @@ INSTALLED_APPS = (
 GRAPPELLI_ADMIN_TITLE = "Link5 admin"
 GRAPPELLI_INDEX_DASHBOARD = 'link5app.dashboard.CustomIndexDashboard'
 
+THUMBNAIL_BACKEND = 'sorl_backends.AutoFormatBackend'
+# Used if the format cannot be automatically inferred (eg for a .gif image)
+THUMBNAIL_FORMAT = 'JPEG'
+
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
