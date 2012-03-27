@@ -29,13 +29,8 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         
         if form.is_valid():
             link = form.save(request.POST.get("user_url", None))
-            if request.user.is_authenticated():
-                author = Author.objects.get(user=request.user.pk)
-                link.author = author
-                link.save()
-                messages.info(request,_("Thank you for posting!"))
-                return HttpResponseRedirect('/')
-            else:
+            
+            if not request.user.is_authenticated() and not settings.ANONYMOUS_POST:
                 request.session['link'] = True
                 request.session['url'] = link.post_url
                 
@@ -49,6 +44,15 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
                 
                 messages.info(request,_("Please login or register to publish your link"))
                 return HttpResponseRedirect('/auth/login/')
+            
+            if request.user.is_authenticated():
+                author = Author.objects.get(user=request.user.pk)
+            else:
+                author = Author.objects.get(user__username=settings.DEFAULT_USER)
+            link.author = author
+            link.save()
+            messages.info(request,_("Thank you for posting!"))
+            return HttpResponseRedirect('/')
     
     else:
         form = LinkForm() # An unbound form
@@ -300,7 +304,7 @@ def login(request):
             login_form = AuthForm()
             
         # If the new user has a link in Session, time to post it!
-        if 'link' in request.session and (login_form.is_valid() or register_form.is_valid()):
+        if 'link' in request.session and (login_form.is_valid() or register_form.is_valid()) and not settings.ANONYMOUS_POST:
             link = Link()
             link.post_url = request.session['url'] 
             link.status   = "publish"
