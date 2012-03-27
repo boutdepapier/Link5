@@ -51,7 +51,7 @@
         <div class="clearboth"></div>
         {% endif %}
         
-        {% if link.author.user.pk == request.user.pk %}<p class="link_delete"><a href="{% url linkdelete link.id_b62 %}">{% trans "Delete [x]" %}</a></p>{% endif %}
+        {% if link.author.user.pk == request.user.pk or request.user.is_superuser %}<p class="link_delete"><a href="{% url linkdelete link.id_b62 %}">{% trans "Delete [x]" %}</a></p>{% endif %}
         
         <div class="likeornot" id="likeornot_{{ link.id_b62 }}">
             <p><a class="like" href="{% url vote link.id_b62 '1' %}" id="like_{{ link.id_b62 }}"><span class="number">{{ link.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" /></a>
