@@ -50,8 +50,8 @@ urlpatterns = patterns('',
     url(r'^comment/open/(?P<link_id>\d+)/$', 'link5app.views.home', name='commentopen'),
     
     url(r'^url/extracting/$', 'link5app.views.getcontent', name="getcontent"),
-    url(r'^auth/login/$', 'link5app.views.login', name="login"),
-    url(r'^auth/logout/$', 'link5app.views.logout', name="logout"),
+    url(r'^auth/login/$', 'link5app.views.login', name="login_link5"),
+    url(r'^auth/logout/$', 'link5app.views.logout', name="logout_link5"),
     
     url(r'^me/contact/$', 'link5app.views.contact', name="contact"),
     

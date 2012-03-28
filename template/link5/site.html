@@ -50,9 +50,9 @@
           
         <div id="login">
         {% if not user.is_authenticated %}
-            <p><br /><a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login %}?next={{ request.get_full_path }}">{% trans "Join this marvelous website" %}</a></p>
+            <p><br /><a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Join this marvelous website" %}</a></p>
         {% else %}  
-            <p>{% trans 'Welcome' %} <a href="{% url user_home request.user.username|slugify %}">{{ user.username }}</a>.<br /> <a href="{% url logout %}">{% trans "Screw you guys, I'm going home" %}</a></p>
+            <p>{% trans 'Welcome' %} <a href="{% url user_home request.user.username|slugify %}">{{ user.username }}</a>.<br /> <a href="{% url logout_link5 %}">{% trans "Screw you guys, I'm going home" %}</a></p>
         {% endif %}
         </div>
         
