@@ -4,8 +4,6 @@ django-rosetta
 djangoembed
 sorl-thumbnail
 django-filebrowser
-django-grappelli
-django-rosetta-grappelli
 feedparser
 simplejson
 httplib2
@@ -15,4 +13,5 @@ django-annoying
 beautifulsoup
 flup
 python-memcached
+django-admin-tools
 
