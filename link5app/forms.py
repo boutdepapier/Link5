@@ -130,11 +130,12 @@ class UserProfileFrom(forms.ModelForm):
     
 class PasswordResetForm(auth_forms.PasswordResetForm):
 
-    def save(
-        self, domain_override=None,
-        email_template_name='', use_https=False,
-        token_generator=default_token_generator, from_email=None, request=None
-    ):
+    def save(self, domain_override=None,
+             subject_template_name='emails/password_reset_email.txt',
+             email_template_name='emails/password_reset_email.html',
+             use_https=False, token_generator=default_token_generator,
+             from_email=None, request=None
+             ):
         """
         Generates a one-use only link for resetting password and sends to the user
         """
