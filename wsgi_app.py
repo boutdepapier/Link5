@@ -1,10 +1,11 @@
-import os
+# wsgi_app.py
 import sys
-import site
+import os
 
-site.addsitedir('/home/env/link5/lib/python2.7/site-packages')
-
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 import django.core.handlers.wsgi
+
 application = django.core.handlers.wsgi.WSGIHandler()
+
