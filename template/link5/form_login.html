@@ -25,7 +25,7 @@
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Log me baby!' %}" /></p>
     </form>
     
-    <form action="{% url login %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
+    <form action="{% url login_link5 %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
         <h2>{% trans 'I want my account now!' %}</h2>
         
         <input type="hidden" name="register_form" value="1" />
