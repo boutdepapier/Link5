@@ -1,7 +1,6 @@
 from django.contrib import admin
 from link5app.models import Link, Author, Category, Comment
 
-
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
