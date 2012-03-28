@@ -6,14 +6,15 @@ if [ -z "$1" ]; then
   exit 1
 
 fi
+./start_fcgi_link5_instance.sh $1 "link5" 9080
 
-if [ -z "$2" ]; then
-  echo "Please provide instance name: link5"
-  exit 1
-fi
+#if [ -z "$2" ]; then
+#  echo "Please provide instance name: link5"
+#  exit 1
+#fi
 
 
-if [[ "$2" == "link5" || "$2" == "ALL" ]] ; then
-  ./fcgi_start_link5_instance.sh $1 "link5" 9080
-fi
+#if [[ "$2" == "link5" || "$2" == "ALL" ]] ; then
+#  ./start_fcgi_link5_instance.sh $1 "link5" 9080
+#fi
 
