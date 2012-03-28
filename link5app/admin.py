@@ -3,9 +3,18 @@ from link5app.models import Link, Author, Category, Comment
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-
     
-admin.site.register(Link)
-admin.site.register(Author)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ["post_ttl", "status", "created_at", "author"]
+    list_filter = ["status","category"]
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ["user", "author_email", "author_date_joined", "author_last_login"]
+    
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ["link", "status", "author", "created_at"]    
+    
+admin.site.register(Link, LinkAdmin)
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)

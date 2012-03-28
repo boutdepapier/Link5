@@ -16,7 +16,15 @@ class Author(models.Model):
     
     @property
     def author_email(self):
-        return self.user.email   
+        return self.user.email 
+        
+    @property
+    def author_date_joined(self):
+        return self.user.date_joined
+        
+    @property
+    def author_last_login(self):
+        return self.user.last_login
     
     def __unicode__(self):
         return "%s - %s" % (self.user.username, self.author_email)

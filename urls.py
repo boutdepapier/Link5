@@ -57,8 +57,12 @@ urlpatterns = patterns('',
     
     url(r'^login/password_reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', name="pass_form_reset"),
     url(r'^login/password_reset/$', 'django.contrib.auth.views.password_reset',{'password_reset_form': link5app.forms.PasswordResetForm}),
-    url(r'^login/login/', include('django.contrib.auth.urls'), {'template_name': '404.html'}),
-    url(r'^login/', include('django.contrib.auth.urls')),
+    url(r'^login/password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+    
+    url(r'^login/password_change/$', 'django.contrib.auth.views.password_change'),
+    url(r'^login/password_change/done/$', 'django.contrib.auth.views.password_change_done'),
+    
+    url(r'^login/reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
     
     # Langage selection
     (r'^i18n/', include('django.conf.urls.i18n')),
