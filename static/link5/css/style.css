@@ -15,17 +15,22 @@
 
 a img { border:0; }
 
-
+/*
+@font-face {
+    font-family: Marcelle;
+    src: url(../../typo/marcelle/Marcsc___.ttf);
+}
+*/
 
 body{text-align:center;font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; background: #ffffff;}
 
 header {color: #0e4967; }
 header a {color: #0e4967;}
 #logo{float: left;padding: 0px 0px 0px 40px}
-#login {float: left; font-size: 12px; padding: 50px 20px 0px 40px;}
+#login {float: left; font-size: 12px; padding: 55px 20px 0px 40px;}
 #login a {text-decoration: underline; font-weight: bold;}
-#langage_selection{float: right; padding: 10px 20px 0px 0px;}
-nav {clear: both; font-size: 16px; padding: 10px 20px 5px 40px; border-bottom: 1px solid white; background: #0e4967; color: #ffffff; border-radius: 10px 10px 0px 0px;}
+#langage_selection{float: right; padding: 10px 20px 0px 0px; }
+nav { clear: both; font-size: 16px; padding: 10px 20px 5px 40px; border-bottom: 1px solid white; background: #0e4967; color: #ffffff; border-radius: 10px 10px 0px 0px;}
 nav a {text-decoration: underline; color: #ffffff;}
 nav a:hover{text-decoration: none;}
 
