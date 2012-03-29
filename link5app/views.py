@@ -431,7 +431,7 @@ def commentdelete(request, link_id=0, comment_id=0):
     return home(request, referral=referral, link_comment=link, comment_form = CommentForm())
 
 # Logo info:
-# [col=3399cc]Link[/col][col=115599]5[/col][col=fc0082].me[/col]
+# [col=3399cc]Link[/col][col=115599]5[/col][col=ff9009].me[/col]
 # http://creatr.cc/creatr/
 
     
