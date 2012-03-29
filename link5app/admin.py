@@ -1,5 +1,5 @@
 from django.contrib import admin
-from link5app.models import Link, Author, Category, Comment
+from link5app.models import Link, Author, Category, Comment, Like
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
@@ -17,7 +17,12 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ["link", "status", "author", "created_at"] 
     ordering = ["-created_at"]   
     
+class LikeAdmin(admin.ModelAdmin):
+    list_display = ["link", "author", "point", "created_at"] 
+    ordering = ["-created_at"] 
+    
 admin.site.register(Link, LinkAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Like, LikeAdmin)
