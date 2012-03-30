@@ -38,7 +38,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
                                               settings.RECAPCHA_PRIVATE,
                                               request.META.get("REMOTE_ADDR", None))
             
-            if not captcha_response.is_valid:
+            if not captcha_response.is_valid and request.user.is_authenticated():
                 captcha_error = "&error=%s" % captcha_response.error_code
         
         if form.is_valid() and captcha_error == "":
