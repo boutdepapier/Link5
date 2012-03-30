@@ -29,7 +29,7 @@
                 {{ form.category }}
             </div>
             
-            {% if RECAPCHA_PUBLIC %}{% if not user.is_authenticated %}<div id="recapcha">
+            {% if ANONYMOUS_POST %}{% if not user.is_authenticated %}<div id="recapcha">
                 <p>{% trans "Capcha is only for Anonymous users, please subscribe if you don't support it any more." %}</p>
                 <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
                 <script type="text/javascript" src="http://api.recaptcha.net/challenge?k={{ RECAPCHA_PUBLIC }}{{ captcha_error}}"></script>
