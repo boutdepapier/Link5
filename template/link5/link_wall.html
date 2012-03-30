@@ -12,8 +12,8 @@
     
     
     {% block more_links %}
-    {% if links.last_page %}
-    <p id="link_nav"><a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"1" }}/">{% trans 'More links!' %}</a></p>
+    {% if last_page %}
+    <p id="link_nav"><a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ page|add:"1" }}/">{% trans 'More links!' %}</a></p>
     {% endif %}
     {% endblock more_links %}
 

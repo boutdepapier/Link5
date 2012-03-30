@@ -22,12 +22,26 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
-def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False):
 
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False, links = False):
+    
+    captcha_error = ""
+    
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
         
-        if form.is_valid():
+        if settings.ANONYMOUS_POST:
+            from recaptcha.client import captcha
+            # Check the form captcha.  If not good, pass the template an error code
+            captcha_response = captcha.submit(request.POST.get("recaptcha_challenge_field", None),
+                                              request.POST.get("recaptcha_response_field", None),
+                                              settings.RECAPCHA_PRIVATE,
+                                              request.META.get("REMOTE_ADDR", None))
+            
+            if not captcha_response.is_valid:
+                captcha_error = "&error=%s" % captcha_response.error_code
+        
+        if form.is_valid() and captcha_error == "":
             link = form.save(request.POST.get("user_url", None))
             
             if not request.user.is_authenticated() and not settings.ANONYMOUS_POST:
@@ -59,7 +73,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     
     if link_id:
         links = Link.objects.all().filter(pk = link_id)
-    else:
+    elif not links:
         links = Link.objects.all().order_by('-created_at').filter(status__exact="publish").select_related()
         """ If we are in a top page, we have to order by score (postiive vote - negative): """
         if period:
@@ -87,10 +101,8 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     for link in links:
         link.comments = Comment.objects.filter(link=link.pk).order_by("created_at").select_related()
     
-    links.page = page
-    
-    links.home_page = False if int(page) <= 0 else True
-    links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
+    home_page = False if int(page) <= 0 else True
+    last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
     
     comments = False
     if link_comment:
@@ -100,12 +112,14 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         url = "link/page"
       
     #If links are call by "more links" bottom link, we should only push links wall content:
-    ajax = False  
+    ajax = False
+    template = 'link5/home.html'
+    
     if request.GET.get("ajax", False):
         ajax = True
-        return render_to_response('link5/link_wall_content.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
+        template = 'link5/link_wall_content.html';
     
-    return render_to_response('link5/home.html', {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
+    return render_to_response(template, {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK, "RECAPCHA_PUBLIC": settings.RECAPCHA_PUBLIC, 'captcha_error': captcha_error, 'page': page, "home_page": home_page, "last_page": last_page}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
@@ -123,19 +137,11 @@ def userlinks(request, page = 0):
     if request.user.is_authenticated():
         author = get_object_or_404(Author, user=request.user.pk)
         followings = Follow.objects.all().filter(author_from__exact = author.pk)
-        links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])[int(page)*settings.LINK_PER_PAGE:(int(page)+1)*settings.LINK_PER_PAGE+1]
+        links = Link.objects.all().order_by('-created_at').filter(status__in=["publish", "denied"]).select_related().filter(author__in=[following.author_to for following in followings])
         form = LinkForm()
         url = "following/links"
         
-        for link in links:
-            link.comments = Comment.objects.filter(link=link.pk).order_by("created_at")
-        
-        links.page = page
-        
-        links.home_page = False if int(page) <= 0 else True
-        links.last_page = False if len(links) < settings.LINK_PER_PAGE + 1 else True
-         
-        return render_to_response('link5/home.html', {'form': form, 'links': links, 'url': url, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK}, context_instance=RequestContext(request))
+        return home(request, links = links, url = url, page = page)
     else:
         return HttpResponseRedirect('/')
     

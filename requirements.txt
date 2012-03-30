@@ -14,4 +14,4 @@ beautifulsoup
 flup
 python-memcached
 django-admin-tools
-
+recaptcha-client

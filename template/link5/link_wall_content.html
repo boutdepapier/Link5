@@ -64,9 +64,9 @@
 {% endblock jquerywall %}
 
 {% if ajax %}
-{% if links.last_page %}
+{% if last_page %}
 <script type="text/javascript">
-    $("#link_nav").html('<a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ links.page|add:"1" }}/">More links!</a>');
+    $("#link_nav").html('<a href="/{% if url %}{{ url }}/{% endif %}{% if user_name %}{{ user_name }}/{% endif %}{{ page|add:"1" }}/">{% trans "More links!" %}</a>');
 </script>
 {% else %}
 <script type="text/javascript">

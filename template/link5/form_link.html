@@ -28,11 +28,18 @@
                 <label for="id_category">{% trans 'Category: ' %}</label>
                 {{ form.category }}
             </div>
+            
+            {% if RECAPCHA_PUBLIC %}{% if not user.is_authenticated %}<div id="recapcha">
+                <p>{% trans "Capcha is only for Anonymous users, please subscribe if you don't support it any more." %}</p>
+                <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
+                <script type="text/javascript" src="http://api.recaptcha.net/challenge?k={{ RECAPCHA_PUBLIC }}{{ captcha_error}}"></script>
+            </div>{% endif %}{% endif %}
                 
             <input type="hidden" value="" name="user_url" id="user_url" />
             <div class="link_submit post_it"><input type="submit" value="{% trans 'Post-it!' %}"/></div>
             
         </div>
+        
         <div class="post_preview">
             <div id="post_preview_loading"></div>
             <h2 id="preview_ttl" class="title"></h2>
@@ -41,6 +48,7 @@
         </div>
         {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
         
+
     </div>
     <div class="clearboth"></div>
 </form>

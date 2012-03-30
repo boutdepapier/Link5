@@ -62,12 +62,14 @@ nav a:hover{text-decoration: none;}
 .errorlist{color: red; clear: both;}
 
 /************ Link preview **************/
-#post_preview_form{width: 900px;}
+#post_preview_form{width: 100%;}
 #post_edit{float: left; width: 512px; padding: 15px 0px 0px 0px;}
 .post_element {clear: both; margin-bottom: 10px; float: left;}
 .post_element label {font-size: 18px; float: left; width: 130px; padding-right: 10px;}
 .post_element input {font-size: 18px; float: left; width: 360px; }
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
+#recapcha{float: left; padding: 0px 0px 15px 0px;}
+#recapcha p {padding-bottom: 5px;}
 .post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
 .post_preview a {color: #664444;}
 #post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
