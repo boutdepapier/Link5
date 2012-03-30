@@ -68,11 +68,11 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^laptiteporte/doc/', include('django.contrib.admindocs.urls')),
     
     url(r'^admin_tools/', include('admin_tools.urls')),
-    url(r'^admin/filebrowser/', include(site.urls)),
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^laptiteporte/filebrowser/', include(site.urls)),
+    (r'^laptiteporte/', include(admin.site.urls)),
     
     url(r'^(?P<link_id>[^/]+)/(?P<title_url>[^/]+)/$', 'link5app.views.linkpreview', name='linkload'),
     url(r'^(?P<link_id>[^/]+)/$', 'link5app.views.linkpreview', name='linkload_short'),
