@@ -30,7 +30,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
         
-        if settings.ANONYMOUS_POST:
+        if settings.ANONYMOUS_POST and not request.user.is_authenticated():
             from recaptcha.client import captcha
             # Check the form captcha.  If not good, pass the template an error code
             captcha_response = captcha.submit(request.POST.get("recaptcha_challenge_field", None),
@@ -38,7 +38,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
                                               settings.RECAPCHA_PRIVATE,
                                               request.META.get("REMOTE_ADDR", None))
             
-            if not captcha_response.is_valid and request.user.is_authenticated():
+            if not captcha_response.is_valid:
                 captcha_error = "&error=%s" % captcha_response.error_code
         
         if form.is_valid() and captcha_error == "":
