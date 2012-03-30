@@ -119,7 +119,7 @@ def home(request, page = 0, user_name = False, author = False, follow = False, r
         ajax = True
         template = 'link5/link_wall_content.html';
     
-    return render_to_response(template, {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK, "RECAPCHA_PUBLIC": settings.RECAPCHA_PUBLIC, 'captcha_error': captcha_error, 'page': page, "home_page": home_page, "last_page": last_page}, context_instance=RequestContext(request))
+    return render_to_response(template, {'form': form, 'links': links, 'ajax': ajax, 'user_name': user_name, 'author': author, 'follow': follow, 'url': url, 'link_comment': link_comment, 'comment_form': comment_form, 'comments': comments, 'LINK_PER_PAGE': ":%s" % settings.LINK_PER_PAGE, 'COMMENTS_PER_LINK': ":%s" % settings.COMMENTS_PER_LINK, 'COMMENTS_PER_LINK_NUMBER': settings.COMMENTS_PER_LINK, "ANONYMOUS_POST": settings.ANONYMOUS_POST, "RECAPCHA_PUBLIC": settings.RECAPCHA_PUBLIC, 'captcha_error': captcha_error, 'page': page, "home_page": home_page, "last_page": last_page}, context_instance=RequestContext(request))
     
 def linkday(request, page = 0):
     yesterday = datetime.now() - timedelta(days=1)
@@ -215,7 +215,7 @@ def vote(request, link_id=0, vote=False):
                 current_link.negative += 1
             if current_link.positive - current_link.negative <= settings.MODERATION_LEVEL:
                 current_link.status = "denied"
-            print current_link.positive + current_link.negative
+            
             current_link.save()
         else:
             message = _("One vote per Link")
