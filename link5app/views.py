@@ -23,9 +23,7 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 
 
 
-def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False, links = False):
-    
-    captcha_error = ""
+def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False, links = False, captcha_error = ""):
     
     if request.method == 'POST' and not referral: # If the form has been submitted...
         form = LinkForm(request.POST) # A form bound to the POST data
@@ -174,7 +172,7 @@ def linkpreview(request, link_id, title_url = False):
         if not request.GET.get("ajax", False):
             return home(request, link_comment=link, comment_form = form)
         
-        return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, }, context_instance=RequestContext(request))
+        return render_to_response('link5/link_view.html', {'link_comment': link, 'comments': comments, 'comment_form': form, "ANONYMOUS_POST": settings.ANONYMOUS_POST, "RECAPCHA_PUBLIC": settings.RECAPCHA_PUBLIC}, context_instance=RequestContext(request))
     except:
         raise Http404(_("Cannot find link..."))
         
@@ -376,14 +374,29 @@ def profiledit(request, page_to = 0, page_from = 0, user_name = False):
     
 def commentsave(request, link_id=0):
     referral = "commentsave"
+    captcha_error = ""
     
     link = get_object_or_404(Link, pk=link_id)
     
     if request.method == 'POST':
         form = CommentForm(request.POST)
         
-        if form.is_valid():
-            comment_author = Author.objects.get(user=request.user.pk)
+        if settings.ANONYMOUS_POST and not request.user.is_authenticated():
+            from recaptcha.client import captcha
+            # Check the form captcha.  If not good, pass the template an error code
+            captcha_response = captcha.submit(request.POST.get("recaptcha_challenge_field", None),
+                                              request.POST.get("recaptcha_response_field", None),
+                                              settings.RECAPCHA_PRIVATE,
+                                              request.META.get("REMOTE_ADDR", None))
+            if not captcha_response.is_valid:
+                captcha_error = "&error=%s" % captcha_response.error_code
+        
+        if form.is_valid() and captcha_error == "":
+            if request.user.is_authenticated():
+                comment_author = Author.objects.get(user=request.user.pk)
+            else:
+                comment_author = Author.objects.get(user__username=settings.DEFAULT_USER)
+            
             link_author = Author.objects.get(user=link.author)
             
             if (comment_author.pk != link_author.pk):
@@ -412,12 +425,12 @@ def commentsave(request, link_id=0):
                 msg.send()
         
             form.save(comment_author, link)
-            return HttpResponseRedirect('')
             messages.info(request,_("Thank you for your comment!"))
+            return HttpResponseRedirect('')
     else:
         form = CommentForm()
         
-    return home(request, referral=referral, link_comment=link, comment_form = form)
+    return home(request, referral=referral, link_comment=link, comment_form = form, captcha_error = captcha_error)
     
 def commentdelete(request, link_id=0, comment_id=0):
     referral = "commentdelete"

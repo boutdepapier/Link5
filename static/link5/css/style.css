@@ -187,6 +187,7 @@ nav a:hover{text-decoration: none;}
 .comment_text {padding: 10px;}
 #comment_form {padding: 0px 20px 10px 20px;}
 #id_text {width: 560px; height: 100px; box-shadow: 0 1px 1px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 1px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 1px rgba(25,15,15,0.3);}
+#comment_recapcha{font-size: 12px; padding: 15px 0px 0px 0px;}
 .comment_it input {width: 560px; margin-top: 15px;}
 
 /*********** Contact form  ************/

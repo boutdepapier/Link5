@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 18:28+0200\n"
+"POT-Creation-Date: 2012-03-31 10:07+0200\n"
 "PO-Revision-Date: 2012-03-30 18:29\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Translated-Using: django-rosetta 0.6.5\n"
 
@@ -117,128 +117,128 @@ msgstr "Nombre de votes positifs pour le link"
 msgid "Link number of negative votes"
 msgstr "Nombre de votes négatifs pour le link"
 
-#: link5app/views.py:59
+#: link5app/views.py:57
 msgid "Please login or register to publish your link"
 msgstr "Merci de vous connecter ou enregistrez-vous pour publier votre Link"
 
-#: link5app/views.py:68 link5app/views.py:331
+#: link5app/views.py:66 link5app/views.py:329
 msgid "Thank you for posting!"
 msgstr "Merci de poster !"
 
-#: link5app/views.py:156
+#: link5app/views.py:154
 msgid "Link deleted master!"
 msgstr "Link effacé maître"
 
-#: link5app/views.py:158
+#: link5app/views.py:156
 msgid "Error, delete failed"
 msgstr "Erreur à l'effacement"
 
-#: link5app/views.py:179 link5app/views.py:193 link5app/views.py:553
+#: link5app/views.py:177 link5app/views.py:191 link5app/views.py:566
 msgid "Cannot find link..."
 msgstr "Link introuvable..."
 
-#: link5app/views.py:199
+#: link5app/views.py:197
 msgid "Please login first"
 msgstr "Vous devez être connecté"
 
-#: link5app/views.py:210
+#: link5app/views.py:208
 msgid "Thank you!"
 msgstr "Merci !"
 
-#: link5app/views.py:221
+#: link5app/views.py:219
 msgid "One vote per Link"
 msgstr "Un vote par Link"
 
-#: link5app/views.py:227
+#: link5app/views.py:225
 msgid "You need to login or to register first..."
 msgstr "Vous vez être connecté"
 
-#: link5app/views.py:237
+#: link5app/views.py:235
 #, python-format
 msgid "Sorry you can't follow more than %s persons"
 msgstr "Vous ne pouvez vous abonner à plus de %s personnes"
 
-#: link5app/views.py:256
+#: link5app/views.py:254
 #, python-format
 msgid "Congratulation! You have a new link follower on %s!"
 msgstr "Félicitations ! Vous avez un nouvel abonné sur %s !"
 
-#: link5app/views.py:264
+#: link5app/views.py:262
 #, python-format
 msgid "You now have %s in your follow list"
 msgstr "%s est maintenant abonné à vos link"
 
-#: link5app/views.py:267
+#: link5app/views.py:265
 #, python-format
 msgid "You have stop following %s"
 msgstr "Vous n'êtes plus abonné aux lien de %s"
 
-#: link5app/views.py:269
+#: link5app/views.py:267
 msgid "Can't stop your own music man!"
 msgstr "On n'arrête pas la musique mec !"
 
-#: link5app/views.py:280
+#: link5app/views.py:278
 msgid "You have already logged in sneacky avocado :)"
 msgstr "Tu es déjà connecté petit malin :)"
 
-#: link5app/views.py:289
+#: link5app/views.py:287
 msgid "Welcome friend!"
 msgstr "Bienvenue mon ami !"
 
-#: link5app/views.py:306
+#: link5app/views.py:304
 msgid "You're in friend."
 msgstr "Connection réussie l'ami !"
 
-#: link5app/views.py:308
+#: link5app/views.py:306
 msgid "Haha! wrong password and/or login :p"
 msgstr "Héhé, mauvais mot de passe et/ou login"
 
-#: link5app/views.py:367
+#: link5app/views.py:365
 msgid "Profil updated"
 msgstr "Profil mis à jour"
 
-#: link5app/views.py:375
+#: link5app/views.py:373
 msgid "Cannot find profil"
 msgstr "Profil introuvable"
 
-#: link5app/views.py:408
+#: link5app/views.py:421
 #, python-format
 msgid "New comment waiting for you on %s!"
 msgstr "Nouveau commentaire en attend sur %s"
 
-#: link5app/views.py:416
+#: link5app/views.py:428
 msgid "Thank you for your comment!"
 msgstr "Merci du commentaire !"
 
-#: link5app/views.py:433
+#: link5app/views.py:446
 msgid "Comment deleted Sir!"
 msgstr "Commentaire effacé m'sieur !"
 
-#: link5app/views.py:465
+#: link5app/views.py:478
 msgid "Remote display forbidden..."
 msgstr ""
 
-#: link5app/views.py:465
+#: link5app/views.py:478
 msgid "Current media is forbidden to display on external source"
 msgstr ""
 
-#: link5app/views.py:539
+#: link5app/views.py:552
 msgid "error parsing"
 msgstr "Erreur de parsing"
 
-#: link5app/views.py:540
+#: link5app/views.py:553
 msgid "Please send me the url so I can check"
 msgstr "Merci de m'envoyer le lien pour vérification"
 
-#: link5app/views.py:543
+#: link5app/views.py:556
 msgid "Error URL doesn't answer..."
 msgstr "Erreur l'URL ne répond pas conformément"
 
-#: link5app/views.py:544
+#: link5app/views.py:557
 msgid "Please retry later on..."
 msgstr "Merci de réessayer ultérieurement..."
 
-#: link5app/views.py:572
+#: link5app/views.py:585
 msgid "Thank you for your message!"
 msgstr "Merci de votre message !"
 
@@ -338,12 +338,16 @@ msgstr "Salut,"
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. "
+"You’ll be redirected to your account where you will be able to set up a "
+"password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement."
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
+"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
+"passe dont vous vous souviendrez facilement."
 
 #: template/emails/password_reset_email.txt:4
 msgid "You've forget your password, no worries, it happens sometimes."
@@ -352,11 +356,15 @@ msgstr "Oublié son mot de passe ? Pas de panique, ça arrive."
 #: template/emails/password_reset_email.txt:6
 msgid ""
 "\n"
-"If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.\n"
+"If you want to change it, please click on the link below. You’ll be "
+"redirected to your account where you will be able to set up a password that "
+"you will easily remember.\n"
 "Link: "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement."
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
+"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
+"passe dont vous vous souviendrez facilement."
 
 #: template/emails/password_reset_email.txt:10
 msgid ""
@@ -365,15 +373,19 @@ msgid ""
 "Link5.\n"
 msgstr ""
 
+#: template/link5/comments.html:9
+msgid "By"
+msgstr ""
+
 #: template/link5/comments.html:10 template/link5/link_wall_content.html:54
 msgid "Delete [x]"
 msgstr ""
 
-#: template/link5/comments.html:21
+#: template/link5/comments.html:20
 msgid "Your comment: "
 msgstr "Votre commentaire"
 
-#: template/link5/comments.html:24
+#: template/link5/comments.html:31
 msgid "Submit"
 msgstr "Envoyer"
 
@@ -420,8 +432,8 @@ msgstr "Catégories"
 
 #: template/link5/form_link.html:33
 msgid ""
-"Capcha is only for Anonymous users, please subscribe if you don't support it"
-" any more."
+"Capcha is only for Anonymous users, please subscribe if you don't support it "
+"any more."
 msgstr ""
 
 #: template/link5/form_link.html:39
@@ -489,8 +501,8 @@ msgstr ""
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked..."
-" And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked... "
+"And keep cool"
 msgstr ""
 "Link5, le réseau social basé sur le partage de liens: recommande, abonne-"
 "toi, soit linké... et vis ta vie"
@@ -499,7 +511,7 @@ msgstr ""
 msgid "Link5 - Share your links"
 msgstr "Link5 - Diffuse tes liens"
 
-#: template/link5/link_view.html:74
+#: template/link5/link_view.html:62
 msgid "Link source:"
 msgstr "Lien source"
 
@@ -610,8 +622,8 @@ msgid ""
 "Link5 the social network based on link sharing: share, follow, link, "
 "linked... And enjoy!"
 msgstr ""
-"Link5 le réseau social basé sur le partage de liens: recommande, abonne-toi,"
-" soit linké et profite!"
+"Link5 le réseau social basé sur le partage de liens: recommande, abonne-toi, "
+"soit linké et profite!"
 
 #: template/link5/site.html:49
 msgid "home page"

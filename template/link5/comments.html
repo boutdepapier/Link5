@@ -5,8 +5,8 @@
         <p class="comment_avatar"><a href="{% url user_home comment.author.user.username %}">
             {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" />
             {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />{% endif %}
-        </p>
-        <p class="comment_headline">By <a href="{% url user_home comment.author.user.username %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
+        </a></p>
+        <p class="comment_headline">{% trans 'By' %} <a href="{% url user_home comment.author.user.username %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
             {% ifequal comment.author.user.id request.user.pk %}<a href="{% url commentdelete link_comment.id comment.pk %}" class="delete">{% trans 'Delete [x]' %}</a>{% endifequal %}
         </p>
         <div class="comment_text">{{ comment.text }}</div>
@@ -15,12 +15,18 @@
 {% endfor %}
 </div>
 
-{% if request.user.is_authenticated %}
 <form action="/comment/save/{{ link_comment.id }}/" name="comment_form" id="comment_form" method="post">{% csrf_token %}
     {{ comment_form.text.errors }}
     <label for="id_text">{% trans 'Your comment: ' %}</label><br />
     {{ comment_form.text }}
     
+    {% if ANONYMOUS_POST %}{% if not user.is_authenticated %}
+    <div id="comment_recapcha"></div>
+    
+    <script type="text/javascript">
+        $("#comment_recapcha").html($("#recapcha").html());
+    </script>
+    {% endif %}{% endif %}
+    
     <div class="link_submit comment_it"><input type="submit" value="{% trans 'Submit' %}"/></div>
 </form>
-{% endif %}
