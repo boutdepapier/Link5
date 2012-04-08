@@ -13,10 +13,6 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ["user", "author_email", "author_date_joined", "author_last_login"]
     ordering = ["-user"]
     
-    def test(self, obj):
-        return 1
-    test
-    
 class CommentAdmin(admin.ModelAdmin):
     list_display = ["link", "status", "author", "created_at"] 
     ordering = ["-created_at"]   

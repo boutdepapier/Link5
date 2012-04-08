@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*- 
+import re
 from django.db import models
 from django.contrib.auth.models import User, AnonymousUser
 from django.utils.translation import ugettext_lazy as _
@@ -139,6 +140,11 @@ class Comment(models.Model):
     
     author = models.ForeignKey(Author)
     link = models.ForeignKey(Link)
+    
+    @property
+    def text_parsed(self):
+        r = re.compile(r"(http://[^ ]+)")
+        return r.sub(r'<a href="\1">\1</a>', self.text)
     
     def __unicode__(self):
         return "%s - %s - %s" % (self.author, self.link.post_ttl, self.created_at)
