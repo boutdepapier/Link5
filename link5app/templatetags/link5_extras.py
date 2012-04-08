@@ -115,7 +115,7 @@ def truncatesmart(value, limit=150):
         return value
     
     # Make sure it's unicode
-    value = unicode(value)
+    #value = unicode(value)
     
     # Return the string itself if length is smaller or equal to the limit
     if len(value) <= limit:
