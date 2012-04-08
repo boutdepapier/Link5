@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 10:07+0200\n"
-"PO-Revision-Date: 2012-03-30 18:29\n"
+"POT-Creation-Date: 2012-04-08 16:43+0200\n"
+"PO-Revision-Date: 2012-04-08 17:06\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Translated-Using: django-rosetta 0.6.5\n"
 
@@ -29,7 +29,7 @@ msgstr "Français"
 
 #: settings.py:41
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 #: link5app/forms.py:69
 msgid "Email"
@@ -50,7 +50,7 @@ msgstr "Les mots de passe ne sont pas les mêmes."
 #: link5app/forms.py:162
 #, python-format
 msgid "Change of password on %s"
-msgstr "Changer de mot de passe %s"
+msgstr "Changer de mot de passe sur %s"
 
 #: link5app/models.py:13
 msgid "Accept newsletter if it exist one day?"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: link5app/models.py:15
 msgid "Term and conditions?"
-msgstr "Voir les termes et conditions?"
+msgstr "Voir les termes et conditions ?"
 
 #: link5app/models.py:45
 msgid "Post Descripiton"
@@ -123,7 +123,7 @@ msgstr "Merci de vous connecter ou enregistrez-vous pour publier votre Link"
 
 #: link5app/views.py:66 link5app/views.py:329
 msgid "Thank you for posting!"
-msgstr "Merci de poster !"
+msgstr "Merci pour votre lien !"
 
 #: link5app/views.py:154
 msgid "Link deleted master!"
@@ -216,11 +216,13 @@ msgstr "Commentaire effacé m'sieur !"
 
 #: link5app/views.py:478
 msgid "Remote display forbidden..."
-msgstr ""
+msgstr "Affichage du média interdit..."
 
 #: link5app/views.py:478
 msgid "Current media is forbidden to display on external source"
 msgstr ""
+"Le média sélectionner a retourné une réponse indiquant que l'affichage était"
+" interdit."
 
 #: link5app/views.py:552
 msgid "error parsing"
@@ -232,7 +234,7 @@ msgstr "Merci de m'envoyer le lien pour vérification"
 
 #: link5app/views.py:556
 msgid "Error URL doesn't answer..."
-msgstr "Erreur l'URL ne répond pas conformément"
+msgstr "Erreur l'URL ne répond pas conformément..."
 
 #: link5app/views.py:557
 msgid "Please retry later on..."
@@ -305,7 +307,7 @@ msgstr ""
 
 #: template/emails/comment.txt:6
 msgid "His message:"
-msgstr "Son message"
+msgstr "Son message :"
 
 #: template/emails/comment.txt:10 template/emails/new_follower.txt:9
 msgid ""
@@ -313,14 +315,17 @@ msgid ""
 "    Kiss,\n"
 "    Link5\n"
 msgstr ""
+"\n"
+"Biz,\n"
+"Link5\n"
 
 #: template/emails/new_follower.html:24
 msgid "Congratulation! You have a new link follower!"
-msgstr "Félicitations, vous avez un nouveau follower de liens!"
+msgstr "Félicitations, vous avez un nouveau abonné !"
 
 #: template/emails/new_follower.html:45 template/emails/new_follower.txt:3
 msgid "is now linked to you on link5.me"
-msgstr "est maintenant lié sur Link5"
+msgstr "est maintenant lié à vous sur Link5.me"
 
 #: template/emails/new_follower.html:47 template/emails/new_follower.txt:5
 msgid "To see your new follower info just go on:"
@@ -338,16 +343,13 @@ msgstr "Salut,"
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. "
-"You’ll be redirected to your account where you will be able to set up a "
-"password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
-"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
-"passe dont vous vous souviendrez facilement."
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement.<br /><br />\n"
+"Link: "
 
 #: template/emails/password_reset_email.txt:4
 msgid "You've forget your password, no worries, it happens sometimes."
@@ -356,15 +358,12 @@ msgstr "Oublié son mot de passe ? Pas de panique, ça arrive."
 #: template/emails/password_reset_email.txt:6
 msgid ""
 "\n"
-"If you want to change it, please click on the link below. You’ll be "
-"redirected to your account where you will be able to set up a password that "
-"you will easily remember.\n"
+"If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.\n"
 "Link: "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
-"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
-"passe dont vous vous souviendrez facilement."
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement.\n"
+"Link:"
 
 #: template/emails/password_reset_email.txt:10
 msgid ""
@@ -372,14 +371,17 @@ msgid ""
 "Kiss,\n"
 "Link5.\n"
 msgstr ""
+"\n"
+"Biz,\n"
+"Link5.\n"
 
 #: template/link5/comments.html:9
 msgid "By"
-msgstr ""
+msgstr "Par"
 
 #: template/link5/comments.html:10 template/link5/link_wall_content.html:54
 msgid "Delete [x]"
-msgstr ""
+msgstr "Effacer [x]"
 
 #: template/link5/comments.html:20
 msgid "Your comment: "
@@ -432,9 +434,11 @@ msgstr "Catégories"
 
 #: template/link5/form_link.html:33
 msgid ""
-"Capcha is only for Anonymous users, please subscribe if you don't support it "
-"any more."
+"Capcha is only for Anonymous users, please subscribe if you don't support it"
+" any more."
 msgstr ""
+"Le capcha est pour les Anonymous seulement, vous pouvez vous inscrire pour "
+"ne plus l'avoir."
 
 #: template/link5/form_link.html:39
 msgid "Post-it!"
@@ -442,24 +446,24 @@ msgstr "Post-it"
 
 #: template/link5/form_login.html:6
 msgid "Back home bitch!"
-msgstr "Bienvenue à la maison"
+msgstr "Bienvenue à la maison ma couille !"
 
 #: template/link5/form_login.html:15
 msgid "Login: "
-msgstr "Login:"
+msgstr "Login :"
 
 #: template/link5/form_login.html:21 template/link5/form_login.html.py:49
 #: template/link5/profil_edit.html:35
 msgid "Password:"
-msgstr "Mot de passe"
+msgstr "Mot de passe :"
 
 #: template/link5/form_login.html:24
 msgid "Forgot your password?"
-msgstr "Mot de passe oublié"
+msgstr "Mot de passe oublié ?"
 
 #: template/link5/form_login.html:25
 msgid "Log me baby!"
-msgstr ""
+msgstr "Se connecter !"
 
 #: template/link5/form_login.html:29
 msgid "I want my account now!"
@@ -467,15 +471,15 @@ msgstr "Je veux mon compte tout de suite!"
 
 #: template/link5/form_login.html:37
 msgid "Pseudo: "
-msgstr "Pseudo"
+msgstr "Pseudo :"
 
 #: template/link5/form_login.html:55 template/link5/profil_edit.html:41
 msgid "Password:<span class=\"again\"><br/>(again? Seriously ?)</span>"
-msgstr "Mot de passe:<span class=\"again\"><br/>(encore??)</span>"
+msgstr "Mot de passe : <span class=\"again\"><br/>(encore??)</span>"
 
 #: template/link5/form_login.html:61
 msgid "Avatar: "
-msgstr "Image de "
+msgstr "Avatar :"
 
 #: template/link5/form_login.html:68
 msgid ""
@@ -497,27 +501,27 @@ msgstr ""
 
 #: template/link5/form_login.html:77
 msgid "Register!"
-msgstr ""
+msgstr "S'enregistrer !"
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked... "
-"And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked..."
+" And keep cool"
 msgstr ""
-"Link5, le réseau social basé sur le partage de liens: recommande, abonne-"
-"toi, soit linké... et vis ta vie"
+"Link5, le réseau social de partage de liens: recommande, abonne-toi, soit "
+"linké... "
 
 #: template/link5/home.html:11
 msgid "Link5 - Share your links"
-msgstr "Link5 - Diffuse tes liens"
+msgstr "Link5 - Partage tes liens"
 
 #: template/link5/link_view.html:62
 msgid "Link source:"
-msgstr "Lien source"
+msgstr "Source du lien :"
 
 #: template/link5/link_wall.html:3
 msgid "No link for this page, yet!"
-msgstr "Pas encore de lien pour cette page "
+msgstr "Pas (encore) de lien pour cette page !"
 
 #: template/link5/link_wall.html:16 template/link5/link_wall_content.html:69
 msgid "More links!"
@@ -541,7 +545,7 @@ msgstr "Tous les liens"
 
 #: template/link5/nav.html:7
 msgid "Top links:"
-msgstr "Les top liens"
+msgstr "Les tops : "
 
 #: template/link5/nav.html:8
 msgid "Today"
@@ -557,11 +561,11 @@ msgstr "Ce mois"
 
 #: template/link5/nav.html:12
 msgid "Me and Myself:"
-msgstr "Moi et... moi"
+msgstr "Moi et mes :"
 
 #: template/link5/nav.html:13
 msgid "My links"
-msgstr "Mes liens"
+msgstr "Liens"
 
 #: template/link5/nav.html:14
 msgid "My profile"
@@ -581,7 +585,7 @@ msgstr "Editer les infos de mon profile"
 
 #: template/link5/profil_edit.html:48
 msgid "Newsletter, still cool with me?"
-msgstr "Newsletter?"
+msgstr "Newsletter on est toujours cool ?"
 
 #: template/link5/profil_edit.html:51
 msgid "Update"
@@ -603,27 +607,27 @@ msgstr "Historique des posts"
 
 #: template/link5/profil_view.html:13
 msgid "Link activity page: "
-msgstr ""
+msgstr "Historiques des posts :"
 
 #: template/link5/profil_view.html:17
 msgid "Following: "
-msgstr ""
+msgstr "Abonnements :"
 
 #: template/link5/profil_view.html:17
 msgid "Followers: "
-msgstr "Abonnés"
+msgstr "Abonnés :"
 
 #: template/link5/profil_view.html:19
 msgid "Link him:"
-msgstr "Suivre"
+msgstr "Le suivre :"
 
 #: template/link5/site.html:9
 msgid ""
 "Link5 the social network based on link sharing: share, follow, link, "
 "linked... And enjoy!"
 msgstr ""
-"Link5 le réseau social basé sur le partage de liens: recommande, abonne-toi, "
-"soit linké et profite!"
+"Link5 le réseau social de partage de liens: recommande, abonne-toi, soit "
+"linké et découvre !"
 
 #: template/link5/site.html:49
 msgid "home page"
@@ -635,15 +639,15 @@ msgstr "Connexion"
 
 #: template/link5/site.html:53
 msgid "Join this marvelous website"
-msgstr "Rejoindre :)"
+msgstr "S'inscrire :)"
 
 #: template/link5/site.html:55
 msgid "Welcome"
-msgstr "Salut, "
+msgstr "Bienvenue, "
 
 #: template/link5/site.html:55
 msgid "Screw you guys, I'm going home"
-msgstr "Je me casse !"
+msgstr "Se déconnecter !!!"
 
 #: template/registration/password_reset_complete.html:4
 msgid "Password reset complete"
@@ -676,17 +680,19 @@ msgstr "Changer mon mot de passe"
 
 #: template/registration/password_reset_confirm.html:15
 msgid "Password reset unsuccessful"
-msgstr "Mot de passe mis à jour."
+msgstr "Erreur au reset du mot de passe."
 
 #: template/registration/password_reset_confirm.html:16
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
-msgstr "Le lien que vous utilisez est invalide. Merci de regénérer un lien."
+msgstr ""
+"Le lien que vous utilisez est invalide ou expiré. Merci de recommencer la "
+"procédure de reset du mot de passe."
 
 #: template/registration/password_reset_done.html:4
 msgid "Password reset successful"
-msgstr "Mot de passe mis à jour."
+msgstr "Reset du mot de passe effectué avec succès."
 
 #: template/registration/password_reset_done.html:5
 msgid ""
