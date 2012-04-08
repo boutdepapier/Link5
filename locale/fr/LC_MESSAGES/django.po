@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-08 16:43+0200\n"
-"PO-Revision-Date: 2012-04-08 17:06\n"
+"PO-Revision-Date: 2012-04-08 17:12\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -585,7 +585,7 @@ msgstr "Editer les infos de mon profile"
 
 #: template/link5/profil_edit.html:48
 msgid "Newsletter, still cool with me?"
-msgstr "Newsletter on est toujours cool ?"
+msgstr "Newsletter, on est toujours cool ?"
 
 #: template/link5/profil_edit.html:51
 msgid "Update"
@@ -594,7 +594,7 @@ msgstr "Update"
 #: template/link5/profil_edit.html:57
 #, python-format
 msgid "Link from %(username)s"
-msgstr "Lien de %(username)s"
+msgstr "Liens de %(username)s"
 
 #: template/link5/profil_edit.html:72
 #, python-format
@@ -607,15 +607,15 @@ msgstr "Historique des posts"
 
 #: template/link5/profil_view.html:13
 msgid "Link activity page: "
-msgstr "Historiques des posts :"
+msgstr "Ses liens sociaux :"
 
 #: template/link5/profil_view.html:17
 msgid "Following: "
-msgstr "Abonnements :"
+msgstr "Abonnements : "
 
 #: template/link5/profil_view.html:17
 msgid "Followers: "
-msgstr "Abonnés :"
+msgstr "Abonnés : "
 
 #: template/link5/profil_view.html:19
 msgid "Link him:"
