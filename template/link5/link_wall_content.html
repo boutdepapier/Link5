@@ -43,7 +43,7 @@
                     {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"25x25" }}" alt="{{ comment.author.user.username }}" width="25" height="25" />
                     {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="25" height="25" />{% endif %}
                 </a></p>
-                <p class="link5_comment_headline"><a href="{% url user_home comment.author.user.username %}">{{ comment.author.user.username }}</a> - {{ comment.text_parsed|safe|truncatesmart:130 }}</p>
+                <p class="link5_comment_headline"><a href="{% url user_home comment.author.user.username %}">{{ comment.author.user.username }}</a> - {{ comment.text|truncatesmart:130|addurl|safe }}</p>
             </div>
             <div class="clearboth"></div>
         {% endfor %}

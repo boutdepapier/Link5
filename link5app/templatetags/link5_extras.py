@@ -115,7 +115,7 @@ def truncatesmart(value, limit=150):
         return value
     
     # Make sure it's unicode
-    #value = unicode(value)
+    value = unicode(value)
     
     # Return the string itself if length is smaller or equal to the limit
     if len(value) <= limit:
@@ -129,8 +129,13 @@ def truncatesmart(value, limit=150):
     
     # Join the words and return
     return ' '.join(words) + '...'
+    
+def addurl(value):
+    r = re.compile(r"(http://[^ ]+)")
+    return r.sub(r'<a href="\1" target="_blank">\1</a>', value)
 
 register.filter("truncatesmart", truncatesmart)
 register.simple_tag(version) 
 register.filter('scale', scale)
 register.filter('crop', crop)
+register.filter('addurl', addurl)
