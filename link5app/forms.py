@@ -67,14 +67,15 @@ class LinkForm(forms.Form):
         
         if self.cleaned_data['post_img']:
             link.post_img = self.cleaned_data['post_img']
-            image_path = "media/link5/%s-%s" % (time.strftime("%Y%m%d%H%M%S"), link.post_img)
+            image_name = "link5/%s-%s" % (time.strftime("%Y%m%d%H%M%S"), link.post_img)
+            image_path = "%s/%s" % (settings.MEDIA_ROOT, image_name)
             
             post_image = open(image_path, 'wb+')
             for chunk in link.post_img.chunks():
                 post_image.write(chunk)
             post_image.close()
             
-            link.post_img = "%s/%s" % (link5app.views.current_site_url(), image_path)
+            link.post_img = "%s/media/%s" % (link5app.views.current_site_url(), image_name)
         
         return link
         
