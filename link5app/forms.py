@@ -41,7 +41,6 @@ class LinkForm(forms.Form):
             if image._size > settings.MAX_IMAGE_SIZE:
                 #raise forms.ValidationError(_("Image file too large ( > 1mb )"))
                 self._errors["post_img"] = self.error_class([_("Image file too large ( > 1mb )")])
-            return image
         
         return data
     
