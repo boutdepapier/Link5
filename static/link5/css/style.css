@@ -61,6 +61,9 @@ nav a:hover{text-decoration: none;}
 .link_submit input:hover {cursor: pointer;}
 .errorlist{color: red; clear: both;}
 
+/********* Image sharing **************/
+#share_image a{color: #ffffff; float: left;}
+
 /************ Link preview **************/
 #post_preview_form{width: 100%;}
 #post_edit{float: left; width: 512px; padding: 15px 0px 0px 0px;}
@@ -74,7 +77,7 @@ nav a:hover{text-decoration: none;}
 .post_preview a {color: #664444;}
 #post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
 #preview_med{text-align: center;}
-.cancel {float: left; margin-top: -3px; display: none;}
+.cancel {float: left; margin: -3px 10px 0px 0px; display: none;}
 .post_it{clear: both; margin: 10px 0px 10px 0px;}
 .post_it input {width: 510px; clear: both;}
 #right_a{display: block; width: 30px; height: 30px; background: url(../img/right.png) no-repeat; position: relative; float: right; margin: -36px 3px 10px 0px; cursor: pointer;}

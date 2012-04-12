@@ -1,4 +1,4 @@
-import urllib, urllib2
+import urllib, urllib2, time
 
 from django.conf import settings
 
@@ -25,9 +25,25 @@ class LinkForm(forms.Form):
     post_ttl = forms.CharField(max_length=155)
     post_txt = forms.CharField(widget=forms.Textarea, max_length=255, required=False)
     post_url = forms.URLField(max_length=2000)
+    post_img = forms.ImageField(required=False)
     
     categorys = Category.objects.all()
     category = forms.ModelChoiceField(widget=forms.Select(), queryset=categorys, initial=4)
+    
+    def clean(self, *args, **kwargs):
+        data = super(LinkForm, self).clean(*args, **kwargs)
+        
+        try:
+            image = self.cleaned_data['post_img']
+        except:
+            raise forms.ValidationError(_('Filetype not supported.'))
+        if image:
+            if image._size > settings.MAX_IMAGE_SIZE:
+                #raise forms.ValidationError(_("Image file too large ( > 1mb )"))
+                self._errors["post_img"] = self.error_class([_("Image file too large ( > 1mb )")])
+            return image
+        
+        return data
     
     def save(self, user_url = ""):
         link = Link()
@@ -49,7 +65,18 @@ class LinkForm(forms.Form):
             link.post_img = user_url
         
         elif data['type'] == "photo": link.post_img = data['url']
+        
+        if self.cleaned_data['post_img']:
+            link.post_img = self.cleaned_data['post_img']
+            image_path = "media/link5/%s-%s" % (time.strftime("%Y%m%d%H%M%S"), link.post_img)
             
+            post_image = open(image_path, 'wb+')
+            for chunk in link.post_img.chunks():
+                post_image.write(chunk)
+            post_image.close()
+            
+            link.post_img = "%s/%s" % (link5app.views.current_site_url(), image_path)
+        
         return link
         
 class CommentForm(forms.Form):

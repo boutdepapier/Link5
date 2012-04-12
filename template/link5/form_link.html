@@ -1,11 +1,12 @@
 {% load i18n%}
-<form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" >
+<form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" enctype="multipart/form-data" >
     {% csrf_token %}
     <div id="link_generator">
         {{ form.post_url.errors }}
         <label for="id_post_url" id="label_url">{% trans 'Url I to share: ' %}</label>
         {{ form.post_url }}
         <div class="link_submit cancel" id="cancel_link"><input type="button" value="{% trans 'Cancel' %}"/></div>
+        
         <div class="clearboth"></div>
     </div>
 
@@ -27,6 +28,12 @@
                 {{ form.category.errors }}
                 <label for="id_category">{% trans 'Category: ' %}</label>
                 {{ form.category }}
+            </div>
+            
+            <div class="post_element">
+                {{ form.post_img.errors }}
+                <label for="id_post_img" id="label_post_img">{% trans 'Manually upload the post image:' %} </label>
+                {{ form.post_img }}
             </div>
             
             {% if ANONYMOUS_POST %}{% if not user.is_authenticated %}<div id="recapcha">

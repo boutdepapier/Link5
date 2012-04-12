@@ -21,12 +21,21 @@ from link5app.forms import LinkForm, AuthForm, RegisterForm, CommentForm, Contac
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 
-
+def current_site_url():
+    """Returns fully qualified URL (no trailing slash) for the current site."""
+    from django.contrib.sites.models import Site
+    current_site = Site.objects.get_current()
+    protocol = getattr(settings, 'MY_SITE_PROTOCOL', 'http')
+    port     = getattr(settings, 'MY_SITE_PORT', '')
+    url = '%s://%s' % (protocol, current_site.domain)
+    if port:
+        url += ':%s' % port
+    return url
 
 def home(request, page = 0, user_name = False, author = False, follow = False, referral = False, period = False, url = False, filters = False, category = False, link_id = False, link_comment = False, comment_form = False, links = False, captcha_error = ""):
     
     if request.method == 'POST' and not referral: # If the form has been submitted...
-        form = LinkForm(request.POST) # A form bound to the POST data
+        form = LinkForm(request.POST, request.FILES) # A form bound to the POST data
         
         if settings.ANONYMOUS_POST and not request.user.is_authenticated():
             from recaptcha.client import captcha
