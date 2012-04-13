@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-08 16:43+0200\n"
+"POT-Creation-Date: 2012-04-13 16:04+0200\n"
 "PO-Revision-Date: 2012-03-30 18:30\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,213 +31,221 @@ msgstr "Französisch"
 msgid "German"
 msgstr ""
 
-#: link5app/forms.py:69
+#: link5app/forms.py:39
+msgid "Filetype not supported."
+msgstr ""
+
+#: link5app/forms.py:43
+msgid "Image file too large ( > 1mb )"
+msgstr ""
+
+#: link5app/forms.py:96
 msgid "Email"
 msgstr "E-Mail"
 
-#: link5app/forms.py:75
+#: link5app/forms.py:102
 msgid "Please enter username and password."
 msgstr "Bitte Benutzernamen und Passwort eingeben."
 
-#: link5app/forms.py:104 link5app/forms.py:105
+#: link5app/forms.py:131 link5app/forms.py:132
 msgid "Password"
 msgstr "Passwort"
 
-#: link5app/forms.py:127
+#: link5app/forms.py:154
 msgid "Passwords don't match."
 msgstr "Passwörter sind nicht identisch."
 
-#: link5app/forms.py:162
+#: link5app/forms.py:189
 #, python-format
 msgid "Change of password on %s"
 msgstr ""
 
-#: link5app/models.py:13
+#: link5app/models.py:14
 msgid "Accept newsletter if it exist one day?"
 msgstr "Ich möchte Newsletter erhalten, falls es die überhaupt jemals gibt!"
 
-#: link5app/models.py:15
+#: link5app/models.py:16
 msgid "Term and conditions?"
 msgstr "AGB"
 
-#: link5app/models.py:45
+#: link5app/models.py:46
 msgid "Post Descripiton"
 msgstr "Beschreibung bestätigen"
 
-#: link5app/models.py:46
+#: link5app/models.py:47
 msgid "Foreign URL"
 msgstr "Externe URL"
 
-#: link5app/models.py:47
+#: link5app/models.py:48
 msgid "Illustration"
 msgstr "Abbildung"
 
-#: link5app/models.py:48
+#: link5app/models.py:49
 msgid "Media"
 msgstr "Media"
 
-#: link5app/models.py:55 link5app/models.py:130
+#: link5app/models.py:56 link5app/models.py:131
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: link5app/models.py:56 link5app/models.py:131
+#: link5app/models.py:57 link5app/models.py:132
 msgid "Draft"
 msgstr "Entwurf"
 
-#: link5app/models.py:57 link5app/models.py:132
+#: link5app/models.py:58 link5app/models.py:133
 msgid "Deleted"
 msgstr "Gelöscht"
 
-#: link5app/models.py:58
+#: link5app/models.py:59
 msgid "Denied"
 msgstr "Abgelehnt"
 
-#: link5app/models.py:64
+#: link5app/models.py:65
 msgid "Photo"
 msgstr "Foto"
 
-#: link5app/models.py:65
+#: link5app/models.py:66
 msgid "Video"
 msgstr ""
 
-#: link5app/models.py:66
+#: link5app/models.py:67
 msgid "Rich"
 msgstr "Kursiv"
 
-#: link5app/models.py:67
+#: link5app/models.py:68
 msgid "Link"
 msgstr ""
 
-#: link5app/models.py:71
+#: link5app/models.py:72
 msgid "Link number of positive votes"
 msgstr ""
 
-#: link5app/models.py:72
+#: link5app/models.py:73
 msgid "Link number of negative votes"
 msgstr ""
 
-#: link5app/views.py:57
+#: link5app/views.py:66
 msgid "Please login or register to publish your link"
 msgstr "Bitte einloggen oder registrieren, um einen Link zu veröffentlichen!"
 
-#: link5app/views.py:66 link5app/views.py:329
+#: link5app/views.py:75 link5app/views.py:338
 msgid "Thank you for posting!"
 msgstr "Danke für Deinen Eintrag!"
 
-#: link5app/views.py:154
+#: link5app/views.py:163
 msgid "Link deleted master!"
 msgstr "Der Link wurde gelöscht, Meister!"
 
-#: link5app/views.py:156
+#: link5app/views.py:165
 msgid "Error, delete failed"
 msgstr "Fehler: konnte nicht gelöscht werden."
 
-#: link5app/views.py:177 link5app/views.py:191 link5app/views.py:566
+#: link5app/views.py:186 link5app/views.py:200 link5app/views.py:575
 msgid "Cannot find link..."
 msgstr "Link wurde nicht gefunden..."
 
-#: link5app/views.py:197
+#: link5app/views.py:206
 msgid "Please login first"
 msgstr "Bitte zuerst einloggen"
 
-#: link5app/views.py:208
+#: link5app/views.py:217
 msgid "Thank you!"
 msgstr "Danke!"
 
-#: link5app/views.py:219
+#: link5app/views.py:228
 msgid "One vote per Link"
 msgstr "Eine Stimme pro Link"
 
-#: link5app/views.py:225
+#: link5app/views.py:234
 msgid "You need to login or to register first..."
 msgstr "Bitte zuerst einloggen oder registrieren..."
 
-#: link5app/views.py:235
+#: link5app/views.py:244
 #, python-format
 msgid "Sorry you can't follow more than %s persons"
 msgstr "Sorry, aber Du kannst nicht mehr als %s Personen folgen!"
 
-#: link5app/views.py:254
+#: link5app/views.py:263
 #, python-format
 msgid "Congratulation! You have a new link follower on %s!"
 msgstr "Gratuliere! Du hast einen neuen link Interessenten in %s!"
 
-#: link5app/views.py:262
+#: link5app/views.py:271
 #, python-format
 msgid "You now have %s in your follow list"
 msgstr "Du hast jetzt %s in Deiner Interessenten-Liste."
 
-#: link5app/views.py:265
+#: link5app/views.py:274
 #, python-format
 msgid "You have stop following %s"
 msgstr "Du folgst nun nicht mehr %s."
 
-#: link5app/views.py:267
+#: link5app/views.py:276
 msgid "Can't stop your own music man!"
 msgstr ""
 
-#: link5app/views.py:278
+#: link5app/views.py:287
 msgid "You have already logged in sneacky avocado :)"
 msgstr "Du bist doch schon eingeloggt, Du freche Laus!"
 
-#: link5app/views.py:287
+#: link5app/views.py:296
 msgid "Welcome friend!"
 msgstr "Willkommen, Freund!"
 
-#: link5app/views.py:304
+#: link5app/views.py:313
 msgid "You're in friend."
 msgstr "Du bist drin, Kollege!"
 
-#: link5app/views.py:306
+#: link5app/views.py:315
 msgid "Haha! wrong password and/or login :p"
 msgstr "Haha! Falsches Passwort und/oder Benutzername! :p"
 
-#: link5app/views.py:365
+#: link5app/views.py:374
 msgid "Profil updated"
 msgstr "Profil wurde aktualisiert."
 
-#: link5app/views.py:373
+#: link5app/views.py:382
 msgid "Cannot find profil"
 msgstr "Profil wurde nicht gefunden."
 
-#: link5app/views.py:421
+#: link5app/views.py:430
 #, python-format
 msgid "New comment waiting for you on %s!"
 msgstr "Ein neuer Kommentar wurde bei %s geschrieben!"
 
-#: link5app/views.py:428
+#: link5app/views.py:437
 msgid "Thank you for your comment!"
 msgstr "Danke für Deinen Kommentar!"
 
-#: link5app/views.py:446
+#: link5app/views.py:455
 msgid "Comment deleted Sir!"
 msgstr "Kommentar gelöscht, Meister!"
 
-#: link5app/views.py:478
+#: link5app/views.py:487
 msgid "Remote display forbidden..."
 msgstr ""
 
-#: link5app/views.py:478
+#: link5app/views.py:487
 msgid "Current media is forbidden to display on external source"
 msgstr ""
 
-#: link5app/views.py:552
+#: link5app/views.py:561
 msgid "error parsing"
 msgstr ""
 
-#: link5app/views.py:553
+#: link5app/views.py:562
 msgid "Please send me the url so I can check"
 msgstr "Bitte schick mir die URL, so dass ich es überprüfen kann!"
 
-#: link5app/views.py:556
+#: link5app/views.py:565
 msgid "Error URL doesn't answer..."
 msgstr "Fehlerhafte URL reagier nicht..."
 
-#: link5app/views.py:557
+#: link5app/views.py:566
 msgid "Please retry later on..."
 msgstr "Bitte später nochmals versuchen..."
 
-#: link5app/views.py:585
+#: link5app/views.py:594
 msgid "Thank you for your message!"
 msgstr "Danke für Deine Nachricht!"
 
@@ -419,25 +427,29 @@ msgstr "URL teilen:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: template/link5/form_link.html:16
+#: template/link5/form_link.html:17
 msgid "Link title: "
 msgstr "Link Titel:"
 
-#: template/link5/form_link.html:22
+#: template/link5/form_link.html:23
 msgid "Link description"
 msgstr "Link Beschreibung:"
 
-#: template/link5/form_link.html:28
+#: template/link5/form_link.html:29
 msgid "Category: "
 msgstr "Kategorie:"
 
-#: template/link5/form_link.html:33
+#: template/link5/form_link.html:35
+msgid "Manually upload the post image:"
+msgstr ""
+
+#: template/link5/form_link.html:40
 msgid ""
 "Capcha is only for Anonymous users, please subscribe if you don't support it "
 "any more."
 msgstr ""
 
-#: template/link5/form_link.html:39
+#: template/link5/form_link.html:46
 msgid "Post-it!"
 msgstr "Bestätigen!"
 
