@@ -61,8 +61,8 @@ $('.likeornot_post a').live('click', function() {
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
 <div class="likeornot_post" id="likeornotpost_{{ link_comment.id_b62 }}">
-    <p><a class="like" href="{% url vote link_comment.id_b62 '1' %}" id="like_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" alt="V" /></a>
-    <a class="not" href="{% url vote link_comment.id_b62 '0' %}" id="not_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" alt="X" /></a>
+    <p><a class="like" href="{% url vote link_comment.id_b62 '1' %}" id="biglike_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" alt="V" /></a>
+    <a class="not" href="{% url vote link_comment.id_b62 '0' %}" id="bignot_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" alt="X" /></a>
     </p>
 </div>
 
