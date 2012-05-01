@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.conf import settings
 from filebrowser.sites import site
 
@@ -11,9 +12,29 @@ oembed.autodiscover()
 
 import link5app
 from link5app import forms
+from link5app.models import Link, Author
+
+list_link = {
+    'queryset': Link.objects.all().order_by('-created_at').filter(status__exact="publish"),
+    'date_field': 'created_at',
+}
+list_user = {
+    'queryset': Author.objects.all(),
+}
+
+sitemaps = {
+    #'link': link5app.models.Link,
+    'link': GenericSitemap(list_link, priority=0.8),
+    'users': GenericSitemap(list_user, priority=0.8),
+    'flatpages': FlatPageSitemap,
+}
 
 urlpatterns = patterns('',
     url(r'^$', 'link5app.views.home', name='home'),
+    
+    #SEO Stuff
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+    
     url(r'^link/page/(?P<page>\d+)/$', 'link5app.views.home', name='home_nav'),
     url(r'^link/$', 'link5app.views.home', name='postlink'),
     url(r'^link/load/(?P<link_id>[^/]+)/$', 'link5app.views.linkpreviewredirect', name='linkredirect'),
