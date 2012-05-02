@@ -24,7 +24,7 @@
 <h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl|safe }}</a></h1>
 
 {% if link_comment.post_txt %}
-    <p class="link_view_txt">{{ link_comment.post_txt|safe }}</p>
+    <p class="link_view_txt">{{ link_comment.post_txt|addurl|safe }}</p>
 {% endif %}
 <div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true"></div>
 <div id="fb-root"></div>

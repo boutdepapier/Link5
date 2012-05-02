@@ -114,6 +114,7 @@ nav a:hover{text-decoration: none;}
 .title a {color: #664444; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
+.description a{color: #664444;}
 .media{padding: 10px 0px 0px 0px;}
 .link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
@@ -169,6 +170,7 @@ nav a:hover{text-decoration: none;}
 #full_view_content h1{padding: 10px 20px 0px 20px; font-size: 25px; min-width: 200px; float: left;}
 #full_view_content h1 a {color: #664444;}
 .link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
+.link_view_txt a{color: #664444;}
 .fb-like{padding: 0px 20px 0px 20px; float: left; width: 400px;}
 .tweeter {float: right; padding: 0px 0px 0px 0px; height: 30px;}
 #link_source {padding: 0px 20px 0px 20px; clear: both; font-size: 11px;}
