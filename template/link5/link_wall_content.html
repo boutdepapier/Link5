@@ -27,7 +27,7 @@
                 {% endifequal %}
             </a></p>
         {% else %}{% ifequal link.link_type "html" %}
-            {{ link.post_html|safe }}
+            {{ link.post_html|addurl|safe }}
         {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
         </div>
         <p class="description">{{ link.post_txt|safe }}</p>

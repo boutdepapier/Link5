@@ -13,7 +13,7 @@
     </p>
 {% endif %}{% else %}{% ifequal link_comment.link_type "video" %}
 <div id="link_html">
-    {{ link_comment.post_html|safe }}
+    {{ link_comment.post_html|addurl|safe }}
 </div>
 {% else %}{% ifequal link_comment.link_type "html" %}
 <div id="link_html">
