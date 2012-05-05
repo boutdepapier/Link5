@@ -41,8 +41,8 @@ nav a:hover{text-decoration: none;}
 /*********** Link form  ************/
 #join_us {font-size: 18px; color: #FFF; padding: 10px 40px 10px 40px; background: #003652; border-bottom: 1px solid white;}
 #join_us a {color: #fff;}
-#link_form_around {font-size: 12px; background: #003652; color: #ffffff; border-bottom: 1px solid white; position: absolute; width: 100%; clear: both;}
-#link_form_around.fixed{position: fixed; top: 0px; margin-top: 0px; z-index: 90;}
+#link_form_around {font-size: 12px; background: #003652; color: #ffffff; border-bottom: 1px solid white; position: absolute; width: 100%; clear: both; z-index: 90;}
+#link_form_around.fixed{position: fixed; top: 0px; margin-top: 0px;}
 #link_form{padding: 10px 30px 10px 40px;}
 #label_url{font-size: 18px; padding-right: 10px; float: left; padding-top: 4px; width: 130px;}
 #id_post_url{font-size: 18px; margin-right: 15px; width: 587px; float: left; }
