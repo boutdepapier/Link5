@@ -1,61 +1,64 @@
 {% load i18n%}
-<form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" enctype="multipart/form-data" >
-    {% csrf_token %}
-    <div id="link_generator">
-        {{ form.post_url.errors }}
-        <label for="id_post_url" id="label_url">{% trans 'Url I to share: ' %}</label>
-        {{ form.post_url }}
-        <div class="link_submit cancel" id="cancel_link"><input type="button" value="{% trans 'Cancel' %}"/></div>
-        
-        <div class="clearboth"></div>
-    </div>
-
-    <div id="post_preview_form" {% if not form.errors %}class="hidde"{% endif %}>
-        <div id="post_edit">
-            <div class="post_element">
-                {{ form.post_ttl.errors }}
-                <label for="id_post_ttl">{% trans 'Link title: ' %}</label>
-                {{ form.post_ttl }}
-            </div>
+<div id="link_form_around">
+    <form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div id="link_generator">
+            {{ form.post_url.errors }}
+            <label for="id_post_url" id="label_url">{% trans 'Url I to share: ' %}</label>
+            {{ form.post_url }}
+            <div class="link_submit cancel" id="cancel_link"><input type="button" value="{% trans 'Cancel' %}"/></div>
             
-            <div class="post_element">
-                {{ form.post_txt.errors }}
-                <label for="id_post_txt" id="label_post_txt">{% trans 'Link description' %} [<span id="desc_limit" class="strong">255</span>] :</label>
-                {{ form.post_txt }}
-            </div>
-            
-            <div class="post_element">
-                {{ form.category.errors }}
-                <label for="id_category">{% trans 'Category: ' %}</label>
-                {{ form.category }}
-            </div>
-            
-            <div class="post_element">
-                {{ form.post_img.errors }}
-                <label for="id_post_img" id="label_post_img">{% trans 'Manually upload the post image:' %} </label>
-                {{ form.post_img }}
-            </div>
-            
-            {% if ANONYMOUS_POST %}{% if not user.is_authenticated %}<div id="recapcha">
-                <p>{% trans "Capcha is only for Anonymous users, please subscribe if you don't support it any more." %}</p>
-                <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
-                <script type="text/javascript" src="http://api.recaptcha.net/challenge?k={{ RECAPCHA_PUBLIC }}{{ captcha_error}}"></script>
-            </div>{% endif %}{% endif %}
+            <div class="clearboth"></div>
+        </div>
+    
+        <div id="post_preview_form" {% if not form.errors %}class="hidde"{% endif %}>
+            <div id="post_edit">
+                <div class="post_element">
+                    {{ form.post_ttl.errors }}
+                    <label for="id_post_ttl">{% trans 'Link title: ' %}</label>
+                    {{ form.post_ttl }}
+                </div>
                 
-            <input type="hidden" value="" name="user_url" id="user_url" />
-            <div class="link_submit post_it"><input type="submit" value="{% trans 'Post-it!' %}"/></div>
+                <div class="post_element">
+                    {{ form.post_txt.errors }}
+                    <label for="id_post_txt" id="label_post_txt">{% trans 'Link description' %} [<span id="desc_limit" class="strong">255</span>] :</label>
+                    {{ form.post_txt }}
+                </div>
+                
+                <div class="post_element">
+                    {{ form.category.errors }}
+                    <label for="id_category">{% trans 'Category: ' %}</label>
+                    {{ form.category }}
+                </div>
+                
+                <div class="post_element">
+                    {{ form.post_img.errors }}
+                    <label for="id_post_img" id="label_post_img">{% trans 'Manually upload the post image:' %} </label>
+                    {{ form.post_img }}
+                </div>
+                
+                {% if ANONYMOUS_POST %}{% if not user.is_authenticated %}<div id="recapcha">
+                    <p>{% trans "Capcha is only for Anonymous users, please subscribe if you don't support it any more." %}</p>
+                    <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
+                    <script type="text/javascript" src="http://api.recaptcha.net/challenge?k={{ RECAPCHA_PUBLIC }}{{ captcha_error}}"></script>
+                </div>{% endif %}{% endif %}
+                    
+                <input type="hidden" value="" name="user_url" id="user_url" />
+                <div class="link_submit post_it"><input type="submit" value="{% trans 'Post-it!' %}"/></div>
+                
+            </div>
             
+            <div class="post_preview">
+                <div id="post_preview_loading"></div>
+                <h2 id="preview_ttl" class="title"></h2>
+                <div id="preview_med" class="media"></div>
+                <div id="preview_txt" class="description"></div>
+            </div>
+            {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
+            
+    
         </div>
-        
-        <div class="post_preview">
-            <div id="post_preview_loading"></div>
-            <h2 id="preview_ttl" class="title"></h2>
-            <div id="preview_med" class="media"></div>
-            <div id="preview_txt" class="description"></div>
-        </div>
-        {% if not form.errors %}<script type="text/javascript">link_validator()</script>{% endif %}
-        
-
-    </div>
-    <div class="clearboth"></div>
-</form>
+        <div class="clearboth"></div>
+    </form>
+</div>
+<div id="link_form_hight"></div>

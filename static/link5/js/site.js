@@ -274,3 +274,23 @@ $(document).keyup(function(e) {
         close_link(); 
     }   // esc
 });
+
+function handleScroll(){
+  // check that this is a relatively modern browser
+  if (window.XMLHttpRequest){
+    // determine the distance scrolled down the page
+    var offset = window.pageYOffset
+               ? window.pageYOffset
+               : document.documentElement.scrollTop;
+    // set the appropriate class on the navigation
+    document.getElementById('link_form_around').className =
+        (offset > 152 ? 'fixed' : '');
+  }
+}
+
+// add the scroll event listener
+if (window.addEventListener){
+  window.addEventListener('scroll', handleScroll, false);
+}else{
+  window.attachEvent('onscroll', handleScroll);
+}
