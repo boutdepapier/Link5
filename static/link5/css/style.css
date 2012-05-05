@@ -24,25 +24,24 @@ a img { border:0; }
 
 body{text-align:center;font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; background: #ffffff;}
 
-header {color: #0e4967;}
-header a {color: #0e4967;}
+header {color: #003652;}
+header a {color: #003652;}
 #logo{float: left;padding: 0px 0px 0px 40px}
-#login {float: left; font-size: 12px; padding: 55px 20px 0px 40px;}
-#login a {text-decoration: underline; font-weight: bold;}
+#nav_elements {float: left; font-size: 12px; padding: 35px 20px 0px 30px;}
+#nav_elements a {text-decoration: underline; font-weight: bold;}
 #langage_selection{float: right; padding: 10px 20px 0px 0px; }
-nav { clear: both; font-size: 16px; padding: 10px 20px 5px 40px; border-bottom: 1px solid white; background: #0e4967; color: #ffffff; border-radius: 10px 10px 0px 0px;}
-nav a {text-decoration: underline; color: #ffffff;}
+nav { font-size: 12px; padding: 10px 20px 5px 0px; float: left;}
 nav a:hover{text-decoration: none;}
 
-#main{text-align: left; color: #000000; width: 100%; float: left; border-bottom: 4px solid #0e4967;}
+#main{text-align: left; color: #000000; width: 100%; float: left; border-bottom: 4px solid #003652;}
 
 #flash_messages {color: #ffffff; background: #2A2A2A; font-size: 18px; font-weight: bold; padding: 10px 0px 0px 0px; border-bottom: 1px dashed #fff;}
 .flash_messages {padding: 0px 20px 10px 20px; text-align: center;}
 
 /*********** Link form  ************/
-#join_us {font-size: 18px; color: #FFF; padding: 10px 40px 10px 40px; background: #0e4967; border-bottom: 1px solid white;}
+#join_us {font-size: 18px; color: #FFF; padding: 10px 40px 10px 40px; background: #003652; border-bottom: 1px solid white;}
 #join_us a {color: #fff;}
-#link_form_around {font-size: 12px; background: #0e4967; color: #ffffff; border-bottom: 1px solid white; position: absolute; width: 100%;}
+#link_form_around {font-size: 12px; background: #003652; color: #ffffff; border-bottom: 1px solid white; position: absolute; width: 100%; clear: both;}
 #link_form_around.fixed{position: fixed; top: 0px; margin-top: 0px; z-index: 90;}
 #link_form{padding: 10px 30px 10px 40px;}
 #label_url{font-size: 18px; padding-right: 10px; float: left; padding-top: 4px; width: 130px;}
@@ -87,7 +86,7 @@ nav a:hover{text-decoration: none;}
 #left_a{display: block; width: 30px; height: 30px; background: url(../img/left.png) no-repeat; position: relative; float: left; margin: -36px 0px 10px 3px; cursor: pointer;}
 
 /*********** Login-Signup forms  ************/
-#login_page{background: #0e4967; color: #fff;}
+#login_page{background: #003652; color: #fff;}
 #login_page h1 {font-size: 34px; padding: 20px 0px 20px 30px;}
 #login_page h2 {margin: -10px 0px 20px 0px; font-weight: normal; }
 #login_page .errorlist {font-size: 12px; list-style: none; margin: 0px 0px 0px 0px; padding-top: 10px;}
@@ -122,7 +121,7 @@ nav a:hover{text-decoration: none;}
 .link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
 #link_nav{padding: 40px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}
-#link_nav a{color: #0e4967; text-decoration: none;}
+#link_nav a{color: #003652; text-decoration: none;}
 .author_date{font-size: 10px;}
 .author_date a {color: #442222;}
 .link_delete {float: left; font-size: 11px; margin: 8px -10px 0px 0px;}
@@ -208,7 +207,7 @@ nav a:hover{text-decoration: none;}
 .submit_contact input{width: 490px;}
 
 /*********** Profil page ************/
-#profil_page{background: #0e4967; color: #fff;}
+#profil_page{background: #003652; color: #fff;}
 #profil_page h1 {float: left; padding: 20px 0px 0px 40px;}
 #profil_link{float: left; padding: 40px 0px 20px 50px; margin-left: 50px; clear: left;}
 #profil_link h2 {padding-bottom: 0px; clear: both; margin-bottom: 10px; font-size: 18px;}
@@ -226,7 +225,7 @@ nav a:hover{text-decoration: none;}
 .edit_avatar {clear:both; font-size: 14px; line-height: 25px; padding: 10px 0px 10px 0px; }
 
 /*********** static pages ************/
-#static_page{background: #0e4967; color: #fff;}
+#static_page{background: #003652; color: #fff;}
 #static_content{width: 800px;border-right: 1px solid #aaaaaa;}
 #static_page h1 {padding: 40px 40px 20px 40px;}
 #static_page h2 {padding: 0px 0px 10px 0px; font-size: 22px; font-weight: normal;}
@@ -235,7 +234,7 @@ nav a:hover{text-decoration: none;}
 
 /*********** static pages ************/
 #password_lost_form{}
-#password_lost {background: #0e4967; color: #fff; padding: 40px 40px 40px 40px; font-size: 18px;}
+#password_lost {background: #003652; color: #fff; padding: 40px 40px 40px 40px; font-size: 18px;}
 #password_lost a {color: #fff;}
 #password_lost label {float: left; font-size: 18px; width: 130px; padding: 10px 0px 10px 0px; clear: both; margin-top: -3px;}
 #password_lost #id_email {font-size: 18px; float: left; width: 250px; position: relative; margin-top: 4px;}
@@ -247,5 +246,5 @@ nav a:hover{text-decoration: none;}
 
 /*********** Footer  ************/
 footer{font-size: 10px; text-align: right; padding: 5px 20px 5px 20px; clear: both; float: right;}
-footer a{color: #0e4967; text-decoration: underline;}
+footer a{color: #003652; text-decoration: underline;}
 footer p{display: inline;}

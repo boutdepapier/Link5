@@ -284,7 +284,7 @@ function handleScroll(){
                : document.documentElement.scrollTop;
     // set the appropriate class on the navigation
     document.getElementById('link_form_around').className =
-        (offset > 152 ? 'fixed' : '');
+        (offset > 98 ? 'fixed' : '');
   }
 }
 
