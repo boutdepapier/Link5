@@ -1,62 +1,74 @@
 {% load i18n link5_extras thumbnail %}<p id="close_icone"><a href="javascript:;" onclick="close_link();"><img src="{{ STATIC_URL }}link5/img/close.gif" width="32" height="32" alt="X" /></a></p>
-{% ifequal link_comment.link_type "photo" %}
-    <p id="link_image">
-        {% thumbnail link_comment.post_img "580" upscale=False as im %}
-            <img src="{{ im.url }}" class="link_image_preview" alt="{{ link_comment.post_ttl|safe }}" />
-        {% endthumbnail %}
-    </p>
-{% else %}{% ifequal link_comment.link_type "link" %}{% if link_comment.post_img %}
-    <p id="link_link_image">
-        {% thumbnail link_comment.post_img "580" upscale=False as im %}
-             <a href="{{ link_comment.post_url }}" target="_blank"><img src="{{ im.url }}" class="link_image_preview" alt="{{ link_comment.post_ttl|safe }}" /></a>
-        {% endthumbnail %}
-    </p>
-{% endif %}{% else %}{% ifequal link_comment.link_type "video" %}
-<div id="link_html">
-    {{ link_comment.post_html|safe }}
+
+<p class="tweeter">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://link5.me{% url linkload_short link_comment.id_b62 %}" data-text="{{ link_comment.post_ttl|safe }}" data-via="boutdepapier" data-lang="fr"></a>
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+
+<div class="facebook_full_code">
+    <div class="fb-like" data-href="" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+    <div id="fb-root"></div>
+    <script>
+      $(".fb-like").attr("data-href", window.location);
+      
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=195524800546217";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      
+      if (window.FB){FB.XFBML.parse();}
+    </script>
+    <script>
+    
+    // Rebinds the vote buttons to jquery
+    $('.likeornot_post a').die();
+    $('.likeornot_post a').live('click', function() {
+        var url = $(this).attr('href');
+        var link_id = $(this).attr('id');
+        link_vote(url, link_id, 'likeornotpost_');
+        return false;
+    });
+    </script>
 </div>
-{% else %}{% ifequal link_comment.link_type "html" %}
-<div id="link_html">
-    {{ link_comment.post_html|safe }}
+
+<div id="linkedin">
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+    <script type="IN/Share" data-url="http://link5.me{% url linkload link_comment.id_b62 link_comment.title_for_url %}" data-counter="right"></script>
 </div>
-{% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
+
+<div id="link_media">
+    {% ifequal link_comment.link_type "photo" %}
+        <p id="link_image">
+            {% thumbnail link_comment.post_img "612" upscale=False as im %}
+                <img src="{{ im.url }}" class="link_image_preview" alt="{{ link_comment.post_ttl|safe }}" />
+            {% endthumbnail %}
+        </p>
+    {% else %}{% ifequal link_comment.link_type "link" %}{% if link_comment.post_img %}
+        <p id="link_link_image">
+            {% thumbnail link_comment.post_img "612" upscale=False as im %}
+                 <a href="{{ link_comment.post_url }}" target="_blank"><img src="{{ im.url }}" class="link_image_preview" alt="{{ link_comment.post_ttl|safe }}" /></a>
+            {% endthumbnail %}
+        </p>
+    {% endif %}{% else %}{% ifequal link_comment.link_type "video" %}
+    <div id="link_html">
+        {{ link_comment.post_html|safe }}
+    </div>
+    {% else %}{% ifequal link_comment.link_type "html" %}
+    <div id="link_html">
+        {{ link_comment.post_html|safe }}
+    </div>
+    {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
+</div>
 
 <h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl|safe }}</a></h1>
 
 {% if link_comment.post_txt %}
     <p class="link_view_txt">{{ link_comment.post_txt|addurl|safe }}</p>
 {% endif %}
-<div class="fb-like" data-href="" data-send="true" data-width="450" data-show-faces="true"></div>
-<div id="fb-root"></div>
-<script>
-  $(".fb-like").attr("data-href", window.location);
-  
-  (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=195524800546217";
-      fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  
-  if (window.FB){FB.XFBML.parse();}
-</script>
-<script>
-
-// Rebinds the vote buttons to jquery
-$('.likeornot_post a').die();
-$('.likeornot_post a').live('click', function() {
-    var url = $(this).attr('href');
-    var link_id = $(this).attr('id');
-    link_vote(url, link_id, 'likeornotpost_');
-    return false;
-});
-</script>
-<p class="tweeter">
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://link5.me{% url linkload_short link_comment.id_b62 %}" data-text="{{ link_comment.post_ttl|safe }}" data-via="boutdepapier" data-lang="fr"></a>
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</p>
 <script>_gaq.push(['_trackPageview', '{% url linkload link_comment.id_b62 link_comment.title_for_url %}']);</script>
 
 <p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>

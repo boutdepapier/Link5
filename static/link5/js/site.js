@@ -176,7 +176,6 @@ function open_link(url_link_open) {
     $("#link_overlay").fadeIn("slow");
     $("#full_view_content").html("<p class='link_loading'><img src='/static/link5/img/load.gif' ></p>");
     $("#full_view").fadeIn("slow");
-    $("#full_view_content").focus();
     $("body").css({"overflow": "hidden"});
     $("#full_view").css({"overflow": "auto"});
     

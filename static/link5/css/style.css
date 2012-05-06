@@ -162,40 +162,43 @@ nav a:hover{text-decoration: none;}
 /*********** Link preview  ************/
 #link_overlay{position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url(../img/trans.png); z-index:101; position: fixed;}
 #full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102;}
-#full_view_content{width: 600px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; }
-#link_html {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
-#link_image {padding: 10px 10px 10px 10px; margin: auto; text-align: center;}
-#link_image img {max-width: 580px; position: relative; z-index: 4;}
-#close_icone {position: absolute; margin: -25px 0px 0px 590px; cursor: pointer; z-index: 104;}
+#full_view_content{width: 632px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; overflow-x: hidden;}
+#full_view_content:focus {outline: none;}
+#link_media {margin: 10px;background: #ececec; width: 612px; float: left; padding: 5px 0px 0px 0px;}
+#link_html {margin: auto; text-align: center;}
+#link_image {margin: auto; text-align: center;}
+#link_image img {max-width: 612px; position: relative; z-index: 4;}
+#close_icone {position: absolute; margin: -25px 0px 0px 622px; cursor: pointer; z-index: 104;}
 .link_loading{padding: 30px 0px 50px 0px; text-align: center;}
-#link_link_image{padding: 15px 10px 10px 10px; float: left; text-align: center; margin: auto;}
-#full_view_content h1{padding: 10px 20px 0px 20px; font-size: 25px; min-width: 200px; float: left;}
+#link_link_image{text-align: center; margin: auto;}
+#full_view_content h1{padding: 10px 10px 0px 10px; font-size: 25px; min-width: 200px; float: left;}
 #full_view_content h1 a {color: #664444;}
-.link_view_txt{padding: 20px 20px 10px 20px; clear: both;}
+.link_view_txt{padding: 20px 10px 10px 10px; clear: both;}
 .link_view_txt a{color: #664444;}
-.fb-like{padding: 0px 20px 0px 20px; float: left; width: 400px;}
-.tweeter {float: right; padding: 0px 0px 0px 0px; height: 30px;}
-#link_source {padding: 0px 20px 0px 20px; clear: both; font-size: 11px;}
+.facebook_full_code{position: fixed; margin: 140px 0px 0px 650px;}
+.tweeter {height: 30px; position: fixed; margin: 100px 0px 0px 650px;}
+#linkedin {position: fixed; margin: 60px 0px 0px 650px;}
+#link_source {padding: 5px 10px 0px 10px; clear: both; font-size: 11px; float: left;}
 #link_source a{color: #ff9009;}
-.likeornot_post {clear: both;margin: 5px 0px 20px 15px; height: 20px; font-size: 20px;}
+.likeornot_post {margin: 0px 12px 20px 5px; height: 20px; font-size: 20px; float: right;}
 .likeornot_post a{text-decoration: none;}
 .likeornot_post img{width: 20px;}
 .likeornot_post .vote_loading{font-size: 20px;}
 .likeornot_post .vote_message{font-size: 20px;}
 
 /*********** Comments zone  ************/
-#comment {clear: both; padding: 20px 20px 10px 20px;}
+#comment {clear: both; padding: 20px 10px 10px 10px;}
 .comment {clear: both; margin: 0px 0px 15px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_avatar{float: left; margin: 0px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_headline {font-size: 11px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #ececec; text-align: left;}
 .comment_headline a {color: #ff9009;}
 .delete {float: right; color: #ff9009; text-decoration: none;}
 .delete:hover {text-decoration: underline;}
-.comment_text {padding: 10px;}
-#comment_form {padding: 0px 20px 10px 20px;}
-#id_text {width: 560px; height: 100px; box-shadow: 0 1px 1px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 1px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 1px rgba(25,15,15,0.3);}
+.comment_text {padding: 10px; }
+#comment_form {padding: 0px 10px 10px 10px;}
+#id_text {width: 480px; height: 100px; box-shadow: 0 1px 1px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 1px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 1px rgba(25,15,15,0.3);}
 #comment_recapcha{font-size: 12px; padding: 15px 0px 0px 0px;}
-.comment_it input {width: 560px; margin-top: 15px;}
+.comment_it input {width: 484px; margin-top: 15px;}
 
 /*********** Contact form  ************/
 #contact {font-size: 18px; width: 560px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 20px 30px 50px; margin: 20px 0px 20px 0px; color: #664444;}
