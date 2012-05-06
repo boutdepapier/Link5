@@ -50,7 +50,7 @@
           
         <div id="nav_elements">
         {% if not user.is_authenticated %}
-            <p><a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Join this marvelous website" %}</a></p>
+            <p><a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Login" %}</a> | <a href="{% url login_link5 %}?next={{ request.get_full_path }}">{% trans "Join :)" %}</a></p>
         {% else %}  
             <p>{% trans 'Welcome' %} <a href="{% url user_home request.user.username|slugify %}">{{ user.username }}</a>.</p>
         {% endif %}
@@ -68,7 +68,7 @@
                 &nbsp;&nbsp;&nbsp;----&nbsp; {% trans 'Me and Myself:' %}
                     <a href="{% url user_home request.user.username|urlencode %}">{% trans 'My links' %}</a> - 
                    	<a href="{% url user_view request.user.username|urlencode %}">{% trans 'My profile' %}</a> -
-                   	<a href="{% url logout_link5 %}">{% trans "Screw you guys, I'm going home" %}</a>
+                   	<a href="{% url logout_link5 %}">{% trans "Log out!!!" %}</a>
                 {% endif %}
             </nav>
         
@@ -104,7 +104,7 @@
 </div>  <!-- /#main -->  
 
 <footer> 
-    <p>Copyright &copy; 2012 - link5 (contact <a href="{% url contact %}">me</a>) - <span>With <a href="https://www.djangoproject.com/" target="_blank">Django</a></span>
+    <p>{% trans 'Copyright &copy; 2012 - link5 (contact' %} <a href="{% url contact %}">{% trans 'me</a>) - <span>With <a href="https://www.djangoproject.com/" target="_blank">Django</a></span>' %}
     {% for page in flatpages %}
         - <a href="{{ page.url }}">{{ page.title }}</a>
     {% endfor %}

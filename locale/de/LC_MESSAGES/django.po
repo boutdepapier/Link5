@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-13 16:04+0200\n"
+"POT-Creation-Date: 2012-05-06 15:23+0200\n"
 "PO-Revision-Date: 2012-03-30 18:30\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,67 +60,67 @@ msgstr "Passwörter sind nicht identisch."
 msgid "Change of password on %s"
 msgstr ""
 
-#: link5app/models.py:14
+#: link5app/models.py:16
 msgid "Accept newsletter if it exist one day?"
 msgstr "Ich möchte Newsletter erhalten, falls es die überhaupt jemals gibt!"
 
-#: link5app/models.py:16
+#: link5app/models.py:18
 msgid "Term and conditions?"
 msgstr "AGB"
 
-#: link5app/models.py:46
+#: link5app/models.py:51
 msgid "Post Descripiton"
 msgstr "Beschreibung bestätigen"
 
-#: link5app/models.py:47
+#: link5app/models.py:52
 msgid "Foreign URL"
 msgstr "Externe URL"
 
-#: link5app/models.py:48
+#: link5app/models.py:53
 msgid "Illustration"
 msgstr "Abbildung"
 
-#: link5app/models.py:49
+#: link5app/models.py:54
 msgid "Media"
 msgstr "Media"
 
-#: link5app/models.py:56 link5app/models.py:131
+#: link5app/models.py:61 link5app/models.py:139
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: link5app/models.py:57 link5app/models.py:132
+#: link5app/models.py:62 link5app/models.py:140
 msgid "Draft"
 msgstr "Entwurf"
 
-#: link5app/models.py:58 link5app/models.py:133
+#: link5app/models.py:63 link5app/models.py:141
 msgid "Deleted"
 msgstr "Gelöscht"
 
-#: link5app/models.py:59
+#: link5app/models.py:64
 msgid "Denied"
 msgstr "Abgelehnt"
 
-#: link5app/models.py:65
+#: link5app/models.py:70
 msgid "Photo"
 msgstr "Foto"
 
-#: link5app/models.py:66
+#: link5app/models.py:71
 msgid "Video"
 msgstr ""
 
-#: link5app/models.py:67
+#: link5app/models.py:72
 msgid "Rich"
 msgstr "Kursiv"
 
-#: link5app/models.py:68
+#: link5app/models.py:73
 msgid "Link"
 msgstr ""
 
-#: link5app/models.py:72
+#: link5app/models.py:77
 msgid "Link number of positive votes"
 msgstr ""
 
-#: link5app/models.py:73
+#: link5app/models.py:78
 msgid "Link number of negative votes"
 msgstr ""
 
@@ -419,43 +419,44 @@ msgstr "Betreff:"
 msgid "Message: "
 msgstr "Nachricht:"
 
-#: template/link5/form_link.html:6
+#: template/link5/form_link.html:7
 msgid "Url I to share: "
 msgstr "URL teilen:"
 
-#: template/link5/form_link.html:8
+#: template/link5/form_link.html:9
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: template/link5/form_link.html:17
+#: template/link5/form_link.html:18
 msgid "Link title: "
 msgstr "Link Titel:"
 
-#: template/link5/form_link.html:23
+#: template/link5/form_link.html:24
 msgid "Link description"
 msgstr "Link Beschreibung:"
 
-#: template/link5/form_link.html:29
+#: template/link5/form_link.html:30
 msgid "Category: "
 msgstr "Kategorie:"
 
-#: template/link5/form_link.html:35
+#: template/link5/form_link.html:36
 msgid "Manually upload the post image:"
 msgstr ""
 
-#: template/link5/form_link.html:40
+#: template/link5/form_link.html:41
 msgid ""
 "Capcha is only for Anonymous users, please subscribe if you don't support it "
 "any more."
 msgstr ""
 
-#: template/link5/form_link.html:46
+#: template/link5/form_link.html:47
 msgid "Post-it!"
 msgstr "Bestätigen!"
 
 #: template/link5/form_login.html:6
-msgid "Back home bitch!"
-msgstr "Endlich zurück!"
+#, fuzzy
+msgid "Welcome back!"
+msgstr "Willkommen"
 
 #: template/link5/form_login.html:15
 msgid "Login: "
@@ -525,9 +526,14 @@ msgstr ""
 msgid "Link5 - Share your links"
 msgstr "Link5 - Deine Links verbreiten"
 
-#: template/link5/link_view.html:62
+#: template/link5/link_view.html:74
 msgid "Link source:"
 msgstr "Link Quelle:"
+
+#: template/link5/link_vote.html:3
+#, fuzzy
+msgid "Vote page"
+msgstr "Startseite"
 
 #: template/link5/link_wall.html:3
 msgid "No link for this page, yet!"
@@ -544,42 +550,6 @@ msgstr "in"
 #: template/link5/link_wall_content.html:36
 msgid "View all comments"
 msgstr "Alle Kommentare sehen"
-
-#: template/link5/nav.html:4
-msgid "My Links people"
-msgstr "Meine Link5 Freunde"
-
-#: template/link5/nav.html:5
-msgid "All links"
-msgstr "Alle Links"
-
-#: template/link5/nav.html:7
-msgid "Top links:"
-msgstr ""
-
-#: template/link5/nav.html:8
-msgid "Today"
-msgstr "Heute"
-
-#: template/link5/nav.html:9
-msgid "This week"
-msgstr "Diese Woche"
-
-#: template/link5/nav.html:10
-msgid "This month"
-msgstr "Diesen Monat"
-
-#: template/link5/nav.html:12
-msgid "Me and Myself:"
-msgstr "Ich selbst:"
-
-#: template/link5/nav.html:13
-msgid "My links"
-msgstr "Meine Links"
-
-#: template/link5/nav.html:14
-msgid "My profile"
-msgstr "Mein Profil"
 
 #: template/link5/profil_edit.html:4
 msgid "info"
@@ -639,25 +609,67 @@ msgstr ""
 "Link5 ist ein soziales Netzwerk, welches auf der Verbreitung von Links "
 "aufbaut: austauschen, folgen, link, verlinkt...und immer cool bleiben."
 
-#: template/link5/site.html:49
-msgid "home page"
-msgstr "Startseite"
-
 #: template/link5/site.html:53
 msgid "Login"
 msgstr "Login"
 
 #: template/link5/site.html:53
-msgid "Join this marvelous website"
-msgstr "Registriere Dich auf dieser herrlichen Webseite!"
+msgid "Join :)"
+msgstr ""
 
 #: template/link5/site.html:55
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: template/link5/site.html:55
-msgid "Screw you guys, I'm going home"
-msgstr "Scheiss drauf, ich verzieh mich!"
+#: template/link5/site.html:60
+msgid "My Links people"
+msgstr "Meine Link5 Freunde"
+
+#: template/link5/site.html:61
+msgid "All links"
+msgstr "Alle Links"
+
+#: template/link5/site.html:63
+msgid "Top links:"
+msgstr ""
+
+#: template/link5/site.html:64
+msgid "Today"
+msgstr "Heute"
+
+#: template/link5/site.html:65
+msgid "This week"
+msgstr "Diese Woche"
+
+#: template/link5/site.html:66
+msgid "This month"
+msgstr "Diesen Monat"
+
+#: template/link5/site.html:68
+msgid "Me and Myself:"
+msgstr "Ich selbst:"
+
+#: template/link5/site.html:69
+msgid "My links"
+msgstr "Meine Links"
+
+#: template/link5/site.html:70
+msgid "My profile"
+msgstr "Mein Profil"
+
+#: template/link5/site.html:71
+msgid "Log out!!!"
+msgstr ""
+
+#: template/link5/site.html:107
+msgid "Copyright &copy; 2012 - link5 (contact"
+msgstr ""
+
+#: template/link5/site.html:107
+msgid ""
+"me</a>) - <span>With <a href=\"https://www.djangoproject.com/\" target="
+"\"_blank\">Django</a></span>"
+msgstr ""
 
 #: template/registration/password_reset_complete.html:4
 msgid "Password reset complete"
@@ -713,6 +725,15 @@ msgstr ""
 #: template/registration/password_reset_form.html:7
 msgid "Reset my password"
 msgstr "Passwort neu setzen"
+
+#~ msgid "Back home bitch!"
+#~ msgstr "Endlich zurück!"
+
+#~ msgid "Join this marvelous website"
+#~ msgstr "Registriere Dich auf dieser herrlichen Webseite!"
+
+#~ msgid "Screw you guys, I'm going home"
+#~ msgstr "Scheiss drauf, ich verzieh mich!"
 
 #~ msgid "Group: Applications data"
 #~ msgstr "Gruppe: Anwendungsdaten"
