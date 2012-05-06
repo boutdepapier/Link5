@@ -38,6 +38,21 @@
 <div id="linkedin">
     <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
     <script type="IN/Share" data-url="http://link5.me{% url linkload link_comment.id_b62 link_comment.title_for_url %}" data-counter="right"></script>
+    <script type="text/javascript"> IN.parse(); </script>
+</div>
+
+<div id="googleplus">
+    <!-- Placez cette balise là où vous souhaitez positionner le bouton +1. -->
+    <g:plusone size="medium"></g:plusone>
+    
+    <!-- Placez cet appel d'affichage à l'endroit approprié. -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
 </div>
 
 <div id="link_media">
