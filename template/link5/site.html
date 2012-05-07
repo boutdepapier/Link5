@@ -104,6 +104,7 @@
 </div>  <!-- /#main -->  
 
 <footer> 
+    <div id="scroll_top"><a href="#main">{% trans "scroll to top" %}</a></div>
     <p>{% trans 'Copyright &copy; 2012 - link5 (contact' %} <a href="{% url contact %}">{% trans 'me</a>) - <span>With <a href="https://www.djangoproject.com/" target="_blank">Django</a></span>' %}
     {% for page in flatpages %}
         - <a href="{{ page.url }}">{{ page.title }}</a>

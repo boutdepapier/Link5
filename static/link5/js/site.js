@@ -269,16 +269,15 @@ $(document).ready(function() {
     
 	$(function () {
 		$(window).scroll(function () {
-			if ($(this).scrollTop() > 200) {
-				$('#scroll_top').fadeIn();
-			} else {
-				$('#scroll_top').fadeOut();
-			}
-			if ($(this).scrollTop() > 98) {
-                $('#link_form_around').addClass("fixed");
-            } else {
-                $('#link_form_around').removeClass("fixed");
-            }
+			if ($(this).scrollTop() > 200) {$('#scroll_top').fadeIn();
+			} else { $('#scroll_top').fadeOut(); }
+			
+			if ($(this).scrollTop() > 98) {$('#link_form_around').addClass("fixed");
+            } else {$('#link_form_around').removeClass("fixed");}
+            
+			if ($(document).height() - $(window).height() - $(this).scrollTop() < 20) {
+                $('#scroll_top').css({"margin-top": "-105px", "float": "right", "position": "relative", "margin-right": "-20px"});
+            } else {$('#scroll_top').css({"margin-top": "auto", "float": "none", "position": "fixed", "margin-right": "auto"});}
 		});
 
 		// scroll body to 0px on click

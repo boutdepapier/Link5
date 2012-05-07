@@ -146,8 +146,6 @@ nav a:hover{text-decoration: none;}
 .link5_comment_headline a {color: #ff9009;}
 .view_all_links{font-size: 11px; color: #ff9009; border-top: 1px solid #ececec; padding: 5px 0px 0px 0px; margin-top: 5px;}
 .view_all_links a {color: #ff9009;}
-#scroll_top{position: fixed; bottom: 24px; right: 9px; display: none; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); text-align: center; color: #664444; z-index: 10;}
-#scroll_top a {color: #664444; text-decoration: none; padding: 20px; display: block; width: 70px; background: #003652; color: #ffffff; font-size: 20px;}
 
 /*********** User page  ************/
 #user_page{background: #000000; color: #FFFFFF; height: 80px; padding-left: 40px;}
@@ -251,6 +249,9 @@ nav a:hover{text-decoration: none;}
 .submit_newpass {clear: both; padding: 20px 0px 10px 0px;}
 
 /*********** Footer  ************/
-footer{font-size: 10px; text-align: right; padding: 5px 20px 5px 20px; clear: both; float: right;}
+#scroll_top{position: fixed; bottom: 0px; right: 0px; display: none; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); text-align: center; color: #664444; z-index: 10;}
+#scroll_top a {color: #664444; text-decoration: none; padding: 25px 10px 0px 10px; display: block; width: 90px; background: #003652; color: #ffffff; font-size: 20px; height: 71px; border-top-left-radius: 5px;}
+
+footer{font-size: 10px; text-align: right; padding: 5px 20px 5px 20px; clear: both; float: right; height: 10px;}
 footer a{color: #003652; text-decoration: underline;}
 footer p{display: inline;}
