@@ -266,6 +266,29 @@ $(document).ready(function() {
     instance.init();
     // If the link is not empty at page loading we have to display the preview
     if ($("#id_post_url").val() && $("#id_post_url").val() !="") link_validator();
+    
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 200) {
+				$('#scroll_top').fadeIn();
+			} else {
+				$('#scroll_top').fadeOut();
+			}
+			if ($(this).scrollTop() > 98) {
+                $('#link_form_around').addClass("fixed");
+            } else {
+                $('#link_form_around').removeClass("fixed");
+            }
+		});
+
+		// scroll body to 0px on click
+		$('#scroll_top a').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
+	});
 });
 
 $(document).keyup(function(e) {
@@ -274,6 +297,7 @@ $(document).keyup(function(e) {
     }   // esc
 });
 
+/*
 function handleScroll(){
   // check that this is a relatively modern browser
   if (window.XMLHttpRequest){
@@ -293,3 +317,4 @@ if (window.addEventListener){
 }else{
   window.attachEvent('onscroll', handleScroll);
 }
+*/

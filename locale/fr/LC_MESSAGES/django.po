@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-06 15:23+0200\n"
-"PO-Revision-Date: 2012-05-06 15:22\n"
+"POT-Creation-Date: 2012-05-07 20:42+0200\n"
+"PO-Revision-Date: 2012-05-07 20:43\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Translated-Using: django-rosetta 0.6.5\n"
 
@@ -229,8 +229,8 @@ msgstr "Affichage du média interdit..."
 #: link5app/views.py:487
 msgid "Current media is forbidden to display on external source"
 msgstr ""
-"Le média sélectionner a retourné une réponse indiquant que l'affichage était "
-"interdit."
+"Le média sélectionner a retourné une réponse indiquant que l'affichage était"
+" interdit."
 
 #: link5app/views.py:561
 msgid "error parsing"
@@ -351,16 +351,12 @@ msgstr "Salut,"
 #: template/emails/password_reset_email.html:36
 msgid ""
 "\n"
-"                If you want to change it, please click on the link below. "
-"You’ll be redirected to your account where you will be able to set up a "
-"password that you will easily remember.<br /><br />\n"
+"                If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.<br /><br />\n"
 "                Link: \n"
 "                "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
-"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
-"passe dont vous vous souviendrez facilement.<br /><br />\n"
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement.<br /><br />\n"
 "Link: "
 
 #: template/emails/password_reset_email.txt:4
@@ -370,15 +366,11 @@ msgstr "Oublié son mot de passe ? Pas de panique, ça arrive."
 #: template/emails/password_reset_email.txt:6
 msgid ""
 "\n"
-"If you want to change it, please click on the link below. You’ll be "
-"redirected to your account where you will be able to set up a password that "
-"you will easily remember.\n"
+"If you want to change it, please click on the link below. You’ll be redirected to your account where you will be able to set up a password that you will easily remember.\n"
 "Link: "
 msgstr ""
 "\n"
-"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous "
-"serez redirigé vers votre compte où vous pourrez le changer pour un mot de "
-"passe dont vous vous souviendrez facilement.\n"
+"Si vous souhaitez le changer, merci de cliquer sur le lien ci-dessous. Vous serez redirigé vers votre compte où vous pourrez le changer pour un mot de passe dont vous vous souviendrez facilement.\n"
 "Link:"
 
 #: template/emails/password_reset_email.txt:10
@@ -454,8 +446,8 @@ msgstr "Manuellement uploader une image :"
 
 #: template/link5/form_link.html:41
 msgid ""
-"Capcha is only for Anonymous users, please subscribe if you don't support it "
-"any more."
+"Capcha is only for Anonymous users, please subscribe if you don't support it"
+" any more."
 msgstr ""
 "Le capcha est pour les Anonymous seulement, vous pouvez vous inscrire pour "
 "ne plus l'avoir."
@@ -525,8 +517,8 @@ msgstr "S'enregistrer !"
 
 #: template/link5/home.html:9 template/link5/home.html.py:12
 msgid ""
-"Link5 the social network based on Link share: share, follow, link, linked... "
-"And keep cool"
+"Link5 the social network based on Link share: share, follow, link, linked..."
+" And keep cool"
 msgstr ""
 "Link5, le réseau social de partage de liens: recommande, abonne-toi, soit "
 "linké... "
@@ -535,7 +527,7 @@ msgstr ""
 msgid "Link5 - Share your links"
 msgstr "Link5 - Partage tes liens"
 
-#: template/link5/link_view.html:74
+#: template/link5/link_view.html:89
 msgid "Link source:"
 msgstr "Source du lien :"
 
@@ -550,6 +542,10 @@ msgstr "Pas (encore) de lien pour cette page !"
 #: template/link5/link_wall.html:16 template/link5/link_wall_content.html:69
 msgid "More links!"
 msgstr "Plus de liens !"
+
+#: template/link5/link_wall.html:20
+msgid "scroll to top"
+msgstr "Haut de page"
 
 #: template/link5/link_wall_content.html:34
 msgid "in"
@@ -675,11 +671,11 @@ msgstr "Copyright &copy; 2012 - link5 (contactez-"
 
 #: template/link5/site.html:107
 msgid ""
-"me</a>) - <span>With <a href=\"https://www.djangoproject.com/\" target="
-"\"_blank\">Django</a></span>"
+"me</a>) - <span>With <a href=\"https://www.djangoproject.com/\" "
+"target=\"_blank\">Django</a></span>"
 msgstr ""
-"moi</a>) - <span>Avec <a href=\"https://www.djangoproject.com/\" target="
-"\"_blank\">Django</a></span>"
+"moi</a>) - <span>Avec <a href=\"https://www.djangoproject.com/\" "
+"target=\"_blank\">Django</a></span>"
 
 #: template/registration/password_reset_complete.html:4
 msgid "Password reset complete"

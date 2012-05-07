@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-06 15:23+0200\n"
+"POT-Creation-Date: 2012-05-07 20:42+0200\n"
 "PO-Revision-Date: 2012-03-30 18:29\n"
 "Last-Translator:   <benjamin@tacquet.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Link5 - Share your links"
 msgstr ""
 
-#: template/link5/link_view.html:74
+#: template/link5/link_view.html:89
 msgid "Link source:"
 msgstr ""
 
@@ -517,6 +517,10 @@ msgstr ""
 
 #: template/link5/link_wall.html:16 template/link5/link_wall_content.html:69
 msgid "More links!"
+msgstr ""
+
+#: template/link5/link_wall.html:20
+msgid "scroll to top"
 msgstr ""
 
 #: template/link5/link_wall_content.html:34
