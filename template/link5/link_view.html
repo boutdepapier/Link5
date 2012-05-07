@@ -22,17 +22,6 @@
       
       if (window.FB){FB.XFBML.parse();}
     </script>
-    <script>
-    
-    // Rebinds the vote buttons to jquery
-    $('.likeornot_post a').die();
-    $('.likeornot_post a').live('click', function() {
-        var url = $(this).attr('href');
-        var link_id = $(this).attr('id');
-        link_vote(url, link_id, 'likeornotpost_');
-        return false;
-    });
-    </script>
 </div>
 
 <div id="linkedin">
@@ -92,6 +81,16 @@
     <a class="not" href="{% url vote link_comment.id_b62 '0' %}" id="bignot_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" alt="X" /></a>
     </p>
 </div>
+<script type="text/javascript">
+// Rebinds the vote buttons to jquery
+$('.likeornot_post a').die();
+$('.likeornot_post a').live('click', function() {
+    var url = $(this).attr('href');
+    var link_id = $(this).attr('id');
+    link_vote(url, link_id, 'likeornotpost_');
+    return false;
+});
+</script>
 
 <div id="full_comment">
     {% include "link5/comments.html" %}
