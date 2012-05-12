@@ -36,7 +36,7 @@ $.fn.wookmark = function(options) {
     shortestIndex = 0;
     for(k=0; k<columns; k++) {
       if(shortest == null || heights[k] < shortest) {
-        shortest = heights[k];
+        shortest = heights[k] + 4;
         shortestIndex = k;
       }
     }
