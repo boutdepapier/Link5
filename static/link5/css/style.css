@@ -180,8 +180,8 @@ nav a:hover{text-decoration: none;}
 #full_view_content h1 a {color: #585151; text-decoration: none;}
 .link_view_txt{padding: 20px 10px 10px 10px; clear: both; font-size: 14px;}
 .link_view_txt a{color: #585151;}
-.facebook_full_code{position: fixed; margin: 160px 0px 0px 650px;}
-.tweeter {height: 30px; position: fixed; margin: 120px 0px 0px 650px;}
+.facebook_full_code{position: fixed; margin: 120px 0px 0px 650px;}
+.tweeter {height: 30px; position: fixed; margin: 80px 0px 0px 650px;}
 #linkedin {position: fixed; margin: 80px 0px 0px 650px;}
 #googleplus {position: fixed; margin: 40px 0px 0px 650px;}
 #link_source {padding: 5px 10px 0px 10px; clear: both; font-size: 11px; float: left;}
