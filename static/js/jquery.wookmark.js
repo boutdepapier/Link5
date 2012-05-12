@@ -36,7 +36,7 @@ $.fn.wookmark = function(options) {
     shortestIndex = 0;
     for(k=0; k<columns; k++) {
       if(shortest == null || heights[k] < shortest) {
-        shortest = heights[k] + 4;
+        shortest = heights[k];
         shortestIndex = k;
       }
     }
@@ -49,7 +49,7 @@ $.fn.wookmark = function(options) {
     });
     
     // Update column height.
-    heights[shortestIndex] = shortest + item.outerHeight() + options.offset;
+    heights[shortestIndex] = shortest + item.outerHeight() + options.offset + 4;
     bottom = Math.max(bottom, heights[shortestIndex]);
   }
   
