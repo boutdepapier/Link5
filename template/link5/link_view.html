@@ -44,6 +44,13 @@
     </script>
 </div>
 
+<div id="link_author">
+    <div id="link_author_avatar">{% if link_comment.author.avatar %}<img src="{{ link_comment.author.avatar|crop:"80x80" }}" alt="{{ link_comment.author.user.username }}" width="80" height="80" />{% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" height="80" />{% endif %}</div>
+    <h1>{{ link_comment.post_ttl|safe }}</h1>
+    <p class="link_author_from">{% trans "By:" %} <a href="{% url user_home link_comment.author.user.username %}">{{ link_comment.author.user.username }}</a>, {% trans "from:" %}  <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
+    <div class="clearboth"></div>
+</div>
+
 <div id="link_media">
     {% ifequal link_comment.link_type "photo" %}
         <p id="link_image">
@@ -68,14 +75,11 @@
     {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
 </div>
 
-<h1><a href="{{ link_comment.post_url }}" target="_blank">{{ link_comment.post_ttl|safe }}</a></h1>
-
 {% if link_comment.post_txt %}
     <p class="link_view_txt">{{ link_comment.post_txt|addurl|safe }}</p>
 {% endif %}
 <script>_gaq.push(['_trackPageview', '{% url linkload link_comment.id_b62 link_comment.title_for_url %}']);</script>
 
-<p id="link_source">{% trans 'Link source:' %} <a href="{{ link_comment.post_url }}" target="_blank">{{link_comment.source.netloc }}</a></p>
 <div class="likeornot_post" id="likeornotpost_{{ link_comment.id_b62 }}">
     <p><a class="like" href="{% url vote link_comment.id_b62 '1' %}" id="biglike_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.positive }}</span><img src="{{ STATIC_URL }}link5/img/yes.png" class="vicone" alt="V" /></a>
     <a class="not" href="{% url vote link_comment.id_b62 '0' %}" id="bignot_{{ link_comment.id_b62 }}"><span class="number">{{ link_comment.negative }}</span><img src="{{ STATIC_URL }}link5/img/no.png" class="vicone" alt="X" /></a>

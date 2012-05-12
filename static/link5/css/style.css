@@ -13,7 +13,7 @@
 .barret{text-decoration:line-through;}
 .underline{text-decoration:underline;}
 
-a img { border:0; }
+a img { border:0; padding: 0px; margin: 0px;}
 
 /*
 @font-face {
@@ -24,12 +24,12 @@ a img { border:0; }
 
 body{text-align:center;font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; background: #ffffff;}
 
-header {color: #003652;}
-header a {color: #003652;}
-#logo{float: left;padding: 0px 0px 0px 40px}
-#nav_elements {float: left; font-size: 12px; padding: 35px 20px 0px 30px;}
+header {color: #ffffff; background: #003652; border-bottom: 1px solid #ffffff;}
+header a {color: #ffffff;}
+#logo{float: left;padding: 15px 0px 0px 40px}
+#nav_elements {float: left; font-size: 12px; padding: 25px 20px 0px 30px;}
 #nav_elements a {text-decoration: underline; font-weight: bold;}
-#langage_selection{float: right; padding: 10px 20px 0px 0px; }
+#langage_selection{float: right; padding: 10px 20px 0px 0px; font-size: 14px;}
 nav { font-size: 12px; padding: 10px 20px 5px 0px; float: left;}
 nav a:hover{text-decoration: none;}
 
@@ -75,8 +75,8 @@ nav a:hover{text-decoration: none;}
 .post_element textarea {font-family: Myriad Pro, Arial, Helvetica, Tahoma, sans-serif; font-size: 16px; float: left; width: 360px; height: 110px; padding: 2px;}
 #recapcha{float: left; padding: 0px 0px 15px 0px;}
 #recapcha p {padding-bottom: 5px;}
-.post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #664444; min-height: 130px;}
-.post_preview a {color: #664444;}
+.post_preview{padding: 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 16px 0px 15px 15px; color: #585151; min-height: 130px;}
+.post_preview a {color: #585151;}
 #post_preview_loading {padding: 20px 38px 20px 38px; text-align: center; position: relative; float: left; background: #FFFFFF; margin-bottom: -110px;}
 #preview_med{text-align: center;}
 .cancel {float: left; margin: -3px 10px 0px 0px; display: none;}
@@ -109,14 +109,14 @@ nav a:hover{text-decoration: none;}
 .again {font-size: 12px;}
 
 /*********** Links block zone  ************/
-#links_section{background: #ececec; color: #664444; padding: 10px 40px 0px 30px; clear: both;}
+#links_section{background: #ececec; color: #585151; padding: 10px 10px 0px 0px; clear: both;}
 #jquerywall{position: absolute;}
 .link{padding: 10px 10px 0px 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
 .title{font-size:12px;}
-.title a {color: #664444; text-decoration: none;}
+.title a {color: #585151; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
-.description a{color: #664444;}
+.description a{color: #585151;}
 .media{padding: 10px 0px 0px 0px;}
 .link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
@@ -129,7 +129,7 @@ nav a:hover{text-decoration: none;}
 .likeornot {float: right; margin: 5px -10px 0px 0px; font-size: 12px; height: 20px; overflow-y: hidden;}
 .likeornot a {text-decoration: none;}
 .likeornot img{width: 13px;}
-.number{float: left; padding-right: 2px; color: #664444;}
+.number{float: left; padding-right: 2px; color: #585151;}
 .vicone{float: left;}
 .vote_loading {background: #ceefef; padding: 3px 10px 3px 10px; margin: 0px; font-size: 12px; height: 20px; float: left;}
 .vote_message {background: #FEECBF; padding: 3px 10px 3px 10px; margin: 0px; font-size: 12px; height: 20px; float: left;}
@@ -164,6 +164,11 @@ nav a:hover{text-decoration: none;}
 #full_view{position: fixed; overflow: auto; width: 100%; height: 100%; top: 0; left: 0; z-index:102;}
 #full_view_content{width: 632px; margin: 40px auto 20px auto; background: #ffffff; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); z-index: 103; overflow-x: hidden;}
 #full_view_content:focus {outline: none;}
+#link_author{border-bottom: 1px solid #ececec;}
+#link_author_avatar {float: left; padding: 0px; margin: 0px;padding: 10px 10px 4px 10px;}
+#link_author_avatar img {padding: 0px; margin: 0px;}
+.link_author_from{width: 520px; padding: 5px 10px 0px 0px; font-size: 12px; float: left;}
+.link_author_from a{color: #ff9009;}
 #link_media {margin: 10px;background: #ececec; width: 612px; float: left; padding: 5px 0px 0px 0px;}
 #link_html {margin: auto; text-align: center;}
 #link_image {margin: auto; text-align: center;}
@@ -171,10 +176,10 @@ nav a:hover{text-decoration: none;}
 #close_icone {position: absolute; margin: -25px 0px 0px 622px; cursor: pointer; z-index: 104;}
 .link_loading{padding: 30px 0px 50px 0px; text-align: center;}
 #link_link_image{text-align: center; margin: auto;}
-#full_view_content h1{padding: 10px 10px 0px 10px; font-size: 25px; min-width: 200px; float: left;}
-#full_view_content h1 a {color: #664444;}
-.link_view_txt{padding: 20px 10px 10px 10px; clear: both;}
-.link_view_txt a{color: #664444;}
+#full_view_content h1{padding: 10px 10px 0px 0px; font-size: 18px; width: 520px; float: left; font-weight: normal;}
+#full_view_content h1 a {color: #585151; text-decoration: none;}
+.link_view_txt{padding: 20px 10px 10px 10px; clear: both; font-size: 14px;}
+.link_view_txt a{color: #585151;}
 .facebook_full_code{position: fixed; margin: 160px 0px 0px 650px;}
 .tweeter {height: 30px; position: fixed; margin: 120px 0px 0px 650px;}
 #linkedin {position: fixed; margin: 80px 0px 0px 650px;}
@@ -188,7 +193,7 @@ nav a:hover{text-decoration: none;}
 .likeornot_post .vote_message{font-size: 20px;}
 
 /*********** Comments zone  ************/
-#comment {clear: both; padding: 20px 10px 10px 10px;}
+#comment {clear: both; padding: 20px 10px 10px 10px; font-size: 14px;}
 .comment {clear: both; margin: 0px 0px 15px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_avatar{float: left; margin: 0px 10px 0px 0px; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3);}
 .comment_headline {font-size: 11px; padding: 5px 10px 5px 10px; border-bottom: 1px solid #ececec; text-align: left;}
@@ -202,7 +207,7 @@ nav a:hover{text-decoration: none;}
 .comment_it input {width: 484px; margin-top: 15px;}
 
 /*********** Contact form  ************/
-#contact {font-size: 18px; width: 560px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 20px 30px 50px; margin: 20px 0px 20px 0px; color: #664444;}
+#contact {font-size: 18px; width: 560px; float: left; border-right: 1px solid #aaaaaa; padding: 10px 20px 30px 50px; margin: 20px 0px 20px 0px; color: #585151;}
 #contact h1 {font-size: 34px; padding-bottom: 20px;}
 .contact_element label {float: left; width: 130px; padding: 10px 0px 10px 0px; clear: both;}
 .contact_element input {font-size: 18px; float: left; width: 350px; position: relative; margin-top: 4px;}
@@ -249,8 +254,8 @@ nav a:hover{text-decoration: none;}
 .submit_newpass {clear: both; padding: 20px 0px 10px 0px;}
 
 /*********** Footer  ************/
-#scroll_top{position: fixed; bottom: 0px; right: 0px; display: none; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); text-align: center; color: #664444; z-index: 10;}
-#scroll_top a {color: #664444; text-decoration: none; padding: 25px 10px 0px 10px; display: block; width: 90px; background: #003652; color: #ffffff; font-size: 20px; height: 71px; border-top-left-radius: 5px;}
+#scroll_top{position: fixed; bottom: 0px; right: 0px; display: none; box-shadow: 0 1px 3px rgba(25,15,15,0.3); -moz-box-shadow: 0 1px 3px rgba(25,15,15,0.3); -webkit-box-shadow: 0 1px 3px rgba(25,15,15,0.3); text-align: center; color: #585151; z-index: 10;}
+#scroll_top a {color: #585151; text-decoration: none; padding: 25px 10px 0px 10px; display: block; width: 90px; background: #003652; color: #ffffff; font-size: 20px; height: 71px; border-top-left-radius: 5px;}
 
 footer{font-size: 10px; text-align: right; padding: 5px 20px 5px 20px; clear: both; float: right; height: 10px;}
 footer a{color: #003652; text-decoration: underline;}
