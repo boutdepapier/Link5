@@ -109,15 +109,15 @@ nav a:hover{text-decoration: none;}
 .again {font-size: 12px;}
 
 /*********** Links block zone  ************/
-#links_section{background: #ececec; color: #585151; padding: 10px 10px 0px 0px; clear: both;}
+#links_section{background: #ececec; color: #585151; padding: 10px 20px 0px 0px; clear: both;}
 #jquerywall{position: absolute;}
-.link{padding: 10px 10px 0px 10px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
+.link{padding: 10px 15px 0px 15px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
 .title{font-size:12px;}
 .title a {color: #585151; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
 .description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
 .description a{color: #585151;}
-.media{padding: 10px 0px 0px 0px;}
+.media{padding: 5px 0px 0px 0px;}
 .link_visu {text-align: center;}
 .link_play{position: relative; z-index: 2; margin: -28px 0px 0px 159px; float: left;}
 #link_nav{padding: 40px 0px 10px 0px; text-align: center; font-weight: bold; font-size: 60px; clear: both;}

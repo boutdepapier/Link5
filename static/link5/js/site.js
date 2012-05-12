@@ -201,7 +201,7 @@ gbks.jQueryPlugin = function() {
   this.resize = function() {
     $('.link').wookmark({
       offset: 10,
-      itemWidth: 210,
+      itemWidth: 220,
       container: $('#jquerywall_height')
     });
   };
@@ -251,7 +251,7 @@ $(document).ready(function() {
             $("#jquerywall").append(data);
             $('.link').wookmark({
               offset: 10,
-              itemWidth: 210,
+              itemWidth: 220,
               container: $('#jquerywall_height')
             });
           }
