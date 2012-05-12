@@ -115,7 +115,7 @@ nav a:hover{text-decoration: none;}
 .title{font-size:12px;}
 .title a {color: #585151; text-decoration: none;}
 .link_icone{padding: 0px 5px 5px 0px; float: left;}
-.description{font-size:11px; padding: 0px 0px 5px 0px; clear: both;}
+.description{font-size:11px; padding: 5px 0px 5px 0px; clear: both;}
 .description a{color: #585151;}
 .media{padding: 5px 0px 0px 0px;}
 .link_visu {text-align: center;}
