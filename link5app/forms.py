@@ -24,7 +24,7 @@ class LinkForm(forms.Form):
     
     post_ttl = forms.CharField(max_length=155)
     post_txt = forms.CharField(widget=forms.Textarea, max_length=255, required=False)
-    post_url = forms.URLField(max_length=2000)
+    post_url = forms.URLField(max_length=2000, initial="e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0")
     post_img = forms.ImageField(required=False)
     
     categorys = Category.objects.all()

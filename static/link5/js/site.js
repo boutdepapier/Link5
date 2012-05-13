@@ -52,7 +52,7 @@ function link_validator() {
     // Filtering URL from the content using regular expressions
     var url = content.match(urlRegex);
     
-    if((url && url.length > 0) && (content != post_url)) {
+    if ((url && url.length > 0) && (content != post_url) && content != "e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0") {
         post_url = url;
         
         $("#post_preview_form").slideDown('slow');
@@ -220,8 +220,18 @@ $(document).ready(function() {
     
     $("#cancel_link").click(function(){
         close_link_form(); 
-    });    
+    }); 
     
+    $("#id_post_url").focus(function() {
+        if ($("#id_post_url").val() == "e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0") {
+            $("#id_post_url").val("");
+        }   
+    });
+    $("#id_post_url").focusout(function() {
+        if ($("#id_post_url").val() == "") {
+            $("#id_post_url").val("e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0");
+        }
+    });
     $("#id_post_url").keyup(function() {
         delay_get(function(){ link_validator() }, 500 );
     });
@@ -295,25 +305,3 @@ $(document).keyup(function(e) {
         close_link(); 
     }   // esc
 });
-
-/*
-function handleScroll(){
-  // check that this is a relatively modern browser
-  if (window.XMLHttpRequest){
-    // determine the distance scrolled down the page
-    var offset = window.pageYOffset
-               ? window.pageYOffset
-               : document.documentElement.scrollTop;
-    // set the appropriate class on the navigation
-    document.getElementById('link_form_around').className =
-        (offset > 98 ? 'fixed' : '');
-  }
-}
-
-// add the scroll event listener
-if (window.addEventListener){
-  window.addEventListener('scroll', handleScroll, false);
-}else{
-  window.attachEvent('onscroll', handleScroll);
-}
-*/
