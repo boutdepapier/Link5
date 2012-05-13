@@ -111,7 +111,7 @@ nav a:hover{text-decoration: none;}
 
 /*********** Links block zone  ************/
 #links_section{background: #ececec; color: #585151; padding: 10px 20px 0px 0px; clear: both;}
-#jquerywall{position: absolute;}
+#jquerywall{position: relative;}
 .link{padding: 10px 15px 0px 15px; background: #ffffff; width: 185px; overflow: hidden; box-shadow: 0 1px 3px rgba(34,25,25,0.4); -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); float: left; margin: 10px;}
 .title{font-size:12px;}
 .title a {color: #585151; text-decoration: none;}
