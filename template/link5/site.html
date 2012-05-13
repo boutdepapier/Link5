@@ -46,7 +46,7 @@
 
 <div id="main"> 
     <header> 
-        <p id="logo"><a href="{% if request.user.is_authenticated %}{% url home %}{% else %}{% url home %}{% endif %}"><img src="{{ STATIC_URL }}link5/img/Link5me-oldschool-beta.png" alt="Link5.me" width="250" /></a></p>
+        <p id="logo"><a href="{% if request.user.is_authenticated %}{% url home %}{% else %}{% url home %}{% endif %}"><img src="{{ STATIC_URL }}link5/img/Link5me-oldschool-beta.png" alt="Link5.me" width="250" height="68" /></a></p>
           
         <div id="nav_elements">
         {% if not user.is_authenticated %}
