@@ -1,4 +1,4 @@
-settings.py
+settings_local.py
 *.pyc
 *.pyo
 media/cache
