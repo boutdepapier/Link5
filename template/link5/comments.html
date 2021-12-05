@@ -2,12 +2,12 @@
 <div id="comment">
 {% for comment in comments %}
     <div class="comment">
-        <p class="comment_avatar"><a href="{% url user_home comment.author.user.username %}">
+        <p class="comment_avatar"><a href="{% url "user_home" comment.author.user.username %}">
             {% if comment.author.avatar %}<img src="{{ comment.author.avatar|crop:"80x80" }}" alt="{{ comment.author.user.username }}" width="80" />
             {% else %}<img src="{{ STATIC_URL }}link5/img/anonymous.png" alt="Link" width="80" />{% endif %}
         </a></p>
-        <p class="comment_headline">{% trans 'By' %} <a href="{% url user_home comment.author.user.username %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
-            {% ifequal comment.author.user.id request.user.pk %}<a href="{% url commentdelete link_comment.id comment.pk %}" class="delete">{% trans 'Delete [x]' %}</a>{% endifequal %}
+        <p class="comment_headline">{% trans 'By' %} <a href="{% url "user_home" comment.author.user.username %}">{{ comment.author.user.username }}</a> at {{ comment.created_at }}
+            {% ifequal comment.author.user.id request.user.pk %}<a href="{% url "commentdelete" link_comment.id comment.pk %}" class="delete">{% trans 'Delete [x]' %}</a>{% endifequal %}
         </p>
         <div class="comment_text">{{ comment.text|addurl|safe }}</div>
         <div class="clearboth"></div>

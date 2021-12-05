@@ -1,6 +1,6 @@
 {% load i18n%}
 <div id="link_form_around">
-    <form action="{% url postlink %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" enctype="multipart/form-data" >
+    <form action="{% url "postlink" %}" method="post" name="link_form" id="link_form" onsubmit="javascript:manual_submit(); return false;" enctype="multipart/form-data" >
         {% csrf_token %}
         <div id="link_generator">
             {{ form.post_url.errors }}

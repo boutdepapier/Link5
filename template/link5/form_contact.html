@@ -1,7 +1,7 @@
 {% extends "link5/site.html" %}{% load i18n %}
 
 {% block content %}
-    <form action="{% url contact %}" method="post" id="contact" name="contact">{% csrf_token %}
+    <form action="{% url "contact" %}" method="post" id="contact" name="contact">{% csrf_token %}
         <h1>{% trans 'A bug, a question, a message? Contact me!' %}</h1>
         
         <div class="contact_element">

@@ -12,7 +12,7 @@
         <tr align="left"><td colspan="3"><table cellpadding="0" cellspacing="0" border="0"><tr>
             <td width="20" align="left"></td>
             <td align="left" valign="left" width="150">
-                <p><a href="{% url home %}" ><font face="Arial" size="3" color="#0e4967" style="font-size: 16px;"><img src="{{ protocol }}://{{ domain }}/static/link5/img/Link5me.png" alt="Link5.me" border="0" width="150" height="53" /></font></a></p>
+                <p><a href="{% url "home" %}" ><font face="Arial" size="3" color="#0e4967" style="font-size: 16px;"><img src="{{ protocol }}://{{ domain }}/static/link5/img/Link5me.png" alt="Link5.me" border="0" width="150" height="53" /></font></a></p>
             </td>
             </tr></table>
         </td></tr>
@@ -33,16 +33,16 @@
             <td colspan="2"><table cellpadding="0" cellspacing="0"><tr valign="top">
             <td width="80">
                 {% if comment_author.avatar %}
-                <a href="{{ protocol }}://{{ domain }}{% url user_view comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ comment_author.avatar|crop:"80x80" }}" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+                <a href="{{ protocol }}://{{ domain }}{% url "user_view" comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}{{ comment_author.avatar|crop:"80x80" }}" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% else %}
-                <a href="{{ protocol }}://{{ domain }}{% url user_view comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}/static/link5/img/anonymous.png" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
+                <a href="{{ protocol }}://{{ domain }}{% url "user_view" comment_author.user.username %}"><img src="{{ protocol }}://{{ domain }}/static/link5/img/anonymous.png" alt="{{ comment_author.user.username }}" border="0" width="80" height="80" style="border:10px solid white;" /></a>
                 {% endif %}
             </td>
             <td width=20></td>
             <td><p>{% trans "Hello" %} {{ link_author.user.username }},</p>
             <p>
                 <br />
-                {{ comment_author.user.username }} {% trans "has posted on your link: " %} <a href="{{ protocol }}://{{ domain }}{% url linkload link.id_b62 link.title_for_url %}">{{ link.post_ttl }}</a>
+                {{ comment_author.user.username }} {% trans "has posted on your link: " %} <a href="{{ protocol }}://{{ domain }}{% url "linkload" link.id_b62 link.title_for_url %}">{{ link.post_ttl }}</a>
                 <br /><br />
                 {% trans "His comment:" %}<br />
                 <cite>{{ text }}</cite>

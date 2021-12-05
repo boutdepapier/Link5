@@ -10,7 +10,7 @@
 <div id="profil_page">
     
     {% if edit_form %}
-    <form action="{% url user_view request.user.username|urlencode %}" method="post" id="edit_form" enctype="multipart/form-data">{% csrf_token %}
+    <form action="{% url "user_view" request.user.username|urlencode %}" method="post" id="edit_form" enctype="multipart/form-data">{% csrf_token %}
         <h2>{% trans 'Edit my account info' %}</h2>
         
         <input type="hidden" name="edit_form" value="1" />
@@ -57,7 +57,7 @@
             <h2>{% blocktrans with author.user.username as username %}Link from {{ username }}{% endblocktrans %} ({{ author.number_to }})</h2>
             <ul class="user_links">
             {% for following in followings %}
-                <li><a href="{% url user_home following.author_to.user.username|urlencode %}">
+                <li><a href="{% url "user_home" following.author_to.user.username|urlencode %}">
                     {% if following.author_to.avatar %}
                         <img src="{{ following.author_to.avatar|crop:"40x40" }}" alt="{{ following.author_to.user.username }}" width="40" />
                     {% else %}
@@ -72,7 +72,7 @@
             <h2>{% blocktrans with author.user.username as username %}People who links {{ username }}{% endblocktrans %} ({{ author.number_from }})</h2>
             <ul class="user_links">
             {% for follower in followers %}
-                <li><a href="{% url user_home follower.author_from.user.username|urlencode %}">
+                <li><a href="{% url "user_home" follower.author_from.user.username|urlencode %}">
                     {% if follower.author_from.avatar %}
                         <img src="{{ follower.author_from.avatar|crop:"40x40" }}" alt="{{ follower.author_from.user.username }}" width="40" />
                     {% else %}

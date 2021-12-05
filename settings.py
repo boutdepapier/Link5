@@ -1,7 +1,7 @@
 import os
 
 # Django settings for link5 project.
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -115,7 +115,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'link5.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -135,10 +135,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
-    'admintools_bootstrap',
-    'admin_tools.theming',
-    'admin_tools.menu',
-    'admin_tools.dashboard',
+    #'admintools_bootstrap',
+    #'admin_tools.theming',
+    #'admin_tools.menu',
+    #'admin_tools.dashboard',
     
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,6 +150,7 @@ INSTALLED_APPS = (
 
     'filebrowser',
     # Uncomment the next line to enable the admin:
+    #'suit',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -178,6 +179,13 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+	'logfile': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(os.path.abspath(os.path.dirname(__file__)), 'logfile'),
+            'maxBytes': 5000,
+            'backupCount': 2,
         }
     },
     'loggers': {
@@ -222,6 +230,8 @@ RECAPCHA_PUBLIC  = ""
 CACHES = {} # I use memcached, default configuration
 
 INTERNAL_IPS = () # ex '127.0.0.1'
+
+ALLOWED_HOSTS = "127.0.0.1"
 
 try:
     from settings_local import *

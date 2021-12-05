@@ -3,7 +3,7 @@
 {{ author_from.user.username }} {% trans "is now linked to you on link5.me" %}
 
 {% trans "To see your new follower info just go on:" %}
-{{ protocol }}://{{ domain }}{% url user_view author_from.user.username %}
+{{ protocol }}://{{ domain }}{% url "user_view" author_from.user.username %}
 
 
 {% blocktrans %}

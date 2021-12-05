@@ -1,7 +1,7 @@
 {% load i18n %}{% trans "Hello" %} {{ link_author.user.username }},
 
 {{ comment_author.user.username }} {% trans "has posted on your link: " %}
-{{ link.post_ttl }}, {{ protocol }}://{{ domain }}{% url linkload link.id_b62 link.title_for_url %}
+{{ link.post_ttl }}, {{ protocol }}://{{ domain }}{% url "linkload" link.id_b62 link.title_for_url %}
 
 {% trans "His message:" %}
 {{ text }}

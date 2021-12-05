@@ -2,7 +2,7 @@
 {% block content %}
 <div id="login_page">
 
-    <form action="{% url login_link5 %}" method="post" id="login_form">{% csrf_token %}
+    <form action="{% url "login_link5" %}" method="post" id="login_form">{% csrf_token %}
         <h2>{% trans 'Welcome back!' %}</h2>
             
         <input type="hidden" name="login_form" value="1" />
@@ -21,11 +21,11 @@
             <label for="id_password">{% trans 'Password:' %}</label>
             {{ login_form.password }}
         </div>
-        <p class="forgotpassword"><a href="{% url django.contrib.auth.views.password_reset %}">{% trans 'Forgot your password?' %}</a></p>
+        <p class="forgotpassword"><a href="{% url "django.contrib.auth.views.password_reset" %}">{% trans 'Forgot your password?' %}</a></p>
         <p class="link_submit submit_login"><input type="submit" value="{% trans 'Log me baby!' %}" /></p>
     </form>
     
-    <form action="{% url login_link5 %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
+    <form action="{% url "login_link5" %}" method="post" id="register_form" enctype="multipart/form-data">{% csrf_token %}
         <h2>{% trans 'I want my account now!' %}</h2>
         
         <input type="hidden" name="register_form" value="1" />

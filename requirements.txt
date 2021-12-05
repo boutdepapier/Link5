@@ -17,4 +17,5 @@ django-admin-tools
 oembed
 recaptcha-client
 -e hg+https://bitbucket.org/salvator/django-admintools-bootstrap#egg=admintools_bootstrap
+django-suit
 

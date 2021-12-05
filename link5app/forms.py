@@ -18,7 +18,7 @@ from django.template import Context, loader
 from django.core import serializers
 
 from link5app.models import Link, Category, Author, Comment
-import link5app.views
+#import link5app.views
 
 class LinkForm(forms.Form):
     
